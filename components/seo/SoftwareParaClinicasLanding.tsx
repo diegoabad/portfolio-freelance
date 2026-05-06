@@ -1,0 +1,478 @@
+import Link from "next/link";
+import {
+  ChevronDown,
+  ChevronRight,
+  CheckCircle2,
+  CircleAlert,
+  HelpCircle,
+  Layers,
+  Sparkles,
+  Stethoscope,
+} from "lucide-react";
+import {
+  FaqBlocks,
+  LANDING_ARTICLE_MAX_CLASS,
+  landingPrimaryCtaClass,
+  SectionKicker,
+  type FaqBlock,
+} from "@/components/seo/landing-blocks";
+import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
+import { WHATSAPP_NUMBER } from "@/lib/contact";
+import { CLINICAS_GESTION_PRECIO_DESDE } from "@/lib/service-landings";
+
+const CATEGORY = "Software para clínicas";
+
+const HERO = {
+  title: "Software de gestión para clínicas",
+  subtitle:
+    "Organizá pacientes, turnos e historial en un solo sistema y dejá atrás Excel y registros en papel.",
+  cta: "Quiero organizar mi clínica",
+};
+
+const MORE_SOLUTIONS = [
+  { href: "/bots-whatsapp", label: "Bots de WhatsApp" },
+  { href: "/sistema-turnos-online", label: "Turnos online" },
+  { href: "/automatizacion-negocios", label: "Automatización de procesos" },
+  { href: "/desarrollo-software-medida", label: "Software a medida" },
+  { href: "/sistema-gestion-inventario", label: "Gestión de inventario" },
+] as const;
+
+const CONTEXTO_ITEMS = [
+  "Pacientes registrados en Excel",
+  "Historias clínicas en papel",
+  "Turnos gestionados por WhatsApp o agenda",
+  "Información distribuida en distintos lugares",
+] as const;
+
+const RIESGO_ITEMS = [
+  "Pérdida o duplicación de información",
+  "Errores en la atención",
+  "Dificultad para acceder a historiales",
+  "Desorganización en turnos",
+  "Dependencia total de procesos manuales",
+] as const;
+
+const FORMAS = [
+  { title: "Seguir usando Excel y papel", body: "Limitado cuando crece la operación.", highlight: false },
+  { title: "Digitalizar parcialmente la información", body: "Mejora algo, pero sigue fragmentado.", highlight: false },
+  { title: "Usar herramientas genéricas", body: "A veces no encajan con flujo clínico real.", highlight: false },
+  {
+    title: "Implementar un sistema de gestión",
+    body: "Centralizado y adaptado a tu forma de trabajo.",
+    highlight: true,
+  },
+] as const;
+
+const PROPUESTA_ITEMS = [
+  "Centralizar la información de pacientes",
+  "Registrar historias clínicas digitalmente",
+  "Organizar turnos en un solo lugar",
+  "Automatizar procesos administrativos",
+] as const;
+
+const BENEFICIOS = [
+  "Toda la información en un solo lugar",
+  "Acceso rápido a historiales",
+  "Menos errores administrativos",
+  "Mejor organización de turnos",
+  "Mayor control de la operación",
+] as const;
+
+const SEÑALES = [
+  "Usás Excel para gestionar pacientes",
+  "Tenés historias clínicas en papel",
+  "La información está dispersa",
+  "Se pierden datos o hay errores",
+  "La gestión depende de procesos manuales",
+] as const;
+
+const MSG_HERO = "Hola Diego, quiero organizar mi clínica con un sistema de gestión.";
+const MSG_CASO =
+  "Hola Diego, quiero contarte mi caso para ver cómo organizar la información de mi clínica.";
+
+function waHref(message: string) {
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
+
+const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
+  {
+    q: "¿Cuánto cuesta un sistema de gestión para clínicas?",
+    blocks: [
+      {
+        type: "p",
+        text: "Los proyectos suelen comenzar desde los $1.100.000 ARS, dependiendo del nivel de personalización, cantidad de módulos y necesidades del centro.",
+      },
+      { type: "callout", text: "El valor final se define según el alcance del sistema." },
+    ],
+  },
+  {
+    q: "¿Se adapta a la forma de trabajo de mi clínica?",
+    blocks: [{ type: "p", text: "Sí, el sistema se diseña en base a cómo trabaja cada clínica." }],
+  },
+  {
+    q: "¿Se pueden digitalizar historias clínicas?",
+    blocks: [{ type: "p", text: "Sí, el sistema permite reemplazar registros en papel por historial digital." }],
+  },
+  {
+    q: "¿Se puede integrar con otras herramientas?",
+    blocks: [{ type: "p", text: "Sí, se puede integrar con agendas, WhatsApp u otros sistemas." }],
+  },
+  {
+    q: "¿Es solo para clínicas grandes?",
+    blocks: [{ type: "p", text: "No. Clínicas medianas o en crecimiento suelen beneficiarse mucho de centralizar su operación." }],
+  },
+  {
+    q: "¿Vale la pena dejar Excel y papel?",
+    blocks: [
+      {
+        type: "p",
+        text: "Cuando la cantidad de pacientes crece, mantener ese sistema suele generar más problemas que soluciones.",
+      },
+      {
+        type: "callout",
+        text: "Un sistema centralizado mejora organización, reduce errores y permite escalar.",
+      },
+    ],
+  },
+];
+
+export function SoftwareParaClinicasLanding() {
+  return (
+    <div className="relative flex-1 overflow-hidden">
+      <div
+        className="pointer-events-none absolute -top-24 right-0 h-[420px] w-[420px] rounded-full bg-primary/12 blur-[100px]"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute bottom-0 left-1/2 h-[320px] w-[min(100%,520px)] -translate-x-1/2 rounded-full bg-primary/8 blur-[90px]"
+        aria-hidden
+      />
+
+      <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-10 py-12 lg:py-20">
+        <article className={LANDING_ARTICLE_MAX_CLASS}>
+          <header className="relative overflow-hidden rounded-3xl border border-border/90 bg-linear-to-b from-surface/90 via-surface/50 to-background/30 p-8 shadow-[inset_0_1px_0_0_rgb(255_255_255/6%),0_24px_64px_-32px_rgb(0_0_0/0.45)] md:p-10">
+            <div
+              className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-primary/15 blur-3xl"
+              aria-hidden
+            />
+            <div className="relative space-y-4">
+              <div className="inline-flex items-center gap-2 rounded-full border border-primary/35 bg-primary/10 px-3 py-1 text-xs font-medium text-foreground">
+                <Stethoscope className="h-3.5 w-3.5 text-primary shrink-0" aria-hidden />
+                <span className="text-primary">{CATEGORY}</span>
+              </div>
+              <h1 className="mt-2 font-display text-3xl font-semibold tracking-tight text-pretty text-foreground sm:text-4xl md:text-[2.65rem] md:leading-[1.12]">
+                {HERO.title}
+              </h1>
+              <p className="text-lg leading-relaxed text-muted-foreground md:text-xl">{HERO.subtitle}</p>
+              <p className="w-fit rounded-xl border border-primary/25 bg-primary/10 px-4 py-3 text-sm font-semibold text-primary leading-snug md:text-[15px]">
+                {CLINICAS_GESTION_PRECIO_DESDE}
+              </p>
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <Link href={waHref(MSG_HERO)} className={landingPrimaryCtaClass}>
+                  <WhatsAppIcon size={20} className="shrink-0 text-primary-foreground" aria-hidden />
+                  {HERO.cta}
+                </Link>
+              </div>
+            </div>
+          </header>
+
+          <section className="mt-16 md:mt-20" aria-labelledby="problema-heading">
+            <SectionKicker n="01">Problema</SectionKicker>
+            <h2
+              id="problema-heading"
+              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+            >
+              Información de pacientes en Excel y papel
+            </h2>
+            <div className="relative mt-8 overflow-hidden rounded-2xl border border-primary/30 bg-primary/6 px-6 py-8 md:px-8 md:py-9">
+              <div
+                className="pointer-events-none absolute -left-12 bottom-0 h-36 w-36 rounded-full bg-primary/20 blur-3xl"
+                aria-hidden
+              />
+              <div className="relative space-y-4 text-lg font-medium leading-relaxed text-foreground md:text-xl">
+                <p>Muchas clínicas manejan su información en planillas de Excel y registros en papel.</p>
+                <p className="border-t border-primary/20 pt-4 font-normal text-muted-foreground md:text-[17px]">
+                  Esto genera desorganización, dificultad para acceder a datos y dependencia de procesos manuales.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section className="mt-16 md:mt-20" aria-labelledby="contexto-heading">
+            <SectionKicker n="02">Contexto</SectionKicker>
+            <div className="mt-3 space-y-5 text-foreground/95 leading-relaxed md:text-[17px]">
+              <p>En el día a día, esto suele verse así:</p>
+              <ul className="list-disc space-y-2 pl-5 marker:text-primary">
+                {CONTEXTO_ITEMS.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+              <p className="font-medium text-foreground">
+                A medida que crece la cantidad de pacientes, este sistema se vuelve difícil de sostener.
+              </p>
+            </div>
+          </section>
+
+          <section className="mt-16 md:mt-20" aria-labelledby="riesgo-heading">
+            <SectionKicker n="03">Riesgo</SectionKicker>
+            <h2
+              id="riesgo-heading"
+              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+            >
+              Qué pasa si seguís trabajando así
+            </h2>
+            <div className="mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+              {RIESGO_ITEMS.map((text) => (
+                <div
+                  key={text}
+                  className="flex gap-3 rounded-xl border border-border/90 bg-background/40 px-4 py-4 backdrop-blur-sm"
+                >
+                  <CircleAlert className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
+                  <p className="text-sm leading-snug text-foreground/95 md:text-[15px]">{text}</p>
+                </div>
+              ))}
+            </div>
+            <p className="mt-8 rounded-xl border border-primary/30 bg-primary/10 px-4 py-3 text-sm font-medium text-foreground leading-relaxed md:text-[15px]">
+              La operación se vuelve más lenta y menos confiable.
+            </p>
+          </section>
+
+          <section className="mt-16 md:mt-20" aria-labelledby="enfoque-heading">
+            <SectionKicker n="04">Enfoque</SectionKicker>
+            <h2
+              id="enfoque-heading"
+              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+            >
+              Cómo se suele resolver este problema
+            </h2>
+            <div className="mt-8 grid auto-rows-fr gap-4 md:grid-cols-2">
+              {FORMAS.map((f, i) => (
+                <div
+                  key={f.title}
+                  className={
+                    f.highlight
+                      ? "relative flex h-full flex-col overflow-hidden rounded-2xl border-2 border-primary/50 bg-linear-to-br from-primary/12 via-primary/6 to-transparent p-5 shadow-[0_0_0_1px_rgb(var(--color-primary)/0.12)] md:p-6 ring-1 ring-primary/20"
+                      : "flex h-full flex-col rounded-2xl border border-border bg-surface/40 p-5 md:p-6"
+                  }
+                >
+                  {f.highlight && (
+                    <div
+                      className="pointer-events-none absolute -right-6 top-1/2 h-28 w-28 -translate-y-1/2 rounded-full bg-primary/20 blur-2xl"
+                      aria-hidden
+                    />
+                  )}
+                  <p className="relative flex items-baseline gap-2 font-display text-base font-semibold text-foreground">
+                    <span
+                      className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-xs font-bold ${
+                        f.highlight ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
+                      }`}
+                    >
+                      {i + 1}
+                    </span>
+                    {f.title}
+                  </p>
+                  <p
+                    className={`relative mt-3 flex-1 pl-9 text-sm leading-relaxed md:text-[15px] ${
+                      f.highlight ? "text-foreground/95" : "text-muted-foreground"
+                    }`}
+                  >
+                    {f.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <p className="mt-8 rounded-xl border border-primary/30 bg-primary/10 px-4 py-3 text-sm font-medium text-foreground leading-relaxed md:text-[15px]">
+              Cuando la operación crece, se necesita una solución centralizada.
+            </p>
+          </section>
+
+          <section className="mt-16 md:mt-20" aria-labelledby="propuesta-heading">
+            <SectionKicker n="05">Propuesta</SectionKicker>
+            <div className="mt-3 rounded-2xl border border-border bg-surface/35 p-6 md:flex md:items-start md:gap-8 md:p-8">
+              <div className="mx-auto flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary/15 text-primary md:mx-0">
+                <Layers className="h-7 w-7" aria-hidden />
+              </div>
+              <div className="mt-6 w-full min-w-0 flex-1 md:mt-0">
+                <h2
+                  id="propuesta-heading"
+                  className="font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+                >
+                  Cómo implemento sistemas para clínicas
+                </h2>
+                <p className="mt-5 text-foreground/95 leading-relaxed md:text-[17px]">
+                  Desarrollo sistemas de gestión que permiten:
+                </p>
+                <ul className="mt-3 list-disc space-y-2 pl-5 text-foreground/95 leading-relaxed marker:text-primary md:text-[17px]">
+                  {PROPUESTA_ITEMS.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+                <p className="mt-5 text-muted-foreground leading-relaxed md:text-[17px]">
+                  Cada sistema se adapta a la forma de trabajo de la clínica.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section className="mt-16 md:mt-20" aria-labelledby="resultado-heading">
+            <SectionKicker n="06">Resultado</SectionKicker>
+            <h2
+              id="resultado-heading"
+              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+            >
+              Qué cambia con un sistema de gestión
+            </h2>
+            <div className="mt-8 flex flex-wrap gap-2.5">
+              {BENEFICIOS.map((b) => (
+                <span
+                  key={b}
+                  className="inline-flex items-center gap-2 rounded-full border border-primary/35 bg-primary/10 px-4 py-2 text-sm font-medium text-foreground shadow-[inset_0_1px_0_0_rgb(255_255_255/8%)]"
+                >
+                  <Sparkles className="h-3.5 w-3.5 text-primary shrink-0" aria-hidden />
+                  {b}
+                </span>
+              ))}
+            </div>
+          </section>
+
+          <section className="mt-16 md:mt-20" aria-labelledby="senales-heading">
+            <SectionKicker n="07">Señales</SectionKicker>
+            <h2
+              id="senales-heading"
+              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+            >
+              Señales de que necesitás un sistema para tu clínica
+            </h2>
+            <ul className="mt-8 grid gap-3 md:grid-cols-2">
+              {SEÑALES.map((text) => (
+                <li
+                  key={text}
+                  className="flex gap-3 rounded-xl border border-border bg-background/30 px-4 py-3.5 backdrop-blur-sm"
+                >
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
+                  <span className="text-sm leading-snug text-foreground/95 md:text-[15px]">{text}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-8 rounded-xl border border-primary/30 bg-primary/10 px-4 py-3 text-sm font-medium text-foreground leading-relaxed md:text-[15px]">
+              Si te pasa esto, tu sistema actual ya no escala.
+            </p>
+          </section>
+
+          <section className="mt-16 md:mt-20" aria-labelledby="caso-heading">
+            <SectionKicker n="08">Caso</SectionKicker>
+            <h2
+              id="caso-heading"
+              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+            >
+              Ejemplo de sistema implementado
+            </h2>
+            <figure className="relative mt-8 overflow-hidden rounded-2xl border border-primary/25 bg-linear-to-br from-surface/80 to-primary/4 p-6 md:p-8">
+              <div
+                className="pointer-events-none absolute right-0 top-0 h-24 w-24 translate-x-1/4 -translate-y-1/4 rounded-full bg-primary/15 blur-2xl"
+                aria-hidden
+              />
+              <Stethoscope className="relative h-8 w-8 text-primary" aria-hidden />
+              <div className="relative mt-4 space-y-4 text-base leading-relaxed text-foreground/95 md:text-lg">
+                <p>
+                  Una clínica gestionaba pacientes en Excel y mantenía historias clínicas en papel, lo que dificultaba
+                  el acceso a la información y generaba errores.
+                </p>
+                <p className="text-muted-foreground md:text-[17px]">
+                  Se implementó un sistema que centraliza pacientes, historial y turnos en un solo lugar.
+                </p>
+                <p className="rounded-xl border border-primary/30 bg-primary/10 px-4 py-3 font-medium text-foreground md:text-[17px]">
+                  <span className="text-primary">Resultado:</span> mejor organización, acceso inmediato a la información
+                  y reducción de errores administrativos.
+                </p>
+              </div>
+            </figure>
+          </section>
+
+          <section className="mt-16 md:mt-20" aria-labelledby="faq-heading">
+            <SectionKicker n="09">FAQ</SectionKicker>
+            <h2
+              id="faq-heading"
+              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+            >
+              Preguntas frecuentes
+            </h2>
+            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+              Abrí la pregunta que te interese; el contenido sigue indexable para buscadores.
+            </p>
+            <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-surface/40 shadow-[inset_0_1px_0_0_rgb(255_255_255/5%)]">
+              {FAQ_ITEMS.map(({ q, blocks }) => (
+                <details
+                  key={q}
+                  name="faq-software-para-clinicas"
+                  className="group border-b border-border last:border-b-0 open:bg-muted/15 transition-colors"
+                >
+                  <summary className="flex cursor-pointer list-none items-center gap-3 px-4 py-4 pr-3 text-left transition-colors hover:bg-muted/20 md:px-5 md:py-[1.05rem] [&::-webkit-details-marker]:hidden marker:content-none">
+                    <HelpCircle
+                      className="h-5 w-5 shrink-0 text-primary opacity-90 group-open:opacity-100"
+                      aria-hidden
+                    />
+                    <span className="min-w-0 flex-1 font-display text-[15px] font-semibold leading-snug text-foreground md:text-base">
+                      {q}
+                    </span>
+                    <ChevronDown
+                      className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180 group-open:text-primary"
+                      aria-hidden
+                    />
+                  </summary>
+                  <div className="border-t border-border/70 bg-background/25 px-4 pb-4 pt-1 md:px-5 md:pb-5 md:pt-2">
+                    <FaqBlocks blocks={blocks} />
+                  </div>
+                </details>
+              ))}
+            </div>
+          </section>
+
+          <section className="relative mt-16 overflow-hidden rounded-3xl border border-primary/40 bg-linear-to-br from-primary/14 via-primary/6 to-transparent px-6 py-10 md:mt-20 md:px-10 md:py-12">
+            <div
+              className="pointer-events-none absolute -left-16 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-primary/20 blur-3xl"
+              aria-hidden
+            />
+            <p className="relative text-lg font-medium leading-relaxed text-foreground md:text-xl">
+              Si tu clínica está manejando información en Excel y papel, podemos ver cómo organizar todo en un sistema.
+            </p>
+            <div className="relative mt-8">
+              <Link href={waHref(MSG_CASO)} className={landingPrimaryCtaClass}>
+                <WhatsAppIcon size={20} className="shrink-0 text-primary-foreground" aria-hidden />
+                Contame tu caso
+              </Link>
+            </div>
+          </section>
+
+          <section className="mt-16 border-t border-border pt-12 md:mt-20">
+            <h2 className="font-display text-lg font-semibold text-foreground">Explorá más soluciones</h2>
+            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+              Otros enfoques que suelen ir de la mano con lo que estás buscando.
+            </p>
+            <nav
+              aria-label="Soluciones relacionadas"
+              className="mt-6 overflow-hidden rounded-2xl border border-border bg-background/60 shadow-[inset_0_1px_0_0_rgb(255_255_255/5%)]"
+            >
+              <ul className="divide-y divide-border">
+                {MORE_SOLUTIONS.map((l) => (
+                  <li key={l.href}>
+                    <Link
+                      href={l.href}
+                      className="group flex items-center justify-between gap-4 px-4 py-4 text-left text-sm font-medium text-foreground transition-colors hover:bg-surface md:px-5 md:py-4 md:text-[15px]"
+                    >
+                      <span className="group-hover:text-primary transition-colors">{l.label}</span>
+                      <ChevronRight
+                        className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary"
+                        aria-hidden
+                      />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </section>
+        </article>
+      </div>
+    </div>
+  );
+}

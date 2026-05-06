@@ -1,0 +1,581 @@
+import Link from "next/link";
+import {
+  ChevronDown,
+  ChevronRight,
+  CheckCircle2,
+  CircleAlert,
+  HelpCircle,
+  Layers,
+  ListChecks,
+  Sparkles,
+  Wrench,
+  Zap,
+} from "lucide-react";
+import {
+  FaqBlocks,
+  LANDING_ARTICLE_MAX_CLASS,
+  landingPrimaryCtaClass,
+  SectionKicker,
+  type FaqBlock,
+} from "@/components/seo/landing-blocks";
+import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
+import { homeSection } from "@/lib/home-links";
+import { AUTOMATIZACION_PROCESOS_PRECIO_REFERENCIA } from "@/lib/service-landings";
+
+const CATEGORY = "Automatización de procesos";
+
+const HERO = {
+  title: "Automatización de procesos para negocios",
+  subtitle: "Reducí tareas manuales, optimizá tu operación y automatizá tu negocio sin sumar más personal.",
+  cta: "Quiero automatizar mi negocio",
+};
+
+const MORE_SOLUTIONS = [
+  { href: "/bots-whatsapp", label: "Bots de WhatsApp" },
+  { href: "/sistema-turnos-online", label: "Turnos online" },
+  { href: "/desarrollo-software-medida", label: "Software a medida" },
+  { href: "/software-para-clinicas", label: "Software para clínicas" },
+  { href: "/sistema-gestion-inventario", label: "Gestión de inventario" },
+] as const;
+
+const EJEMPLOS_TAREAS = [
+  "Cargar datos manualmente en Excel o sistemas",
+  "Copiar información entre herramientas que no se integran",
+  "Responder siempre las mismas consultas",
+  "Gestionar turnos o clientes de forma manual",
+  "Revisar procesos uno por uno sin automatización",
+] as const;
+
+const CONSECUENCIAS = [
+  "Se pierde tiempo operativo todos los días",
+  "Aumentan los errores humanos",
+  "Se vuelve difícil escalar el negocio",
+  "Se genera desorganización interna",
+  "La experiencia del cliente empeora",
+] as const;
+
+const BENEFICIOS = [
+  "Menos trabajo manual",
+  "Respuestas más rápidas",
+  "Mayor productividad",
+  "Menos errores humanos",
+  "Mejor organización",
+] as const;
+
+const CUANDO = [
+  "Cuando tu equipo pierde tiempo en tareas repetitivas",
+  "Cuando manejás información en múltiples herramientas",
+  "Cuando tu operación depende demasiado de procesos manuales",
+  "Cuando querés escalar sin sumar más personal",
+] as const;
+
+const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
+  {
+    q: "¿Cuánto cuesta automatizar procesos en un negocio?",
+    blocks: [
+      {
+        type: "p",
+        text: `Como referencia, ${AUTOMATIZACION_PROCESOS_PRECIO_REFERENCIA} suele cubrir automatizaciones de alcance acotado a intermedio. El costo depende del tipo de automatización y la complejidad del proceso: no es lo mismo automatizar tareas simples que integrar varios sistemas o flujos más complejos.`,
+      },
+      {
+        type: "ul",
+        intro: "En general, el valor se define según:",
+        items: [
+          "Cantidad de procesos a automatizar",
+          "Nivel de integración entre sistemas",
+          "Complejidad de la lógica",
+        ],
+      },
+      { type: "callout", text: "Lo ideal es evaluar el caso y definir un alcance claro antes de estimar." },
+    ],
+  },
+  {
+    q: "¿Cuánto tiempo lleva implementar una automatización?",
+    blocks: [
+      { type: "p", text: "Depende del proyecto." },
+      {
+        type: "ul",
+        items: [
+          "Automatizaciones simples → pueden resolverse en pocos días",
+          "Procesos más completos → pueden llevar algunas semanas",
+        ],
+      },
+      {
+        type: "p",
+        text: "El tiempo varía según la cantidad de sistemas involucrados y el nivel de personalización.",
+      },
+    ],
+  },
+  {
+    q: "¿Se puede integrar con mis sistemas actuales?",
+    blocks: [
+      { type: "p", text: "Sí, en la mayoría de los casos." },
+      {
+        type: "ul",
+        intro: "Se pueden conectar:",
+        items: ["CRM", "Sistemas internos", "WhatsApp", "Herramientas de gestión", "APIs externas"],
+      },
+      {
+        type: "p",
+        text: "Si algo no tiene integración directa, se puede evaluar una solución alternativa.",
+      },
+    ],
+  },
+  {
+    q: "¿Necesito cambiar mi forma de trabajar?",
+    blocks: [
+      {
+        type: "p",
+        text: "No necesariamente. El objetivo de la automatización es adaptarse a tu operación actual y mejorarla, no obligarte a cambiar todo desde cero.",
+      },
+      {
+        type: "p",
+        text: "En muchos casos, se mantiene el flujo de trabajo pero eliminando tareas manuales.",
+      },
+    ],
+  },
+  {
+    q: "¿Qué tipo de procesos se pueden automatizar?",
+    blocks: [
+      { type: "p", text: "Cualquier tarea repetitiva o que siga reglas claras." },
+      {
+        type: "ul",
+        intro: "Algunos ejemplos:",
+        items: [
+          "Atención de consultas",
+          "Carga de datos",
+          "Seguimiento de clientes",
+          "Gestión de turnos",
+          "Generación de reportes",
+          "Integración entre sistemas",
+        ],
+      },
+      { type: "callout", text: "Si es repetitivo, probablemente se pueda automatizar." },
+    ],
+  },
+  {
+    q: "¿Esto sirve para negocios chicos o solo empresas grandes?",
+    blocks: [
+      { type: "p", text: "Sirve para ambos." },
+      {
+        type: "p",
+        text: "De hecho, en negocios chicos suele tener mucho impacto porque permite crecer sin necesidad de sumar más personal.",
+      },
+    ],
+  },
+  {
+    q: "¿Qué pasa si mi proceso es muy específico?",
+    blocks: [
+      {
+        type: "p",
+        text: "En esos casos es donde más sentido tiene una solución a medida. Las herramientas estándar suelen quedarse cortas cuando el flujo es particular o requiere integraciones específicas.",
+      },
+    ],
+  },
+  {
+    q: "¿Qué pasa después de implementar la automatización?",
+    blocks: [
+      {
+        type: "p",
+        text: "Las automatizaciones se pueden ajustar, mejorar o ampliar según cómo evolucione el negocio. La idea es que la solución acompañe el crecimiento y no quede limitada.",
+      },
+    ],
+  },
+  {
+    q: "¿Vale la pena automatizar procesos?",
+    blocks: [
+      { type: "p", text: "Si estás perdiendo tiempo en tareas repetitivas, la respuesta suele ser sí." },
+      { type: "ul", intro: "Pero el impacto no es solo en tiempo:", items: [
+        "Reducís la necesidad de tareas administrativas manuales",
+        "Evitás tener que contratar más personal para escalar",
+        "Bajás costos operativos a largo plazo",
+        "Mantenés procesos funcionando de forma constante",
+      ]},
+      {
+        type: "callout",
+        text: "Automatizar no solo ahorra tiempo, también permite crecer sin aumentar la estructura del negocio.",
+      },
+    ],
+  },
+  {
+    q: "¿Cómo sé si esto aplica a mi negocio?",
+    blocks: [
+      { type: "p", text: "Cada caso es distinto." },
+      {
+        type: "p",
+        text: "Si sentís que estás repitiendo tareas, perdiendo tiempo o que tu operación no escala, probablemente haya algo que se pueda automatizar.",
+      },
+      {
+        type: "calloutContact",
+        before: "Podés ",
+        linkText: "contarme tu caso",
+        after: " y vemos qué tiene sentido hacer.",
+      },
+    ],
+  },
+];
+
+export function AutomatizacionNegociosLanding() {
+  return (
+    <div className="relative flex-1 overflow-hidden">
+      <div
+        className="pointer-events-none absolute -top-24 right-0 h-[420px] w-[420px] rounded-full bg-primary/12 blur-[100px]"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute bottom-0 left-1/2 h-[320px] w-[min(100%,520px)] -translate-x-1/2 rounded-full bg-primary/8 blur-[90px]"
+        aria-hidden
+      />
+
+      <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-10 py-12 lg:py-20">
+        <article className={LANDING_ARTICLE_MAX_CLASS}>
+          <header className="relative overflow-hidden rounded-3xl border border-border/90 bg-linear-to-b from-surface/90 via-surface/50 to-background/30 p-8 shadow-[inset_0_1px_0_0_rgb(255_255_255/6%),0_24px_64px_-32px_rgb(0_0_0/0.45)] md:p-10">
+            <div
+              className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-primary/15 blur-3xl"
+              aria-hidden
+            />
+            <div className="relative">
+              <div className="inline-flex items-center gap-2 rounded-full border border-primary/35 bg-primary/10 px-3 py-1 text-xs font-medium text-foreground">
+                <Zap className="h-3.5 w-3.5 text-primary shrink-0" aria-hidden />
+                <span className="text-primary">{CATEGORY}</span>
+              </div>
+              <h1 className="mt-5 font-display text-3xl font-semibold tracking-tight text-pretty text-foreground sm:text-4xl md:text-[2.65rem] md:leading-[1.12]">
+                {HERO.title}
+              </h1>
+              <p className="mt-5 text-lg leading-relaxed text-muted-foreground md:text-xl">{HERO.subtitle}</p>
+              <p className="mt-5 w-fit rounded-xl border border-primary/25 bg-primary/10 px-4 py-3 text-sm font-semibold text-primary leading-snug md:text-[15px]">
+                {AUTOMATIZACION_PROCESOS_PRECIO_REFERENCIA}
+              </p>
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <Link href={homeSection("#contacto")} className={landingPrimaryCtaClass}>
+                  <WhatsAppIcon size={20} className="shrink-0 text-primary-foreground" aria-hidden />
+                  {HERO.cta}
+                </Link>
+              </div>
+            </div>
+          </header>
+
+          <section className="mt-16 md:mt-20" aria-labelledby="problema-heading">
+            <SectionKicker n="01">El problema</SectionKicker>
+            <h2
+              id="problema-heading"
+              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+            >
+              Tareas manuales que te hacen perder horas en tu negocio
+            </h2>
+            <div className="relative mt-8 overflow-hidden rounded-2xl border border-primary/30 bg-primary/6 px-6 py-8 md:px-8 md:py-9">
+              <div
+                className="pointer-events-none absolute -left-12 bottom-0 h-36 w-36 rounded-full bg-primary/20 blur-3xl"
+                aria-hidden
+              />
+              <div className="relative space-y-4 text-lg font-medium leading-relaxed text-foreground md:text-xl">
+                <p>¿Seguís perdiendo tiempo todas las semanas haciendo lo mismo?</p>
+                <p className="font-normal text-foreground/90 md:text-[17px]">
+                  Responder mensajes, cargar datos en planillas, copiar información entre sistemas o coordinar tareas
+                  manualmente.
+                </p>
+                <p className="border-t border-primary/20 pt-4 font-normal text-muted-foreground md:text-[17px]">
+                  A medida que tu negocio crece, estas tareas se multiplican y empiezan a frenar tu operación.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section className="mt-16 md:mt-20" aria-labelledby="ejemplos-heading">
+            <SectionKicker n="02">Contexto</SectionKicker>
+            <h3
+              id="ejemplos-heading"
+              className="mt-3 font-display text-xl font-semibold tracking-tight text-foreground md:text-2xl"
+            >
+              Ejemplos de tareas manuales comunes
+            </h3>
+            <ul className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+              {EJEMPLOS_TAREAS.map((text) => (
+                <li
+                  key={text}
+                  className="flex gap-3 rounded-xl border border-border bg-surface/50 p-4 shadow-[inset_0_1px_0_0_rgb(255_255_255/5%)] transition-colors hover:border-primary/35 hover:bg-surface"
+                >
+                  <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/12 text-primary">
+                    <ListChecks className="h-4 w-4" aria-hidden />
+                  </span>
+                  <span className="text-sm font-medium leading-snug text-foreground/95 md:text-[15px]">{text}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="mt-16 md:mt-20" aria-labelledby="consecuencias-heading">
+            <SectionKicker n="03">Riesgos</SectionKicker>
+            <h2
+              id="consecuencias-heading"
+              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+            >
+              Qué pasa cuando todo depende de tareas manuales
+            </h2>
+            <div className="mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+              {CONSECUENCIAS.map((text) => (
+                <div
+                  key={text}
+                  className="flex gap-3 rounded-xl border border-border/90 bg-background/40 px-4 py-4 backdrop-blur-sm"
+                >
+                  <CircleAlert className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
+                  <p className="text-sm leading-snug text-foreground/95 md:text-[15px]">{text}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="mt-16 md:mt-20" aria-labelledby="formas-heading">
+            <SectionKicker n="04">Enfoques</SectionKicker>
+            <h2
+              id="formas-heading"
+              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+            >
+              Formas de reducir tareas manuales en un negocio
+            </h2>
+            <p className="mt-5 text-foreground/90 leading-relaxed md:text-[17px]">
+              Existen distintas formas de abordar este problema, dependiendo del nivel de complejidad:
+            </p>
+            <div className="mt-8 grid auto-rows-fr gap-4 md:grid-cols-2">
+              <div className="flex h-full flex-col rounded-2xl border border-border bg-surface/40 p-5 md:p-6">
+                <p className="flex items-baseline gap-2 font-display text-base font-semibold text-foreground">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-muted text-xs font-bold text-muted-foreground">
+                    1
+                  </span>
+                  Opción 1: Procesos manuales optimizados
+                </p>
+                <p className="mt-3 flex-1 pl-9 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
+                  Organizar mejor tareas y flujos puede ayudar, pero tiene un límite.
+                </p>
+              </div>
+              <div className="flex h-full flex-col rounded-2xl border border-border bg-surface/40 p-5 md:p-6">
+                <p className="flex items-baseline gap-2 font-display text-base font-semibold text-foreground">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-muted text-xs font-bold text-muted-foreground">
+                    2
+                  </span>
+                  Opción 2: Herramientas estándar
+                </p>
+                <p className="mt-3 flex-1 pl-9 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
+                  Existen plataformas que automatizan partes del proceso, pero muchas veces no se adaptan
+                  completamente.
+                </p>
+              </div>
+              <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border-2 border-primary/50 bg-linear-to-br from-primary/12 via-primary/6 to-transparent p-5 shadow-[0_0_0_1px_rgb(var(--color-primary)/0.12)] md:p-6 ring-1 ring-primary/20">
+                <div
+                  className="pointer-events-none absolute -right-6 top-1/2 h-28 w-28 -translate-y-1/2 rounded-full bg-primary/20 blur-2xl"
+                  aria-hidden
+                />
+                <p className="relative flex items-baseline gap-2 font-display text-base font-semibold text-foreground">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary text-xs font-bold text-primary-foreground">
+                    3
+                  </span>
+                  Opción 3: Automatización de procesos
+                </p>
+                <p className="relative mt-3 flex-1 pl-9 text-sm leading-relaxed text-foreground/95 md:text-[15px]">
+                  Permite conectar sistemas, eliminar tareas repetitivas y mejorar la eficiencia.
+                </p>
+              </div>
+              <div className="flex h-full flex-col rounded-2xl border border-border bg-surface/40 p-5 md:p-6">
+                <p className="flex items-baseline gap-2 font-display text-base font-semibold text-foreground">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-muted text-xs font-bold text-muted-foreground">
+                    4
+                  </span>
+                  Opción 4: Software a medida
+                </p>
+                <p className="mt-3 flex-1 pl-9 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
+                  Cuando el negocio tiene necesidades específicas, desarrollar una solución personalizada es la mejor
+                  alternativa.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section className="mt-16 md:mt-20" aria-labelledby="propuesta-heading">
+            <SectionKicker n="05">Propuesta</SectionKicker>
+            <div className="mt-3 rounded-2xl border border-border bg-surface/35 p-6 md:flex md:items-start md:gap-8 md:p-8">
+              <div className="mx-auto flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary/15 text-primary md:mx-0">
+                <Wrench className="h-7 w-7" aria-hidden />
+              </div>
+              <div className="mt-6 w-full min-w-0 flex-1 md:mt-0">
+                <h2
+                  id="propuesta-heading"
+                  className="font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+                >
+                  Cómo automatizo procesos en negocios
+                </h2>
+                <div className="mt-5 space-y-4 text-foreground/95 leading-relaxed md:text-[17px]">
+                  <p>
+                    Desarrollo automatizaciones a medida que conectan tus herramientas y eliminan tareas repetitivas.
+                  </p>
+                  <p>
+                    Desde flujos simples hasta procesos más complejos, el objetivo es reducir el trabajo manual y mejorar
+                    la operación general del negocio.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="mt-16 md:mt-20" aria-labelledby="beneficios-heading">
+            <SectionKicker n="06">Resultados</SectionKicker>
+            <h2
+              id="beneficios-heading"
+              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+            >
+              Beneficios de automatizar procesos
+            </h2>
+            <div className="mt-8 flex flex-wrap gap-2.5">
+              {BENEFICIOS.map((b) => (
+                <span
+                  key={b}
+                  className="inline-flex items-center gap-2 rounded-full border border-primary/35 bg-primary/10 px-4 py-2 text-sm font-medium text-foreground shadow-[inset_0_1px_0_0_rgb(255_255_255/8%)]"
+                >
+                  <Sparkles className="h-3.5 w-3.5 text-primary shrink-0" aria-hidden />
+                  {b}
+                </span>
+              ))}
+            </div>
+          </section>
+
+          <section className="mt-16 md:mt-20" aria-labelledby="cuando-heading">
+            <SectionKicker n="07">Señales</SectionKicker>
+            <h2
+              id="cuando-heading"
+              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+            >
+              Cuándo tiene sentido automatizar procesos
+            </h2>
+            <ul className="mt-8 grid gap-3 md:grid-cols-2">
+              {CUANDO.map((text) => (
+                <li
+                  key={text}
+                  className="flex gap-3 rounded-xl border border-border bg-background/30 px-4 py-3.5 backdrop-blur-sm"
+                >
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
+                  <span className="text-sm leading-snug text-foreground/95 md:text-[15px]">{text}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="mt-16 md:mt-20" aria-labelledby="ejemplo-heading">
+            <SectionKicker n="08">Caso</SectionKicker>
+            <h2
+              id="ejemplo-heading"
+              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+            >
+              Ejemplo de automatización
+            </h2>
+            <figure className="relative mt-8 overflow-hidden rounded-2xl border border-primary/25 bg-linear-to-br from-surface/80 to-primary/4 p-6 md:p-8">
+              <div
+                className="pointer-events-none absolute right-0 top-0 h-24 w-24 translate-x-1/4 -translate-y-1/4 rounded-full bg-primary/15 blur-2xl"
+                aria-hidden
+              />
+              <Layers className="relative h-8 w-8 text-primary" aria-hidden />
+              <div className="relative mt-4 space-y-4 text-base leading-relaxed text-foreground/95 md:text-lg">
+                <p>
+                  Un negocio registraba sus ventas en una planilla de Excel y luego tenía que generar las facturas
+                  manualmente, copiando los datos en el sistema de facturación.
+                </p>
+                <p className="text-muted-foreground md:text-[17px]">
+                  Esto generaba pérdida de tiempo, errores y retrabajo.
+                </p>
+                <p>
+                  Se implementó una automatización que toma los datos desde la planilla y genera las facturas
+                  automáticamente.
+                </p>
+                <p className="rounded-xl border border-primary/30 bg-primary/10 px-4 py-3 font-medium text-foreground md:text-[17px]">
+                  <span className="text-primary">Resultado:</span> eliminación del trabajo manual, menos errores y
+                  facturación mucho más rápida.
+                </p>
+              </div>
+            </figure>
+          </section>
+
+          <section className="mt-16 md:mt-20" aria-labelledby="faq-heading">
+            <SectionKicker n="09">FAQ</SectionKicker>
+            <h2
+              id="faq-heading"
+              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+            >
+              Preguntas frecuentes
+            </h2>
+            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+              Abrí la pregunta que te interese; el contenido sigue indexable para buscadores.
+            </p>
+            <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-surface/40 shadow-[inset_0_1px_0_0_rgb(255_255_255/5%)]">
+              {FAQ_ITEMS.map(({ q, blocks }) => (
+                <details
+                  key={q}
+                  name="faq-automatizacion-procesos"
+                  className="group border-b border-border last:border-b-0 open:bg-muted/15 transition-colors"
+                >
+                  <summary className="flex cursor-pointer list-none items-center gap-3 px-4 py-4 pr-3 text-left transition-colors hover:bg-muted/20 md:px-5 md:py-[1.05rem] [&::-webkit-details-marker]:hidden marker:content-none">
+                    <HelpCircle
+                      className="h-5 w-5 shrink-0 text-primary opacity-90 group-open:opacity-100"
+                      aria-hidden
+                    />
+                    <span className="min-w-0 flex-1 font-display text-[15px] font-semibold leading-snug text-foreground md:text-base">
+                      {q}
+                    </span>
+                    <ChevronDown
+                      className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180 group-open:text-primary"
+                      aria-hidden
+                    />
+                  </summary>
+                  <div className="border-t border-border/70 bg-background/25 px-4 pb-4 pt-1 md:px-5 md:pb-5 md:pt-2">
+                    <FaqBlocks blocks={blocks} />
+                  </div>
+                </details>
+              ))}
+            </div>
+          </section>
+
+          <section className="relative mt-16 overflow-hidden rounded-3xl border border-primary/40 bg-linear-to-br from-primary/14 via-primary/6 to-transparent px-6 py-10 md:mt-20 md:px-10 md:py-12">
+            <div
+              className="pointer-events-none absolute -left-16 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-primary/20 blur-3xl"
+              aria-hidden
+            />
+            <p className="relative text-lg font-medium leading-relaxed text-foreground md:text-xl">
+              Si estás en esta situación, podemos analizar tu caso y ver qué se puede automatizar.
+            </p>
+            <div className="relative mt-8">
+              <Link href={homeSection("#contacto")} className={landingPrimaryCtaClass}>
+                <WhatsAppIcon size={20} className="shrink-0 text-primary-foreground" aria-hidden />
+                Contame tu caso por WhatsApp
+              </Link>
+            </div>
+          </section>
+
+          <section className="mt-16 border-t border-border pt-12 md:mt-20">
+            <h2 className="font-display text-lg font-semibold text-foreground">Explorá más soluciones</h2>
+            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+              Otros enfoques que suelen ir de la mano con lo que estás buscando.
+            </p>
+            <nav
+              aria-label="Soluciones relacionadas"
+              className="mt-6 overflow-hidden rounded-2xl border border-border bg-background/60 shadow-[inset_0_1px_0_0_rgb(255_255_255/5%)]"
+            >
+              <ul className="divide-y divide-border">
+                {MORE_SOLUTIONS.map((l) => (
+                  <li key={l.href}>
+                    <Link
+                      href={l.href}
+                      className="group flex items-center justify-between gap-4 px-4 py-4 text-left text-sm font-medium text-foreground transition-colors hover:bg-surface md:px-5 md:py-4 md:text-[15px]"
+                    >
+                      <span className="group-hover:text-primary transition-colors">{l.label}</span>
+                      <ChevronRight
+                        className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary"
+                        aria-hidden
+                      />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </section>
+        </article>
+      </div>
+    </div>
+  );
+}
