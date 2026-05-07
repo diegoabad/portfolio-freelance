@@ -17,7 +17,7 @@ import {
   type FaqBlock,
 } from "@/components/seo/landing-blocks";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
-import { WHATSAPP_NUMBER } from "@/lib/contact";
+import { REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
 import { TURNOS_ONLINE_PRECIO_DESDE } from "@/lib/service-landings";
 
 const CATEGORY = "Turnos online";
@@ -179,7 +179,7 @@ export function SistemaTurnosOnlineLanding() {
                 {TURNOS_ONLINE_PRECIO_DESDE}
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-4">
-                <Link href={waHref(MSG_HERO)} className={landingPrimaryCtaClass}>
+                <Link href={waHref(MSG_HERO)} rel={REL_WHATSAPP_EXTERNAL} className={landingPrimaryCtaClass}>
                   <WhatsAppIcon size={20} className="shrink-0 text-primary-foreground" aria-hidden />
                   {HERO.cta}
                 </Link>
@@ -454,7 +454,7 @@ export function SistemaTurnosOnlineLanding() {
               Si tu agenda está desordenada o estás perdiendo turnos, podemos ver cómo organizarla mejor.
             </p>
             <div className="relative mt-8">
-              <Link href={waHref(MSG_CASO)} className={landingPrimaryCtaClass}>
+              <Link href={waHref(MSG_CASO)} rel={REL_WHATSAPP_EXTERNAL} className={landingPrimaryCtaClass}>
                 <WhatsAppIcon size={20} className="shrink-0 text-primary-foreground" aria-hidden />
                 Contame tu caso
               </Link>

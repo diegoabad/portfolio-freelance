@@ -2,7 +2,7 @@ import Image from "next/image";
 import { LinkedInGlyph } from "@/components/site/SimpleIcons";
 import { EmailCopySurface } from "@/components/site/EmailCopySurface";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
-import { WHATSAPP_NUMBER } from "@/lib/contact";
+import { REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
 import { LINKEDIN_PROFILE_URL } from "@/lib/site";
 
 export function About() {
@@ -58,7 +58,7 @@ export function About() {
               <a
                 href={`https://wa.me/${WHATSAPP_NUMBER}`}
                 target="_blank"
-                rel="noreferrer"
+                rel={REL_WHATSAPP_EXTERNAL}
                 className="inline-flex items-center gap-2 rounded-full border-2 border-primary bg-surface/60 px-5 py-2.5 text-sm font-medium text-primary hover:bg-primary/10 transition"
               >
                 <WhatsAppIcon size={16} className="shrink-0" aria-hidden />

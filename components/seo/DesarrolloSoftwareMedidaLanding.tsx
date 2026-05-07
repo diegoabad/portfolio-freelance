@@ -18,7 +18,7 @@ import {
   type FaqBlock,
 } from "@/components/seo/landing-blocks";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
-import { WHATSAPP_NUMBER } from "@/lib/contact";
+import { REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
 import { SOFTWARE_MEDIDA_PRECIO_DESDE, SOFTWARE_MEDIDA_PRECIO_RANGO } from "@/lib/service-landings";
 
 const CATEGORY = "Software a medida";
@@ -181,7 +181,7 @@ export function DesarrolloSoftwareMedidaLanding() {
                 </p>
               </div>
               <div className="mt-8 flex flex-wrap items-center gap-4">
-                <Link href={waHref(MSG_HERO)} className={landingPrimaryCtaClass}>
+                <Link href={waHref(MSG_HERO)} rel={REL_WHATSAPP_EXTERNAL} className={landingPrimaryCtaClass}>
                   <WhatsAppIcon size={20} className="shrink-0 text-primary-foreground" aria-hidden />
                   {HERO.cta}
                 </Link>
@@ -453,7 +453,7 @@ export function DesarrolloSoftwareMedidaLanding() {
               solución tiene sentido.
             </p>
             <div className="relative mt-8">
-              <Link href={waHref(MSG_CASO)} className={landingPrimaryCtaClass}>
+              <Link href={waHref(MSG_CASO)} rel={REL_WHATSAPP_EXTERNAL} className={landingPrimaryCtaClass}>
                 <WhatsAppIcon size={20} className="shrink-0 text-primary-foreground" aria-hidden />
                 Contame tu caso
               </Link>

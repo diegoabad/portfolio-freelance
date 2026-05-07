@@ -17,7 +17,7 @@ import {
   type FaqBlock,
 } from "@/components/seo/landing-blocks";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
-import { WHATSAPP_NUMBER } from "@/lib/contact";
+import { REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
 import { INVENTARIO_STOCK_PRECIO_DESDE } from "@/lib/service-landings";
 
 const CATEGORY = "Gestión de inventario";
@@ -153,7 +153,7 @@ export function SistemaGestionInventarioLanding() {
                 {INVENTARIO_STOCK_PRECIO_DESDE}
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-4">
-                <Link href={waHref(MSG_HERO)} className={landingPrimaryCtaClass}>
+                <Link href={waHref(MSG_HERO)} rel={REL_WHATSAPP_EXTERNAL} className={landingPrimaryCtaClass}>
                   <WhatsAppIcon size={20} className="shrink-0 text-primary-foreground" aria-hidden />
                   {HERO.cta}
                 </Link>
@@ -425,7 +425,7 @@ export function SistemaGestionInventarioLanding() {
               Si tu stock está desordenado entre Excel y anotaciones, podemos ver cómo organizarlo en un sistema.
             </p>
             <div className="relative mt-8">
-              <Link href={waHref(MSG_CASO)} className={landingPrimaryCtaClass}>
+              <Link href={waHref(MSG_CASO)} rel={REL_WHATSAPP_EXTERNAL} className={landingPrimaryCtaClass}>
                 <WhatsAppIcon size={20} className="shrink-0 text-primary-foreground" aria-hidden />
                 Contame tu caso
               </Link>

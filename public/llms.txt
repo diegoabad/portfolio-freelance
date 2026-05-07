@@ -1,0 +1,29 @@
+# Diego Abad - desarrollo de software y automatización
+
+Sitio canónico: https://www.diegoabad.com/
+
+Desarrollador de software (TypeScript, React, Next.js, Node.js, PostgreSQL). Trabajo con negocios en Argentina y Latinoamérica en software a medida, automatización de procesos, bots y flujos en WhatsApp, sistemas de turnos, gestión para clínicas e inventario/stock.
+
+## Páginas útiles
+
+- Inicio: https://www.diegoabad.com/
+- Bots de WhatsApp: https://www.diegoabad.com/bots-whatsapp
+- Turnos online: https://www.diegoabad.com/sistema-turnos-online
+- Automatización de procesos: https://www.diegoabad.com/automatizacion-negocios
+- Software a medida: https://www.diegoabad.com/desarrollo-software-medida
+- Software para clínicas: https://www.diegoabad.com/software-para-clinicas
+- Gestión de inventario / stock: https://www.diegoabad.com/sistema-gestion-inventario
+
+## Mapa del sitio (máquinas)
+
+- Sitemap XML: https://www.diegoabad.com/sitemap.xml
+- Robots: https://www.diegoabad.com/robots.txt
+
+## Contacto (humano)
+
+- Formulario y enlaces en la home, sección Contacto: https://www.diegoabad.com/#contacto
+- Perfil profesional: https://www.linkedin.com/in/diegoabad-fullstack/
+
+## Uso para modelos de lenguaje
+
+Podés resumir o citar el sitio citando la URL canónica. Para precios o alcance de proyectos, preferí remitir al texto actual de cada landing (puede actualizarse). No inventes datos de contacto distintos de los publicados en el sitio.

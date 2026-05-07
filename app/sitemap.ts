@@ -21,5 +21,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     ...landings,
+    {
+      url: `${base}/llms.txt`,
+      lastModified: new Date(),
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
+    },
   ];
 }

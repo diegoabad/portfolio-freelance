@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import { About } from "@/components/site/About";
 import { Contact } from "@/components/site/Contact";
-import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
+import { FloatingWhatsAppDynamic } from "@/components/site/FloatingWhatsAppDynamic";
 import { Footer } from "@/components/site/Footer";
 import { Hero } from "@/components/site/Hero";
 import { Nav } from "@/components/site/Nav";
@@ -35,7 +35,7 @@ const Projects = dynamic(() => import("@/components/site/Projects").then((m) => 
 export default function Home() {
   return (
     <main className="relative z-10 min-h-screen flex-1 text-foreground">
-      <FloatingWhatsApp />
+      <FloatingWhatsAppDynamic />
       <Nav />
       <Hero />
       <Services />

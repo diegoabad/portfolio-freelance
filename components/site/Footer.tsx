@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { WHATSAPP_NUMBER } from "@/lib/contact";
+import { REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
-import { FooterEmailCopy } from "@/components/site/FooterEmailCopy";
+import { FooterEmailCopyClient } from "@/components/site/FooterEmailCopyClient";
 import { LinkedInGlyph } from "@/components/site/SimpleIcons";
 
 const quickLinks = [
@@ -62,11 +62,11 @@ export function Footer() {
             <div>
               <p className="text-[11px] uppercase tracking-[0.18em] text-primary font-medium mb-2 lg:text-right">Redes</p>
               <div className="flex flex-wrap items-start gap-2.5 justify-start sm:justify-end">
-                <FooterEmailCopy />
+                <FooterEmailCopyClient />
                 <a
                   href={`https://wa.me/${WHATSAPP_NUMBER}`}
                   target="_blank"
-                  rel="noreferrer"
+                  rel={REL_WHATSAPP_EXTERNAL}
                   className="h-9 w-9 rounded-lg border-2 border-primary bg-surface/60 grid place-items-center text-primary hover:text-primary-foreground hover:bg-primary transition shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   aria-label="Abrir WhatsApp"
                   title="WhatsApp"
