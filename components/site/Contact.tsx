@@ -1,19 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import { z } from "zod";
-import { Linkedin } from "lucide-react";
 import { WHATSAPP_NUMBER } from "@/lib/contact";
 import { LINKEDIN_PROFILE_URL } from "@/lib/site";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 import { EmailCopySurface } from "@/components/site/EmailCopySurface";
-import { RevealOnScroll } from "@/components/site/RevealOnScroll";
-import { RevealStagger } from "@/components/site/RevealStagger";
+import { LinkedInGlyph } from "@/components/site/SimpleIcons";
 
-const schema = z.object({
-  name: z.string().trim().min(1, "Ingresá tu nombre").max(100),
-  need: z.string().trim().min(1, "Contame qué necesitás resolver").max(1000),
-});
+function contactValidationError(name: string, need: string): string | null {
+  const n = name.trim();
+  const q = need.trim();
+  if (!n) return "Ingresá tu nombre";
+  if (n.length > 100) return "Nombre demasiado largo";
+  if (!q) return "Contame qué necesitás resolver";
+  if (q.length > 1000) return "El texto es demasiado largo";
+  return null;
+}
 
 export function Contact() {
   const [name, setName] = useState("");
@@ -22,13 +24,15 @@ export function Contact() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const r = schema.safeParse({ name, need });
-    if (!r.success) {
-      setError(r.error.issues[0]?.message ?? "Revisá los datos");
+    const err = contactValidationError(name, need);
+    if (err) {
+      setError(err);
       return;
     }
     setError(null);
-    const text = `Hola Diego, soy ${r.data.name}. Quiero resolver lo siguiente: ${r.data.need}`;
+    const n = name.trim();
+    const q = need.trim();
+    const text = `Hola Diego, soy ${n}. Quiero resolver lo siguiente: ${q}`;
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank", "noopener");
     setName("");
     setNeed("");
@@ -42,19 +46,17 @@ export function Contact() {
       <div className="absolute -bottom-40 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-primary/12 blur-[130px]" />
 
       <div className="relative max-w-5xl mx-auto px-6 lg:px-10">
-        <RevealOnScroll>
-          <div className="text-center max-w-3xl mx-auto">
-            <span className="text-xs uppercase tracking-[0.2em] text-primary font-medium">Contacto</span>
-            <h2 className="mt-3 text-4xl md:text-6xl font-display font-semibold tracking-tight text-pretty">
-              ¿Tenés una <span className="text-primary">idea o problema</span> que querés resolver?
-            </h2>
-            <p className="mt-4 md:mt-5 text-lg text-muted-foreground leading-relaxed">
-              Contame qué necesitás y te propongo una solución concreta con próximos pasos claros.
-            </p>
-          </div>
-        </RevealOnScroll>
+        <div className="text-center max-w-3xl mx-auto">
+          <span className="text-xs uppercase tracking-[0.2em] text-primary font-medium">Contacto</span>
+          <h2 className="mt-3 text-4xl md:text-6xl font-display font-semibold tracking-tight text-pretty">
+            ¿Tenés una <span className="text-primary">idea o problema</span> que querés resolver?
+          </h2>
+          <p className="mt-4 md:mt-5 text-lg text-muted-foreground leading-relaxed">
+            Contame qué necesitás y te propongo una solución concreta con próximos pasos claros.
+          </p>
+        </div>
 
-        <RevealStagger className="mt-10 md:mt-12 grid md:grid-cols-5 gap-5 md:gap-6">
+        <div className="mt-10 md:mt-12 grid md:grid-cols-5 gap-5 md:gap-6">
           <div className="md:col-span-2 space-y-3 md:space-y-4">
             <a
               href={`https://wa.me/${WHATSAPP_NUMBER}`}
@@ -78,7 +80,7 @@ export function Contact() {
               className="group flex cursor-pointer items-center gap-4 rounded-2xl border border-border bg-surface/60 p-5 md:p-6 hover:bg-surface transition backdrop-blur [&_p]:cursor-pointer"
             >
               <div className="h-12 w-12 rounded-xl bg-primary/15 text-primary grid place-items-center shrink-0">
-                <Linkedin size={22} aria-hidden />
+                <LinkedInGlyph size={22} />
               </div>
               <div className="min-w-0">
                 <p className="text-xs uppercase tracking-wider text-muted-foreground">Profesional</p>
@@ -129,7 +131,7 @@ export function Contact() {
               Respuesta directa, sin compromiso.
             </p>
           </form>
-        </RevealStagger>
+        </div>
       </div>
     </section>
   );

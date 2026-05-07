@@ -1,4 +1,4 @@
-import { Sparkles } from "lucide-react";
+import { SparklesGlyph } from "@/components/site/SimpleIcons";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 import { PRIMARY_CTA_LABEL } from "@/lib/contact";
 import { homeSection } from "@/lib/home-links";
@@ -27,7 +27,7 @@ export function Hero() {
             <div className="inline-flex items-center gap-1.5 rounded-full border border-primary bg-primary/20 px-2.5 py-1 pr-3 text-xs font-medium text-foreground backdrop-blur-sm">
               <span className="flex h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden />
               <span className="inline-flex shrink-0" aria-hidden>
-                <Sparkles size={13} className="text-primary" strokeWidth={2} />
+                <SparklesGlyph size={13} className="text-primary" />
               </span>
               <span>
                 Disponible para <span className="text-primary">nuevos proyectos</span>
@@ -36,8 +36,8 @@ export function Hero() {
           </div>
 
           <h1
-            className="mt-6 md:mt-8 font-display max-w-5xl text-4xl sm:text-5xl md:text-6xl lg:text-[3.5rem] xl:text-7xl font-semibold text-foreground tracking-tight leading-[1.08] text-pretty motion-safe:animate-[fade-in-up_0.65s_cubic-bezier(0.22,1,0.36,1)_backwards] motion-reduce:animate-none"
-            style={{ animationDelay: "70ms" }}
+            className="mt-6 md:mt-8 font-display max-w-5xl text-4xl sm:text-5xl md:text-6xl lg:text-[3.5rem] xl:text-7xl font-semibold text-foreground tracking-tight leading-[1.08] text-pretty motion-safe:animate-[hero-nudge-up_0.6s_cubic-bezier(0.22,1,0.36,1)_backwards] motion-reduce:animate-none"
+            style={{ animationDelay: "40ms" }}
           >
             Desarrollo{" "}
             <span className="text-primary">software a medida</span> para negocios que necesitan ir más allá

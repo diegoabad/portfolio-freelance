@@ -1,10 +1,8 @@
 import Link from "next/link";
-import { Linkedin } from "lucide-react";
 import { WHATSAPP_NUMBER } from "@/lib/contact";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 import { FooterEmailCopy } from "@/components/site/FooterEmailCopy";
-import { RevealOnScroll } from "@/components/site/RevealOnScroll";
-import { RevealStagger } from "@/components/site/RevealStagger";
+import { LinkedInGlyph } from "@/components/site/SimpleIcons";
 
 const quickLinks = [
   { href: "/#servicios", label: "Servicios" },
@@ -23,7 +21,7 @@ export function Footer() {
       />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-8 pb-3 md:pt-10 md:pb-4 lg:pb-4">
-        <RevealStagger className="grid gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-12 lg:gap-8">
+        <div className="grid gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-5 space-y-2.5">
             <Link
               href="/#top"
@@ -83,20 +81,18 @@ export function Footer() {
                   aria-label="Perfil de LinkedIn"
                   title="LinkedIn"
                 >
-                  <Linkedin size={18} />
+                  <LinkedInGlyph size={18} />
                 </a>
               </div>
             </div>
           </div>
-        </RevealStagger>
+        </div>
 
-        <RevealOnScroll className="block" delayMs={90}>
-          <div className="mt-5 pt-3 border-t border-border/80 flex justify-center sm:justify-start">
-            <p className="text-[11px] text-muted-foreground text-center sm:text-left">
-              © {new Date().getFullYear()} Diego Abad. Todos los derechos reservados.
-            </p>
-          </div>
-        </RevealOnScroll>
+        <div className="mt-5 pt-3 border-t border-border/80 flex justify-center sm:justify-start">
+          <p className="text-[11px] text-muted-foreground text-center sm:text-left">
+            © {new Date().getFullYear()} Diego Abad. Todos los derechos reservados.
+          </p>
+        </div>
       </div>
     </footer>
   );

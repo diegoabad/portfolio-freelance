@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Check, Mail } from "lucide-react";
+import { CheckGlyph, MailGlyph } from "@/components/site/SimpleIcons";
 import { CONTACT_EMAIL } from "@/lib/contact";
 
 export function FooterEmailCopy() {
@@ -37,7 +37,7 @@ export function FooterEmailCopy() {
         aria-label={copied ? "Email copiado al portapapeles" : "Copiar correo electrónico"}
         title="Copiar email"
       >
-        {copied ? <Check size={18} strokeWidth={2.5} aria-hidden /> : <Mail size={18} aria-hidden />}
+        {copied ? <CheckGlyph size={18} /> : <MailGlyph size={18} />}
       </button>
       <p
         role="status"

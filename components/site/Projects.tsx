@@ -1,6 +1,4 @@
 import dynamic from "next/dynamic";
-import { RevealOnScroll } from "@/components/site/RevealOnScroll";
-import { RevealStagger } from "@/components/site/RevealStagger";
 
 const CaseStudyGallery = dynamic(
   () => import("@/components/site/CaseStudyGallery").then((mod) => mod.CaseStudyGallery),
@@ -114,19 +112,17 @@ export function Projects() {
       className="relative bg-surface/30 border-b border-border pt-2 pb-20 md:pt-3 md:pb-28 lg:pt-4 lg:pb-32"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <RevealOnScroll>
-          <div className="max-w-3xl">
-            <span className="text-xs uppercase tracking-[0.2em] text-primary font-medium">Casos reales</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-display font-semibold tracking-tight text-pretty">
-              Del problema a la <span className="text-primary">solución</span>
-            </h2>
-            <p className="mt-3 md:mt-4 text-muted-foreground leading-relaxed">
-              {total} proyectos con contexto de cliente: qué pasaba, qué se construyó y qué cambió en la operación.
-            </p>
-          </div>
-        </RevealOnScroll>
+        <div className="max-w-3xl">
+          <span className="text-xs uppercase tracking-[0.2em] text-primary font-medium">Casos reales</span>
+          <h2 className="mt-3 text-4xl md:text-5xl font-display font-semibold tracking-tight text-pretty">
+            Del problema a la <span className="text-primary">solución</span>
+          </h2>
+          <p className="mt-3 md:mt-4 text-muted-foreground leading-relaxed">
+            {total} proyectos con contexto de cliente: qué pasaba, qué se construyó y qué cambió en la operación.
+          </p>
+        </div>
 
-        <RevealStagger className="mt-8 md:mt-10 lg:mt-12 grid lg:grid-cols-2 gap-4 md:gap-5">
+        <div className="mt-8 md:mt-10 lg:mt-12 grid lg:grid-cols-2 gap-4 md:gap-5">
           {projects.map((p, i) => (
             <article
               key={p.title}
@@ -160,7 +156,7 @@ export function Projects() {
               </dl>
             </article>
           ))}
-        </RevealStagger>
+        </div>
       </div>
     </section>
   );

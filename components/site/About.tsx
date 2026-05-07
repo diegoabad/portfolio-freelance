@@ -1,6 +1,5 @@
 import Image from "next/image";
-import { Linkedin } from "lucide-react";
-import { RevealStagger } from "@/components/site/RevealStagger";
+import { LinkedInGlyph } from "@/components/site/SimpleIcons";
 import { EmailCopySurface } from "@/components/site/EmailCopySurface";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 import { WHATSAPP_NUMBER } from "@/lib/contact";
@@ -10,7 +9,7 @@ export function About() {
   return (
     <section id="sobre-mi" className="relative py-20 md:py-28 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <RevealStagger className="grid lg:grid-cols-5 gap-8 md:gap-10 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-5 gap-8 md:gap-10 lg:gap-12 items-center">
           <div className="lg:col-span-2 flex justify-center lg:justify-start">
             <div className="relative w-full max-w-[300px] sm:max-w-[360px] lg:max-w-[420px] aspect-square rounded-3xl bg-primary p-1 shadow-soft">
               <div className="relative h-full w-full min-h-0 rounded-[22px] overflow-hidden bg-surface">
@@ -71,12 +70,12 @@ export function About() {
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border-2 border-primary bg-surface/60 px-5 py-2.5 text-sm font-medium text-primary hover:bg-primary/10 transition"
               >
-                <Linkedin size={16} aria-hidden /> LinkedIn
+                <LinkedInGlyph size={16} /> LinkedIn
               </a>
               <EmailCopySurface variant="pill" />
             </div>
           </div>
-        </RevealStagger>
+        </div>
       </div>
     </section>
   );

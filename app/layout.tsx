@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Figtree, Outfit } from "next/font/google";
+import { prefetchDNS, preconnect } from "react-dom";
 import { AmbientOrbs } from "@/components/site/AmbientOrbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { getSiteUrl, LINKEDIN_PROFILE_URL } from "@/lib/site";
@@ -14,6 +15,8 @@ const figtree = Figtree({
 const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
+  /** Preload: el LCP en home es el h1 del hero (font-display / Outfit). */
+  preload: true,
 });
 
 const siteUrl = getSiteUrl();
@@ -83,6 +86,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  preconnect("https://wa.me");
+  prefetchDNS("https://www.linkedin.com");
+
   return (
     <html lang="es-AR" className={`${figtree.variable} ${outfit.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>

@@ -53,11 +53,9 @@ export function Nav() {
     if (!isHome) return;
 
     const syncFromHash = () => setActive(readActiveFromHash());
-    const onResize = () => setActive(readActiveFromHash());
 
     window.addEventListener("hashchange", syncFromHash);
     window.addEventListener("popstate", syncFromHash);
-    window.addEventListener("resize", onResize);
 
     const t0 = window.setTimeout(syncFromHash, 0);
 
@@ -65,7 +63,6 @@ export function Nav() {
       window.clearTimeout(t0);
       window.removeEventListener("hashchange", syncFromHash);
       window.removeEventListener("popstate", syncFromHash);
-      window.removeEventListener("resize", onResize);
     };
   }, [isHome]);
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Mail } from "lucide-react";
+import { MailGlyph } from "@/components/site/SimpleIcons";
 import { CONTACT_EMAIL } from "@/lib/contact";
 
 type Variant = "card" | "pill";
@@ -38,7 +38,7 @@ export function EmailCopySurface({ variant }: { variant: Variant }) {
         className="inline-flex min-w-0 max-w-full cursor-pointer items-center gap-2 rounded-full border-2 border-primary bg-surface/60 px-5 py-2.5 text-sm font-medium text-primary transition hover:bg-primary/10 [&_*]:cursor-pointer"
         aria-label={copied ? "Correo copiado al portapapeles" : "Copiar correo electrónico"}
       >
-        <Mail size={16} className="shrink-0" aria-hidden />
+        <MailGlyph size={16} className="shrink-0" />
         <span className="min-w-0 truncate">{copied ? "Copiado al portapapeles" : CONTACT_EMAIL}</span>
       </button>
     );
@@ -52,7 +52,7 @@ export function EmailCopySurface({ variant }: { variant: Variant }) {
       aria-label={copied ? "Correo copiado al portapapeles" : "Copiar correo electrónico"}
     >
       <div className="h-12 w-12 shrink-0 rounded-xl bg-primary/15 text-primary grid place-items-center">
-        <Mail size={22} aria-hidden />
+        <MailGlyph size={22} className="shrink-0" />
       </div>
       <div className="min-w-0 flex-1">
         <p className="text-xs uppercase tracking-wider text-muted-foreground">Email</p>
