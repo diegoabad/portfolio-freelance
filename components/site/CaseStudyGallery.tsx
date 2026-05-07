@@ -136,8 +136,8 @@ export function CaseStudyGallery({ images, altPrefix }: CaseStudyGalleryProps) {
           alt={alt}
           fill
           className="object-contain object-center pointer-events-none select-none"
-          sizes="(max-width: 1024px) 100vw, 50vw"
-          quality={72}
+          sizes="(max-width: 640px) min(100vw - 3rem, 360px), (max-width: 1024px) min(100vw - 4rem, 520px), 560px"
+          quality={60}
         />
 
         <button
