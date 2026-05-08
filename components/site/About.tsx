@@ -29,7 +29,7 @@ export function About() {
             </div>
           </div>
           <div
-            className="pointer-events-none absolute inset-0 z-2 bg-linear-to-b from-background via-background/96 to-background/92 md:bg-[linear-gradient(90deg,var(--background)_0%,color-mix(in_oklab,var(--background)_70%,transparent)_35%,color-mix(in_oklab,var(--background)_12%,transparent)_52%,transparent_70%)]"
+            className="pointer-events-none absolute inset-0 z-2 bg-[linear-gradient(90deg,var(--background)_0%,color-mix(in_oklab,var(--background)_70%,transparent)_35%,color-mix(in_oklab,var(--background)_12%,transparent)_52%,transparent_70%)]"
             aria-hidden
           />
 
@@ -67,25 +67,29 @@ export function About() {
                 </p>
               </div>
 
-              <div className="mt-6 md:mt-8 flex flex-wrap items-center justify-start gap-3">
-                <a
-                  href={`https://wa.me/${WHATSAPP_NUMBER}`}
-                  target="_blank"
-                  rel={REL_WHATSAPP_EXTERNAL}
-                  className="inline-flex items-center gap-2 rounded-full border-2 border-primary bg-background/70 px-5 py-2.5 text-sm font-medium text-primary backdrop-blur-sm hover:bg-primary/10 transition"
-                >
-                  <WhatsAppIcon size={16} className="shrink-0" aria-hidden />
-                  WhatsApp
-                </a>
-                <a
-                  href={LINKEDIN_PROFILE_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border-2 border-primary bg-background/70 px-5 py-2.5 text-sm font-medium text-primary backdrop-blur-sm hover:bg-primary/10 transition"
-                >
-                  <LinkedInGlyph size={16} /> LinkedIn
-                </a>
-                <EmailCopySurface variant="pill" />
+              <div className="mt-6 md:mt-8 flex flex-col gap-3 md:flex-row md:flex-wrap md:items-center">
+                <div className="grid w-full grid-cols-2 gap-3 md:flex md:w-auto md:gap-3">
+                  <a
+                    href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                    target="_blank"
+                    rel={REL_WHATSAPP_EXTERNAL}
+                    className="inline-flex min-w-0 w-full items-center justify-center gap-2 rounded-full border-2 border-primary bg-background/70 px-4 py-2.5 text-sm font-medium text-primary backdrop-blur-sm hover:bg-primary/10 transition"
+                  >
+                    <WhatsAppIcon size={16} className="shrink-0" aria-hidden />
+                    WhatsApp
+                  </a>
+                  <a
+                    href={LINKEDIN_PROFILE_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex min-w-0 w-full items-center justify-center gap-2 rounded-full border-2 border-primary bg-background/70 px-4 py-2.5 text-sm font-medium text-primary backdrop-blur-sm hover:bg-primary/10 transition"
+                  >
+                    <LinkedInGlyph size={16} /> LinkedIn
+                  </a>
+                </div>
+                <div className="w-full md:w-auto [&_button]:flex [&_button]:w-full [&_button]:justify-center md:[&_button]:inline-flex md:[&_button]:w-auto">
+                  <EmailCopySurface variant="pill" />
+                </div>
               </div>
             </div>
           </div>
