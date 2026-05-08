@@ -9,70 +9,84 @@ export function About() {
   return (
     <section id="sobre-mi" className="relative py-20 md:py-28 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid lg:grid-cols-5 gap-8 md:gap-10 lg:gap-12 items-center">
-          <div className="lg:col-span-2 flex justify-center lg:justify-start">
-            <div className="relative w-full max-w-[300px] sm:max-w-[360px] lg:max-w-[420px] aspect-square rounded-3xl bg-primary p-1 shadow-soft">
-              <div className="relative h-full w-full min-h-0 rounded-[22px] overflow-hidden bg-surface">
-                <Image
-                  src="/avatar-about.png"
-                  alt="Ilustración de Diego Abad trabajando como desarrollador"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 300px, (max-width: 1024px) 360px, 420px"
-                />
-              </div>
+        <div className="max-w-3xl">
+          <span className="text-xs uppercase tracking-[0.2em] text-primary font-medium">Sobre mí</span>
+        </div>
+
+        <div className="relative mt-6 min-h-[300px] overflow-hidden rounded-2xl border border-border md:mt-8 md:min-h-[380px] lg:min-h-[420px]">
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/2 overflow-hidden">
+            <div
+              className="absolute inset-0 opacity-30 md:opacity-35 mask-[linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.45)_18%,black_42%,black_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.45)_18%,black_42%,black_100%)] mask-size-[100%_100%]"
+              aria-hidden
+            >
+              <Image
+                src="/avatar-about.png"
+                alt=""
+                fill
+                className="object-cover object-[58%_center] md:object-[55%_center]"
+                sizes="(max-width: 768px) 50vw, (max-width: 1280px) 45vw, 576px"
+              />
             </div>
           </div>
+          <div
+            className="pointer-events-none absolute inset-0 z-2 bg-linear-to-b from-background via-background/96 to-background/92 md:bg-[linear-gradient(90deg,var(--background)_0%,color-mix(in_oklab,var(--background)_70%,transparent)_35%,color-mix(in_oklab,var(--background)_12%,transparent)_52%,transparent_70%)]"
+            aria-hidden
+          />
 
-          <div className="lg:col-span-3">
-            <span className="text-xs uppercase tracking-[0.2em] text-primary font-medium">Sobre mí</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-display font-semibold tracking-tight">Diego Abad</h2>
-            <p className="mt-2 text-lg text-muted-foreground">Desarrollo de software y automatizaciones</p>
+          <div className="relative z-10 px-5 py-8 sm:p-8 md:py-10 md:pl-8 md:pr-10 lg:py-12 lg:pl-10 lg:pr-12">
+            <div className="max-w-xl md:max-w-120 lg:max-w-152 text-left">
+              <div>
+                <h2 className="text-left text-4xl md:text-5xl font-display font-semibold tracking-tight">
+                  Diego Abad
+                </h2>
+                <p className="mt-2 text-left text-lg text-muted-foreground">Desarrollador de software y automatizaciones</p>
+              </div>
 
-            <div className="mt-5 md:mt-6 space-y-3 md:space-y-4 text-base md:text-lg leading-relaxed text-foreground/90">
-              <p>
-                Soy <span className="text-primary font-medium">desarrollador de software</span> con{" "}
-                <span className="text-primary font-medium">más de 4 años de experiencia</span>, trabajando tanto de forma
-                independiente como en equipos de desarrollo.
-              </p>
-              <p>
-                Actualmente participo en proyectos del{" "}
-                <span className="text-primary font-medium">sector salud en INECO</span>, donde desarrollo soluciones que
-                impactan en la <span className="text-primary font-medium">operación diaria</span> de profesionales y
-                equipos.
-              </p>
-              <p>
-                En paralelo, realizo <span className="text-primary font-medium">desarrollos freelance</span> para
-                distintos clientes, enfocándome en{" "}
-                <span className="text-primary font-medium">sistemas a medida, automatizaciones e integraciones</span>.
-              </p>
-              <p>
-                A nivel técnico, trabajo principalmente con{" "}
-                <span className="text-primary font-medium">JavaScript/TypeScript, Next.js, Node.js y PostgreSQL</span>, y
-                utilizo herramientas como <span className="text-primary font-medium">n8n</span> y{" "}
-                <span className="text-primary font-medium">Docker</span> para automatizar procesos e integrar sistemas.
-              </p>
-            </div>
+              <div className="mt-5 md:mt-6 space-y-3 md:space-y-4 text-left text-base md:text-lg leading-relaxed text-foreground/90">
+                <p>
+                  Soy <span className="text-primary font-medium">desarrollador de software</span> con{" "}
+                  <span className="text-primary font-medium">más de 4 años de experiencia</span>, trabajando tanto de forma
+                  independiente como en empresas.
+                </p>
+                <p>
+                  Actualmente participo en proyectos del{" "}
+                  <span className="text-primary font-medium">sector salud en INECO</span>, donde desarrollo soluciones que
+                  impactan en la <span className="text-primary font-medium">operación diaria</span> de profesionales y
+                  equipos.
+                </p>
+                <p>
+                  En paralelo, realizo <span className="text-primary font-medium">desarrollos freelance</span> para
+                  distintos clientes, enfocándome en{" "}
+                  <span className="text-primary font-medium">sistemas a medida, automatizaciones e integraciones</span>.
+                </p>
+                <p>
+                  A nivel técnico, trabajo principalmente con{" "}
+                  <span className="text-primary font-medium">JavaScript/TypeScript, Next.js, Node.js y PostgreSQL</span>, y
+                  utilizo herramientas como <span className="text-primary font-medium">n8n</span> y{" "}
+                  <span className="text-primary font-medium">Docker</span> para automatizar procesos e integrar sistemas.
+                </p>
+              </div>
 
-            <div className="mt-6 md:mt-8 flex flex-wrap items-center gap-3">
-              <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}`}
-                target="_blank"
-                rel={REL_WHATSAPP_EXTERNAL}
-                className="inline-flex items-center gap-2 rounded-full border-2 border-primary bg-surface/60 px-5 py-2.5 text-sm font-medium text-primary hover:bg-primary/10 transition"
-              >
-                <WhatsAppIcon size={16} className="shrink-0" aria-hidden />
-                WhatsApp
-              </a>
-              <a
-                href={LINKEDIN_PROFILE_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border-2 border-primary bg-surface/60 px-5 py-2.5 text-sm font-medium text-primary hover:bg-primary/10 transition"
-              >
-                <LinkedInGlyph size={16} /> LinkedIn
-              </a>
-              <EmailCopySurface variant="pill" />
+              <div className="mt-6 md:mt-8 flex flex-wrap items-center justify-start gap-3">
+                <a
+                  href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                  target="_blank"
+                  rel={REL_WHATSAPP_EXTERNAL}
+                  className="inline-flex items-center gap-2 rounded-full border-2 border-primary bg-background/70 px-5 py-2.5 text-sm font-medium text-primary backdrop-blur-sm hover:bg-primary/10 transition"
+                >
+                  <WhatsAppIcon size={16} className="shrink-0" aria-hidden />
+                  WhatsApp
+                </a>
+                <a
+                  href={LINKEDIN_PROFILE_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border-2 border-primary bg-background/70 px-5 py-2.5 text-sm font-medium text-primary backdrop-blur-sm hover:bg-primary/10 transition"
+                >
+                  <LinkedInGlyph size={16} /> LinkedIn
+                </a>
+                <EmailCopySurface variant="pill" />
+              </div>
             </div>
           </div>
         </div>
