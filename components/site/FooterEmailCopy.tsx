@@ -33,11 +33,11 @@ export function FooterEmailCopy() {
       <button
         type="button"
         onClick={handleCopy}
-        className="h-9 w-9 cursor-pointer rounded-[10px] border-2 border-primary bg-surface/60 grid place-items-center text-primary hover:text-primary-foreground hover:bg-primary transition shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background [&_*]:cursor-pointer"
+        className="h-11 w-11 cursor-pointer rounded-xl border-2 border-primary bg-surface/60 grid place-items-center text-primary hover:text-primary-foreground hover:bg-primary transition shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background md:h-9 md:w-9 md:rounded-[10px] [&_svg]:size-[22px] md:[&_svg]:size-[18px] [&_*]:cursor-pointer"
         aria-label={copied ? "Email copiado al portapapeles" : "Copiar correo electrónico"}
         title="Copiar email"
       >
-        {copied ? <CheckGlyph size={18} /> : <MailGlyph size={18} />}
+        {copied ? <CheckGlyph size={22} /> : <MailGlyph size={22} />}
       </button>
       <p
         role="status"

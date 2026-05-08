@@ -8,7 +8,7 @@ const FooterEmailCopy = dynamic(
     ssr: false,
     loading: () => (
       <div
-        className="h-9 w-9 shrink-0 rounded-[10px] border-2 border-border bg-muted/25 animate-pulse"
+        className="h-11 w-11 shrink-0 rounded-xl border-2 border-border bg-muted/25 animate-pulse md:h-9 md:w-9 md:rounded-[10px]"
         aria-hidden
       />
     ),

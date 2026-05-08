@@ -3,6 +3,7 @@ import { BrandLogoMark } from "@/components/site/BrandLogoMark";
 import { BRAND_TAGLINE } from "@/lib/site";
 import { REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
+import { FooterCopyrightLine } from "@/components/site/FooterCopyrightLine";
 import { FooterEmailCopyClient } from "@/components/site/FooterEmailCopyClient";
 import { LinkedInGlyph } from "@/components/site/SimpleIcons";
 
@@ -45,12 +46,12 @@ export function Footer() {
 
           <nav className="lg:col-span-4" aria-label="Enlaces del pie">
             <p className="text-[11px] uppercase tracking-[0.18em] text-primary font-medium mb-2">Navegación</p>
-            <ul className="grid grid-cols-2 gap-x-5 gap-y-1.5 text-sm">
+            <ul className="grid grid-cols-2 gap-x-6 gap-y-3 text-sm md:gap-x-5 md:gap-y-1.5">
               {quickLinks.map((item) => (
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    className="text-muted-foreground hover:text-primary transition-colors inline-block py-0.5"
+                    className="text-muted-foreground hover:text-primary transition-colors inline-block py-1.5 md:py-0.5"
                   >
                     {item.label}
                   </a>
@@ -62,37 +63,35 @@ export function Footer() {
           <div className="lg:col-span-3 flex flex-col items-start gap-3 border-t border-border/80 pt-6 lg:border-t-0 lg:pt-0">
             <div>
               <p className="text-[11px] uppercase tracking-[0.18em] text-primary font-medium mb-2">Redes</p>
-              <div className="flex flex-wrap items-center gap-2.5 justify-start">
+              <div className="flex flex-wrap items-center gap-3 justify-start max-md:gap-3.5 md:gap-2.5">
                 <FooterEmailCopyClient />
                 <a
                   href={`https://wa.me/${WHATSAPP_NUMBER}`}
                   target="_blank"
                   rel={REL_WHATSAPP_EXTERNAL}
-                  className="h-9 w-9 rounded-[10px] border-2 border-primary bg-surface/60 grid place-items-center text-primary hover:text-primary-foreground hover:bg-primary transition shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  className="h-11 w-11 rounded-xl border-2 border-primary bg-surface/60 grid place-items-center text-primary hover:text-primary-foreground hover:bg-primary transition shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background md:h-9 md:w-9 md:rounded-[10px] [&_svg]:size-[22px] md:[&_svg]:size-[18px]"
                   aria-label="Abrir WhatsApp"
                   title="WhatsApp"
                 >
-                  <WhatsAppIcon size={18} />
+                  <WhatsAppIcon size={22} />
                 </a>
                 <a
                   href="https://www.linkedin.com/in/diegoabad-fullstack/"
                   target="_blank"
                   rel="noreferrer"
-                  className="h-9 w-9 rounded-[10px] border-2 border-primary bg-surface/60 grid place-items-center text-primary hover:text-primary-foreground hover:bg-primary transition shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  className="h-11 w-11 rounded-xl border-2 border-primary bg-surface/60 grid place-items-center text-primary hover:text-primary-foreground hover:bg-primary transition shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background md:h-9 md:w-9 md:rounded-[10px] [&_svg]:size-[22px] md:[&_svg]:size-[18px]"
                   aria-label="Perfil de LinkedIn"
                   title="LinkedIn"
                 >
-                  <LinkedInGlyph size={18} />
+                  <LinkedInGlyph size={22} />
                 </a>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-5 pt-3 border-t border-border/80 flex justify-center sm:justify-start">
-          <p className="text-[11px] text-muted-foreground text-center sm:text-left">
-            © {new Date().getFullYear()} Diego Abad. Todos los derechos reservados.
-          </p>
+        <div className="mt-8 pt-6 border-t border-border/80 flex justify-center sm:justify-start md:mt-10 md:pt-7">
+          <FooterCopyrightLine />
         </div>
       </div>
     </footer>

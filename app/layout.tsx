@@ -82,6 +82,14 @@ export const metadata: Metadata = {
     description: seoDescription,
   },
   category: "technology",
+  /** Misma marca que app/icon.png; favicon.ico generado desde ese PNG para clientes que piden /.ico */
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon.png", type: "image/png", sizes: "96x96" },
+    ],
+    apple: [{ url: "/icon.png", sizes: "96x96", type: "image/png" }],
+  },
 };
 
 export default function RootLayout({
