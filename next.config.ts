@@ -12,13 +12,24 @@ const nextConfig: NextConfig = {
     qualities: [60, 72, 75, 85],
     /** Permite variantes más chicas para miniaturas (galería casos) sin subir el mínimo global de `fill` demasiado. */
     deviceSizes: [384, 640, 750, 828, 1080, 1200, 1920, 2048],
+    /**
+     * Next 16: si definís `localPatterns`, **todas** las rutas locales usadas en `<Image />` deben coincidir.
+     * Un solo patrón cubre `public/` (hero, avatar, logo con `?v=`, capturas `/projects/...`).
+     */
+    localPatterns: [{ pathname: "/**" }],
   },
   async headers() {
+    /** En prod: cache largo para PNG estáticos (Next `/image` también optimiza). En dev: sin caché para ver cambios al instante. Si cambiás el archivo, renombrá o bust cache. */
+    const staticImageCache =
+      process.env.NODE_ENV === "production"
+        ? "public, max-age=31536000, immutable"
+        : "public, max-age=0, must-revalidate";
+
     return [
-      {
-        source: "/hero-decor.png",
-        headers: [{ key: "Cache-Control", value: "public, max-age=0, must-revalidate" }],
-      },
+      { source: "/hero-decor.png", headers: [{ key: "Cache-Control", value: staticImageCache }] },
+      { source: "/logo-da.png", headers: [{ key: "Cache-Control", value: staticImageCache }] },
+      { source: "/avatar-about.png", headers: [{ key: "Cache-Control", value: staticImageCache }] },
+      { source: "/projects/:path*", headers: [{ key: "Cache-Control", value: staticImageCache }] },
     ];
   },
   async redirects() {

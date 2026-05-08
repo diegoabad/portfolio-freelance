@@ -24,8 +24,9 @@ export function About() {
                 alt=""
                 fill
                 quality={72}
-                className="object-cover object-[58%_center] md:object-[55%_center]"
                 sizes="(max-width:768px) 50vw, (max-width:1024px) 28vw, 320px"
+                className="object-cover object-[58%_center] md:object-[55%_center]"
+                fetchPriority="low"
               />
             </div>
           </div>

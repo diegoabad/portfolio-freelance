@@ -1,8 +1,7 @@
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
 import type { ServiceLandingPageData } from "@/lib/service-landings";
 import { mergedInterlinks } from "@/lib/service-landings";
-import { LANDING_CONSULT_CTA, PRIMARY_CTA_SUBLINE } from "@/lib/contact";
+import { LANDING_CONSULT_CTA } from "@/lib/contact";
 import { homeSection } from "@/lib/home-links";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 
@@ -62,10 +61,9 @@ export function ServiceLandingView({ page }: { page: ServiceLandingPageData }) {
           className="inline-flex w-full min-h-12 items-center justify-center gap-2 rounded-[10px] border-2 border-primary bg-primary px-6 py-3.5 text-center text-[15px] font-semibold text-primary-foreground transition-[transform,opacity] hover:opacity-95 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-auto sm:min-h-0 sm:px-8 sm:text-base sm:hover:scale-[1.02]"
           aria-label={`${LANDING_CONSULT_CTA} — ir a contacto`}
         >
-          <WhatsAppIcon size={20} className="shrink-0 text-primary-foreground" aria-hidden />
+          <WhatsAppIcon size={20} className="hidden shrink-0 text-primary-foreground md:block" aria-hidden />
           {LANDING_CONSULT_CTA}
         </Link>
-        <p className="w-full text-center text-xs font-medium text-muted-foreground">{PRIMARY_CTA_SUBLINE}</p>
       </div>
 
       <section className="mt-16 border-t border-border pt-12">
@@ -79,13 +77,9 @@ export function ServiceLandingView({ page }: { page: ServiceLandingPageData }) {
               <li key={l.href}>
                 <Link
                   href={l.href}
-                  className="group flex items-center justify-between gap-4 px-4 py-4 text-left text-sm font-medium text-foreground transition-colors hover:bg-surface md:px-5 md:py-[1.125rem] md:text-[15px]"
+                  className="group flex items-center gap-4 px-4 py-4 text-left text-sm font-medium text-foreground transition-colors hover:bg-surface md:px-5 md:py-[1.125rem] md:text-[15px]"
                 >
                   <span className="group-hover:text-primary transition-colors">{l.label}</span>
-                  <ChevronRight
-                    className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary"
-                    aria-hidden
-                  />
                 </Link>
               </li>
             ))}

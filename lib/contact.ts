@@ -13,8 +13,11 @@ export const HERO_NAV_CTA_LABEL = "Hablemos de tu proyecto";
 /** Línea secundaria bajo el CTA principal (presupuesto sin compromiso de pago previo). */
 export const PRIMARY_CTA_SUBLINE = "Presupuesto sin cargo";
 
-/** CTA unificado en páginas de servicios (vista corta SEO). */
-export const LANDING_CONSULT_CTA = PRIMARY_CTA_LABEL;
+/** Texto completo del botón en cada landing de servicio (sin segunda línea debajo). */
+export const SERVICE_LANDING_CTA_LABEL = "Pedí tu presupuesto sin cargo";
+
+/** Alias usado en vistas cortas de servicio (`ServiceLandingView`). */
+export const LANDING_CONSULT_CTA = SERVICE_LANDING_CTA_LABEL;
 
 /** Texto reutilizable para FAQs / landings (sin montos). */
 export const EVALUATION_OFFER_FAQ =

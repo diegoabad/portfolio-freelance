@@ -1,7 +1,6 @@
 import Link from "next/link";
 import {
   ChevronDown,
-  ChevronRight,
   CheckCircle2,
   CircleAlert,
   HelpCircle,
@@ -18,7 +17,7 @@ import {
   SectionKicker,
   type FaqBlock,
 } from "@/components/seo/landing-blocks";
-import { EVALUATION_OFFER_FAQ, PRIMARY_CTA_LABEL } from "@/lib/contact";
+import { EVALUATION_OFFER_FAQ, LANDING_CONSULT_CTA } from "@/lib/contact";
 import { homeSection } from "@/lib/home-links";
 const CATEGORY = "Automatización de procesos";
 
@@ -94,8 +93,8 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
       {
         type: "ul",
         items: [
-          "Automatizaciones simples → pueden resolverse en pocos días",
-          "Procesos más completos → pueden llevar algunas semanas",
+          "Automatizaciones simples: pueden resolverse en pocos días",
+          "Procesos más completos: pueden llevar algunas semanas",
         ],
       },
       {
@@ -242,7 +241,7 @@ export function AutomatizacionNegociosLanding() {
               </h1>
               <p className="mt-5 text-lg leading-relaxed text-muted-foreground md:text-xl">{HERO.subtitle}</p>
               <div className="mt-8 flex flex-wrap items-center gap-4">
-                <LandingWaCta href={homeSection("#contacto")} main={PRIMARY_CTA_LABEL} />
+                <LandingWaCta href={homeSection("#contacto")} main={LANDING_CONSULT_CTA} hideWhatsAppIconMobile />
               </div>
             </div>
           </header>
@@ -532,7 +531,7 @@ export function AutomatizacionNegociosLanding() {
               Si estás en esta situación, podemos analizar tu caso y ver qué se puede automatizar.
             </p>
             <div className="relative mt-8">
-              <LandingWaCta href={homeSection("#contacto")} main="Contame tu caso" />
+              <LandingWaCta href={homeSection("#contacto")} main={LANDING_CONSULT_CTA} />
             </div>
           </section>
 
@@ -550,13 +549,9 @@ export function AutomatizacionNegociosLanding() {
                   <li key={l.href}>
                     <Link
                       href={l.href}
-                      className="group flex items-center justify-between gap-4 px-4 py-4 text-left text-sm font-medium text-foreground transition-colors hover:bg-surface md:px-5 md:py-4 md:text-[15px]"
+                      className="group flex items-center gap-4 px-4 py-4 text-left text-sm font-medium text-foreground transition-colors hover:bg-surface md:px-5 md:py-4 md:text-[15px]"
                     >
                       <span className="group-hover:text-primary transition-colors">{l.label}</span>
-                      <ChevronRight
-                        className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary"
-                        aria-hidden
-                      />
                     </Link>
                   </li>
                 ))}

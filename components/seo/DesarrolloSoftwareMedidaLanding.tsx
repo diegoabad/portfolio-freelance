@@ -1,7 +1,6 @@
 import Link from "next/link";
 import {
   ChevronDown,
-  ChevronRight,
   CheckCircle2,
   CircleAlert,
   Code2,
@@ -17,7 +16,7 @@ import {
   SectionKicker,
   type FaqBlock,
 } from "@/components/seo/landing-blocks";
-import { EVALUATION_OFFER_FAQ, PRIMARY_CTA_LABEL, REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
+import { EVALUATION_OFFER_FAQ, LANDING_CONSULT_CTA, REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
 const CATEGORY = "Software a medida";
 
 const HERO = {
@@ -173,7 +172,8 @@ export function DesarrolloSoftwareMedidaLanding() {
                 <LandingWaCta
                   href={waHref(MSG_HERO)}
                   rel={REL_WHATSAPP_EXTERNAL}
-                  main={PRIMARY_CTA_LABEL}
+                  main={LANDING_CONSULT_CTA}
+                  hideWhatsAppIconMobile
                 />
               </div>
             </div>
@@ -443,7 +443,7 @@ export function DesarrolloSoftwareMedidaLanding() {
               solución tiene sentido.
             </p>
             <div className="relative mt-8">
-              <LandingWaCta href={waHref(MSG_CASO)} rel={REL_WHATSAPP_EXTERNAL} main="Contame tu caso" />
+              <LandingWaCta href={waHref(MSG_CASO)} rel={REL_WHATSAPP_EXTERNAL} main={LANDING_CONSULT_CTA} />
             </div>
           </section>
 
@@ -461,13 +461,9 @@ export function DesarrolloSoftwareMedidaLanding() {
                   <li key={l.href}>
                     <Link
                       href={l.href}
-                      className="group flex items-center justify-between gap-4 px-4 py-4 text-left text-sm font-medium text-foreground transition-colors hover:bg-surface md:px-5 md:py-4 md:text-[15px]"
+                      className="group flex items-center gap-4 px-4 py-4 text-left text-sm font-medium text-foreground transition-colors hover:bg-surface md:px-5 md:py-4 md:text-[15px]"
                     >
                       <span className="group-hover:text-primary transition-colors">{l.label}</span>
-                      <ChevronRight
-                        className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary"
-                        aria-hidden
-                      />
                     </Link>
                   </li>
                 ))}

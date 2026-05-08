@@ -4,10 +4,12 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X } from "lucide-react";
+import { BrandLogoMark } from "@/components/site/BrandLogoMark";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 import { HERO_NAV_CTA_LABEL } from "@/lib/contact";
 import { homeSection } from "@/lib/home-links";
 import { SERVICE_LANDING_PAGES, SERVICE_SLUGS } from "@/lib/service-landings";
+import { BRAND_TAGLINE } from "@/lib/site";
 
 const SECTION_IDS = ["top", "servicios", "proyectos", "sobre-mi", "proceso", "contacto"] as const;
 
@@ -187,14 +189,35 @@ export function Nav() {
         <a
           href={homeSection("#top")}
           onClick={() => isHome && bumpActiveFromUrlHash()}
-          className={`flex min-w-0 items-center gap-2 font-display font-semibold tracking-tight text-base md:text-lg z-20 md:absolute md:left-6 lg:left-10 md:top-1/2 md:-translate-y-1/2 md:flex-none md:max-w-none md:pr-0 pr-2 ${
+          className={`flex min-w-0 shrink-0 items-center gap-2.5 z-20 md:absolute md:left-6 lg:left-10 md:top-1/2 md:-translate-y-1/2 md:flex-none md:max-w-none md:pr-0 pr-2 ${
             isHome && !navSolid ? "text-white" : "text-foreground"
           }`}
         >
-          <span className="h-8 w-8 rounded-full border-2 border-primary bg-primary grid place-items-center text-primary-foreground text-sm font-semibold shrink-0">
-            DA
+          <BrandLogoMark
+            size={42}
+            priority
+            className={
+              isHome && !navSolid
+                ? "drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] md:drop-shadow-[0_2px_14px_rgba(0,0,0,0.9)]"
+                : undefined
+            }
+          />
+          <span className="min-w-0 text-left leading-tight">
+            <span
+              className={`block font-display font-semibold text-base tracking-tight truncate ${
+                isHome && !navSolid ? "text-white" : "text-foreground"
+              }`}
+            >
+              Diego Abad
+            </span>
+            <span
+              className={`block truncate text-[11px] leading-tight ${
+                isHome && !navSolid ? "text-white/70" : "text-muted-foreground"
+              }`}
+            >
+              {BRAND_TAGLINE}
+            </span>
           </span>
-          <span className="min-w-0 truncate">Diego Abad</span>
         </a>
 
         <nav

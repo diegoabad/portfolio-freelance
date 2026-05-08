@@ -30,3 +30,6 @@ export function getSiteUrl(): string | undefined {
 }
 
 export const LINKEDIN_PROFILE_URL = "https://www.linkedin.com/in/diegoabad-fullstack/";
+
+/** Subtítulo bajo el nombre en footer y barra de navegación. */
+export const BRAND_TAGLINE = "Software y automatizaciones";

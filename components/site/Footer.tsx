@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { BrandLogoMark } from "@/components/site/BrandLogoMark";
+import { BRAND_TAGLINE } from "@/lib/site";
 import { REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 import { FooterEmailCopyClient } from "@/components/site/FooterEmailCopyClient";
@@ -28,14 +30,12 @@ export function Footer() {
               href="/#top"
               className="inline-flex items-center gap-2.5 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
-              <span className="h-9 w-9 rounded-full border-2 border-primary bg-primary grid place-items-center text-primary-foreground text-xs font-display font-semibold shrink-0">
-                DA
-              </span>
-              <span className="text-left">
+              <BrandLogoMark size={48} />
+              <span className="text-left leading-tight">
                 <span className="block font-display font-semibold text-base text-foreground tracking-tight">
                   Diego Abad
                 </span>
-                <span className="block text-xs text-muted-foreground">Software y automatizaciones</span>
+                <span className="block text-[11px] leading-tight text-muted-foreground">{BRAND_TAGLINE}</span>
               </span>
             </Link>
             <p className="text-sm text-muted-foreground leading-snug max-w-sm">

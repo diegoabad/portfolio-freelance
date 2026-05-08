@@ -4,11 +4,7 @@ import { CalendarDays, Code2, MessageCircle, Package, Stethoscope, Zap } from "l
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 import { PRIMARY_CTA_LABEL, PRIMARY_CTA_SUBLINE } from "@/lib/contact";
 import { homeSection } from "@/lib/home-links";
-import {
-  getHomeCardCta,
-  SERVICE_LANDING_PAGES,
-  type ServiceLandingSlug,
-} from "@/lib/service-landings";
+import { SERVICE_LANDING_PAGES, type ServiceLandingSlug } from "@/lib/service-landings";
 
 const CARD_ICON: Record<ServiceLandingSlug, LucideIcon> = {
   "bots-whatsapp": MessageCircle,
@@ -25,7 +21,6 @@ type ServiceCard = {
   title: string;
   desc: string;
   impact: string;
-  ctaLabel: string;
 };
 
 const serviceCards: ServiceCard[] = SERVICE_LANDING_PAGES.map((p) => ({
@@ -34,16 +29,11 @@ const serviceCards: ServiceCard[] = SERVICE_LANDING_PAGES.map((p) => ({
   title: p.homePainTitle,
   desc: p.homeCardSubtitle,
   impact: p.homeCardBadge,
-  ctaLabel: getHomeCardCta(p),
 }));
 
 function ServiceIcon({ slug }: { slug: ServiceLandingSlug }) {
   const Icon = CARD_ICON[slug];
-  return (
-    <div className="h-12 w-12 rounded-xl bg-primary grid place-items-center text-primary-foreground shrink-0">
-      <Icon size={22} aria-hidden />
-    </div>
-  );
+  return <Icon className="size-7 shrink-0 text-primary" strokeWidth={2} aria-hidden />;
 }
 
 export function Services() {
@@ -66,24 +56,18 @@ export function Services() {
             <Link
               key={card.href}
               href={card.href}
-              className="group relative block cursor-pointer overflow-hidden rounded-2xl border border-border bg-surface/50 p-6 md:p-8 backdrop-blur transition hover:border-primary/40 hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background [&_*]:cursor-pointer"
-              aria-label={`${card.title}: ${card.ctaLabel.toLowerCase()}`}
+              className="group relative block cursor-pointer overflow-hidden rounded-2xl border border-border bg-surface/50 p-5 md:p-6 backdrop-blur transition hover:border-primary/40 hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background [&_*]:cursor-pointer"
+              aria-label={`${card.title} — ir al servicio`}
             >
               <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-primary/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-              <div className="relative flex flex-col h-full min-h-[220px] md:min-h-0">
+              <div className="relative flex flex-col h-full min-h-[188px] md:min-h-0">
                 <ServiceIcon slug={card.slug} />
-                <h3 className="mt-5 md:mt-6 text-xl md:text-2xl font-display font-semibold text-foreground group-hover:text-primary transition-colors">
+                <h3 className="mt-4 md:mt-5 text-lg md:text-xl font-display font-semibold text-foreground group-hover:text-primary transition-colors">
                   {card.title}
                 </h3>
-                <p className="mt-2.5 md:mt-3 text-muted-foreground leading-relaxed flex-1">{card.desc}</p>
-                <p className="mt-5 md:mt-6 rounded-xl border border-primary/25 bg-primary/10 px-4 py-3 text-sm font-semibold text-primary leading-snug">
+                <p className="mt-2 md:mt-2.5 text-sm md:text-[15px] text-muted-foreground leading-relaxed flex-1">{card.desc}</p>
+                <p className="mt-3 md:mt-4 inline-flex w-fit max-w-full rounded-md border border-primary/20 bg-primary/[0.07] px-2.5 py-1 text-[11px] font-medium text-primary leading-snug md:text-xs">
                   {card.impact}
-                </p>
-                <p className="mt-4 text-sm font-medium text-primary inline-flex items-center gap-1">
-                  {card.ctaLabel}
-                  <span aria-hidden className="transition-transform group-hover:translate-x-0.5">
-                    →
-                  </span>
                 </p>
               </div>
             </Link>

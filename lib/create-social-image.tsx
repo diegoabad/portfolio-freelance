@@ -1,10 +1,17 @@
+import { readFile } from "fs/promises";
+import path from "path";
 import { ImageResponse } from "next/og";
+import { LOGO_DA_FILE_PATH } from "@/lib/brand-assets";
 
 const W = 1200;
 const H = 630;
 
 /** Vista previa al compartir en WhatsApp, LinkedIn, X, Slack, etc. */
-export function createSocialImage() {
+export async function createSocialImage() {
+  const logoPath = path.join(process.cwd(), "public", LOGO_DA_FILE_PATH);
+  const logoBuffer = await readFile(logoPath);
+  const logoSrc = `data:image/png;base64,${logoBuffer.toString("base64")}`;
+
   return new ImageResponse(
     (
       <div
@@ -32,26 +39,16 @@ export function createSocialImage() {
           }}
         />
         <div style={{ display: "flex", alignItems: "center", gap: 28, marginBottom: 36 }}>
-          <div
+          {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse solo admite <img> */}
+          <img
+            src={logoSrc}
+            width={112}
+            height={112}
+            alt=""
             style={{
-              width: 112,
-              height: 112,
-              borderRadius: 28,
-              border: "4px solid #52a8ff",
-              background: "#52a8ff",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              color: "#0b1220",
-              fontSize: 52,
-              fontWeight: 700,
-              letterSpacing: -2,
-              fontFamily:
-                "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif",
+              objectFit: "contain",
             }}
-          >
-            DA
-          </div>
+          />
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             <div
               style={{

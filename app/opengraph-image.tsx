@@ -6,6 +6,6 @@ export const size = socialImageSize;
 
 export const contentType = "image/png";
 
-export default function OpenGraphImage() {
+export default async function OpenGraphImage() {
   return createSocialImage();
 }
