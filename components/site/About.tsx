@@ -8,7 +8,7 @@ import { LINKEDIN_PROFILE_URL } from "@/lib/site";
 export function About() {
   return (
     <section id="sobre-mi" className="relative py-20 md:py-28 lg:py-32">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <div className="max-w-site mx-auto px-6 lg:px-10">
         <div className="max-w-3xl">
           <span className="text-xs uppercase tracking-[0.2em] text-primary font-medium">Sobre mí</span>
         </div>
@@ -23,8 +23,9 @@ export function About() {
                 src="/avatar-about.png"
                 alt=""
                 fill
+                quality={72}
                 className="object-cover object-[58%_center] md:object-[55%_center]"
-                sizes="(max-width: 768px) 50vw, (max-width: 1280px) 45vw, 576px"
+                sizes="(max-width:768px) 50vw, (max-width:1024px) 28vw, 320px"
               />
             </div>
           </div>
@@ -73,7 +74,7 @@ export function About() {
                     href={`https://wa.me/${WHATSAPP_NUMBER}`}
                     target="_blank"
                     rel={REL_WHATSAPP_EXTERNAL}
-                    className="inline-flex min-w-0 w-full items-center justify-center gap-2 rounded-full border-2 border-primary bg-background/70 px-4 py-2.5 text-sm font-medium text-primary backdrop-blur-sm hover:bg-primary/10 transition"
+                    className="inline-flex min-w-0 w-full items-center justify-center gap-2 rounded-[10px] border-2 border-primary bg-background/70 px-4 py-2.5 text-sm font-medium text-primary backdrop-blur-sm hover:bg-primary/10 transition"
                   >
                     <WhatsAppIcon size={16} className="shrink-0" aria-hidden />
                     WhatsApp
@@ -82,7 +83,7 @@ export function About() {
                     href={LINKEDIN_PROFILE_URL}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex min-w-0 w-full items-center justify-center gap-2 rounded-full border-2 border-primary bg-background/70 px-4 py-2.5 text-sm font-medium text-primary backdrop-blur-sm hover:bg-primary/10 transition"
+                    className="inline-flex min-w-0 w-full items-center justify-center gap-2 rounded-[10px] border-2 border-primary bg-background/70 px-4 py-2.5 text-sm font-medium text-primary backdrop-blur-sm hover:bg-primary/10 transition"
                   >
                     <LinkedInGlyph size={16} /> LinkedIn
                   </a>

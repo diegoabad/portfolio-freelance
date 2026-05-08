@@ -29,7 +29,7 @@ export function Contact() {
     >
       <div className="absolute -bottom-40 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-primary/12 blur-[130px]" />
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
+      <div className="relative max-w-site mx-auto px-6 lg:px-10">
         <div className="max-w-3xl">
           <span className="text-xs uppercase tracking-[0.2em] text-primary font-medium">Contacto</span>
           <h2 className="mt-3 text-4xl md:text-6xl font-display font-semibold tracking-tight text-pretty">

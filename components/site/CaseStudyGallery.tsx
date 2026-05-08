@@ -60,7 +60,7 @@ export function CaseStudyGallery({ images, altPrefix }: CaseStudyGalleryProps) {
           onClick={closeLightbox}
         >
           {/* Ancho máximo para no escalar capturas por encima de su resolución (evita pixelado) */}
-          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[calc(100dvh-8px)] w-full max-w-7xl max-h-[calc(100dvh-8px)] -translate-x-1/2 -translate-y-1/2 px-3 sm:px-4 relative">
+          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[calc(100dvh-8px)] w-full max-w-site max-h-[calc(100dvh-8px)] -translate-x-1/2 -translate-y-1/2 px-3 sm:px-4 relative">
             <Image
               src={src}
               alt={alt}

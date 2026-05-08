@@ -10,7 +10,7 @@ export function ServiceLandingView({ page }: { page: ServiceLandingPageData }) {
   const links = mergedInterlinks(page);
 
   return (
-    <div className="mx-auto w-full max-w-7xl flex-1 px-6 lg:px-10 py-12 lg:py-20">
+    <div className="mx-auto w-full max-w-site flex-1 px-6 lg:px-10 py-12 lg:py-20">
     <article className="mx-auto max-w-3xl w-full">
       <header>
         <h1 className="font-display tracking-tight text-pretty text-foreground">
@@ -59,7 +59,7 @@ export function ServiceLandingView({ page }: { page: ServiceLandingPageData }) {
       <div className="mt-12 inline-flex w-full max-w-full flex-col items-center gap-1.5 self-start sm:w-fit sm:max-w-[min(100%,28rem)]">
         <Link
           href={homeSection("#contacto")}
-          className="inline-flex w-full min-h-12 items-center justify-center gap-2 rounded-full border-2 border-primary bg-primary px-6 py-3.5 text-center text-[15px] font-semibold text-primary-foreground transition-[transform,opacity] hover:opacity-95 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-auto sm:min-h-0 sm:px-8 sm:text-base sm:hover:scale-[1.02]"
+          className="inline-flex w-full min-h-12 items-center justify-center gap-2 rounded-[10px] border-2 border-primary bg-primary px-6 py-3.5 text-center text-[15px] font-semibold text-primary-foreground transition-[transform,opacity] hover:opacity-95 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-auto sm:min-h-0 sm:px-8 sm:text-base sm:hover:scale-[1.02]"
           aria-label={`${LANDING_CONSULT_CTA} — ir a contacto`}
         >
           <WhatsAppIcon size={20} className="shrink-0 text-primary-foreground" aria-hidden />

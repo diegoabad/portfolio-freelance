@@ -16,7 +16,7 @@ const Projects = dynamic(() => import("@/components/site/Projects").then((m) => 
       aria-busy="true"
       aria-label="Cargando proyectos"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <div className="max-w-site mx-auto px-6 lg:px-10">
         <div className="max-w-3xl space-y-3">
           <div className="h-4 w-28 rounded bg-muted/35 animate-pulse" />
           <div className="h-11 md:h-12 max-w-lg rounded-lg bg-muted/40 animate-pulse" />

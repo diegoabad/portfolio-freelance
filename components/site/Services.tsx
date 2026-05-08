@@ -49,7 +49,7 @@ function ServiceIcon({ slug }: { slug: ServiceLandingSlug }) {
 export function Services() {
   return (
     <section id="servicios" className="relative pt-12 pb-20 md:pt-16 md:pb-28 lg:pt-18 lg:pb-32">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <div className="max-w-site mx-auto px-6 lg:px-10">
         <div className="max-w-3xl">
           <span className="text-xs uppercase tracking-[0.2em] text-primary font-medium">Servicios</span>
           <h2 className="mt-3 text-4xl md:text-5xl font-display font-semibold tracking-tight text-pretty">
@@ -93,7 +93,7 @@ export function Services() {
 
       <div className="w-full mt-12 md:mt-16 lg:mt-20 mb-3 md:mb-4 lg:mb-5">
         <div className="w-full border-y border-border bg-surface/50 backdrop-blur px-6 py-7 md:px-10 md:py-9 lg:py-10">
-          <div className="mx-auto flex max-w-7xl flex-col gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
+          <div className="mx-auto flex max-w-site flex-col gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
             <div className="max-w-2xl lg:flex-1">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Asesoramiento</p>
               <h3 className="mt-3 text-2xl font-display font-semibold tracking-tight text-pretty text-foreground md:text-3xl lg:text-4xl">
@@ -106,7 +106,7 @@ export function Services() {
             <div className="inline-flex w-full max-w-full shrink-0 flex-col items-center gap-1.5 lg:max-w-[min(100%,28rem)]">
               <a
                 href={homeSection("#contacto")}
-                className="inline-flex w-full min-h-12 items-center justify-center gap-2.5 rounded-full border-2 border-primary bg-primary px-6 py-3.5 text-[15px] font-semibold text-primary-foreground transition-[transform,opacity] hover:opacity-95 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background lg:w-auto lg:min-h-0 lg:px-8 lg:text-base lg:hover:scale-[1.02]"
+                className="inline-flex w-full min-h-12 items-center justify-center gap-2.5 rounded-[10px] border-2 border-primary bg-primary px-6 py-3.5 text-[15px] font-semibold text-primary-foreground transition-[transform,opacity] hover:opacity-95 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background lg:w-auto lg:min-h-0 lg:px-8 lg:text-base lg:hover:scale-[1.02]"
                 aria-label={`${PRIMARY_CTA_LABEL} — ir a contacto`}
               >
                 <WhatsAppIcon size={22} className="shrink-0 text-primary-foreground" aria-hidden />

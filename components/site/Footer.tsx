@@ -21,7 +21,7 @@ export function Footer() {
         aria-hidden
       />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-8 pb-3 md:pt-10 md:pb-4 lg:pb-4">
+      <div className="max-w-site mx-auto px-6 lg:px-10 py-8 md:py-10">
         <div className="grid gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-5 space-y-4 md:space-y-5">
             <Link
@@ -62,13 +62,13 @@ export function Footer() {
           <div className="lg:col-span-3 flex flex-col items-start gap-3 border-t border-border/80 pt-6 lg:border-t-0 lg:pt-0">
             <div>
               <p className="text-[11px] uppercase tracking-[0.18em] text-primary font-medium mb-2">Redes</p>
-              <div className="flex flex-wrap items-start gap-2.5 justify-start">
+              <div className="flex flex-wrap items-center gap-2.5 justify-start">
                 <FooterEmailCopyClient />
                 <a
                   href={`https://wa.me/${WHATSAPP_NUMBER}`}
                   target="_blank"
                   rel={REL_WHATSAPP_EXTERNAL}
-                  className="h-9 w-9 rounded-lg border-2 border-primary bg-surface/60 grid place-items-center text-primary hover:text-primary-foreground hover:bg-primary transition shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  className="h-9 w-9 rounded-[10px] border-2 border-primary bg-surface/60 grid place-items-center text-primary hover:text-primary-foreground hover:bg-primary transition shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   aria-label="Abrir WhatsApp"
                   title="WhatsApp"
                 >
@@ -78,7 +78,7 @@ export function Footer() {
                   href="https://www.linkedin.com/in/diegoabad-fullstack/"
                   target="_blank"
                   rel="noreferrer"
-                  className="h-9 w-9 rounded-lg border-2 border-primary bg-surface/60 grid place-items-center text-primary hover:text-primary-foreground hover:bg-primary transition shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  className="h-9 w-9 rounded-[10px] border-2 border-primary bg-surface/60 grid place-items-center text-primary hover:text-primary-foreground hover:bg-primary transition shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   aria-label="Perfil de LinkedIn"
                   title="LinkedIn"
                 >

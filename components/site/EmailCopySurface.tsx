@@ -35,7 +35,7 @@ export function EmailCopySurface({ variant }: { variant: Variant }) {
       <button
         type="button"
         onClick={handleCopy}
-        className="inline-flex min-w-0 max-w-full cursor-pointer items-center gap-2 rounded-full border-2 border-primary bg-surface/60 px-5 py-2.5 text-sm font-medium text-primary transition hover:bg-primary/10 [&_*]:cursor-pointer"
+        className="inline-flex min-w-0 max-w-full cursor-pointer items-center gap-2 rounded-[10px] border-2 border-primary bg-surface/60 px-5 py-2.5 text-sm font-medium text-primary transition hover:bg-primary/10 [&_*]:cursor-pointer"
         aria-label={copied ? "Correo copiado al portapapeles" : "Copiar correo electrónico"}
       >
         <MailGlyph size={16} className="shrink-0" />

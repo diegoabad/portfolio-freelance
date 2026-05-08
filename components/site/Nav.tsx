@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
-import { PRIMARY_CTA_LABEL } from "@/lib/contact";
+import { HERO_NAV_CTA_LABEL } from "@/lib/contact";
 import { homeSection } from "@/lib/home-links";
 import { SERVICE_LANDING_PAGES, SERVICE_SLUGS } from "@/lib/service-landings";
 
@@ -30,12 +30,17 @@ function readActiveFromHash(): SectionId {
   return "top";
 }
 
+/** Píxeles de scroll en home antes de mostrar fondo sólido en la barra (solo desktop). */
+const HOME_NAV_SOLID_SCROLL_Y = 72;
+
 export function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<SectionId>("top");
   const [servicesMenu, setServicesMenu] = useState<{ anchorPath: string } | null>(null);
   const servicesRef = useRef<HTMLDivElement>(null);
+  /** En `/`, barra transparente arriba del hero; al hacer scroll gana fondo (solo aplica en `md+`). */
+  const [navSolid, setNavSolid] = useState(() => pathname !== "/");
 
   const servicesOpen = servicesMenu !== null && servicesMenu.anchorPath === pathname;
 
@@ -67,6 +72,19 @@ export function Nav() {
   }, [isHome]);
 
   useEffect(() => {
+    if (!isHome) {
+      setNavSolid(true);
+      return;
+    }
+    const onScroll = () => {
+      setNavSolid(window.scrollY > HOME_NAV_SOLID_SCROLL_Y);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [isHome]);
+
+  useEffect(() => {
     if (!servicesOpen) return;
     const dismissMenuAndResyncNav = () => {
       setServicesMenu(null);
@@ -87,15 +105,30 @@ export function Nav() {
     };
   }, [servicesOpen, pathname]);
 
+  /** En móvil, evita que el scroll mueva la página debajo del header fijo mientras el menú está abierto. */
+  useEffect(() => {
+    if (!open) return;
+    const html = document.documentElement;
+    const body = document.body;
+    const prevHtml = html.style.overflow;
+    const prevBody = body.style.overflow;
+    html.style.overflow = "hidden";
+    body.style.overflow = "hidden";
+    return () => {
+      html.style.overflow = prevHtml;
+      body.style.overflow = prevBody;
+    };
+  }, [open]);
+
   const linkClass = (id: SectionId) => {
     if (!isHome) {
-      return "text-muted-foreground hover:text-foreground transition-colors";
+      return "text-white/90 hover:text-white transition-colors";
     }
-    return active === id ? "text-primary font-semibold" : "text-muted-foreground hover:text-foreground transition-colors";
+    return active === id ? "text-primary font-semibold" : "text-white/90 hover:text-white transition-colors";
   };
 
   const ctaClass =
-    "inline-flex items-center justify-center gap-2 rounded-full border-2 border-primary bg-primary px-3 lg:px-4 py-2 text-xs lg:text-sm font-semibold text-primary-foreground hover:opacity-90 transition shrink-0 whitespace-nowrap max-w-[min(100vw-10rem,16rem)] lg:max-w-none";
+    "inline-flex items-center justify-center gap-2 rounded-[10px] border-2 border-primary bg-primary px-3 lg:px-4 py-2 text-sm md:text-base font-semibold text-primary-foreground hover:opacity-90 transition shrink-0 whitespace-nowrap max-w-[min(100vw-10rem,16rem)] lg:max-w-none";
 
   const closeServicesMenu = () => {
     setServicesMenu(null);
@@ -110,8 +143,8 @@ export function Nav() {
   const servicesTriggerClass = serviciosActive
     ? "text-primary font-semibold"
     : servicesOpen
-      ? "text-foreground font-medium"
-      : "text-muted-foreground hover:text-foreground transition-colors";
+      ? "text-white font-medium"
+      : "text-white/90 hover:text-white transition-colors";
 
   const dropdownItemClass =
     "block px-4 py-2.5 text-sm text-foreground hover:bg-muted/80 transition-colors focus-visible:outline-none focus-visible:bg-muted/80";
@@ -141,13 +174,22 @@ export function Nav() {
     if (pathname === "/") scrollToServiciosSection();
   };
 
+  const headerSurfaceClass =
+    isHome && !navSolid
+      ? "border-border bg-background md:border-transparent md:bg-transparent md:backdrop-blur-none md:supports-backdrop-filter:bg-transparent"
+      : "border-border bg-background md:border-border md:bg-background/95 md:backdrop-blur-xl md:supports-backdrop-filter:bg-background/80";
+
   return (
-    <header className="fixed top-0 inset-x-0 z-50 w-full border-b border-border bg-background md:bg-background/95 md:backdrop-blur-xl md:supports-[backdrop-filter]:bg-background/80">
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-16 flex items-center justify-between md:justify-center">
+    <header
+      className={`fixed top-0 inset-x-0 z-50 w-full border-b transition-[background-color,backdrop-filter,border-color] duration-300 ease-out max-md:flex max-md:max-h-dvh max-md:flex-col max-md:overflow-hidden md:overflow-visible ${headerSurfaceClass}`}
+    >
+      <div className="relative max-w-site mx-auto w-full shrink-0 px-4 sm:px-6 lg:px-10 flex min-h-21 md:min-h-24 items-center justify-between md:justify-center py-3 md:py-[7px]">
         <a
           href={homeSection("#top")}
           onClick={() => isHome && bumpActiveFromUrlHash()}
-          className="flex min-w-0 flex-1 items-center gap-2 font-display font-semibold tracking-tight text-foreground z-20 md:absolute md:left-6 lg:left-10 md:top-1/2 md:-translate-y-1/2 md:flex-none md:max-w-none md:pr-0 pr-2"
+          className={`flex min-w-0 items-center gap-2 font-display font-semibold tracking-tight text-base md:text-lg z-20 md:absolute md:left-6 lg:left-10 md:top-1/2 md:-translate-y-1/2 md:flex-none md:max-w-none md:pr-0 pr-2 ${
+            isHome && !navSolid ? "text-white" : "text-foreground"
+          }`}
         >
           <span className="h-8 w-8 rounded-full border-2 border-primary bg-primary grid place-items-center text-primary-foreground text-sm font-semibold shrink-0">
             DA
@@ -156,7 +198,7 @@ export function Nav() {
         </a>
 
         <nav
-          className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center gap-2 lg:gap-4 xl:gap-6 text-xs lg:text-sm pointer-events-auto max-w-[min(100%-12rem,52rem)] flex-wrap"
+          className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center gap-2 lg:gap-5 xl:gap-7 text-sm md:text-base pointer-events-auto max-w-[min(100%-12rem,52rem)] flex-wrap font-medium"
           aria-label="Principal"
         >
           {links.map((l) =>
@@ -228,17 +270,19 @@ export function Nav() {
             href={homeSection("#contacto")}
             onClick={() => isHome && bumpActiveFromUrlHash()}
             className={ctaClass}
-            aria-label={`${PRIMARY_CTA_LABEL} — ir a contacto`}
+            aria-label={`${HERO_NAV_CTA_LABEL} — ir a contacto`}
           >
-            <WhatsAppIcon size={17} className="shrink-0 text-primary-foreground" />
-            {PRIMARY_CTA_LABEL}
+            <WhatsAppIcon size={20} className="shrink-0 text-primary-foreground" />
+            {HERO_NAV_CTA_LABEL}
           </a>
         </div>
 
         <div className="flex md:hidden items-center shrink-0 z-20">
           <button
             type="button"
-            className="p-2 rounded-lg border border-border text-foreground hover:bg-muted transition"
+            className={`p-2 rounded-lg transition ${
+              isHome && !navSolid ? "text-white hover:bg-white/10" : "text-foreground hover:bg-muted"
+            }`}
             onClick={() => setOpen((v) => !v)}
             aria-label="Menú"
           >
@@ -248,13 +292,13 @@ export function Nav() {
       </div>
 
       {open && (
-        <div className="md:hidden w-full border-t border-border bg-surface shadow-[0_18px_48px_-20px_oklch(0.02_0.02_270/0.75)]">
-          <nav className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-1" aria-label="Principal móvil">
+        <div className="md:hidden flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-y-contain border-t border-border bg-surface shadow-[0_18px_48px_-20px_oklch(0.02_0.02_270/0.75)] [touch-action:pan-y]">
+          <nav className="max-w-site mx-auto w-full px-6 py-4 flex flex-col gap-1 pb-[max(1rem,env(safe-area-inset-bottom))]" aria-label="Principal móvil">
             {links.map((l) =>
               l.id === "servicios" ? (
                 <details key={l.hash} className="group rounded-xl">
                   <summary
-                    className={`flex cursor-pointer list-none items-center justify-between gap-2 py-2.5 px-3 -mx-1 rounded-xl transition-colors hover:bg-surface-elevated [&::-webkit-details-marker]:hidden ${serviciosActive ? "text-primary font-semibold" : "text-muted-foreground"}`}
+                    className={`flex cursor-pointer list-none items-center justify-between gap-2 py-2.5 px-3 -mx-1 rounded-xl text-base transition-colors hover:bg-surface-elevated [&::-webkit-details-marker]:hidden ${serviciosActive ? "text-primary font-semibold" : "text-white/90"}`}
                   >
                     <span>Servicios</span>
                     <ChevronDown
@@ -270,10 +314,10 @@ export function Nav() {
                         bumpActiveFromUrlHash();
                         if (pathname === "/") scrollToServiciosSection();
                       }}
-                      className={`block rounded-md py-2 text-sm transition-colors ${
+                      className={`block rounded-md py-2 text-base transition-colors ${
                         isHome && active === "servicios" && !isServiceRoute
                           ? "font-semibold text-primary bg-primary/10 px-2 -mx-1"
-                          : "text-foreground hover:text-primary px-2 -mx-1"
+                          : "text-white/90 hover:text-primary px-2 -mx-1"
                       }`}
                     >
                       Todos los servicios
@@ -286,7 +330,7 @@ export function Nav() {
                           href={`/${p.slug}`}
                           onClick={() => setOpen(false)}
                           aria-current={here ? "page" : undefined}
-                          className={`py-2 text-sm transition-colors ${here ? "font-semibold text-primary" : "text-muted-foreground hover:text-foreground"}`}
+                          className={`py-2 text-base transition-colors ${here ? "font-semibold text-primary" : "text-white/90 hover:text-primary"}`}
                         >
                           {p.categoryHeading}
                         </Link>
@@ -302,24 +346,12 @@ export function Nav() {
                     bumpActiveFromUrlHash();
                     setOpen(false);
                   }}
-                  className={`py-2.5 text-sm rounded-xl px-3 -mx-1 transition-colors hover:bg-surface-elevated ${linkClass(l.id)}`}
+                  className={`py-2.5 text-base rounded-xl px-3 -mx-1 transition-colors hover:bg-surface-elevated ${linkClass(l.id)}`}
                 >
                   {l.label}
                 </a>
               ),
             )}
-            <a
-              href={homeSection("#contacto")}
-              onClick={() => {
-                bumpActiveFromUrlHash();
-                setOpen(false);
-              }}
-              className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-primary bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground"
-              aria-label={`${PRIMARY_CTA_LABEL} — ir a contacto`}
-            >
-              <WhatsAppIcon size={18} className="shrink-0 text-primary-foreground" />
-              {PRIMARY_CTA_LABEL}
-            </a>
           </nav>
         </div>
       )}

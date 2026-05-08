@@ -127,7 +127,7 @@ export function ContactInteractive() {
         <button
           type="submit"
           disabled={!name.trim() || !need.trim()}
-          className="mt-auto inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-xl border-2 border-primary bg-primary px-5 py-3 text-sm font-medium text-primary-foreground glow hover:opacity-95 transition disabled:opacity-45 disabled:pointer-events-none disabled:cursor-not-allowed"
+          className="mt-auto inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-[10px] border-2 border-primary bg-primary px-5 py-3 text-sm font-medium text-primary-foreground glow hover:opacity-95 transition disabled:opacity-45 disabled:pointer-events-none disabled:cursor-not-allowed"
         >
           <WhatsAppIcon size={18} className="shrink-0 text-primary-foreground" />
           Charlemos

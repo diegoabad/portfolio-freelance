@@ -13,6 +13,14 @@ const nextConfig: NextConfig = {
     /** Permite variantes más chicas para miniaturas (galería casos) sin subir el mínimo global de `fill` demasiado. */
     deviceSizes: [384, 640, 750, 828, 1080, 1200, 1920, 2048],
   },
+  async headers() {
+    return [
+      {
+        source: "/hero-decor.png",
+        headers: [{ key: "Cache-Control", value: "public, max-age=0, must-revalidate" }],
+      },
+    ];
+  },
   async redirects() {
     return [
       {

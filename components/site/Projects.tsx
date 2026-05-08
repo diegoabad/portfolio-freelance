@@ -111,7 +111,7 @@ export function Projects() {
       id="proyectos"
       className="relative bg-surface/30 border-b border-border pt-2 pb-20 md:pt-3 md:pb-28 lg:pt-4 lg:pb-32"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <div className="max-w-site mx-auto px-6 lg:px-10">
         <div className="max-w-3xl">
           <span className="text-xs uppercase tracking-[0.2em] text-primary font-medium">Casos reales</span>
           <h2 className="mt-3 text-4xl md:text-5xl font-display font-semibold tracking-tight text-pretty">

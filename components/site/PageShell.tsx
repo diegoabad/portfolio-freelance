@@ -8,7 +8,7 @@ export function PageShell({ children }: { children: ReactNode }) {
     <>
       <FloatingWhatsAppDynamic />
       <Nav />
-      <div className="relative z-10 min-h-screen flex-1 flex flex-col text-foreground pt-16">{children}</div>
+      <div className="relative z-10 min-h-screen flex-1 flex flex-col text-foreground pt-21 md:pt-24">{children}</div>
       <Footer />
     </>
   );

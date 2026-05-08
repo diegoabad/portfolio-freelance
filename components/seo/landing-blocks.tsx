@@ -10,7 +10,7 @@ export type FaqBlock =
   | { type: "callout"; text: string }
   | { type: "calloutContact"; before: string; linkText: string; after: string };
 
-/** Ancho del cuerpo alineado al contenedor del Nav (`max-w-7xl` + padding en la página). */
+/** Ancho del cuerpo alineado al contenedor del Nav (`max-w-site` / `--max-width-site` + padding en la página). */
 export const LANDING_ARTICLE_MAX_CLASS = "w-full";
 
 export function SectionKicker({ n, children }: { n: string; children: ReactNode }) {
@@ -75,7 +75,7 @@ export function FaqBlocks({ blocks, className = "" }: { blocks: FaqBlock[]; clas
 }
 
 export const landingPrimaryCtaClass =
-  "inline-flex w-full min-h-12 items-center justify-center gap-2 rounded-full border-2 border-primary bg-primary px-6 py-3.5 text-center text-[15px] font-semibold text-primary-foreground shadow-[0_8px_32px_-8px_var(--color-primary)] transition-[transform,opacity,box-shadow] hover:opacity-95 hover:shadow-[0_12px_36px_-10px_var(--color-primary)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-auto sm:min-h-0 sm:px-8 sm:text-base sm:hover:scale-[1.02]";
+  "inline-flex w-full min-h-12 items-center justify-center gap-2 rounded-[10px] border-2 border-primary bg-primary px-6 py-3.5 text-center text-[15px] font-semibold text-primary-foreground shadow-[0_8px_32px_-8px_var(--color-primary)] transition-[transform,opacity,box-shadow] hover:opacity-95 hover:shadow-[0_12px_36px_-10px_var(--color-primary)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-auto sm:min-h-0 sm:px-8 sm:text-base sm:hover:scale-[1.02]";
 
 /** CTA principal de landings (WhatsApp o ruta interna); “Presupuesto sin cargo” va debajo del botón. */
 export function LandingWaCta({
