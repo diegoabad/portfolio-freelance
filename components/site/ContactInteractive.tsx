@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
+import { PRIMARY_CTA_LABEL, PRIMARY_CTA_SUBLINE, REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
 import { LINKEDIN_PROFILE_URL } from "@/lib/site";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 import { EmailCopySurface } from "@/components/site/EmailCopySurface";
@@ -103,15 +103,20 @@ export function ContactInteractive() {
           />
         </div>
         {error && <p className="text-sm text-destructive">{error}</p>}
-        <button
-          type="submit"
-          disabled={!name.trim() || !need.trim()}
-          className="w-full inline-flex items-center justify-center gap-2 rounded-xl border-2 border-primary bg-primary px-5 py-3 text-sm font-medium text-primary-foreground glow hover:opacity-95 transition disabled:opacity-45 disabled:pointer-events-none disabled:cursor-not-allowed"
-        >
-          <WhatsAppIcon size={18} className="shrink-0 text-primary-foreground" />
-          Hablar por WhatsApp
-        </button>
-        <p className="text-xs text-muted-foreground text-center leading-relaxed">Respuesta directa, sin compromiso.</p>
+        <div className="flex w-full flex-col items-center gap-1.5">
+          <button
+            type="submit"
+            disabled={!name.trim() || !need.trim()}
+            className="w-full inline-flex items-center justify-center gap-2 rounded-xl border-2 border-primary bg-primary px-5 py-3 text-sm font-medium text-primary-foreground glow hover:opacity-95 transition disabled:opacity-45 disabled:pointer-events-none disabled:cursor-not-allowed"
+          >
+            <WhatsAppIcon size={18} className="shrink-0 text-primary-foreground" />
+            {PRIMARY_CTA_LABEL}
+          </button>
+          <p className="text-center text-xs font-medium text-muted-foreground">{PRIMARY_CTA_SUBLINE}</p>
+        </div>
+        <p className="text-xs text-muted-foreground text-center leading-relaxed">
+          Abrimos WhatsApp con tu mensaje para charlar y armar números concretos.
+        </p>
       </form>
     </div>
   );

@@ -26,4 +26,4 @@ Desarrollador de software (TypeScript, React, Next.js, Node.js, PostgreSQL). Tra
 
 ## Uso para modelos de lenguaje
 
-Podés resumir o citar el sitio citando la URL canónica. Para precios o alcance de proyectos, preferí remitir al texto actual de cada landing (puede actualizarse). No inventes datos de contacto distintos de los publicados en el sitio.
+Podés resumir o citar el sitio citando la URL canónica. Los presupuestos dependen del alcance; en el sitio se invita a contar el proyecto y se ofrece presupuesto sin cargo (contacto en la home). No inventes montos ni datos de contacto distintos de los publicados en el sitio.

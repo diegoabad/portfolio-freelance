@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PRIMARY_CTA_LABEL } from "@/lib/contact";
 import { getSiteUrl } from "@/lib/site";
 
 export type ServiceInterlink = { href: string; label: string };
@@ -6,26 +7,13 @@ export type ServiceInterlink = { href: string; label: string };
 /** Trio SEO legacy: vacío; los enlaces salen solo de `moreInterlinks` por servicio. */
 export const SEO_INTERLINK_TRIO: readonly ServiceInterlink[] = [];
 
-/** Banda típica — bots / automatización WhatsApp (card home + landing). */
-export const AUTOMATIZACION_WHATSAPP_PRECIO_REFERENCIA = "Entre $450.000 y $900.000 ARS";
-
-/** Banda típica — automatización de procesos (card home + landing). */
-export const AUTOMATIZACION_PROCESOS_PRECIO_REFERENCIA = "Entre $300.000 y $600.000 ARS";
-
-/** Precio desde — sistema de turnos online (card home + landing). */
-export const TURNOS_ONLINE_PRECIO_DESDE = "Desde $700.000 ARS";
-
-/** Precio desde — sistema de stock / inventario (card home + landing). */
-export const INVENTARIO_STOCK_PRECIO_DESDE = "Desde $900.000 ARS";
-
-/** Precio desde — software de gestión para clínicas (card home + landing). */
-export const CLINICAS_GESTION_PRECIO_DESDE = "Desde $1.100.000 ARS";
-
-/** Precio referencia software a medida (cards home + landing extendida). */
-export const SOFTWARE_MEDIDA_PRECIO_DESDE = "Desde $1.500.000 ARS";
-/** Banda típica para FAQ / hero (evita que “desde” se interprete como precio fijo). */
-export const SOFTWARE_MEDIDA_PRECIO_RANGO =
-  "Proyectos típicos entre $1,5M y $4M ARS según alcance.";
+/** Chip destacado (home + hero landing) — sin montos; foco en valor. */
+export const HIGHLIGHT_CHIP_BOTS_WHATSAPP = "Atención 24/7 · flujos e integraciones";
+export const HIGHLIGHT_CHIP_TURNOS = "Confirmaciones y recordatorios automáticos";
+export const HIGHLIGHT_CHIP_AUTOMATIZACION = "APIs, CRM y menos trabajo manual";
+export const HIGHLIGHT_CHIP_SOFTWARE_MEDIDA = "Stack a medida · alineado a tu operación";
+export const HIGHLIGHT_CHIP_CLINICAS = "Pacientes · historial digital · turnos";
+export const HIGHLIGHT_CHIP_INVENTARIO = "Stock real · movimientos en un solo lugar";
 
 const NBOTS: ServiceInterlink = { href: "/bots-whatsapp", label: "Bots de WhatsApp" };
 const NTURNOS: ServiceInterlink = { href: "/sistema-turnos-online", label: "Turnos online" };
@@ -47,12 +35,13 @@ export const SERVICE_LANDING_PAGES = [
     homePainTitle: "Perdés clientes por no responder WhatsApp a tiempo",
     homeCardSubtitle:
       "Respondé consultas automáticamente y evitá perder clientes por no responder a tiempo.",
-    homeCardBadge: AUTOMATIZACION_WHATSAPP_PRECIO_REFERENCIA,
+    homeCardBadge: HIGHLIGHT_CHIP_BOTS_WHATSAPP,
+    homeCardCta: PRIMARY_CTA_LABEL,
     title: "Bots de WhatsApp",
     metaDescription:
       "Bots y automatización de WhatsApp: respuestas automáticas, flujos ordenados e integración con CRM y agenda.",
     subtitle:
-      "Respondé consultas automáticamente y evitá perder clientes por no responder a tiempo.",
+      "Armá flujos que contestan lo repetitivo, ordenan conversaciones y conectan con tu CRM o agenda. Menos consultas perdidas por tiempo de respuesta y más seguimiento claro desde el primer mensaje.",
     problem:
       "¿El WhatsApp explota y ya no da para contestar todo a tiempo? Cada mensaje sin respuesta es una venta, un turno o un cliente que se enfría.",
     solution:
@@ -66,12 +55,13 @@ export const SERVICE_LANDING_PAGES = [
     homePainTitle: "Agendas desordenadas y cancelaciones constantes",
     homeCardSubtitle:
       "Organizá tu agenda, reducí cancelaciones y evitá el caos en la gestión de turnos.",
-    homeCardBadge: TURNOS_ONLINE_PRECIO_DESDE,
+    homeCardBadge: HIGHLIGHT_CHIP_TURNOS,
+    homeCardCta: "Coordinemos tu agenda",
     title: "Turnos online",
     metaDescription:
-      "Agenda y turnos online con confirmaciones y recordatorios. Menos cancelaciones; integración con WhatsApp. Desde $700.000 ARS.",
+      "Agenda y turnos online con confirmaciones y recordatorios. Menos cancelaciones e integración con WhatsApp. Presupuesto según alcance.",
     subtitle:
-      "Organizá tu agenda, reducí cancelaciones y evitá el caos en la gestión de turnos.",
+      "Un solo lugar para reservas, disponibilidad, confirmaciones y recordatorios automáticos. Menos cancelaciones de último momento, menos confusiones entre canales y más claridad para tu equipo y tus clientes.",
     problem:
       "¿Gestionás turnos con WhatsApp, llamadas y planillas y aparecen confusiones, superposiciones o cancelaciones sin control?",
     solution:
@@ -91,11 +81,13 @@ export const SERVICE_LANDING_PAGES = [
     homePainTitle: "Tareas manuales que te hacen perder horas",
     homeCardSubtitle:
       "Automatizá procesos repetitivos y liberá tiempo sin sumar más personal.",
-    homeCardBadge: AUTOMATIZACION_PROCESOS_PRECIO_REFERENCIA,
+    homeCardBadge: HIGHLIGHT_CHIP_AUTOMATIZACION,
+    homeCardCta: "Revisamos tu caso",
     title: "Automatización de procesos",
     metaDescription:
       "Menos tareas manuales: automatización de procesos, integraciones (CRM, APIs, planillas) y flujos a medida para tu negocio.",
-    subtitle: "Reducí tareas manuales, optimizá tu operación y automatizá tu negocio sin sumar más personal.",
+    subtitle:
+      "Integrá planillas, CRM, APIs y mensajería para que la información fluya sola: menos carga manual, menos errores al copiar datos y procesos repetibles que escalan sin sumar personas.",
     problem:
       "¿Seguís perdiendo horas en lo mismo cada semana? Mensajes, planillas, datos cargados a mano… y el negocio no para de pedirte más velocidad.",
     solution:
@@ -115,12 +107,13 @@ export const SERVICE_LANDING_PAGES = [
     homePainTitle: "Los sistemas que usás no se adaptan a tu negocio",
     homeCardSubtitle:
       "Soluciones diseñadas para tu negocio cuando lo estándar ya no alcanza.",
-    homeCardBadge: SOFTWARE_MEDIDA_PRECIO_DESDE,
+    homeCardBadge: HIGHLIGHT_CHIP_SOFTWARE_MEDIDA,
+    homeCardCta: "Definamos el alcance",
     title: "Software a medida",
     metaDescription:
-      "Sistemas y software a medida alineados a tu operación: procesos centralizados, integraciones y paneles. Presupuesto según alcance.",
+      "Sistemas y software a medida alineados a tu operación: procesos centralizados, integraciones y paneles. Charlamos y te paso presupuesto sin cargo.",
     subtitle:
-      "Soluciones diseñadas específicamente para tu negocio cuando lo estándar ya no alcanza.",
+      "Diseño y desarrollo sistemas alineados a tu operación: reglas propias, integraciones y paneles en un mismo producto. Entregas por etapas para que veas avances reales desde el inicio.",
     problem:
       "¿Usás herramientas genéricas que no encajan con tu forma de trabajar y terminás compensando con planillas y tareas manuales?",
     solution:
@@ -140,12 +133,13 @@ export const SERVICE_LANDING_PAGES = [
     homePainTitle: "Tu clínica sigue usando Excel y historias clínicas en papel",
     homeCardSubtitle:
       "Centralizá pacientes, turnos e historial en un solo sistema y evitá errores, desorganización y pérdida de información.",
-    homeCardBadge: CLINICAS_GESTION_PRECIO_DESDE,
+    homeCardBadge: HIGHLIGHT_CHIP_CLINICAS,
+    homeCardCta: "Charlemos de tu clínica",
     title: "Software para clínicas",
     metaDescription:
-      "Gestión para clínicas: pacientes, historial digital y turnos en un solo sistema. Desde $1.100.000 ARS.",
+      "Gestión para clínicas: pacientes, historial digital y turnos en un solo sistema. Propuesta según módulos y alcance.",
     subtitle:
-      "Organizá pacientes, turnos e historial en un solo sistema y dejá atrás Excel y registros en papel.",
+      "Pacientes, turnos e historia clínica en un solo lugar: acceso rápido a lo relevante, menos papeles y menos datos repartidos entre Excel y chats. Tu equipo atiende; el sistema ordena lo administrativo.",
     problem:
       "¿Gestionás pacientes en Excel, historias en papel y turnos por WhatsApp, con información dispersa y riesgo de errores o pérdida de datos?",
     solution:
@@ -165,12 +159,13 @@ export const SERVICE_LANDING_PAGES = [
     homePainTitle: "Tu control de stock es un caos entre Excel y anotaciones",
     homeCardSubtitle:
       "Organizá tu inventario en un solo sistema y evitá errores, pérdidas y desorden.",
-    homeCardBadge: INVENTARIO_STOCK_PRECIO_DESDE,
+    homeCardBadge: HIGHLIGHT_CHIP_INVENTARIO,
+    homeCardCta: "Ordenemos tu stock",
     title: "Stock e inventario",
     metaDescription:
-      "Control de stock e inventario centralizado: movimientos claros y menos errores. Entre $900.000 y $1.500.000 ARS.",
+      "Control de stock e inventario centralizado: movimientos claros y menos errores. Alcance y presupuesto según tu operación.",
     subtitle:
-      "Organizá tu stock, centralizá la información y evitá errores en la gestión de productos.",
+      "Movimientos, stock y productos con reglas claras: sabés qué hay, qué se vendió y qué reponer, con menos diferencias entre depósito y ventas y sin depender solo de planillas o anotaciones sueltas.",
     problem:
       "¿El inventario está en Excel y anotaciones, los datos no coinciden y perdés claridad para comprar, vender o armar pedidos?",
     solution:
@@ -200,7 +195,7 @@ export function getServiceLanding(slug: string): ServiceLandingPageData | undefi
   return PAGE_MAP[slug as ServiceLandingSlug];
 }
 
-/** Texto del enlace en cada card de servicios en el home (por defecto «Ver solución»). */
+/** Texto del enlace en cada card de servicios en el home. */
 export function getHomeCardCta(page: ServiceLandingPageData): string {
   const withCta = page as ServiceLandingPageData & { homeCardCta?: string };
   return typeof withCta.homeCardCta === "string" ? withCta.homeCardCta : "Ver solución";

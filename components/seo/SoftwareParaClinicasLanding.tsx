@@ -11,22 +11,18 @@ import {
 } from "lucide-react";
 import {
   FaqBlocks,
+  LandingWaCta,
   LANDING_ARTICLE_MAX_CLASS,
-  landingPrimaryCtaClass,
   SectionKicker,
   type FaqBlock,
 } from "@/components/seo/landing-blocks";
-import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
-import { REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
-import { CLINICAS_GESTION_PRECIO_DESDE } from "@/lib/service-landings";
-
+import { EVALUATION_OFFER_FAQ, PRIMARY_CTA_LABEL, REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
 const CATEGORY = "Software para clínicas";
 
 const HERO = {
   title: "Software de gestión para clínicas",
   subtitle:
-    "Organizá pacientes, turnos e historial en un solo sistema y dejá atrás Excel y registros en papel.",
-  cta: "Quiero organizar mi clínica",
+    "Pacientes, turnos e historia clínica en un solo lugar: acceso rápido a lo relevante, menos papeles y menos datos repartidos entre Excel y chats. Tu equipo atiende; el sistema ordena lo administrativo.",
 };
 
 const MORE_SOLUTIONS = [
@@ -86,9 +82,10 @@ const SEÑALES = [
   "La gestión depende de procesos manuales",
 ] as const;
 
-const MSG_HERO = "Hola Diego, quiero organizar mi clínica con un sistema de gestión.";
+const MSG_HERO =
+  "Hola Diego, quiero contarte cómo trabaja mi clínica y ver si un sistema de gestión encaja. Me interesa un presupuesto sin cargo.";
 const MSG_CASO =
-  "Hola Diego, quiero contarte mi caso para ver cómo organizar la información de mi clínica.";
+  "Hola Diego, quiero contarte mi caso (clínica / pacientes / turnos) para ver opciones y qué presupuesto podría ser.";
 
 function waHref(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
@@ -100,9 +97,9 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
     blocks: [
       {
         type: "p",
-        text: "Los proyectos suelen comenzar desde los $1.100.000 ARS, dependiendo del nivel de personalización, cantidad de módulos y necesidades del centro.",
+        text: "Depende del nivel de personalización, cantidad de módulos, integraciones y cómo trabaja tu centro: no hay un número único sin antes entender el alcance.",
       },
-      { type: "callout", text: "El valor final se define según el alcance del sistema." },
+      { type: "p", text: EVALUATION_OFFER_FAQ },
     ],
   },
   {
@@ -164,14 +161,12 @@ export function SoftwareParaClinicasLanding() {
                 {HERO.title}
               </h1>
               <p className="text-lg leading-relaxed text-muted-foreground md:text-xl">{HERO.subtitle}</p>
-              <p className="w-fit rounded-xl border border-primary/25 bg-primary/10 px-4 py-3 text-sm font-semibold text-primary leading-snug md:text-[15px]">
-                {CLINICAS_GESTION_PRECIO_DESDE}
-              </p>
               <div className="mt-8 flex flex-wrap items-center gap-4">
-                <Link href={waHref(MSG_HERO)} rel={REL_WHATSAPP_EXTERNAL} className={landingPrimaryCtaClass}>
-                  <WhatsAppIcon size={20} className="shrink-0 text-primary-foreground" aria-hidden />
-                  {HERO.cta}
-                </Link>
+                <LandingWaCta
+                  href={waHref(MSG_HERO)}
+                  rel={REL_WHATSAPP_EXTERNAL}
+                  main={PRIMARY_CTA_LABEL}
+                />
               </div>
             </div>
           </header>
@@ -437,10 +432,7 @@ export function SoftwareParaClinicasLanding() {
               Si tu clínica está manejando información en Excel y papel, podemos ver cómo organizar todo en un sistema.
             </p>
             <div className="relative mt-8">
-              <Link href={waHref(MSG_CASO)} rel={REL_WHATSAPP_EXTERNAL} className={landingPrimaryCtaClass}>
-                <WhatsAppIcon size={20} className="shrink-0 text-primary-foreground" aria-hidden />
-                Contame tu caso
-              </Link>
+              <LandingWaCta href={waHref(MSG_CASO)} rel={REL_WHATSAPP_EXTERNAL} main="Contame tu caso" />
             </div>
           </section>
 

@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
+import { PRIMARY_CTA_SUBLINE } from "@/lib/contact";
 import { homeSection } from "@/lib/home-links";
 
 export type FaqBlock =
@@ -74,3 +76,26 @@ export function FaqBlocks({ blocks, className = "" }: { blocks: FaqBlock[]; clas
 
 export const landingPrimaryCtaClass =
   "inline-flex w-full min-h-12 items-center justify-center gap-2 rounded-full border-2 border-primary bg-primary px-6 py-3.5 text-center text-[15px] font-semibold text-primary-foreground shadow-[0_8px_32px_-8px_var(--color-primary)] transition-[transform,opacity,box-shadow] hover:opacity-95 hover:shadow-[0_12px_36px_-10px_var(--color-primary)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-auto sm:min-h-0 sm:px-8 sm:text-base sm:hover:scale-[1.02]";
+
+/** CTA principal de landings (WhatsApp o ruta interna); “Presupuesto sin cargo” va debajo del botón. */
+export function LandingWaCta({
+  href,
+  rel,
+  main,
+  sub = PRIMARY_CTA_SUBLINE,
+}: {
+  href: string;
+  rel?: string;
+  main: string;
+  sub?: string;
+}) {
+  return (
+    <div className="inline-flex w-full max-w-full flex-col items-center gap-1.5 self-start sm:w-fit sm:max-w-[min(100%,28rem)]">
+      <Link href={href} rel={rel} className={landingPrimaryCtaClass} aria-label={`${main} — contacto`}>
+        <WhatsAppIcon size={20} className="shrink-0 text-primary-foreground" aria-hidden />
+        {main}
+      </Link>
+      <p className="w-full text-center text-xs font-medium text-muted-foreground">{sub}</p>
+    </div>
+  );
+}

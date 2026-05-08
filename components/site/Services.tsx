@@ -1,8 +1,8 @@
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
-import { CalendarDays, Code2, Package, Stethoscope, Zap } from "lucide-react";
+import { CalendarDays, Code2, MessageCircle, Package, Stethoscope, Zap } from "lucide-react";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
-import { PRIMARY_CTA_LABEL } from "@/lib/contact";
+import { PRIMARY_CTA_LABEL, PRIMARY_CTA_SUBLINE } from "@/lib/contact";
 import { homeSection } from "@/lib/home-links";
 import {
   getHomeCardCta,
@@ -10,8 +10,8 @@ import {
   type ServiceLandingSlug,
 } from "@/lib/service-landings";
 
-const CARD_ICON: Record<ServiceLandingSlug, LucideIcon | "whatsapp"> = {
-  "bots-whatsapp": "whatsapp",
+const CARD_ICON: Record<ServiceLandingSlug, LucideIcon> = {
+  "bots-whatsapp": MessageCircle,
   "sistema-turnos-online": CalendarDays,
   "automatizacion-negocios": Zap,
   "desarrollo-software-medida": Code2,
@@ -38,15 +38,7 @@ const serviceCards: ServiceCard[] = SERVICE_LANDING_PAGES.map((p) => ({
 }));
 
 function ServiceIcon({ slug }: { slug: ServiceLandingSlug }) {
-  const I = CARD_ICON[slug];
-  if (I === "whatsapp") {
-    return (
-      <div className="h-12 w-12 rounded-xl bg-primary grid place-items-center text-primary-foreground shrink-0">
-        <WhatsAppIcon size={22} className="shrink-0 text-primary-foreground" aria-hidden />
-      </div>
-    );
-  }
-  const Icon = I;
+  const Icon = CARD_ICON[slug];
   return (
     <div className="h-12 w-12 rounded-xl bg-primary grid place-items-center text-primary-foreground shrink-0">
       <Icon size={22} aria-hidden />
@@ -111,7 +103,7 @@ export function Services() {
                 Analizo tu caso y te propongo la mejor solución.
               </p>
             </div>
-            <div className="shrink-0 w-full lg:w-auto">
+            <div className="inline-flex w-full max-w-full shrink-0 flex-col items-center gap-1.5 lg:max-w-[min(100%,28rem)]">
               <a
                 href={homeSection("#contacto")}
                 className="inline-flex w-full min-h-12 items-center justify-center gap-2.5 rounded-full border-2 border-primary bg-primary px-6 py-3.5 text-[15px] font-semibold text-primary-foreground transition-[transform,opacity] hover:opacity-95 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background lg:w-auto lg:min-h-0 lg:px-8 lg:text-base lg:hover:scale-[1.02]"
@@ -120,6 +112,7 @@ export function Services() {
                 <WhatsAppIcon size={22} className="shrink-0 text-primary-foreground" aria-hidden />
                 {PRIMARY_CTA_LABEL}
               </a>
+              <p className="w-full text-center text-xs font-medium text-muted-foreground">{PRIMARY_CTA_SUBLINE}</p>
             </div>
           </div>
         </div>

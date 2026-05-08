@@ -1,6 +1,5 @@
-import { SparklesGlyph } from "@/components/site/SimpleIcons";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
-import { PRIMARY_CTA_LABEL } from "@/lib/contact";
+import { PRIMARY_CTA_LABEL, PRIMARY_CTA_SUBLINE } from "@/lib/contact";
 import { homeSection } from "@/lib/home-links";
 
 const heroMetrics = [
@@ -26,9 +25,6 @@ export function Hero() {
           <div className="motion-safe:animate-[fade-in-up_0.55s_cubic-bezier(0.22,1,0.36,1)_backwards] motion-reduce:animate-none inline-block">
             <div className="inline-flex items-center gap-1.5 rounded-full border border-primary bg-primary/20 px-2.5 py-1 pr-3 text-xs font-medium text-foreground backdrop-blur-sm">
               <span className="flex h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden />
-              <span className="inline-flex shrink-0" aria-hidden>
-                <SparklesGlyph size={13} className="text-primary" />
-              </span>
               <span>
                 Disponible para <span className="text-primary">nuevos proyectos</span>
               </span>
@@ -52,20 +48,23 @@ export function Hero() {
           </p>
 
           <div
-            className="mt-8 md:mt-10 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 motion-safe:animate-[fade-in-up_0.65s_cubic-bezier(0.22,1,0.36,1)_backwards] motion-reduce:animate-none"
+            className="mt-8 md:mt-10 grid w-full grid-cols-1 gap-y-2 motion-safe:animate-[fade-in-up_0.65s_cubic-bezier(0.22,1,0.36,1)_backwards] motion-reduce:animate-none sm:w-max sm:grid-cols-[auto_auto] sm:items-start sm:gap-x-4 sm:gap-y-2"
             style={{ animationDelay: "210ms" }}
           >
-            <a
-              href={homeSection("#contacto")}
-              className="relative inline-flex w-full min-h-12 items-center justify-center gap-2.5 rounded-full border-2 border-primary bg-primary px-6 py-3.5 text-[15px] font-semibold text-primary-foreground transition-[transform,opacity] duration-200 hover:opacity-95 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-auto sm:min-h-0 sm:px-8 sm:text-base sm:hover:scale-[1.02]"
-              aria-label={`${PRIMARY_CTA_LABEL} — ir a contacto`}
-            >
-              <WhatsAppIcon size={22} className="shrink-0 text-primary-foreground" aria-hidden />
-              {PRIMARY_CTA_LABEL}
-            </a>
+            <div className="col-start-1 row-start-1 flex w-full flex-col items-center gap-1.5 sm:w-fit">
+              <a
+                href={homeSection("#contacto")}
+                className="relative inline-flex w-full min-h-12 items-center justify-center gap-2.5 rounded-full border-2 border-primary bg-primary px-6 py-3.5 text-[15px] font-semibold text-primary-foreground transition-[transform,opacity] duration-200 hover:opacity-95 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-auto sm:min-h-0 sm:px-8 sm:text-base sm:hover:scale-[1.02]"
+                aria-label={`${PRIMARY_CTA_LABEL} — ir a contacto`}
+              >
+                <WhatsAppIcon size={22} className="shrink-0 text-primary-foreground" aria-hidden />
+                {PRIMARY_CTA_LABEL}
+              </a>
+              <p className="w-full text-center text-xs font-medium text-muted-foreground">{PRIMARY_CTA_SUBLINE}</p>
+            </div>
             <a
               href={homeSection("#proyectos")}
-              className="inline-flex w-full min-h-11 items-center justify-center gap-2 rounded-full border-2 border-primary bg-surface/60 px-6 py-3 text-sm font-medium text-primary transition duration-300 backdrop-blur hover:border-primary/60 hover:bg-primary/10 active:scale-[0.98] sm:w-auto sm:min-h-0 sm:hover:-translate-y-0.5"
+              className="col-start-1 row-start-2 inline-flex w-full min-h-12 items-center justify-center gap-2 rounded-full border-2 border-primary bg-surface/60 px-6 py-3.5 text-[15px] font-semibold text-primary transition duration-300 backdrop-blur hover:border-primary/60 hover:bg-primary/10 active:scale-[0.98] sm:col-start-2 sm:row-start-1 sm:w-auto sm:text-base sm:hover:-translate-y-0.5"
             >
               Ver casos reales
             </a>

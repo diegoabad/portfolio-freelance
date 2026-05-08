@@ -13,21 +13,19 @@ import {
 } from "lucide-react";
 import {
   FaqBlocks,
+  LandingWaCta,
   LANDING_ARTICLE_MAX_CLASS,
-  landingPrimaryCtaClass,
   SectionKicker,
   type FaqBlock,
 } from "@/components/seo/landing-blocks";
-import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
+import { EVALUATION_OFFER_FAQ, PRIMARY_CTA_LABEL } from "@/lib/contact";
 import { homeSection } from "@/lib/home-links";
-import { AUTOMATIZACION_PROCESOS_PRECIO_REFERENCIA } from "@/lib/service-landings";
-
 const CATEGORY = "Automatización de procesos";
 
 const HERO = {
   title: "Automatización de procesos para negocios",
-  subtitle: "Reducí tareas manuales, optimizá tu operación y automatizá tu negocio sin sumar más personal.",
-  cta: "Quiero automatizar mi negocio",
+  subtitle:
+    "Integrá planillas, CRM, APIs y mensajería para que la información fluya sola: menos carga manual, menos errores al copiar datos y procesos repetibles que escalan sin sumar personas.",
 };
 
 const MORE_SOLUTIONS = [
@@ -75,7 +73,7 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
     blocks: [
       {
         type: "p",
-        text: `Como referencia, ${AUTOMATIZACION_PROCESOS_PRECIO_REFERENCIA} suele cubrir automatizaciones de alcance acotado a intermedio. El costo depende del tipo de automatización y la complejidad del proceso: no es lo mismo automatizar tareas simples que integrar varios sistemas o flujos más complejos.`,
+        text: "El costo depende del tipo de automatización y la complejidad del proceso: no es lo mismo automatizar tareas simples que integrar varios sistemas o flujos más complejos.",
       },
       {
         type: "ul",
@@ -86,7 +84,7 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
           "Complejidad de la lógica",
         ],
       },
-      { type: "callout", text: "Lo ideal es evaluar el caso y definir un alcance claro antes de estimar." },
+      { type: "p", text: EVALUATION_OFFER_FAQ },
     ],
   },
   {
@@ -243,14 +241,8 @@ export function AutomatizacionNegociosLanding() {
                 {HERO.title}
               </h1>
               <p className="mt-5 text-lg leading-relaxed text-muted-foreground md:text-xl">{HERO.subtitle}</p>
-              <p className="mt-5 w-fit rounded-xl border border-primary/25 bg-primary/10 px-4 py-3 text-sm font-semibold text-primary leading-snug md:text-[15px]">
-                {AUTOMATIZACION_PROCESOS_PRECIO_REFERENCIA}
-              </p>
               <div className="mt-8 flex flex-wrap items-center gap-4">
-                <Link href={homeSection("#contacto")} className={landingPrimaryCtaClass}>
-                  <WhatsAppIcon size={20} className="shrink-0 text-primary-foreground" aria-hidden />
-                  {HERO.cta}
-                </Link>
+                <LandingWaCta href={homeSection("#contacto")} main={PRIMARY_CTA_LABEL} />
               </div>
             </div>
           </header>
@@ -540,10 +532,7 @@ export function AutomatizacionNegociosLanding() {
               Si estás en esta situación, podemos analizar tu caso y ver qué se puede automatizar.
             </p>
             <div className="relative mt-8">
-              <Link href={homeSection("#contacto")} className={landingPrimaryCtaClass}>
-                <WhatsAppIcon size={20} className="shrink-0 text-primary-foreground" aria-hidden />
-                Contame tu caso por WhatsApp
-              </Link>
+              <LandingWaCta href={homeSection("#contacto")} main="Contame tu caso" />
             </div>
           </section>
 

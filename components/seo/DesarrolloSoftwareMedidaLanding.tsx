@@ -12,22 +12,18 @@ import {
 } from "lucide-react";
 import {
   FaqBlocks,
+  LandingWaCta,
   LANDING_ARTICLE_MAX_CLASS,
-  landingPrimaryCtaClass,
   SectionKicker,
   type FaqBlock,
 } from "@/components/seo/landing-blocks";
-import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
-import { REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
-import { SOFTWARE_MEDIDA_PRECIO_DESDE, SOFTWARE_MEDIDA_PRECIO_RANGO } from "@/lib/service-landings";
-
+import { EVALUATION_OFFER_FAQ, PRIMARY_CTA_LABEL, REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
 const CATEGORY = "Software a medida";
 
 const HERO = {
   title: "Desarrollo de software a medida",
   subtitle:
-    "Soluciones diseñadas específicamente para tu negocio cuando lo estándar ya no alcanza.",
-  cta: "Quiero desarrollar un sistema a medida",
+    "Diseño y desarrollo sistemas alineados a tu operación: reglas propias, integraciones y paneles en un mismo producto. Entregas por etapas para que veas avances reales desde el inicio.",
 };
 
 const MORE_SOLUTIONS = [
@@ -87,9 +83,10 @@ const SEÑALES = [
   "Sentís que el sistema limita el crecimiento",
 ] as const;
 
-const MSG_HERO = "Hola Diego, quiero desarrollar un sistema a medida.";
+const MSG_HERO =
+  "Hola Diego, quiero contarte mi proyecto para ver si tiene sentido un sistema a medida. Me interesa un presupuesto sin cargo.";
 const MSG_CASO =
-  "Hola Diego, quiero contarte mi caso para ver si tiene sentido desarrollar software a medida.";
+  "Hola Diego, quiero contarte mi caso (software a medida) para ver encaje y qué presupuesto podría ser.";
 
 function waHref(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
@@ -101,9 +98,9 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
     blocks: [
       {
         type: "p",
-        text: "Depende del alcance, funcionalidades y nivel de complejidad. No es lo mismo una herramienta simple que un sistema completo con múltiples módulos.",
+        text: "Depende del alcance, funcionalidades, integraciones y nivel de complejidad. No es lo mismo una herramienta simple que un sistema completo con múltiples módulos.",
       },
-      { type: "callout", text: "Cada proyecto se define en función de las necesidades del negocio." },
+      { type: "p", text: EVALUATION_OFFER_FAQ },
     ],
   },
   {
@@ -172,19 +169,12 @@ export function DesarrolloSoftwareMedidaLanding() {
                 {HERO.title}
               </h1>
               <p className="text-lg leading-relaxed text-muted-foreground md:text-xl">{HERO.subtitle}</p>
-              <div className="space-y-2 pt-2">
-                <p className="w-fit rounded-xl border border-primary/25 bg-primary/10 px-4 py-3 text-sm font-semibold text-primary leading-snug md:text-[15px]">
-                  {SOFTWARE_MEDIDA_PRECIO_DESDE}
-                </p>
-                <p className="text-sm text-muted-foreground leading-relaxed md:text-[15px]">
-                  {SOFTWARE_MEDIDA_PRECIO_RANGO}
-                </p>
-              </div>
               <div className="mt-8 flex flex-wrap items-center gap-4">
-                <Link href={waHref(MSG_HERO)} rel={REL_WHATSAPP_EXTERNAL} className={landingPrimaryCtaClass}>
-                  <WhatsAppIcon size={20} className="shrink-0 text-primary-foreground" aria-hidden />
-                  {HERO.cta}
-                </Link>
+                <LandingWaCta
+                  href={waHref(MSG_HERO)}
+                  rel={REL_WHATSAPP_EXTERNAL}
+                  main={PRIMARY_CTA_LABEL}
+                />
               </div>
             </div>
           </header>
@@ -453,10 +443,7 @@ export function DesarrolloSoftwareMedidaLanding() {
               solución tiene sentido.
             </p>
             <div className="relative mt-8">
-              <Link href={waHref(MSG_CASO)} rel={REL_WHATSAPP_EXTERNAL} className={landingPrimaryCtaClass}>
-                <WhatsAppIcon size={20} className="shrink-0 text-primary-foreground" aria-hidden />
-                Contame tu caso
-              </Link>
+              <LandingWaCta href={waHref(MSG_CASO)} rel={REL_WHATSAPP_EXTERNAL} main="Contame tu caso" />
             </div>
           </section>
 

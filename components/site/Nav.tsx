@@ -95,7 +95,7 @@ export function Nav() {
   };
 
   const ctaClass =
-    "inline-flex items-center justify-center gap-2 rounded-full border-2 border-primary bg-primary px-3 lg:px-4 py-2 text-xs lg:text-sm font-semibold text-primary-foreground hover:opacity-90 transition shrink-0 whitespace-nowrap";
+    "inline-flex items-center justify-center gap-2 rounded-full border-2 border-primary bg-primary px-3 lg:px-4 py-2 text-xs lg:text-sm font-semibold text-primary-foreground hover:opacity-90 transition shrink-0 whitespace-nowrap max-w-[min(100vw-10rem,16rem)] lg:max-w-none";
 
   const closeServicesMenu = () => {
     setServicesMenu(null);
@@ -224,7 +224,12 @@ export function Nav() {
         </nav>
 
         <div className="hidden md:flex absolute right-6 lg:right-10 top-1/2 -translate-y-1/2 z-20 items-center">
-          <a href={homeSection("#contacto")} onClick={() => isHome && bumpActiveFromUrlHash()} className={ctaClass}>
+          <a
+            href={homeSection("#contacto")}
+            onClick={() => isHome && bumpActiveFromUrlHash()}
+            className={ctaClass}
+            aria-label={`${PRIMARY_CTA_LABEL} — ir a contacto`}
+          >
             <WhatsAppIcon size={17} className="shrink-0 text-primary-foreground" />
             {PRIMARY_CTA_LABEL}
           </a>
@@ -309,7 +314,8 @@ export function Nav() {
                 bumpActiveFromUrlHash();
                 setOpen(false);
               }}
-              className="mt-3 inline-flex items-center justify-center gap-2 rounded-full border-2 border-primary bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground"
+              className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-primary bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground"
+              aria-label={`${PRIMARY_CTA_LABEL} — ir a contacto`}
             >
               <WhatsAppIcon size={18} className="shrink-0 text-primary-foreground" />
               {PRIMARY_CTA_LABEL}

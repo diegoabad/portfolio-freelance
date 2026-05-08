@@ -11,21 +11,18 @@ import {
 } from "lucide-react";
 import {
   FaqBlocks,
+  LandingWaCta,
   LANDING_ARTICLE_MAX_CLASS,
-  landingPrimaryCtaClass,
   SectionKicker,
   type FaqBlock,
 } from "@/components/seo/landing-blocks";
-import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
-import { REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
-import { TURNOS_ONLINE_PRECIO_DESDE } from "@/lib/service-landings";
-
+import { EVALUATION_OFFER_FAQ, PRIMARY_CTA_LABEL, REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
 const CATEGORY = "Turnos online";
 
 const HERO = {
   title: "Sistema de gestión de turnos online",
-  subtitle: "Organizá tu agenda, reducí cancelaciones y evitá el caos en la gestión de turnos.",
-  cta: "Quiero organizar mis turnos",
+  subtitle:
+    "Un solo lugar para reservas, disponibilidad, confirmaciones y recordatorios automáticos. Menos cancelaciones de último momento, menos confusiones entre canales y más claridad para tu equipo y tus clientes.",
 };
 
 const MORE_SOLUTIONS = [
@@ -87,9 +84,10 @@ const SEÑALES = [
   "Tu agenda depende de mensajes o llamadas",
 ] as const;
 
-const MSG_HERO = "Hola Diego, quiero organizar mis turnos con un sistema online.";
+const MSG_HERO =
+  "Hola Diego, quiero contarte mi proyecto: necesito ordenar mis turnos con un sistema online. Me interesa un presupuesto sin cargo.";
 const MSG_CASO =
-  "Hola Diego, quiero contarte mi caso para ver cómo mejorar la gestión de turnos en mi negocio.";
+  "Hola Diego, quiero contarte mi caso (turnos / agenda) para ver cómo lo podemos ordenar y qué presupuesto podría ser.";
 
 function waHref(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
@@ -101,12 +99,9 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
     blocks: [
       {
         type: "p",
-        text: "Depende del nivel de automatización y personalización. No es lo mismo una agenda básica que un sistema integrado con otras herramientas.",
+        text: "Depende del nivel de automatización, integraciones y personalización: no es lo mismo una agenda básica que un sistema conectado con otras herramientas.",
       },
-      {
-        type: "p",
-        text: "Como referencia, muchos proyectos arrancan desde $700.000 ARS según alcance.",
-      },
+      { type: "p", text: EVALUATION_OFFER_FAQ },
     ],
   },
   {
@@ -175,14 +170,12 @@ export function SistemaTurnosOnlineLanding() {
                 {HERO.title}
               </h1>
               <p className="text-lg leading-relaxed text-muted-foreground md:text-xl">{HERO.subtitle}</p>
-              <p className="w-fit rounded-xl border border-primary/25 bg-primary/10 px-4 py-3 text-sm font-semibold text-primary leading-snug md:text-[15px]">
-                {TURNOS_ONLINE_PRECIO_DESDE}
-              </p>
               <div className="mt-8 flex flex-wrap items-center gap-4">
-                <Link href={waHref(MSG_HERO)} rel={REL_WHATSAPP_EXTERNAL} className={landingPrimaryCtaClass}>
-                  <WhatsAppIcon size={20} className="shrink-0 text-primary-foreground" aria-hidden />
-                  {HERO.cta}
-                </Link>
+                <LandingWaCta
+                  href={waHref(MSG_HERO)}
+                  rel={REL_WHATSAPP_EXTERNAL}
+                  main={PRIMARY_CTA_LABEL}
+                />
               </div>
             </div>
           </header>
@@ -454,10 +447,7 @@ export function SistemaTurnosOnlineLanding() {
               Si tu agenda está desordenada o estás perdiendo turnos, podemos ver cómo organizarla mejor.
             </p>
             <div className="relative mt-8">
-              <Link href={waHref(MSG_CASO)} rel={REL_WHATSAPP_EXTERNAL} className={landingPrimaryCtaClass}>
-                <WhatsAppIcon size={20} className="shrink-0 text-primary-foreground" aria-hidden />
-                Contame tu caso
-              </Link>
+              <LandingWaCta href={waHref(MSG_CASO)} rel={REL_WHATSAPP_EXTERNAL} main="Contame tu caso" />
             </div>
           </section>
 

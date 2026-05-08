@@ -11,21 +11,18 @@ import {
 } from "lucide-react";
 import {
   FaqBlocks,
+  LandingWaCta,
   LANDING_ARTICLE_MAX_CLASS,
-  landingPrimaryCtaClass,
   SectionKicker,
   type FaqBlock,
 } from "@/components/seo/landing-blocks";
-import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
-import { REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
-import { INVENTARIO_STOCK_PRECIO_DESDE } from "@/lib/service-landings";
-
+import { EVALUATION_OFFER_FAQ, PRIMARY_CTA_LABEL, REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
 const CATEGORY = "Gestión de inventario";
 
 const HERO = {
   title: "Sistema de control de stock e inventario",
-  subtitle: "Organizá tu stock, centralizá la información y evitá errores en la gestión de productos.",
-  cta: "Quiero ordenar mi stock",
+  subtitle:
+    "Movimientos, stock y productos con reglas claras: sabés qué hay, qué se vendió y qué reponer, con menos diferencias entre depósito y ventas y sin depender solo de planillas o anotaciones sueltas.",
 };
 
 const MORE_SOLUTIONS = [
@@ -86,8 +83,10 @@ const SEÑALES = [
   "No sabés exactamente qué hay disponible",
 ] as const;
 
-const MSG_HERO = "Hola Diego, quiero ordenar mi stock con un sistema de inventario.";
-const MSG_CASO = "Hola Diego, quiero contarte mi caso para ver cómo organizar el control de stock.";
+const MSG_HERO =
+  "Hola Diego, quiero contarte mi proyecto: necesito ordenar el stock con un sistema de inventario. Me interesa un presupuesto sin cargo.";
+const MSG_CASO =
+  "Hola Diego, quiero contarte mi caso (stock / depósito / ventas) para ver cómo encaja y qué presupuesto podría ser.";
 
 function waHref(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
@@ -99,8 +98,9 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
     blocks: [
       {
         type: "p",
-        text: "Depende del nivel de personalización y funcionalidades. Los proyectos suelen ir entre $900.000 y $1.500.000 ARS.",
+        text: "Depende del nivel de personalización, integraciones (ventas, facturación, depósitos), volumen de productos y movimientos.",
       },
+      { type: "p", text: EVALUATION_OFFER_FAQ },
     ],
   },
   {
@@ -149,14 +149,12 @@ export function SistemaGestionInventarioLanding() {
                 {HERO.title}
               </h1>
               <p className="text-lg leading-relaxed text-muted-foreground md:text-xl">{HERO.subtitle}</p>
-              <p className="w-fit rounded-xl border border-primary/25 bg-primary/10 px-4 py-3 text-sm font-semibold text-primary leading-snug md:text-[15px]">
-                {INVENTARIO_STOCK_PRECIO_DESDE}
-              </p>
               <div className="mt-8 flex flex-wrap items-center gap-4">
-                <Link href={waHref(MSG_HERO)} rel={REL_WHATSAPP_EXTERNAL} className={landingPrimaryCtaClass}>
-                  <WhatsAppIcon size={20} className="shrink-0 text-primary-foreground" aria-hidden />
-                  {HERO.cta}
-                </Link>
+                <LandingWaCta
+                  href={waHref(MSG_HERO)}
+                  rel={REL_WHATSAPP_EXTERNAL}
+                  main={PRIMARY_CTA_LABEL}
+                />
               </div>
             </div>
           </header>
@@ -425,10 +423,7 @@ export function SistemaGestionInventarioLanding() {
               Si tu stock está desordenado entre Excel y anotaciones, podemos ver cómo organizarlo en un sistema.
             </p>
             <div className="relative mt-8">
-              <Link href={waHref(MSG_CASO)} rel={REL_WHATSAPP_EXTERNAL} className={landingPrimaryCtaClass}>
-                <WhatsAppIcon size={20} className="shrink-0 text-primary-foreground" aria-hidden />
-                Contame tu caso
-              </Link>
+              <LandingWaCta href={waHref(MSG_CASO)} rel={REL_WHATSAPP_EXTERNAL} main="Contame tu caso" />
             </div>
           </section>
 

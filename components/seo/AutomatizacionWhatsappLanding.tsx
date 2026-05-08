@@ -11,22 +11,19 @@ import {
 } from "lucide-react";
 import {
   FaqBlocks,
+  LandingWaCta,
   LANDING_ARTICLE_MAX_CLASS,
-  landingPrimaryCtaClass,
   SectionKicker,
   type FaqBlock,
 } from "@/components/seo/landing-blocks";
-import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
+import { EVALUATION_OFFER_FAQ, PRIMARY_CTA_LABEL } from "@/lib/contact";
 import { homeSection } from "@/lib/home-links";
-import { AUTOMATIZACION_WHATSAPP_PRECIO_REFERENCIA } from "@/lib/service-landings";
-
 const CATEGORY = "Bots de WhatsApp";
 
 const HERO = {
   title: "Bots de WhatsApp para negocios",
   subtitle:
-    "Respondé consultas automáticamente y evitá perder clientes por no responder a tiempo.",
-  cta: "Quiero automatizar mi WhatsApp",
+    "Armá flujos que contestan lo repetitivo, ordenan conversaciones y conectan con tu CRM o agenda. Menos consultas perdidas por tiempo de respuesta y más seguimiento claro desde el primer mensaje.",
 };
 
 const MORE_SOLUTIONS = [
@@ -91,8 +88,9 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
     blocks: [
       {
         type: "p",
-        text: "Depende del nivel de automatización y las integraciones necesarias. Cada caso se evalúa según el volumen de mensajes y el flujo de atención.",
+        text: "Depende del nivel de automatización, volumen de mensajes, integraciones (CRM, agenda, etc.) y complejidad del flujo de atención.",
       },
+      { type: "p", text: EVALUATION_OFFER_FAQ },
     ],
   },
   {
@@ -161,14 +159,8 @@ export function AutomatizacionWhatsappLanding() {
                 {HERO.title}
               </h1>
               <p className="mt-5 text-lg leading-relaxed text-muted-foreground md:text-xl">{HERO.subtitle}</p>
-              <p className="mt-5 w-fit rounded-xl border border-primary/25 bg-primary/10 px-4 py-3 text-sm font-semibold text-primary leading-snug md:text-[15px]">
-                {AUTOMATIZACION_WHATSAPP_PRECIO_REFERENCIA}
-              </p>
               <div className="mt-8 flex flex-wrap items-center gap-4">
-                <Link href={homeSection("#contacto")} className={landingPrimaryCtaClass}>
-                  <WhatsAppIcon size={20} className="shrink-0 text-primary-foreground" aria-hidden />
-                  {HERO.cta}
-                </Link>
+                <LandingWaCta href={homeSection("#contacto")} main={PRIMARY_CTA_LABEL} />
               </div>
             </div>
           </header>
@@ -433,10 +425,7 @@ export function AutomatizacionWhatsappLanding() {
               Si estás recibiendo consultas y no llegás a responder todo, podemos ver cómo automatizar tu WhatsApp.
             </p>
             <div className="relative mt-8">
-              <Link href={homeSection("#contacto")} className={landingPrimaryCtaClass}>
-                <WhatsAppIcon size={20} className="shrink-0 text-primary-foreground" aria-hidden />
-                Contame tu caso por WhatsApp
-              </Link>
+              <LandingWaCta href={homeSection("#contacto")} main="Contame tu caso" />
             </div>
           </section>
 

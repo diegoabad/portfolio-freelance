@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import type { ServiceLandingPageData } from "@/lib/service-landings";
 import { mergedInterlinks } from "@/lib/service-landings";
-import { LANDING_CONSULT_CTA } from "@/lib/contact";
+import { LANDING_CONSULT_CTA, PRIMARY_CTA_SUBLINE } from "@/lib/contact";
 import { homeSection } from "@/lib/home-links";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 
@@ -56,14 +56,16 @@ export function ServiceLandingView({ page }: { page: ServiceLandingPageData }) {
         </div>
       </section>
 
-      <div className="mt-12">
+      <div className="mt-12 inline-flex w-full max-w-full flex-col items-center gap-1.5 self-start sm:w-fit sm:max-w-[min(100%,28rem)]">
         <Link
           href={homeSection("#contacto")}
           className="inline-flex w-full min-h-12 items-center justify-center gap-2 rounded-full border-2 border-primary bg-primary px-6 py-3.5 text-center text-[15px] font-semibold text-primary-foreground transition-[transform,opacity] hover:opacity-95 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-auto sm:min-h-0 sm:px-8 sm:text-base sm:hover:scale-[1.02]"
+          aria-label={`${LANDING_CONSULT_CTA} — ir a contacto`}
         >
           <WhatsAppIcon size={20} className="shrink-0 text-primary-foreground" aria-hidden />
           {LANDING_CONSULT_CTA}
         </Link>
+        <p className="w-full text-center text-xs font-medium text-muted-foreground">{PRIMARY_CTA_SUBLINE}</p>
       </div>
 
       <section className="mt-16 border-t border-border pt-12">
