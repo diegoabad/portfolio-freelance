@@ -178,20 +178,18 @@ export function Nav() {
 
   const headerSurfaceClass =
     isHome && !navSolid
-      ? "border-border bg-background md:border-transparent md:bg-transparent md:backdrop-blur-none md:supports-backdrop-filter:bg-transparent"
-      : "border-border bg-background md:border-border md:bg-background/95 md:backdrop-blur-xl md:supports-backdrop-filter:bg-background/80";
+      ? "bg-background md:bg-transparent md:backdrop-blur-none md:supports-backdrop-filter:bg-transparent"
+      : "bg-background md:bg-background md:backdrop-blur-none";
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 w-full border-b transition-[background-color,backdrop-filter,border-color] duration-300 ease-out max-md:flex max-md:max-h-dvh max-md:flex-col max-md:overflow-hidden md:overflow-visible ${headerSurfaceClass}`}
+      className={`fixed top-0 inset-x-0 z-50 w-full border-b border-primary/18 transition-[background-color,backdrop-filter,border-color] duration-300 ease-out max-md:flex max-md:max-h-dvh max-md:flex-col max-md:overflow-hidden md:overflow-visible ${headerSurfaceClass}`}
     >
       <div className="relative max-w-site mx-auto w-full shrink-0 px-4 sm:px-6 lg:px-10 flex min-h-21 md:min-h-24 items-center justify-between md:justify-center py-3 md:py-[7px]">
         <a
           href={homeSection("#top")}
           onClick={() => isHome && bumpActiveFromUrlHash()}
-          className={`flex min-w-0 shrink-0 items-center gap-2.5 z-20 md:absolute md:left-6 lg:left-10 md:top-1/2 md:-translate-y-1/2 md:flex-none md:max-w-none md:pr-0 pr-2 ${
-            isHome && !navSolid ? "text-white" : "text-foreground"
-          }`}
+          className="flex min-w-0 shrink-0 items-center gap-2.5 z-20 md:absolute md:left-6 lg:left-10 md:top-1/2 md:-translate-y-1/2 md:flex-none md:max-w-none md:pr-0 pr-2"
         >
           <BrandLogoMark
             size={42}
@@ -203,20 +201,10 @@ export function Nav() {
             }
           />
           <span className="min-w-0 text-left leading-tight">
-            <span
-              className={`block font-display font-semibold text-base tracking-tight truncate ${
-                isHome && !navSolid ? "text-white" : "text-foreground"
-              }`}
-            >
+            <span className="block truncate font-display font-semibold text-base tracking-tight text-foreground">
               Diego Abad
             </span>
-            <span
-              className={`block truncate text-[11px] leading-tight ${
-                isHome && !navSolid ? "text-white/70" : "text-muted-foreground"
-              }`}
-            >
-              {BRAND_TAGLINE}
-            </span>
+            <span className="block truncate text-[11px] leading-tight text-muted-foreground">{BRAND_TAGLINE}</span>
           </span>
         </a>
 

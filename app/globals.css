@@ -85,6 +85,28 @@
     scroll-behavior: smooth;
     color-scheme: dark;
     cursor: default;
+    /* Firefox */
+    scrollbar-color: var(--accent-blue) var(--background);
+    scrollbar-width: thin;
+  }
+
+  html::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  html::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+
+  html::-webkit-scrollbar-thumb {
+    background-color: color-mix(in oklab, var(--accent-blue) 72%, var(--background));
+    border-radius: 9999px;
+    border: 2px solid var(--background);
+  }
+
+  html::-webkit-scrollbar-thumb:hover {
+    background-color: color-mix(in oklab, var(--accent-blue) 88%, var(--background));
   }
 
   body {
