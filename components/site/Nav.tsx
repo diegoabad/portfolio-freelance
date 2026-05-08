@@ -181,9 +181,12 @@ export function Nav() {
       ? "bg-background md:bg-transparent md:backdrop-blur-none md:supports-backdrop-filter:bg-transparent"
       : "bg-background md:bg-background md:backdrop-blur-none";
 
+  const headerBorderClass =
+    isHome && !navSolid ? "border-b border-transparent" : "border-b border-primary/18";
+
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 w-full border-b border-primary/18 transition-[background-color,backdrop-filter,border-color] duration-300 ease-out max-md:flex max-md:max-h-dvh max-md:flex-col max-md:overflow-hidden md:overflow-visible ${headerSurfaceClass}`}
+      className={`fixed top-0 inset-x-0 z-50 w-full ${headerBorderClass} transition-[background-color,backdrop-filter,border-color] duration-300 ease-out max-md:flex max-md:max-h-dvh max-md:flex-col max-md:overflow-hidden md:overflow-visible ${headerSurfaceClass}`}
     >
       <div className="relative max-w-site mx-auto w-full shrink-0 px-4 sm:px-6 lg:px-10 flex min-h-21 md:min-h-24 items-center justify-between md:justify-center py-3 md:py-[7px]">
         <a

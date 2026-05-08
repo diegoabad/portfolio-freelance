@@ -131,9 +131,11 @@ export function Hero() {
                 style={{ animationDelay: `${260 + i * 60}ms` }}
               >
                 <div className="flex gap-3.5 sm:block sm:gap-0">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/15 text-primary sm:mb-3 sm:h-12 sm:w-12">
-                    <Icon className="size-5 sm:size-[22px]" strokeWidth={2} aria-hidden />
-                  </span>
+                  <Icon
+                    className="size-5 shrink-0 text-primary sm:mb-3 sm:size-[22px]"
+                    strokeWidth={2}
+                    aria-hidden
+                  />
                   <div>
                     <p className="font-display text-base font-semibold tracking-tight text-foreground sm:text-lg">
                       {item.title}

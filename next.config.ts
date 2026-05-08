@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
@@ -9,7 +10,7 @@ const nextConfig: NextConfig = {
   },
   images: {
     formats: ["image/avif", "image/webp"],
-    qualities: [60, 72, 75, 85],
+    qualities: [60, 65, 72, 75, 85],
     /** Permite variantes más chicas para miniaturas (galería casos) sin subir el mínimo global de `fill` demasiado. */
     deviceSizes: [384, 640, 750, 828, 1080, 1200, 1920, 2048],
     /**
@@ -17,6 +18,8 @@ const nextConfig: NextConfig = {
      * Un solo patrón cubre `public/` (hero, avatar, logo con `?v=`, capturas `/projects/...`).
      */
     localPatterns: [{ pathname: "/**" }],
+    /** Segundos que CDN/origen puede cachear variantes de `/_next/image` (menos recomputación en visitas repetidas). */
+    minimumCacheTTL: 60 * 60 * 24 * 7,
   },
   async headers() {
     /** En prod: cache largo para PNG estáticos (Next `/image` también optimiza). En dev: sin caché para ver cambios al instante. Si cambiás el archivo, renombrá o bust cache. */

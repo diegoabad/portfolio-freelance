@@ -9,11 +9,15 @@ import "./globals.css";
 const figtree = Figtree({
   variable: "--font-figtree",
   subsets: ["latin"],
+  display: "swap",
+  /** No compite en red con Outfit (hero / títulos); el cuerpo puede hacer FOUT breve. */
+  preload: false,
 });
 
 const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
+  display: "swap",
   /** Preload: el LCP en home es el h1 del hero (font-display / Outfit). */
   preload: true,
 });

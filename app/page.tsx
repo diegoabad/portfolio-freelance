@@ -34,7 +34,10 @@ const Projects = dynamic(() => import("@/components/site/Projects").then((m) => 
 
 export default function Home() {
   return (
-    <main className="relative z-10 min-h-screen flex-1 text-foreground">
+    <>
+      {/* Descarga temprana del retrato en «Sobre mí» (pesado); la barra de hero ya tiene priority */}
+      <link rel="preload" href="/avatar-about.png" as="image" />
+      <main className="relative z-10 min-h-screen flex-1 text-foreground">
       <FloatingWhatsAppDynamic />
       <Nav />
       <Hero />
@@ -45,5 +48,6 @@ export default function Home() {
       <Contact />
       <Footer />
     </main>
+    </>
   );
 }

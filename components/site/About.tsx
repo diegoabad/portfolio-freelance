@@ -23,10 +23,12 @@ export function About() {
                 src="/avatar-about.png"
                 alt=""
                 fill
-                quality={72}
-                sizes="(max-width:768px) 50vw, (max-width:1024px) 28vw, 320px"
+                loading="eager"
+                quality={65}
+                sizes="(max-width:768px) 48vw, (max-width:1024px) 26vw, min(360px, 28vw)"
                 className="object-cover object-[58%_center] md:object-[55%_center]"
-                fetchPriority="low"
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZkL/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2L/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgICAgEFAAAAAAAAAAAAAQIAAwQRBRIhBhMxYXH/xAAVAQEBAAAAAAAAAAAAAAAAAAAFBv/EABsRAAICAwEAAAAAAAAAAAAAAAECAAMRBBIx/9oADAMBAAIRAxEAPwCXq7OWIjZJaXGzdRIPWaotHtTM//Z"
               />
             </div>
           </div>
