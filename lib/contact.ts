@@ -4,6 +4,14 @@ export const CONTACT_EMAIL = "diegoabad.2289@gmail.com";
 /** `nofollow` reduce rastreos masivos a wa.me (auditores suelen marcar 429 como “enlace roto”). */
 export const REL_WHATSAPP_EXTERNAL = "nofollow noreferrer noopener" as const;
 
+/** Mensaje prellenado al abrir WhatsApp desde la home (hero, etc.). */
+export const WHATSAPP_HERO_PREFILL =
+  "Hola Diego, te escribo desde tu web. Me interesa charlar sobre un proyecto.";
+
+export function whatsAppHref(message: string = WHATSAPP_HERO_PREFILL): string {
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
+
 /** Texto del botón principal en landings, bloque servicios y textos largos. */
 export const PRIMARY_CTA_LABEL = "Contame tu proyecto";
 

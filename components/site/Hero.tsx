@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { BarChart3, Code2, Play, Share2, Zap } from "lucide-react";
-import { HERO_NAV_CTA_LABEL } from "@/lib/contact";
+import { HERO_NAV_CTA_LABEL, REL_WHATSAPP_EXTERNAL, whatsAppHref } from "@/lib/contact";
 import { homeSection } from "@/lib/home-links";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 
@@ -107,9 +107,11 @@ export function Hero() {
               </a>
               <div className="flex w-full flex-col items-stretch gap-0 sm:col-start-1 sm:row-start-1 sm:w-fit sm:items-start">
                 <a
-                  href={homeSection("#contacto")}
+                  href={whatsAppHref()}
+                  target="_blank"
+                  rel={REL_WHATSAPP_EXTERNAL}
                   className="relative inline-flex w-full min-h-12 items-center justify-center gap-2 rounded-[10px] border-2 border-primary bg-primary px-6 py-3.5 text-[15px] font-semibold text-primary-foreground transition hover:opacity-95 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-auto sm:px-8 sm:text-base"
-                  aria-label={`${HERO_NAV_CTA_LABEL} — ir a contacto`}
+                  aria-label={`${HERO_NAV_CTA_LABEL} — abrir WhatsApp`}
                 >
                   <WhatsAppIcon size={22} className="shrink-0 text-primary-foreground" aria-hidden />
                   {HERO_NAV_CTA_LABEL}
