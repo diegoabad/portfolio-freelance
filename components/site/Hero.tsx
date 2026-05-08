@@ -42,7 +42,7 @@ export function Hero() {
         aria-hidden
       >
         <div
-          className="absolute inset-0 opacity-[0.28] max-md:opacity-[0.16] mask-[linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.2)_12%,rgba(0,0,0,0.65)_32%,black_52%,black_88%,rgba(0,0,0,0.35)_100%),linear-gradient(to_bottom,black_0%,black_58%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.2)_12%,rgba(0,0,0,0.65)_32%,black_52%,black_88%,rgba(0,0,0,0.35)_100%),linear-gradient(to_bottom,black_0%,black_58%,transparent_100%)] mask-intersect [-webkit-mask-composite:source-in] mask-[100%_100%,100%_100%]"
+          className="absolute inset-0 opacity-[0.28] max-md:opacity-[0.21] mask-[linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.2)_12%,rgba(0,0,0,0.65)_32%,black_52%,black_88%,rgba(0,0,0,0.35)_100%),linear-gradient(to_bottom,black_0%,black_58%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.2)_12%,rgba(0,0,0,0.65)_32%,black_52%,black_88%,rgba(0,0,0,0.35)_100%),linear-gradient(to_bottom,black_0%,black_58%,transparent_100%)] mask-intersect [-webkit-mask-composite:source-in] mask-[100%_100%,100%_100%]"
         >
           <Image
             src={HERO_DECOR_SRC}

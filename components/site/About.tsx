@@ -16,7 +16,7 @@ export function About() {
         <div className="relative mt-6 min-h-[300px] overflow-hidden rounded-2xl border border-border md:mt-8 md:min-h-[380px] lg:min-h-[420px]">
           <div className="pointer-events-none absolute inset-y-0 right-0 w-1/2 overflow-hidden">
             <div
-              className="absolute inset-0 opacity-15 md:opacity-35 mask-[linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.45)_18%,black_42%,black_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.45)_18%,black_42%,black_100%)] mask-size-[100%_100%]"
+              className="absolute inset-0 opacity-10 md:opacity-35 mask-[linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.45)_18%,black_42%,black_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.45)_18%,black_42%,black_100%)] mask-size-[100%_100%]"
               aria-hidden
             >
               <Image
