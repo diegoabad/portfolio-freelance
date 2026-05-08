@@ -23,7 +23,7 @@ export function Footer() {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-8 pb-3 md:pt-10 md:pb-4 lg:pb-4">
         <div className="grid gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-5 space-y-2.5">
+          <div className="lg:col-span-5 space-y-4 md:space-y-5">
             <Link
               href="/#top"
               className="inline-flex items-center gap-2.5 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
@@ -59,10 +59,10 @@ export function Footer() {
             </ul>
           </nav>
 
-          <div className="lg:col-span-3 flex flex-col items-start sm:items-end gap-3 border-t border-border/80 pt-6 lg:border-t-0 lg:pt-0">
+          <div className="lg:col-span-3 flex flex-col items-start gap-3 border-t border-border/80 pt-6 lg:border-t-0 lg:pt-0">
             <div>
-              <p className="text-[11px] uppercase tracking-[0.18em] text-primary font-medium mb-2 lg:text-right">Redes</p>
-              <div className="flex flex-wrap items-start gap-2.5 justify-start sm:justify-end">
+              <p className="text-[11px] uppercase tracking-[0.18em] text-primary font-medium mb-2">Redes</p>
+              <div className="flex flex-wrap items-start gap-2.5 justify-start">
                 <FooterEmailCopyClient />
                 <a
                   href={`https://wa.me/${WHATSAPP_NUMBER}`}
