@@ -1,6 +1,6 @@
 import { createSocialImage, socialImageSize } from "@/lib/create-social-image";
 
-export const alt = "Diego Abad - desarrollador de software";
+export const alt = "Diego Abad — desarrollador de software y automatizaciones";
 
 export const size = socialImageSize;
 

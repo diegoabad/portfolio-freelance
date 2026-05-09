@@ -67,7 +67,7 @@ export function CaseStudyGallery({ images, altPrefix }: CaseStudyGalleryProps) {
               fill
               className="object-contain object-center select-none"
               sizes="(max-width: 1280px) 100vw, 1280px"
-              quality={85}
+              quality={78}
               draggable={false}
             />
           </div>

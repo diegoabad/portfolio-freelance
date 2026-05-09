@@ -26,10 +26,10 @@ const siteUrl = getSiteUrl();
 /** URLs absolutas para OG/Twitter (en local puede ser localhost si no hay env). */
 const metadataBase = new URL(siteUrl ?? "http://localhost:3000");
 
-const seoTitle = "Diego Abad - desarrollador de software";
+const seoTitle = "Diego Abad — desarrollador de software y automatizaciones";
 
 const seoDescription =
-  "Software a medida, automatización de procesos, bots de WhatsApp, apps y sistemas web con React y Next.js. Proyectos para negocios en Argentina y Latinoamérica.";
+  "Software a medida, automatización de procesos (integraciones e inteligencia artificial donde suma), bots de WhatsApp, apps y sistemas web con React y Next.js. Proyectos para negocios en Argentina y Latinoamérica.";
 
 const keywords = [
   "Diego Abad",
@@ -42,6 +42,8 @@ const keywords = [
   "Node.js",
   "TypeScript",
   "automatización de procesos",
+  "inteligencia artificial",
+  "agentes de IA",
   "bots de WhatsApp",
   "integraciones API",
   "PostgreSQL",

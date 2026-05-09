@@ -65,20 +65,21 @@ export async function createSocialImage() {
             </div>
             <div
               style={{
-                fontSize: 30,
+                fontSize: 26,
                 fontWeight: 600,
                 color: "#52a8ff",
+                lineHeight: 1.25,
                 fontFamily:
                   "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif",
               }}
             >
-              Desarrollador de software
+              Desarrollador de software y automatizaciones
             </div>
           </div>
         </div>
         <div
           style={{
-            fontSize: 26,
+            fontSize: 24,
             color: "#9fb0c8",
             maxWidth: 920,
             lineHeight: 1.45,
@@ -86,7 +87,7 @@ export async function createSocialImage() {
               "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif",
           }}
         >
-          Apps, automatizaciones y bots de WhatsApp · React, Next.js, Node.js, TypeScript y PostgreSQL
+          Apps a medida, integraciones, bots de WhatsApp e IA aplicada al negocio · React, Next.js, Node.js y TypeScript
         </div>
       </div>
     ),

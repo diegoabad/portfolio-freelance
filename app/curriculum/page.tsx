@@ -1,10 +1,52 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CvMobileContactHints } from "@/app/curriculum/CvMobileContactHints";
+import { getSiteUrl, LINKEDIN_PROFILE_URL } from "@/lib/site";
+
+const cvDescription =
+  "Curriculum vitae de Diego Abad: desarrollador de software fullstack en Buenos Aires (Argentina). React, Next.js, Node.js, TypeScript, Flutter, PostgreSQL, automatización de procesos, integraciones e inteligencia artificial en el flujo de desarrollo. CV online actualizado.";
+
+const siteBase = getSiteUrl();
+const cvCanonical = siteBase ? new URL("/curriculum", siteBase).toString() : undefined;
 
 export const metadata: Metadata = {
-  title: "Diego Agustín Abad — Software Developer",
-  description: "CV de Diego Agustín Abad — Software Developer Fullstack en Buenos Aires, Argentina.",
+  title: {
+    absolute: "CV Diego Abad — Desarrollador fullstack React, Next.js y Node.js",
+  },
+  description: cvDescription,
+  keywords: [
+    "CV Diego Abad",
+    "curriculum vitae desarrollador",
+    "desarrollador fullstack Buenos Aires",
+    "desarrollador de software Argentina",
+    "React",
+    "Next.js",
+    "Node.js",
+    "TypeScript",
+    "Flutter",
+    "PostgreSQL",
+    "automatización",
+    "inteligencia artificial desarrollo",
+  ],
+  authors: [{ name: "Diego Abad", url: LINKEDIN_PROFILE_URL }],
+  alternates: cvCanonical ? { canonical: cvCanonical } : undefined,
+  openGraph: {
+    title: "CV Diego Abad — Desarrollador fullstack",
+    description: cvDescription,
+    type: "website",
+    locale: "es_AR",
+    siteName: "Diego Abad",
+    ...(cvCanonical ? { url: cvCanonical } : {}),
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CV Diego Abad — Desarrollador fullstack",
+    description: cvDescription,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 /**

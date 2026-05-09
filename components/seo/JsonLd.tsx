@@ -6,6 +6,8 @@ const KNOWS_ABOUT = [
   "Aplicaciones web",
   "Desarrollo de software",
   "Automatización de procesos",
+  "Inteligencia artificial aplicada a negocios",
+  "Agentes de automatización",
   "SaaS",
   "Bots de WhatsApp",
   "Programación",
@@ -30,7 +32,7 @@ export function JsonLd() {
     name: "Diego Abad",
     jobTitle: "Desarrollador de software fullstack",
     description:
-      "Desarrollador de software fullstack: aplicaciones web, sistemas a medida, automatización y bots de WhatsApp (React, Next.js, Node.js, TypeScript).",
+      "Desarrollador de software fullstack: aplicaciones web, sistemas a medida, automatización de procesos (integraciones e inteligencia artificial donde corresponde) y bots de WhatsApp (React, Next.js, Node.js, TypeScript).",
     email: CONTACT_EMAIL,
     sameAs: [LINKEDIN_PROFILE_URL],
     knowsAbout: [...KNOWS_ABOUT],
@@ -50,7 +52,7 @@ export function JsonLd() {
       url: base,
       name: "Diego Abad — Desarrollo web y software a medida",
       description:
-        "Software a medida, automatización de procesos, bots de WhatsApp y desarrollo web con React y Next.js.",
+        "Software a medida, automatización de procesos con integraciones e IA cuando suma, bots de WhatsApp y desarrollo web con React y Next.js.",
       inLanguage: "es-AR",
       publisher: { "@id": `${base}/#person` },
     });

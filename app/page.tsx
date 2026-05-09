@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-import { About } from "@/components/site/About";
 import { Contact } from "@/components/site/Contact";
 import { FloatingWhatsAppDynamic } from "@/components/site/FloatingWhatsAppDynamic";
 import { Footer } from "@/components/site/Footer";
@@ -7,6 +6,23 @@ import { Hero } from "@/components/site/Hero";
 import { Nav } from "@/components/site/Nav";
 import { Process } from "@/components/site/Process";
 import { Services } from "@/components/site/Services";
+
+/** Debajo del pliegue: chunk aparte y sin competir con el LCP del hero. */
+const About = dynamic(() => import("@/components/site/About").then((m) => ({ default: m.About })), {
+  loading: () => (
+    <section
+      id="sobre-mi"
+      className="relative py-20 md:py-28 lg:py-32"
+      aria-busy="true"
+      aria-label="Cargando sección Sobre mí"
+    >
+      <div className="max-w-site mx-auto px-6 lg:px-10">
+        <div className="h-4 w-28 max-w-3xl rounded bg-muted/35 animate-pulse" />
+        <div className="relative mt-6 min-h-[300px] rounded-2xl border border-border bg-muted/15 animate-pulse md:mt-8 md:min-h-[380px] lg:min-h-[420px]" />
+      </div>
+    </section>
+  ),
+});
 
 const Projects = dynamic(() => import("@/components/site/Projects").then((m) => ({ default: m.Projects })), {
   loading: () => (
@@ -35,8 +51,6 @@ const Projects = dynamic(() => import("@/components/site/Projects").then((m) => 
 export default function Home() {
   return (
     <>
-      {/* Descarga temprana del retrato en «Sobre mí» (pesado); la barra de hero ya tiene priority */}
-      <link rel="preload" href="/avatar-about.png" as="image" />
       <main className="relative z-10 min-h-screen flex-1 text-foreground">
       <FloatingWhatsAppDynamic />
       <Nav />

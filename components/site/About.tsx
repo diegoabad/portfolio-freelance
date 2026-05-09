@@ -25,8 +25,9 @@ export function About() {
                 src="/avatar-about.png"
                 alt=""
                 fill
-                loading="eager"
-                quality={65}
+                loading="lazy"
+                fetchPriority="low"
+                quality={60}
                 sizes="(max-width:768px) 48vw, (max-width:1024px) 26vw, min(360px, 28vw)"
                 className="object-cover object-[58%_center] md:object-[55%_center]"
                 placeholder="blur"
