@@ -109,7 +109,7 @@ export function Projects() {
   return (
     <section
       id="proyectos"
-      className="relative bg-surface/30 border-b border-border pt-2 pb-20 md:pt-3 md:pb-28 lg:pt-4 lg:pb-32"
+      className="relative bg-surface/30 border-b border-border pt-4 pb-20 md:pt-5 md:pb-28 lg:pt-6 lg:pb-32"
     >
       <div className="max-w-site mx-auto px-6 lg:px-10">
         <div className="max-w-3xl">

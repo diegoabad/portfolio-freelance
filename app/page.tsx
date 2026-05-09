@@ -12,7 +12,7 @@ const Projects = dynamic(() => import("@/components/site/Projects").then((m) => 
   loading: () => (
     <section
       id="proyectos"
-      className="relative bg-surface/30 border-b border-border pt-2 pb-20 md:pt-3 md:pb-28 lg:pt-4 lg:pb-32"
+      className="relative bg-surface/30 border-b border-border pt-4 pb-20 md:pt-5 md:pb-28 lg:pt-6 lg:pb-32"
       aria-busy="true"
       aria-label="Cargando proyectos"
     >
