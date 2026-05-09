@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
   },
   images: {
     formats: ["image/avif", "image/webp"],
-    qualities: [60, 65, 72, 75, 85],
+    qualities: [60, 65, 68, 72, 75, 85],
     /** Permite variantes más chicas para miniaturas (galería casos) sin subir el mínimo global de `fill` demasiado. */
     deviceSizes: [384, 640, 750, 828, 1080, 1200, 1920, 2048],
     /**
