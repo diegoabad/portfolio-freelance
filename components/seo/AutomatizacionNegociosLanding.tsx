@@ -24,7 +24,7 @@ const CATEGORY = "Automatización de procesos";
 const HERO = {
   title: "Automatización de procesos para negocios",
   subtitle:
-    "Integrá planillas, CRM, APIs y mensajería para que la información fluya sola: menos carga manual, menos errores al copiar datos y procesos repetibles que escalan sin sumar personas.",
+    "Integrá planillas, CRM, APIs y mensajería con flujos que corren solos. Cuando el proceso lo amerita, sumamos inteligencia artificial o agentes de automatización que clasifican, resumen o preparan información respetando reglas que definimos juntos—sin reemplazar el criterio humano donde hace falta.",
 };
 
 const MORE_SOLUTIONS = [
@@ -39,6 +39,7 @@ const EJEMPLOS_TAREAS = [
   "Cargar datos manualmente en Excel o sistemas",
   "Copiar información entre herramientas que no se integran",
   "Responder siempre las mismas consultas",
+  "Clasificar o resumir texto entrante (mails, tickets, notas) con inteligencia artificial bajo reglas fijas",
   "Gestionar turnos o clientes de forma manual",
   "Revisar procesos uno por uno sin automatización",
 ] as const;
@@ -53,10 +54,11 @@ const CONSECUENCIAS = [
 
 const BENEFICIOS = [
   "Menos trabajo manual",
-  "Respuestas más rápidas",
+  "Flujos con integraciones confiables",
+  "Inteligencia artificial donde encaja (con límites claros)",
+  "Agentes que ejecutan pasos repetibles bajo tus reglas",
   "Mayor productividad",
   "Menos errores humanos",
-  "Mejor organización",
 ] as const;
 
 const CUANDO = [
@@ -64,6 +66,7 @@ const CUANDO = [
   "Cuando manejás información en múltiples herramientas",
   "Cuando tu operación depende demasiado de procesos manuales",
   "Cuando querés escalar sin sumar más personal",
+  "Cuando hay texto o datos semiestructurados y una automatización “rígida” no alcanza sin un poco de inteligencia artificial",
 ] as const;
 
 const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
@@ -114,7 +117,7 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
       },
       {
         type: "p",
-        text: "Si algo no tiene integración directa, se puede evaluar una solución alternativa.",
+        text: "Si algo no tiene integración directa, se puede evaluar una solución alternativa o un paso intermedio (incluso con inteligencia artificial) para adaptar formatos o datos.",
       },
     ],
   },
@@ -145,6 +148,7 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
           "Gestión de turnos",
           "Generación de reportes",
           "Integración entre sistemas",
+          "Pasos con inteligencia artificial (clasificar, extraer campos, redactar borradores) siempre dentro de reglas acordadas",
         ],
       },
       { type: "callout", text: "Si es repetitivo, probablemente se pueda automatizar." },
@@ -210,6 +214,32 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
       },
     ],
   },
+  {
+    q: "¿La automatización de procesos incluye inteligencia artificial?",
+    blocks: [
+      {
+        type: "p",
+        text: "No siempre es obligatorio. Muchos procesos se resuelven con integraciones, reglas y disparadores clásicos (por ejemplo conectando CRM, planillas y APIs).",
+      },
+      {
+        type: "p",
+        text: "La inteligencia artificial entra cuando suma: texto variable, clasificación de intención, extracción de datos de párrafos libres o preparación de borradores—siempre con límites, validaciones y revisión humana donde corresponde.",
+      },
+    ],
+  },
+  {
+    q: "¿Qué son los agentes de automatización en este contexto?",
+    blocks: [
+      {
+        type: "p",
+        text: "Son piezas de software que ejecutan una secuencia de pasos (consultar un sistema, transformar datos, llamar a una API, invocar un modelo de lenguaje) según reglas que definimos para tu negocio.",
+      },
+      {
+        type: "p",
+        text: "No es “magia”: el agente sigue el guion del flujo; si incluye inteligencia artificial, el modelo actúa dentro de ese guion y con controles para no salirse de lo acordado.",
+      },
+    ],
+  },
 ];
 
 export function AutomatizacionNegociosLanding() {
@@ -263,7 +293,8 @@ export function AutomatizacionNegociosLanding() {
                 <p>¿Seguís perdiendo tiempo todas las semanas haciendo lo mismo?</p>
                 <p className="font-normal text-foreground/90 md:text-[17px]">
                   Responder mensajes, cargar datos en planillas, copiar información entre sistemas o coordinar tareas
-                  manualmente.
+                  manualmente—y a veces encarar texto o pedidos que cambian de forma y no entran en una tabla fija sin un
+                  poco de inteligencia artificial en el medio.
                 </p>
                 <p className="border-t border-primary/20 pt-4 font-normal text-muted-foreground md:text-[17px]">
                   A medida que tu negocio crece, estas tareas se multiplican y empiezan a frenar tu operación.
@@ -363,7 +394,9 @@ export function AutomatizacionNegociosLanding() {
                   Opción 3: Automatización de procesos
                 </p>
                 <p className="relative mt-3 flex-1 pl-9 text-sm leading-relaxed text-foreground/95 md:text-[15px]">
-                  Permite conectar sistemas, eliminar tareas repetitivas y mejorar la eficiencia.
+                  Conecta sistemas y elimina lo repetitivo con integraciones y reglas; cuando el caso lo pide, incorpora
+                  inteligencia artificial o agentes que ejecutan pasos acotados (por ejemplo clasificar pedidos o preparar
+                  datos antes de que un humano valide).
                 </p>
               </div>
               <div className="flex h-full flex-col rounded-2xl border border-border bg-surface/40 p-5 md:p-6">
@@ -396,11 +429,19 @@ export function AutomatizacionNegociosLanding() {
                 </h2>
                 <div className="mt-5 space-y-4 text-foreground/95 leading-relaxed md:text-[17px]">
                   <p>
-                    Desarrollo automatizaciones a medida que conectan tus herramientas y eliminan tareas repetitivas.
+                    Desarrollo automatizaciones a medida que conectan tus herramientas y eliminan tareas repetitivas:
+                    webhooks, APIs, planillas, CRM y mensajería en un mismo flujo.
                   </p>
                   <p>
-                    Desde flujos simples hasta procesos más complejos, el objetivo es reducir el trabajo manual y mejorar
-                    la operación general del negocio.
+                    Cuando el proceso tiene variación en el lenguaje o en los datos de entrada, evaluamos si conviene
+                    sumar <strong className="font-semibold text-foreground">inteligencia artificial</strong> (por ejemplo
+                    para clasificar, extraer campos o armar borradores) o{" "}
+                    <strong className="font-semibold text-foreground">agentes de automatización</strong> que encadenan
+                    pasos con reglas y validaciones—siempre con auditoría y revisión humana donde aplica.
+                  </p>
+                  <p>
+                    Desde flujos simples hasta procesos más complejos, el objetivo es reducir el trabajo manual y dejar
+                    criterio humano para lo que realmente lo necesita.
                   </p>
                 </div>
               </div>
@@ -473,11 +514,12 @@ export function AutomatizacionNegociosLanding() {
                 </p>
                 <p>
                   Se implementó una automatización que toma los datos desde la planilla y genera las facturas
-                  automáticamente.
+                  automáticamente; en otro flujo del mismo negocio se usó inteligencia artificial solo para normalizar
+                  descripciones libres antes de validar con una persona.
                 </p>
                 <p className="rounded-xl border border-primary/30 bg-primary/10 px-4 py-3 font-medium text-foreground md:text-[17px]">
-                  <span className="text-primary">Resultado:</span> eliminación del trabajo manual, menos errores y
-                  facturación mucho más rápida.
+                  <span className="text-primary">Resultado:</span> eliminación del trabajo manual repetitivo, menos errores,
+                  facturación más rápida y pasos con IA acotados a lo que el equipo revisa.
                 </p>
               </div>
             </figure>
@@ -528,7 +570,8 @@ export function AutomatizacionNegociosLanding() {
               aria-hidden
             />
             <p className="relative text-lg font-medium leading-relaxed text-foreground md:text-xl">
-              Si estás en esta situación, podemos analizar tu caso y ver qué se puede automatizar.
+              Si estás en esta situación, podemos analizar tu caso: integraciones puras, flujos híbridos o dónde tiene
+              sentido sumar inteligencia artificial y agentes sin perder control de la operación.
             </p>
             <div className="relative mt-8">
               <LandingWaCta href={homeSection("#contacto")} main={LANDING_CONSULT_CTA} />

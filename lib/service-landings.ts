@@ -8,9 +8,9 @@ export type ServiceInterlink = { href: string; label: string };
 export const SEO_INTERLINK_TRIO: readonly ServiceInterlink[] = [];
 
 /** Chip destacado (home + hero landing) — sin montos; foco en valor. */
-export const HIGHLIGHT_CHIP_BOTS_WHATSAPP = "Atención 24/7 · flujos e integraciones";
-export const HIGHLIGHT_CHIP_TURNOS = "Confirmaciones y recordatorios automáticos";
-export const HIGHLIGHT_CHIP_AUTOMATIZACION = "APIs, CRM y menos trabajo manual";
+export const HIGHLIGHT_CHIP_BOTS_WHATSAPP = "Bots con reglas · IA · 24/7 e integraciones";
+export const HIGHLIGHT_CHIP_TURNOS = "Autogestión · reglas · equipo e IA";
+export const HIGHLIGHT_CHIP_AUTOMATIZACION = "APIs, CRM y agentes de IA";
 export const HIGHLIGHT_CHIP_SOFTWARE_MEDIDA = "Stack a medida · alineado a tu operación";
 export const HIGHLIGHT_CHIP_CLINICAS = "Pacientes · historial digital · turnos";
 export const HIGHLIGHT_CHIP_INVENTARIO = "Stock real · movimientos en un solo lugar";
@@ -34,19 +34,24 @@ export const SERVICE_LANDING_PAGES = [
     categoryHeading: "Bots de WhatsApp",
     homePainTitle: "Perdés clientes por no responder WhatsApp a tiempo",
     homeCardSubtitle:
-      "Respondé consultas automáticamente y evitá perder clientes por no responder a tiempo.",
+      "Bots con flujos definidos o con inteligencia artificial: menos mensajes sin respuesta y menos presión sobre tu equipo.",
     homeCardBadge: HIGHLIGHT_CHIP_BOTS_WHATSAPP,
     homeCardCta: PRIMARY_CTA_LABEL,
     title: "Bots de WhatsApp",
     metaDescription:
-      "Bots y automatización de WhatsApp: respuestas automáticas, flujos ordenados e integración con CRM y agenda.",
+      "Bots de WhatsApp con reglas o inteligencia artificial: automatización, flujos, CRM y agenda. Menos tiempo perdido y mejor uso de tu equipo.",
     subtitle:
-      "Armá flujos que contestan lo repetitivo, ordenan conversaciones y conectan con tu CRM o agenda. Menos consultas perdidas por tiempo de respuesta y más seguimiento claro desde el primer mensaje.",
+      "Implementá bots con respuestas y reglas claras, o conversaciones apoyadas en inteligencia artificial cuando hace falta entender mejor al cliente. Todo integrado con CRM, agenda y tu operación—menos consultas perdidas y menos horas-hombre en lo repetitivo.",
     problem:
-      "¿El WhatsApp explota y ya no da para contestar todo a tiempo? Cada mensaje sin respuesta es una venta, un turno o un cliente que se enfría.",
+      "¿El WhatsApp explota y tu equipo no da más? Además del tiempo perdido, cada mensaje sin respuesta es venta o cliente que se enfría; y la alternativa de sumar gente suma sueldos, capacitación y gestión.",
     solution:
-      "Armamos flujos que responden lo repetitivo, ordenan conversaciones y dejan historial útil para tu equipo—sin sacar el contacto humano donde suma.",
-    benefits: ["Atención 24/7", "Menos carga operativa", "Mejora en la atención al cliente", "Más conversiones"],
+      "Diseñamos automatización con bots convencionales (menús, reglas, derivaciones) y, cuando corresponde, capas de inteligencia artificial para interpretar mejor lo que escribe la gente—siempre con espacio para la atención humana donde aporta.",
+    benefits: [
+      "Atención 24/7",
+      "Menos carga y costo oculto en horas del equipo",
+      "Mejora en la atención al cliente",
+      "Más conversiones sin depender solo de contratar más",
+    ],
     moreInterlinks: [NTURNOS, NAUTO, NMEDIDA, NCLINICAS, NSTOCK],
   },
   {
@@ -54,23 +59,24 @@ export const SERVICE_LANDING_PAGES = [
     categoryHeading: "Turnos online",
     homePainTitle: "Agendas desordenadas y cancelaciones constantes",
     homeCardSubtitle:
-      "Organizá tu agenda, reducí cancelaciones y evitá el caos en la gestión de turnos.",
+      "Agendas con autogestión del paciente, panel para tu equipo y—si hace falta—agentes de inteligencia artificial según reglas de disponibilidad.",
     homeCardBadge: HIGHLIGHT_CHIP_TURNOS,
     homeCardCta: "Coordinemos tu agenda",
     title: "Turnos online",
     metaDescription:
-      "Agenda y turnos online con confirmaciones y recordatorios. Menos cancelaciones e integración con WhatsApp. Presupuesto según alcance.",
+      "Turnos online: autogestión del paciente, reglas de agenda, uso por empleados y opción de agentes de IA. Confirmaciones, recordatorios e integraciones.",
     subtitle:
-      "Un solo lugar para reservas, disponibilidad, confirmaciones y recordatorios automáticos. Menos cancelaciones de último momento, menos confusiones entre canales y más claridad para tu equipo y tus clientes.",
+      "Centralizá reservas con agendas donde el paciente o cliente puede autogestionar turnos dentro de reglas claras, mientras tu equipo opera desde un mismo lugar. Cuando el caso lo amerita, sumamos inteligencia artificial para ayudar a elegir huecos, aplicar políticas de agenda y coordinar sin caos entre canales.",
     problem:
-      "¿Gestionás turnos con WhatsApp, llamadas y planillas y aparecen confusiones, superposiciones o cancelaciones sin control?",
+      "¿Los turnos viven repartidos entre WhatsApp, llamadas y planillas, con superposiciones y cancelaciones sin control—y tu equipo pierde tiempo en coordinar lo que el paciente podría resolver solo con reglas bien definidas?",
     solution:
-      "Implemento un sistema de turnos online con reglas claras, confirmaciones y recordatorios para centralizar la agenda y recuperar tiempo de coordinación.",
+      "Implemento sistemas de turnos con reglas de negocio visibles para todos: autogestión para quien reserva, herramientas para empleados y, si suma, agentes de inteligencia artificial que respetan esas reglas para sugerir horarios o responder sobre disponibilidad.",
     benefits: [
-      "Menos cancelaciones",
-      "Mejor uso del tiempo",
-      "Mayor orden en la operación",
-      "Mejor experiencia del cliente",
+      "Menos cancelaciones y mejor ocupación",
+      "Autogestión del paciente con límites claros (menos ida y vuelta)",
+      "Equipo alineado en una sola agenda",
+      "Reglas de agenda aplicadas de forma consistente",
+      "Opción de IA donde simplifica la coordinación",
       "Más turnos efectivos",
     ],
     moreInterlinks: [NBOTS, NAUTO, NMEDIDA, NCLINICAS, NSTOCK],
@@ -80,24 +86,24 @@ export const SERVICE_LANDING_PAGES = [
     categoryHeading: "Automatización de procesos",
     homePainTitle: "Tareas manuales que te hacen perder horas",
     homeCardSubtitle:
-      "Automatizá procesos repetitivos y liberá tiempo sin sumar más personal.",
+      "Flujos con integraciones (CRM, APIs, planillas) y, cuando suma, inteligencia artificial y agentes acotados a tus reglas.",
     homeCardBadge: HIGHLIGHT_CHIP_AUTOMATIZACION,
     homeCardCta: "Revisamos tu caso",
     title: "Automatización de procesos",
     metaDescription:
-      "Menos tareas manuales: automatización de procesos, integraciones (CRM, APIs, planillas) y flujos a medida para tu negocio.",
+      "Automatización de procesos con integraciones y flujos a medida; opción de inteligencia artificial y agentes para clasificar, resumir o decidir pasos dentro de reglas claras.",
     subtitle:
-      "Integrá planillas, CRM, APIs y mensajería para que la información fluya sola: menos carga manual, menos errores al copiar datos y procesos repetibles que escalan sin sumar personas.",
+      "Conectá planillas, CRM, APIs y mensajería para que la información fluya sola. Donde el proceso lo permite, sumamos inteligencia artificial o agentes que ejecutan tareas repetibles bajo reglas que vos definís—menos carga manual y menos errores al copiar datos.",
     problem:
-      "¿Seguís perdiendo horas en lo mismo cada semana? Mensajes, planillas, datos cargados a mano… y el negocio no para de pedirte más velocidad.",
+      "¿Seguís perdiendo horas en lo mismo cada semana? Mensajes, planillas, datos cargados a mano… y además aparecen tareas donde el texto no es 100% predecible y un simple “si/no” no alcanza.",
     solution:
-      "Te propongo automatizaciones a medida que conectan tus herramientas y sacan esas tareas repetitivas del medio: menos copy-paste, más tiempo para vender y operar con claridad.",
+      "Te propongo automatizaciones a medida que conectan tus herramientas y sacan lo repetitivo del medio: flujos clásicos (reglas, webhooks, n8n) y, cuando corresponde, capas de inteligencia artificial o agentes que respetan políticas claras para clasificar, extraer o preparar datos antes de que lleguen a un humano.",
     benefits: [
       "Menos trabajo manual",
-      "Respuestas más rápidas",
-      "Mayor productividad",
-      "Menos errores humanos",
-      "Mejor organización",
+      "Integraciones estables entre sistemas",
+      "Inteligencia artificial opcional donde suma (siempre acotada)",
+      "Agentes de automatización con reglas y auditoría",
+      "Mayor productividad y menos errores",
     ],
     moreInterlinks: [NBOTS, NTURNOS, NMEDIDA, NCLINICAS, NSTOCK],
   },

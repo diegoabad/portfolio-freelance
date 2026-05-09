@@ -21,7 +21,7 @@ const CATEGORY = "Turnos online";
 const HERO = {
   title: "Sistema de gestión de turnos online",
   subtitle:
-    "Un solo lugar para reservas, disponibilidad, confirmaciones y recordatorios automáticos. Menos cancelaciones de último momento, menos confusiones entre canales y más claridad para tu equipo y tus clientes.",
+    "Podés combinar agendas donde el paciente o cliente autogestiona su turno (reserva y cambios dentro de reglas), un panel para que empleados carguen disponibilidad y operen el día a día, y—cuando tiene sentido—agentes de inteligencia artificial que ayudan a decidir qué ofrecer según políticas de agenda, huecos y tipo de servicio. Todo con confirmaciones y recordatorios para bajar cancelaciones de último momento.",
 };
 
 const MORE_SOLUTIONS = [
@@ -52,26 +52,29 @@ const RIESGO_ITEMS = [
 const FORMAS = [
   { title: "Gestión manual", body: "No escala cuando crece el volumen.", highlight: false },
   { title: "Agendas básicas o planillas", body: "Riesgo de errores y huecos.", highlight: false },
-  { title: "Herramientas estándar con limitaciones", body: "A veces no cubren tu forma de agendar.", highlight: false },
+  { title: "Herramientas estándar con limitaciones", body: "A veces no cubren autogestión, reglas finas ni IA acoplada a tu operación.", highlight: false },
   {
-    title: "Sistemas de turnos más completos",
-    body: "Reglas claras, confirmaciones y recordatorios.",
+    title: "Agenda unificada con reglas y autogestión",
+    body: "El paciente reserva solo dentro de políticas claras; el equipo trabaja en el mismo sistema; opción de IA donde suma.",
     highlight: true,
   },
 ] as const;
 
 const PROPUESTA_ITEMS = [
-  "Organizar turnos en un solo lugar",
-  "Automatizar confirmaciones",
-  "Gestionar cancelaciones",
-  "Mejorar la disponibilidad de agenda",
+  "Definir reglas de agenda (duraciones, buffers, profesionales, servicios, políticas de cambio o cancelación)",
+  "Habilitar autogestión del paciente o cliente: reserva y reprogramación acotadas a esas reglas",
+  "Panel para empleados: disponibilidad, bloqueos, vista del día y seguimiento sin depender de mensajes sueltos",
+  "Opcional: agentes de inteligencia artificial que sugieren turnos o responden sobre disponibilidad respetando las mismas reglas",
+  "Automatizar confirmaciones y recordatorios",
+  "Centralizar cancelaciones y métricas para mejorar la ocupación",
 ] as const;
 
 const BENEFICIOS = [
   "Menos cancelaciones",
-  "Mejor uso del tiempo",
-  "Mayor orden en la operación",
-  "Mejor experiencia del cliente",
+  "Pacientes que gestionan turnos solos sin romper tus reglas",
+  "Equipo alineado: una agenda, menos WhatsApp interno",
+  "Mejor uso del tiempo del personal",
+  "Reglas aplicadas igual para humanos y para IA",
   "Más turnos efectivos",
 ] as const;
 
@@ -81,6 +84,8 @@ const SEÑALES = [
   "No sabés cuántos turnos se cancelan",
   "Manejás todo manualmente",
   "Tu agenda depende de mensajes o llamadas",
+  "El equipo pierde tiempo coordinando reservas que podrían ser autogestionadas",
+  "Necesitás políticas claras (quién puede dar qué turno) pero solo vivís en planillas",
 ] as const;
 
 const MSG_HERO =
@@ -136,6 +141,41 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
       {
         type: "p",
         text: "Si tenés cancelaciones frecuentes o desorganización, el impacto suele ser inmediato.",
+      },
+    ],
+  },
+  {
+    q: "¿Qué es la autogestión del paciente en la agenda?",
+    blocks: [
+      {
+        type: "p",
+        text: "Es que la persona reserve, reprograme o cancele desde un flujo online (web o integrado a otros canales) sin depender de que alguien del equipo conteste al momento—siempre dentro de reglas que vos definís: anticipación mínima, límites por servicio, profesional asignado, etc.",
+      },
+      {
+        type: "p",
+        text: "Así baja la carga del personal en ida y vuelta por mensaje y se reducen errores de interpretación.",
+      },
+    ],
+  },
+  {
+    q: "¿Los empleados siguen usando la agenda?",
+    blocks: [
+      {
+        type: "p",
+        text: "Sí. El equipo suele tener un panel para cargar disponibilidad real, bloquear horarios, ver el día y intervenir cuando hace falta. La autogestión del paciente complementa eso; no la reemplaza en casos que necesitan criterio humano.",
+      },
+    ],
+  },
+  {
+    q: "¿Qué hacen los agentes de inteligencia artificial en una agenda?",
+    blocks: [
+      {
+        type: "p",
+        text: "No “inventan” turnos por fuera de tus reglas: trabajan sobre la misma política de negocio—por ejemplo sugiriendo huecos válidos, aclarando opciones según tipo de consulta o ayudando a ordenar solicitudes cuando hay muchas variantes.",
+      },
+      {
+        type: "p",
+        text: "La combinación típica es reglas duras en el sistema + IA donde aporta lenguaje natural o priorización, siempre con posibilidad de derivación a una persona.",
       },
     ],
   },
@@ -196,7 +236,10 @@ export function SistemaTurnosOnlineLanding() {
               <div className="relative space-y-4 text-lg font-medium leading-relaxed text-foreground md:text-xl">
                 <p>Gestionar turnos manualmente suele generar errores, desorganización y pérdida de tiempo.</p>
                 <p className="border-t border-primary/20 pt-4 font-normal text-muted-foreground md:text-[17px]">
-                  A medida que aumentan los clientes, la agenda se vuelve difícil de controlar.
+                  A medida que aumentan los clientes, la agenda se vuelve difícil de controlar—y si todo pasa por mensajes,
+                  tu equipo deja de estar disponible para atender y termina “coordinando huecos”. Una agenda con
+                  autogestión del paciente y reglas claras libera ese tiempo; los empleados siguen controlando lo que
+                  corresponde desde el mismo sistema, y la IA puede ayudar solo donde vos definís que encaje.
                 </p>
               </div>
             </div>
@@ -291,8 +334,42 @@ export function SistemaTurnosOnlineLanding() {
                 </div>
               ))}
             </div>
+
+            <div className="mt-10 space-y-4">
+              <h3 className="font-display text-lg font-semibold text-foreground md:text-xl">
+                Tres piezas que suelen ir juntas
+              </h3>
+              <div className="grid gap-4 md:grid-cols-3">
+                <div className="rounded-2xl border border-border bg-surface/40 p-5 md:p-6">
+                  <p className="font-display text-base font-semibold text-foreground">Autogestión del paciente</p>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
+                    Reservas y cambios online dentro de reglas: anticipaciones, servicios, profesional, políticas de
+                    cancelación. Menos llamadas y menos errores por mensaje suelto.
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-border bg-surface/40 p-5 md:p-6">
+                  <p className="font-display text-base font-semibold text-foreground">Agenda para empleados</p>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
+                    El equipo marca disponibilidad real, bloquea horarios y opera el día desde un solo lugar—sin depender
+                    de planillas paralelas que se desalinean con lo que ve el paciente.
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-primary/35 bg-primary/8 p-5 md:p-6">
+                  <p className="font-display text-base font-semibold text-foreground">
+                    Agentes de inteligencia artificial (opcional)
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-foreground/90 md:text-[15px]">
+                    Ayudan a conversar sobre opciones de turno o a priorizar solicitudes respetando las mismas reglas de
+                    agenda (no sustituyen tus políticas). Útiles cuando hay muchas variantes de pedido o varios canales de
+                    entrada.
+                  </p>
+                </div>
+              </div>
+            </div>
+
             <p className="mt-8 rounded-xl border border-primary/30 bg-primary/10 px-4 py-3 text-sm font-medium text-foreground leading-relaxed md:text-[15px]">
-              Cuando el volumen crece, se necesita una solución más organizada y automática.
+              Cuando el volumen crece, hace falta una agenda que una autogestión, trabajo del equipo y—si aplica—IA bajo
+              las mismas reglas de negocio.
             </p>
           </section>
 
@@ -310,7 +387,8 @@ export function SistemaTurnosOnlineLanding() {
                   Cómo implemento sistemas de turnos
                 </h2>
                 <p className="mt-5 text-foreground/95 leading-relaxed md:text-[17px]">
-                  Desarrollo sistemas que permiten:
+                  Desarrollo sistemas que unen la experiencia del paciente, las herramientas del equipo y reglas de agenda
+                  de punta a punta—incluyendo agentes de inteligencia artificial cuando el caso lo amerita:
                 </p>
                 <ul className="mt-3 list-disc space-y-2 pl-5 text-foreground/95 leading-relaxed marker:text-primary md:text-[17px]">
                   {PROPUESTA_ITEMS.map((item) => (
@@ -386,14 +464,17 @@ export function SistemaTurnosOnlineLanding() {
               <div className="relative mt-4 space-y-4 text-base leading-relaxed text-foreground/95 md:text-lg">
                 <p>
                   Un negocio gestionaba su agenda a través de WhatsApp y planillas, lo que generaba desorganización y
-                  cancelaciones sin control.
+                  cancelaciones sin control; los pacientes pedían cambios por mensaje y el equipo perdía tiempo en
+                  coordinación.
                 </p>
                 <p className="text-muted-foreground md:text-[17px]">
-                  Se implementó un sistema de turnos que centraliza la agenda y automatiza confirmaciones.
+                  Se implementó un sistema con autogestión del paciente dentro de reglas, panel para empleados y
+                  recordatorios automáticos; donde sumaba, un flujo con inteligencia artificial ayudó a orientar
+                  disponibilidad sin saltarse las políticas de agenda.
                 </p>
                 <p className="rounded-xl border border-primary/30 bg-primary/10 px-4 py-3 font-medium text-foreground md:text-[17px]">
-                  <span className="text-primary">Resultado:</span> mejor organización, menos turnos perdidos y mayor
-                  control de la agenda.
+                  <span className="text-primary">Resultado:</span> mejor organización, menos turnos perdidos, menos carga
+                  en recepción y reglas aplicadas igual para reservas online y seguimiento del equipo.
                 </p>
               </div>
             </figure>
@@ -444,7 +525,9 @@ export function SistemaTurnosOnlineLanding() {
               aria-hidden
             />
             <p className="relative text-lg font-medium leading-relaxed text-foreground md:text-xl">
-              Si tu agenda está desordenada o estás perdiendo turnos, podemos ver cómo organizarla mejor.
+              Si necesitás ordenar turnos con autogestión del paciente, herramientas claras para empleados y reglas de
+              agenda—y valorás explorar si los agentes de inteligencia artificial encajan en tu operación—podemos ver el
+              alcance juntos.
             </p>
             <div className="relative mt-8">
               <LandingWaCta href={waHref(MSG_CASO)} rel={REL_WHATSAPP_EXTERNAL} main={LANDING_CONSULT_CTA} />

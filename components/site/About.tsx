@@ -4,6 +4,9 @@ import { FileText } from "lucide-react";
 import { LinkedInGlyph } from "@/components/site/SimpleIcons";
 import { LINKEDIN_PROFILE_URL } from "@/lib/site";
 
+const aboutActionBtn =
+  "inline-flex min-w-0 w-full items-center justify-center gap-2 rounded-[10px] border border-primary/45 bg-primary/[0.09] px-4 py-2.5 text-sm font-semibold text-primary backdrop-blur-sm shadow-[inset_0_1px_0_0_rgb(255_255_255_/0.06)] transition hover:border-primary/80 hover:bg-primary/[0.15] hover:shadow-[0_0_26px_-10px_rgb(82_168_255_/0.42)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+
 export function About() {
   return (
     <section id="sobre-mi" className="relative py-20 md:py-28 lg:py-32">
@@ -15,7 +18,7 @@ export function About() {
         <div className="relative mt-6 min-h-[300px] overflow-hidden rounded-2xl border border-border md:mt-8 md:min-h-[380px] lg:min-h-[420px]">
           <div className="pointer-events-none absolute inset-y-0 right-0 w-1/2 overflow-hidden">
             <div
-              className="absolute inset-0 opacity-10 md:opacity-35 mask-[linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.45)_18%,black_42%,black_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.45)_18%,black_42%,black_100%)] mask-size-[100%_100%]"
+              className="absolute inset-0 opacity-[0.05] md:opacity-[0.18] mask-[linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.45)_18%,black_42%,black_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.45)_18%,black_42%,black_100%)] mask-size-[100%_100%]"
               aria-hidden
             >
               <Image
@@ -64,9 +67,12 @@ export function About() {
                 </p>
                 <p>
                   A nivel técnico, trabajo principalmente con{" "}
-                  <span className="text-primary font-medium">JavaScript/TypeScript, Next.js, Node.js y PostgreSQL</span>, y
-                  utilizo herramientas como <span className="text-primary font-medium">n8n</span> y{" "}
-                  <span className="text-primary font-medium">Docker</span> para automatizar procesos e integrar sistemas.
+                  <span className="text-primary font-medium">
+                    JavaScript/TypeScript, Next.js, Node.js, PostgreSQL y Docker
+                  </span>
+                  , y uso <span className="text-primary font-medium">n8n</span> e{" "}
+                  <span className="text-primary font-medium">inteligencia artificial</span> para automatizar procesos e
+                  integrar sistemas.
                 </p>
               </div>
 
@@ -75,13 +81,13 @@ export function About() {
                   href={LINKEDIN_PROFILE_URL}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex min-w-0 w-full items-center justify-center gap-2 rounded-[10px] border border-border bg-surface/40 px-4 py-2.5 text-sm font-medium text-foreground/90 backdrop-blur-sm transition hover:border-primary/40 hover:bg-surface/70 hover:text-primary"
+                  className={aboutActionBtn}
                 >
-                  <LinkedInGlyph size={16} /> LinkedIn
+                  <LinkedInGlyph size={16} className="shrink-0 opacity-95" /> LinkedIn
                 </a>
                 <Link
                   href="/curriculum"
-                  className="inline-flex min-w-0 w-full items-center justify-center gap-2 rounded-[10px] border border-border bg-surface/40 px-4 py-2.5 text-sm font-medium text-foreground/90 backdrop-blur-sm transition hover:border-primary/40 hover:bg-surface/70 hover:text-primary"
+                  className={aboutActionBtn}
                 >
                   <FileText size={16} className="shrink-0" aria-hidden />
                   Curriculum
