@@ -9,11 +9,11 @@ const ContactInteractive = dynamic(
         aria-busy="true"
         aria-label="Cargando formulario de contacto"
       >
-        <div className="md:col-span-2 space-y-3 md:space-y-4">
-          <div className="h-[104px] rounded-2xl border border-border bg-muted/20 animate-pulse" />
-          <div className="h-[104px] rounded-2xl border border-border bg-muted/20 animate-pulse" />
-          <div className="h-[88px] rounded-2xl border border-border bg-muted/20 animate-pulse" />
-          <div className="h-[104px] rounded-2xl border border-border bg-muted/20 animate-pulse" />
+        <div className="md:col-span-2 space-y-2.5 md:space-y-4">
+          <div className="h-[60px] rounded-xl border border-border bg-muted/20 animate-pulse md:h-[104px] md:rounded-2xl" />
+          <div className="h-[60px] rounded-xl border border-border bg-muted/20 animate-pulse md:h-[104px] md:rounded-2xl" />
+          <div className="h-[60px] rounded-xl border border-border bg-muted/20 animate-pulse md:h-[88px] md:rounded-2xl" />
+          <div className="h-[60px] rounded-xl border border-border bg-muted/20 animate-pulse md:h-[104px] md:rounded-2xl" />
         </div>
         <div className="md:col-span-3 min-h-[280px] rounded-2xl border border-border bg-muted/15 animate-pulse" />
       </div>

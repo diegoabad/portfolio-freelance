@@ -42,19 +42,20 @@ export function ContactInteractive() {
 
   return (
     <div className="mt-10 md:mt-12 grid md:grid-cols-5 md:items-stretch gap-5 md:gap-6">
-      <div className="md:col-span-2 space-y-3 md:space-y-4">
+      <div className="md:col-span-2 space-y-2.5 md:space-y-4">
         <a
           href={`https://wa.me/${WHATSAPP_NUMBER}`}
           target="_blank"
           rel={REL_WHATSAPP_EXTERNAL}
-          className="group flex cursor-pointer items-center gap-4 rounded-2xl border border-border bg-surface/60 p-5 md:p-6 hover:bg-surface transition backdrop-blur [&_p]:cursor-pointer"
+          className="group flex cursor-pointer items-center gap-3 rounded-xl border border-border bg-surface/60 p-3 transition hover:bg-surface md:gap-4 md:rounded-2xl md:p-6 backdrop-blur [&_p]:cursor-pointer"
         >
-          <div className="h-12 w-12 rounded-xl bg-primary/15 text-primary grid place-items-center shrink-0">
-            <WhatsAppIcon size={22} />
+          <div className="h-9 w-9 shrink-0 grid place-items-center rounded-lg bg-primary/15 text-primary md:h-12 md:w-12 md:rounded-xl">
+            <WhatsAppIcon size={18} className="md:hidden" />
+            <WhatsAppIcon size={22} className="hidden md:block" />
           </div>
           <div className="min-w-0">
-            <p className="text-xs uppercase tracking-wider text-muted-foreground">Más rápido</p>
-            <p className="font-display font-semibold text-lg text-foreground">WhatsApp</p>
+            <p className="text-[10px] uppercase tracking-wider text-muted-foreground md:text-xs">WhatsApp</p>
+            <p className="font-display font-semibold text-sm text-foreground truncate md:text-lg">+54 9 11 4149 9723</p>
           </div>
         </a>
 
@@ -62,30 +63,31 @@ export function ContactInteractive() {
           href={LINKEDIN_PROFILE_URL}
           target="_blank"
           rel="noreferrer"
-          className="group flex cursor-pointer items-center gap-4 rounded-2xl border border-border bg-surface/60 p-5 md:p-6 hover:bg-surface transition backdrop-blur [&_p]:cursor-pointer"
+          className="group flex cursor-pointer items-center gap-3 rounded-xl border border-border bg-surface/60 p-3 transition hover:bg-surface md:gap-4 md:rounded-2xl md:p-6 backdrop-blur [&_p]:cursor-pointer"
         >
-          <div className="h-12 w-12 rounded-xl bg-primary/15 text-primary grid place-items-center shrink-0">
-            <LinkedInGlyph size={22} />
+          <div className="h-9 w-9 shrink-0 grid place-items-center rounded-lg bg-primary/15 text-primary md:h-12 md:w-12 md:rounded-xl">
+            <LinkedInGlyph size={18} className="md:hidden" />
+            <LinkedInGlyph size={22} className="hidden md:block" />
           </div>
           <div className="min-w-0">
-            <p className="text-xs uppercase tracking-wider text-muted-foreground">Profesional</p>
-            <p className="font-display font-semibold text-lg text-foreground">LinkedIn</p>
+            <p className="text-[10px] uppercase tracking-wider text-muted-foreground md:text-xs">LinkedIn</p>
+            <p className="font-display font-semibold text-sm text-foreground truncate md:text-lg">/in/diegoabad-fullstack</p>
           </div>
         </a>
 
         <EmailCopySurface variant="card" />
 
         <div
-          className="flex items-center gap-4 rounded-2xl border border-border bg-surface/60 p-5 md:p-6 backdrop-blur"
+          className="flex items-center gap-3 rounded-xl border border-border bg-surface/60 p-3 backdrop-blur md:gap-4 md:rounded-2xl md:p-6"
           role="group"
           aria-label="Ubicación: Buenos Aires, Argentina"
         >
-          <div className="h-12 w-12 rounded-xl bg-primary/15 text-primary grid place-items-center shrink-0">
-            <MapPin className="h-[22px] w-[22px]" strokeWidth={2} aria-hidden />
+          <div className="h-9 w-9 shrink-0 grid place-items-center rounded-lg bg-primary/15 text-primary md:h-12 md:w-12 md:rounded-xl">
+            <MapPin className="h-[18px] w-[18px] md:h-[22px] md:w-[22px]" strokeWidth={2} aria-hidden />
           </div>
           <div className="min-w-0">
-            <p className="text-xs uppercase tracking-wider text-muted-foreground">Ubicación</p>
-            <p className="font-display font-semibold text-lg text-foreground text-pretty">
+            <p className="text-[10px] uppercase tracking-wider text-muted-foreground md:text-xs">Ubicación</p>
+            <p className="font-display font-semibold text-sm text-foreground text-pretty md:text-lg">
               Buenos Aires, Argentina
             </p>
           </div>
