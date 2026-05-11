@@ -44,6 +44,7 @@ export function LandingRelatedNav({
           <li key={l.href}>
             <Link
               href={l.href}
+              prefetch={false}
               className="group inline-flex py-2 text-sm font-medium text-foreground transition-colors hover:text-primary md:text-[15px]"
             >
               <span className="border-b border-transparent group-hover:border-primary/50">{l.label}</span>

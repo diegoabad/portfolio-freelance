@@ -341,6 +341,7 @@ export function Nav({ pricingRegion }: { pricingRegion: PricingRegion }) {
                         <Link
                           key={p.slug}
                           href={`/${p.slug}`}
+                          prefetch={false}
                           role="menuitem"
                           className={serviceItemClass(p.slug)}
                           aria-current={pathname === `/${p.slug}` ? "page" : undefined}
@@ -487,6 +488,7 @@ export function Nav({ pricingRegion }: { pricingRegion: PricingRegion }) {
                         <Link
                           key={p.slug}
                           href={`/${p.slug}`}
+                          prefetch={false}
                           onClick={() => setOpen(false)}
                           aria-current={here ? "page" : undefined}
                           className={`py-2 text-base transition-colors ${here ? "font-semibold text-primary" : "text-white/90 hover:text-primary"}`}

@@ -1,10 +1,10 @@
 export const CASE_STUDY_SLUGS = [
   "ineco-app-pacientes",
-  "cotilink",
-  "bot-whatsapp-atencion",
+  "cotilink-saas-cotizaciones",
+  "bot-whatsapp-odontologia-soler",
   "ineco-informes-ia",
-  "hablan",
-  "cogniare",
+  "hablan-plataforma-fonoaudiologia",
+  "cogniare-gestion-clinicas",
 ] as const;
 
 export type CaseStudySlug = (typeof CASE_STUDY_SLUGS)[number];
@@ -60,10 +60,10 @@ export const caseStudies: readonly CaseStudy[] = [
     ],
   },
   {
-    slug: "cotilink",
+    slug: "cotilink-saas-cotizaciones",
     tag: "Cotilink",
     title: "Plataforma de presupuestos digitales",
-    navShortLabel: "Cotilink",
+    navShortLabel: "Cotilink · SaaS cotizaciones",
     cardSummary:
       "Del armado del presupuesto al seguimiento comercial: visto, aceptado o rechazado, con un mini CRM por oportunidad y acciones para recuperar presupuestos que se enfriaron.",
     cardChips: ["Seguimiento comercial", "Presupuestos centralizados", "Menos seguimiento manual"],
@@ -87,10 +87,10 @@ export const caseStudies: readonly CaseStudy[] = [
     ],
   },
   {
-    slug: "bot-whatsapp-atencion",
+    slug: "bot-whatsapp-odontologia-soler",
     tag: "WhatsApp — clínicas",
     title: "Bot de WhatsApp para clínicas",
-    navShortLabel: "Bot WhatsApp",
+    navShortLabel: "Bot WhatsApp · Soler",
     cardSummary:
       "Bot con o sin IA que responde FAQs de la clínica y enruta intenciones (facturas, turnos, reclamos) a un panel que guarda todo por tipo de consulta — con historial útil para mejorar mensajes y campañas según lo que más preguntan.",
     cardChips: ["Respuestas automáticas", "Menos consultas repetitivas", "Integración con agendas"],
@@ -134,10 +134,10 @@ export const caseStudies: readonly CaseStudy[] = [
     ],
   },
   {
-    slug: "hablan",
+    slug: "hablan-plataforma-fonoaudiologia",
     tag: "Hablán",
     title: "Plataforma de ejercicios cognitivos",
-    navShortLabel: "Hablán",
+    navShortLabel: "Hablán · fonoaudiología",
     cardSummary:
       "Actividades para que el paciente practique en casa: cada profesional arma su plan eligiendo tipos de ejercicio (memoria, palabra–imagen, identificación, etc.) sin rediseñar todo desde cero cada vez.",
     cardChips: ["Reutilización de actividades", "Seguimiento del paciente", "Menos trabajo repetitivo"],
@@ -160,10 +160,10 @@ export const caseStudies: readonly CaseStudy[] = [
     ],
   },
   {
-    slug: "cogniare",
+    slug: "cogniare-gestion-clinicas",
     tag: "Cogniare",
     title: "Plataforma para profesionales de la salud",
-    navShortLabel: "Cogniare",
+    navShortLabel: "Cogniare · gestión clínicas",
     cardSummary:
       "Agenda digital, historia clínica del paciente, espacio de intercambio tipo blog entre colegas, adjuntos y registro de diagnósticos — todo integrado para el consultorio.",
     cardChips: ["Historia clínica centralizada", "Agenda integrada", "Menos información dispersa"],

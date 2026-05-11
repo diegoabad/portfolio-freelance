@@ -9,10 +9,10 @@ Desarrollador de software (TypeScript, React, Next.js, Node.js, PostgreSQL). Tra
 - Inicio: https://www.diegoabad.com/
 - Bots de WhatsApp: https://www.diegoabad.com/bots-whatsapp
 - Turnos online: https://www.diegoabad.com/sistema-turnos-online
-- Automatización de procesos: https://www.diegoabad.com/automatizacion-negocios
+- Automatización de procesos: https://www.diegoabad.com/automatizacion-procesos-clinicas
 - Software a medida: https://www.diegoabad.com/desarrollo-software-medida
 - Desarrollo de aplicaciones móviles (empresas, clínicas, turnos, autogestión): https://www.diegoabad.com/software-para-clinicas
-- Gestión de inventario / stock: https://www.diegoabad.com/sistema-gestion-inventario
+- Control de stock / inventario clínicas: https://www.diegoabad.com/control-stock-clinicas
 - Blog (guías: WhatsApp, turnos, automatización, software a medida, apps, inventario): https://www.diegoabad.com/blog
 
 ## Mapa del sitio (máquinas)

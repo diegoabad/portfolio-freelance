@@ -10,10 +10,10 @@ import { SERVICE_LANDING_PAGES, splitHomeCardBadge, type ServiceLandingSlug } fr
 const CARD_ICON: Record<ServiceLandingSlug, LucideIcon> = {
   "bots-whatsapp": MessageCircle,
   "sistema-turnos-online": CalendarDays,
-  "automatizacion-negocios": Zap,
+  "automatizacion-procesos-clinicas": Zap,
   "desarrollo-software-medida": Code2,
   "software-para-clinicas": Smartphone,
-  "sistema-gestion-inventario": Package,
+  "control-stock-clinicas": Package,
 };
 
 type ServiceCard = {
@@ -67,6 +67,7 @@ export function Services({ pricingRegion }: { pricingRegion: PricingRegion }) {
             <Link
               key={card.href}
               href={card.href}
+              prefetch={false}
               className="group relative flex h-full min-h-[188px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-border bg-surface/50 p-5 md:p-6 backdrop-blur transition hover:border-primary/40 hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background [&_*]:cursor-pointer"
               aria-label={`${card.title}. ${card.priceTeaser}. ${card.priceBenefit} — ir al servicio`}
             >

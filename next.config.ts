@@ -63,6 +63,36 @@ const nextConfig: NextConfig = {
         destination: "/desarrollo-software-medida",
         permanent: true,
       },
+      {
+        source: "/automatizacion-negocios",
+        destination: "/automatizacion-procesos-clinicas",
+        permanent: true,
+      },
+      {
+        source: "/sistema-gestion-inventario",
+        destination: "/control-stock-clinicas",
+        permanent: true,
+      },
+      {
+        source: "/proyectos/cotilink",
+        destination: "/proyectos/cotilink-saas-cotizaciones",
+        permanent: true,
+      },
+      {
+        source: "/proyectos/bot-whatsapp-atencion",
+        destination: "/proyectos/bot-whatsapp-odontologia-soler",
+        permanent: true,
+      },
+      {
+        source: "/proyectos/hablan",
+        destination: "/proyectos/hablan-plataforma-fonoaudiologia",
+        permanent: true,
+      },
+      {
+        source: "/proyectos/cogniare",
+        destination: "/proyectos/cogniare-gestion-clinicas",
+        permanent: true,
+      },
     ];
   },
 };

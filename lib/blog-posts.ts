@@ -241,7 +241,7 @@ const posts: BlogPost[] = [
     resourceLinks: [
       { href: "/bots-whatsapp", label: "Bots de WhatsApp (servicio)" },
       { href: "/sistema-turnos-online", label: "Sistema de turnos online" },
-      { href: "/automatizacion-negocios", label: "Automatización de procesos" },
+      { href: "/automatizacion-procesos-clinicas", label: "Automatización de procesos" },
       { href: "/software-para-clinicas", label: "Aplicaciones móviles" },
       { href: "/desarrollo-software-medida", label: "Desarrollo a medida" },
       { href: "/#contacto", label: "Contacto" },
@@ -263,7 +263,7 @@ const posts: BlogPost[] = [
         type: "paragraph",
         segments: [
           "Antes de ",
-          { href: "/automatizacion-negocios", label: "automatizar WhatsApp Business" },
+          { href: "/automatizacion-procesos-clinicas", label: "automatizar WhatsApp Business" },
           ", conviene listar qué debe resolver el bot: FAQs, ",
           { href: "/sistema-turnos-online", label: "integrar WhatsApp con sistema de turnos" },
           ", derivación a vendedores, etc. Sin eso, el ",
@@ -289,7 +289,7 @@ const posts: BlogPost[] = [
           "Un flujo con menús resuelve gran parte del volumen. Un ",
           { href: "/bots-whatsapp", label: "chatbot de WhatsApp con inteligencia artificial" },
           " suma cuando hay muchas formas de decir lo mismo o necesitás clasificación más flexible. En muchos proyectos se combina con ",
-          { href: "/automatizacion-negocios", label: "automatización de procesos" },
+          { href: "/automatizacion-procesos-clinicas", label: "automatización de procesos" },
           " detrás (CRM, planillas, etc.).",
         ],
       },

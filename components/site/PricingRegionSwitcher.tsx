@@ -17,9 +17,10 @@ export function PricingRegionSwitcher({ initialRegion }: Props) {
   const [pending, startTransition] = useTransition();
 
   const apply = (region: PricingRegion) => {
-    startTransition(async () => {
-      await setPricingRegionPreference(region);
-      router.refresh();
+    startTransition(() => {
+      void setPricingRegionPreference(region).then(() => {
+        router.refresh();
+      });
     });
   };
 

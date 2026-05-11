@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { PRICING_REGION_COOKIE, type PricingRegion } from "@/lib/pricing-region";
 
@@ -12,4 +13,5 @@ export async function setPricingRegionPreference(region: PricingRegion) {
     sameSite: "lax",
     secure: process.env.NODE_ENV === "production",
   });
+  revalidatePath("/", "layout");
 }

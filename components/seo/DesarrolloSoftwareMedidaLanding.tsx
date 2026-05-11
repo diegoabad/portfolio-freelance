@@ -24,9 +24,9 @@ const HERO = {
 const RELATED_LINKS = [
   { href: "/bots-whatsapp", label: "Bots de WhatsApp" },
   { href: "/sistema-turnos-online", label: "Turnos online" },
-  { href: "/automatizacion-negocios", label: "Automatización de procesos" },
+  { href: "/automatizacion-procesos-clinicas", label: "Automatización de procesos" },
   { href: "/software-para-clinicas", label: "Aplicaciones móviles" },
-  { href: "/sistema-gestion-inventario", label: "Gestión de inventario" },
+  { href: "/control-stock-clinicas", label: "Control de stock" },
 ] as const;
 
 const CONTEXTO_ITEMS = [

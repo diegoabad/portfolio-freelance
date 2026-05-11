@@ -1,3 +1,4 @@
+import { unstable_noStore as noStore } from "next/cache";
 import { cache } from "react";
 import { cookies, headers } from "next/headers";
 import { getServiceLanding, type ServiceLandingSlug } from "@/lib/service-landings";
@@ -11,10 +12,10 @@ export type PricingRegion = "ar" | "intl";
 export const SERVICE_USD_FLOOR: Record<ServiceLandingSlug, number> = {
   "bots-whatsapp": 600,
   "sistema-turnos-online": 1200,
-  "automatizacion-negocios": 500,
+  "automatizacion-procesos-clinicas": 500,
   "desarrollo-software-medida": 2500,
   "software-para-clinicas": 3000,
-  "sistema-gestion-inventario": 1500,
+  "control-stock-clinicas": 1500,
 };
 
 function formatUsdLatinInteger(n: number): string {
@@ -45,6 +46,7 @@ export function serviceLandingPriceFaqCallout(slug: ServiceLandingSlug, region: 
  * Si el país existe y no es AR → USD.
  */
 export const getPricingRegion = cache(async (): Promise<PricingRegion> => {
+  noStore();
   const jar = await cookies();
   const raw = jar.get(PRICING_REGION_COOKIE)?.value;
   if (raw === "ar" || raw === "intl") return raw;

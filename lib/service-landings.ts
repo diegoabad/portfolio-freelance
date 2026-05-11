@@ -22,14 +22,14 @@ export const HIGHLIGHT_CHIP_INVENTARIO =
 const NBOTS: ServiceInterlink = { href: "/bots-whatsapp", label: "Bots de WhatsApp" };
 const NTURNOS: ServiceInterlink = { href: "/sistema-turnos-online", label: "Turnos online" };
 const NAUTO: ServiceInterlink = {
-  href: "/automatizacion-negocios",
+  href: "/automatizacion-procesos-clinicas",
   label: "Automatización de procesos",
 };
 const NMEDIDA: ServiceInterlink = { href: "/desarrollo-software-medida", label: "Software a medida" };
 const NCLINICAS: ServiceInterlink = { href: "/software-para-clinicas", label: "Aplicaciones móviles" };
 const NSTOCK: ServiceInterlink = {
-  href: "/sistema-gestion-inventario",
-  label: "Gestión de inventario",
+  href: "/control-stock-clinicas",
+  label: "Control de stock",
 };
 
 export const SERVICE_LANDING_PAGES = [
@@ -91,7 +91,7 @@ export const SERVICE_LANDING_PAGES = [
     moreInterlinks: [NBOTS, NAUTO, NMEDIDA, NCLINICAS, NSTOCK],
   },
   {
-    slug: "automatizacion-negocios",
+    slug: "automatizacion-procesos-clinicas",
     categoryHeading: "Automatización de procesos",
     homePainTitle: "Tareas manuales que te hacen perder tiempo y recursos",
     homeCardSubtitle:
@@ -177,8 +177,8 @@ export const SERVICE_LANDING_PAGES = [
     moreInterlinks: [NBOTS, NTURNOS, NAUTO, NMEDIDA, NSTOCK],
   },
   {
-    slug: "sistema-gestion-inventario",
-    categoryHeading: "Gestión de inventario",
+    slug: "control-stock-clinicas",
+    categoryHeading: "Control de stock",
     homePainTitle: "Tu stock es un caos entre Excel y anotaciones",
     homeCardSubtitle:
       "Software de inventario y control de stock: movimientos centralizados para depósito, ventas o insumos en clínicas y consultorios, con menos errores y pérdidas.",

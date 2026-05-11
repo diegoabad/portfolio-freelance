@@ -28,7 +28,7 @@ const RELATED_LINKS = [
   { href: "/sistema-turnos-online", label: "Turnos online" },
   { href: "/desarrollo-software-medida", label: "Software a medida" },
   { href: "/software-para-clinicas", label: "Aplicaciones móviles" },
-  { href: "/sistema-gestion-inventario", label: "Gestión de inventario" },
+  { href: "/control-stock-clinicas", label: "Control de stock" },
 ] as const;
 
 const EJEMPLOS_TAREAS = [
@@ -76,7 +76,7 @@ function buildFaqItems(region: PricingRegion): { q: string; blocks: FaqBlock[] }
         type: "p",
         text: "El costo depende del tipo de automatización y la complejidad del proceso: no es lo mismo automatizar tareas simples que integrar varios sistemas o flujos más complejos.",
       },
-      { type: "callout", text: serviceLandingPriceFaqCallout("automatizacion-negocios", region) },
+      { type: "callout", text: serviceLandingPriceFaqCallout("automatizacion-procesos-clinicas", region) },
       {
         type: "ul",
         intro: "En general, el valor se define según:",
@@ -278,7 +278,7 @@ export function AutomatizacionNegociosLanding({ pricingRegion }: { pricingRegion
           {HERO.title}
         </h1>
         <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">{HERO.subtitle}</p>
-        <ServiceLandingHeroOffer slug="automatizacion-negocios" pricingRegion={pricingRegion} />
+        <ServiceLandingHeroOffer slug="automatizacion-procesos-clinicas" pricingRegion={pricingRegion} />
         <div className="mt-6 flex flex-wrap gap-4">
           <LandingWaCta href={homeSection("#contacto")} main={LANDING_CONSULT_CTA} hideWhatsAppIconMobile />
         </div>
@@ -340,11 +340,11 @@ export function AutomatizacionNegociosLanding({ pricingRegion }: { pricingRegion
               </p>
               <p className="text-muted-foreground">
                 Podés combinar esta automatización de procesos con{" "}
-                <Link href="/software-para-clinicas" className="font-medium text-primary underline-offset-4 hover:underline">
+                <Link prefetch={false} href="/software-para-clinicas" className="font-medium text-primary underline-offset-4 hover:underline">
                   aplicaciones móviles
                 </Link>{" "}
                 o con{" "}
-                <Link href="/sistema-turnos-online" className="font-medium text-primary underline-offset-4 hover:underline">
+                <Link prefetch={false} href="/sistema-turnos-online" className="font-medium text-primary underline-offset-4 hover:underline">
                   sistema de turnos online
                 </Link>{" "}
                 para sumar autogestión y notificaciones sin depender solo de llamadas y mensajes sueltos.
