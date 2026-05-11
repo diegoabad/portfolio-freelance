@@ -38,7 +38,7 @@ function ServiceIcon({ slug }: { slug: ServiceLandingSlug }) {
 
 export function Services() {
   return (
-    <section id="servicios" className="relative pt-12 pb-12 md:pt-16 md:pb-16 lg:pt-18 lg:pb-20">
+    <section id="servicios" className="relative py-9 md:py-[72px]">
       <div className="max-w-site mx-auto px-6 lg:px-10">
         <div className="max-w-3xl">
           <span className="text-xs uppercase tracking-[0.2em] text-primary font-medium">Servicios</span>

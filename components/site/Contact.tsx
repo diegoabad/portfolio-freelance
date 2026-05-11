@@ -25,7 +25,7 @@ export function Contact() {
   return (
     <section
       id="contacto"
-      className="relative overflow-hidden border-t border-border pt-20 pb-12 md:pt-28 md:pb-16 lg:pt-32 lg:pb-16"
+      className="relative overflow-hidden py-9 md:py-[72px]"
     >
       <div className="absolute -bottom-40 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-primary/12 blur-[130px]" />
 

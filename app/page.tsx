@@ -12,7 +12,7 @@ const About = dynamic(() => import("@/components/site/About").then((m) => ({ def
   loading: () => (
     <section
       id="sobre-mi"
-      className="relative border-t border-border py-20 md:py-28 lg:py-32"
+      className="relative py-9 md:py-[72px]"
       aria-busy="true"
       aria-label="Cargando sección Sobre mí"
     >
@@ -28,7 +28,7 @@ const Projects = dynamic(() => import("@/components/site/Projects").then((m) => 
   loading: () => (
     <section
       id="proyectos"
-      className="relative bg-surface/30 border-b border-border pt-4 pb-20 md:pt-5 md:pb-28 lg:pt-6 lg:pb-32"
+      className="relative bg-surface/30 py-9 md:py-[72px]"
       aria-busy="true"
       aria-label="Cargando proyectos"
     >
@@ -53,7 +53,7 @@ const BlogSection = dynamic(() => import("@/components/site/BlogSection").then((
   loading: () => (
     <section
       id="blog"
-      className="relative border-t border-border py-20 md:py-28 lg:py-32"
+      className="relative py-9 md:py-[72px]"
       aria-busy="true"
       aria-label="Cargando blog"
     >
@@ -78,7 +78,7 @@ const Testimonials = dynamic(() => import("@/components/site/Testimonials").then
   loading: () => (
     <section
       id="testimonios"
-      className="relative border-t border-border py-20 md:py-28 lg:py-32"
+      className="relative py-9 md:py-[72px]"
       aria-busy="true"
       aria-label="Cargando testimonios"
     >

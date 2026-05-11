@@ -122,7 +122,7 @@ export function Hero() {
         </div>
 
         <ul
-          className="mt-12 grid list-none grid-cols-1 gap-6 border-t border-border/60 pt-10 sm:grid-cols-2 sm:gap-8 md:mt-14 md:pt-12 lg:mt-16 lg:grid-cols-4 lg:gap-6 lg:pt-14"
+          className="mt-12 grid list-none grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 md:mt-14 lg:mt-16 lg:grid-cols-4 lg:gap-6"
           aria-label="En qué puedo ayudarte"
         >
           {heroFeatures.map((item, i) => {

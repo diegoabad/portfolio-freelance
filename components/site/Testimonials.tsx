@@ -43,7 +43,7 @@ function Avatar({ imageSrc, name }: { imageSrc: string; name: string }) {
 
 export function Testimonials() {
   return (
-    <section id="testimonios" className="relative py-20 md:py-28 lg:py-32 border-t border-border">
+    <section id="testimonios" className="relative py-9 md:py-[72px]">
       <div className="max-w-site mx-auto px-6 lg:px-10">
         <div className="max-w-3xl">
           <span className="text-xs uppercase tracking-[0.2em] text-primary font-medium">Testimonios</span>
