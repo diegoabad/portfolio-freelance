@@ -22,16 +22,16 @@ import { homeSection } from "@/lib/home-links";
 const CATEGORY = "Automatización de procesos";
 
 const HERO = {
-  title: "Automatización de procesos para negocios",
+  title: "Automatización de procesos para empresas",
   subtitle:
-    "Integrá planillas, CRM, APIs y mensajería con flujos que corren solos. Cuando el proceso lo amerita, sumamos inteligencia artificial o agentes de automatización que clasifican, resumen o preparan información respetando reglas que definimos juntos—sin reemplazar el criterio humano donde hace falta.",
+    "Automatización empresarial en Argentina con integración y automatización de sistemas (planillas, CRM, APIs, mensajería): menos automatización de tareas repetitivas a mano y más flujos auditables. Cuando encaja, automatización de procesos con n8n, webhooks o conectores; y donde suma, automatización con IA o agentes bajo reglas. Aplicable a automatización administrativa para empresas, recepción, clínicas y automatización de tareas administrativas en salud.",
 };
 
 const MORE_SOLUTIONS = [
   { href: "/bots-whatsapp", label: "Bots de WhatsApp" },
   { href: "/sistema-turnos-online", label: "Turnos online" },
   { href: "/desarrollo-software-medida", label: "Software a medida" },
-  { href: "/software-para-clinicas", label: "Software para clínicas" },
+  { href: "/software-para-clinicas", label: "Aplicaciones móviles" },
   { href: "/sistema-gestion-inventario", label: "Gestión de inventario" },
 ] as const;
 
@@ -42,6 +42,8 @@ const EJEMPLOS_TAREAS = [
   "Clasificar o resumir texto entrante (mails, tickets, notas) con inteligencia artificial bajo reglas fijas",
   "Gestionar turnos o clientes de forma manual",
   "Revisar procesos uno por uno sin automatización",
+  "Automatización de procesos administrativos: conciliaciones, reportes para dirección o auditoría",
+  "Facturación de profesionales o liquidaciones entre agenda, prestaciones y facturación",
 ] as const;
 
 const CONSECUENCIAS = [
@@ -165,6 +167,19 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
     ],
   },
   {
+    q: "¿La automatización de procesos administrativos aplica a clínicas y facturación de profesionales?",
+    blocks: [
+      {
+        type: "p",
+        text: "Sí. En consultorios y clínicas suele haber mucha automatización de tareas repetitivas “invisible”: cruces entre turnos, prestaciones, códigos y facturación de profesionales. Ahí la automatización de procesos administrativos reduce errores y retrabajo si se definen reglas y sistemas fuente de verdad.",
+      },
+      {
+        type: "p",
+        text: "Cuando además necesitás producto propio (historia clínica, reglas muy específicas), conviene evaluar software para clínicas o desarrollo a medida además de integraciones.",
+      },
+    ],
+  },
+  {
     q: "¿Qué pasa si mi proceso es muy específico?",
     blocks: [
       {
@@ -240,6 +255,15 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
       },
     ],
   },
+  {
+    q: "¿Usan n8n u otras herramientas para integrar y automatizar sistemas?",
+    blocks: [
+      {
+        type: "p",
+        text: "Sí cuando encaja el stack: n8n, webhooks y APIs son opciones habituales para automatización de workflows empresariales y digitalización operativa, con logs y responsables claros. No es obligatorio: a veces conviene código propio o un mix según compliance y criticidad del proceso.",
+      },
+    ],
+  },
 ];
 
 export function AutomatizacionNegociosLanding() {
@@ -282,7 +306,7 @@ export function AutomatizacionNegociosLanding() {
               id="problema-heading"
               className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
             >
-              Tareas manuales que te hacen perder horas en tu negocio
+              Tareas manuales que te hacen perder tiempo y recursos en tu negocio
             </h2>
             <div className="relative mt-8 overflow-hidden rounded-2xl border border-primary/30 bg-primary/6 px-6 py-8 md:px-8 md:py-9">
               <div
@@ -293,11 +317,14 @@ export function AutomatizacionNegociosLanding() {
                 <p>¿Seguís perdiendo tiempo todas las semanas haciendo lo mismo?</p>
                 <p className="font-normal text-foreground/90 md:text-[17px]">
                   Responder mensajes, cargar datos en planillas, copiar información entre sistemas o coordinar tareas
-                  manualmente—y a veces encarar texto o pedidos que cambian de forma y no entran en una tabla fija sin un
-                  poco de inteligencia artificial en el medio.
+                  manualmente—típico de la automatización de tareas repetitivas que todavía hace el equipo en lugar del
+                  sistema. A veces el texto o los pedidos no entran en una tabla fija: ahí la automatización con IA puede
+                  ayudar, siempre con reglas y revisión humana donde corresponde.
                 </p>
                 <p className="border-t border-primary/20 pt-4 font-normal text-muted-foreground md:text-[17px]">
-                  A medida que tu negocio crece, estas tareas se multiplican y empiezan a frenar tu operación.
+                  La automatización para empresas no es solo “tecnología”: es ordenar la automatización empresarial para
+                  que la automatización de procesos administrativos (pagos, facturación de profesionales, reportes) no
+                  frene el crecimiento.
                 </p>
               </div>
             </div>
@@ -324,6 +351,36 @@ export function AutomatizacionNegociosLanding() {
                 </li>
               ))}
             </ul>
+          </section>
+
+          <section className="mt-16 md:mt-20" aria-labelledby="clinicas-admin-heading">
+            <SectionKicker n="02b">Rubros</SectionKicker>
+            <h2
+              id="clinicas-admin-heading"
+              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+            >
+              Clínicas, consultorios y administración
+            </h2>
+            <div className="mt-5 space-y-4 text-foreground/95 leading-relaxed md:text-[17px]">
+              <p>
+                En <strong className="font-semibold text-foreground">clínicas y consultorios</strong>, la{" "}
+                <strong className="font-semibold text-foreground">automatización de procesos administrativos</strong>{" "}
+                suele convivir con turnos, autorizaciones y{" "}
+                <strong className="font-semibold text-foreground">facturación de profesionales</strong>: muchas veces
+                los mismos datos pasan por recepción, prestaciones y facturación sin integración clara.
+              </p>
+              <p className="text-muted-foreground">
+                Podés combinar esta automatización de procesos con{" "}
+                <Link href="/software-para-clinicas" className="font-medium text-primary underline-offset-4 hover:underline">
+                  aplicaciones móviles
+                </Link>{" "}
+                o con{" "}
+                <Link href="/sistema-turnos-online" className="font-medium text-primary underline-offset-4 hover:underline">
+                  sistema de turnos online
+                </Link>{" "}
+                para sumar autogestión y notificaciones sin depender solo de llamadas y mensajes sueltos.
+              </p>
+            </div>
           </section>
 
           <section className="mt-16 md:mt-20" aria-labelledby="consecuencias-heading">

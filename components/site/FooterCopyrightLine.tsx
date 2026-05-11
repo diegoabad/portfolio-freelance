@@ -11,7 +11,7 @@ export function FooterCopyrightLine() {
   }, []);
 
   return (
-    <p className="text-[11px] text-muted-foreground text-center sm:text-left">
+    <p className="text-[11px] text-muted-foreground text-center sm:text-left md:text-sm lg:text-[15px] md:leading-snug">
       © {year} Diego Abad. Todos los derechos reservados.
     </p>
   );

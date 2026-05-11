@@ -22,14 +22,14 @@ const CATEGORY = "Bots de WhatsApp";
 const HERO = {
   title: "Bots de WhatsApp para negocios",
   subtitle:
-    "Podés automatizar con bots convencionales (menús, respuestas guardadas y reglas) o sumar inteligencia artificial cuando hace falta entender mejor lo que escribe cada cliente. En ambos casos: conversaciones ordenadas, integración con CRM o agenda y menos mensajes huérfanos—sin depender solo de sumar gente ni de horas de sueldo en lo repetitivo.",
+    "Automatización de mensajes y chatbot de WhatsApp con inteligencia artificial cuando hace falta, integrado con agendas y CRM. Pensado para empresas y pymes en Argentina que viven del canal: chatbot para atención al cliente por WhatsApp, automatización de consultas y opción de automatizar respuestas en WhatsApp Business sin perder control humano. También bot de WhatsApp para consultorios médicos, clínicas o centros de estética cuando el volumen lo justifica.",
 };
 
 const MORE_SOLUTIONS = [
   { href: "/sistema-turnos-online", label: "Turnos online" },
   { href: "/automatizacion-negocios", label: "Automatización de procesos" },
   { href: "/desarrollo-software-medida", label: "Software a medida" },
-  { href: "/software-para-clinicas", label: "Software para clínicas" },
+  { href: "/software-para-clinicas", label: "Aplicaciones móviles" },
   { href: "/sistema-gestion-inventario", label: "Gestión de inventario" },
 ] as const;
 
@@ -63,11 +63,11 @@ const FORMAS = [
 ] as const;
 
 const PROPUESTA_ITEMS = [
-  "Definir si conviene bot con flujos y reglas, inteligencia artificial o una combinación según tu negocio",
-  "Responder consultas frecuentes automáticamente",
+  "Definir inteligencia artificial, flujos guiados o una combinación según tu negocio e integraciones (agenda, CRM…)",
+  "Responder consultas frecuentes automáticamente (atención, ventas o soporte según el caso)",
   "Organizar conversaciones y dejar historial útil para humanos",
   "Derivar clientes según el tipo de consulta o la intención del mensaje",
-  "Integrar WhatsApp con CRM, agenda u otras herramientas",
+  "Integración de WhatsApp con sistemas: CRM, agenda, internos u otros que ya uses",
 ] as const;
 
 const BENEFICIOS = [
@@ -123,7 +123,7 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
     blocks: [
       {
         type: "p",
-        text: "Sí, especialmente en negocios que reciben consultas constantes.",
+        text: "En la práctica suma mucho donde hay consultas repetidas y volumen por WhatsApp: comercios, servicios, equipos de atención al cliente y operaciones que coordinan por el mismo canal. También se usa como bot de WhatsApp para clínicas cuando hace falta ordenar primeras respuestas y turnos sin saturar recepción.",
       },
     ],
   },
@@ -132,7 +132,7 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
     blocks: [
       {
         type: "p",
-        text: "Sí, se puede conectar con CRM, agendas o herramientas internas.",
+        text: "Sí: CRM, agendas, herramientas internas y lo que ya uses en la operación, para que el chatbot no quede aislado y el mensaje se traduzca en acción (reserva, caso en CRM, derivación, etc.).",
       },
     ],
   },
@@ -150,6 +150,15 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
       {
         type: "p",
         text: "En la práctica muchas implementaciones combinan ambos: reglas claras para lo masivo y IA donde suma para no frustrar al cliente ni sobrecargar al equipo.",
+      },
+    ],
+  },
+  {
+    q: "¿Hacen desarrollo e implementación de chatbot en Argentina para empresas?",
+    blocks: [
+      {
+        type: "p",
+        text: "Sí: desde flujos guiados y un sistema de atención automática por WhatsApp hasta bots con IA para ventas y soporte, con integración de WhatsApp con sistemas que ya usás (agenda, CRM, internos). El alcance se define según volumen, riesgos y qué querés que resuelva el bot de WhatsApp para atención médica o comercial en cada caso.",
       },
     ],
   },
@@ -228,6 +237,24 @@ export function AutomatizacionWhatsappLanding() {
               <p className="text-muted-foreground">
                 Esto termina en demoras, consultas sin seguimiento y un uso caro de recursos humanos en tareas que se
                 repiten todos los días.
+              </p>
+              <h3
+                id="chatbot-empresas-argentina"
+                className="mt-8 font-display text-lg font-semibold tracking-tight text-foreground md:text-xl scroll-mt-28"
+              >
+                Chatbot de WhatsApp para empresas en Argentina
+              </h3>
+              <p className="mt-3 text-foreground/95 leading-relaxed md:text-[17px]">
+                La automatización WhatsApp empresas suele arrancar por el mismo problema: muchas consultas y un solo
+                número. Un chatbot para atención al cliente ordena respuestas frecuentes y deja registro de lo que pasó,
+                mientras un bot con inteligencia artificial en WhatsApp ayuda cuando las preguntas no entran en menús
+                rígidos.
+              </p>
+              <p className="mt-4 text-muted-foreground leading-relaxed md:text-[17px]">
+                Es WhatsApp automatizado para negocios sin sacrificar el criterio humano: derivás al equipo cuando el
+                caso lo pide. También encaja como bot de WhatsApp para clínicas—primeras respuestas, recordatorios y
+                coordinación con agenda—y como automatización de mensajes WhatsApp cuando el volumen ya no cierra solo
+                con el celular.
               </p>
             </div>
           </section>
@@ -344,7 +371,7 @@ export function AutomatizacionWhatsappLanding() {
                   id="propuesta-heading"
                   className="font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
                 >
-                  Cómo automatizo WhatsApp en negocios
+                  Automatización de WhatsApp para empresas: cómo lo encaro
                 </h2>
                 <p className="mt-5 font-medium text-foreground md:text-[17px]">
                   Implemento automatizaciones con bots “clásicos”, con apoyo de inteligencia artificial o mixtas, según tu
@@ -423,9 +450,9 @@ export function AutomatizacionWhatsappLanding() {
               <MessageCircle className="relative h-8 w-8 text-primary" aria-hidden />
               <div className="relative mt-4 space-y-4 text-base leading-relaxed text-foreground/95 md:text-lg">
                 <p>
-                  Un negocio recibía muchas consultas por WhatsApp y no lograba responder a tiempo, especialmente fuera
-                  del horario laboral. El equipo dedicaba demasiadas horas a mensajes repetitivos y se evaluaba sumar
-                  gente solo para el canal.
+                  Un negocio en Argentina recibía muchas consultas por WhatsApp y no lograba responder a tiempo,
+                  especialmente fuera del horario laboral. La automatización de mensajes estaba ausente: el equipo dedicaba
+                  demasiadas horas a lo repetitivo y se evaluaba sumar gente solo para el canal.
                 </p>
                 <p className="text-muted-foreground md:text-[17px]">
                   Se implementó una automatización que responde lo frecuente con flujos claros y usa inteligencia
@@ -485,9 +512,9 @@ export function AutomatizacionWhatsappLanding() {
               aria-hidden
             />
             <p className="relative text-lg font-medium leading-relaxed text-foreground md:text-xl">
-              Si el volumen de mensajes ya no cierra solo con correr detrás del celular—y querés bajar costos en tiempo,
-              equipo y errores—podemos ver juntos bots con reglas, inteligencia artificial o ambos, integrados a cómo
-              trabajás.
+              Si buscás WhatsApp automatizado para negocios—con bot con inteligencia artificial en WhatsApp o flujos
+              guiados, integrado a agenda y CRM—podemos ver juntos qué encaja con tu volumen y cómo ordenar la atención
+              sin inflar costos en tiempo y equipo.
             </p>
             <div className="relative mt-8">
               <LandingWaCta href={homeSection("#contacto")} main={LANDING_CONSULT_CTA} />

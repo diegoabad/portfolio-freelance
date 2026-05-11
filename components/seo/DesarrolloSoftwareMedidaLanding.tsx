@@ -22,14 +22,14 @@ const CATEGORY = "Software a medida";
 const HERO = {
   title: "Desarrollo de software a medida",
   subtitle:
-    "Diseño y desarrollo sistemas alineados a tu operación: reglas propias, integraciones y paneles en un mismo producto. Entregas por etapas para que veas avances reales desde el inicio.",
+    "Diseño y desarrollo de sistemas a medida y plataformas web personalizadas en Argentina: reglas propias, integraciones y paneles en un mismo producto. Pensado para empresas y pymes que necesitan software personalizado para negocios, software para clínicas a medida o desarrollo de software para salud cuando lo genérico no alcanza. Entregas por etapas para ver avances reales desde el inicio.",
 };
 
 const MORE_SOLUTIONS = [
   { href: "/bots-whatsapp", label: "Bots de WhatsApp" },
   { href: "/sistema-turnos-online", label: "Turnos online" },
   { href: "/automatizacion-negocios", label: "Automatización de procesos" },
-  { href: "/software-para-clinicas", label: "Software para clínicas" },
+  { href: "/software-para-clinicas", label: "Aplicaciones móviles" },
   { href: "/sistema-gestion-inventario", label: "Gestión de inventario" },
 ] as const;
 
@@ -135,6 +135,15 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
       {
         type: "p",
         text: "El sistema puede seguir evolucionando según crezca el negocio.",
+      },
+    ],
+  },
+  {
+    q: "¿Trabajan desarrollo de software a medida en Argentina para pymes y consultorios?",
+    blocks: [
+      {
+        type: "p",
+        text: "Sí: desde sistemas internos personalizados y desarrollo de sistemas administrativos hasta soluciones de software empresariales con integraciones. Si el foco es salud o gestión médica, el alcance se define con reglas, roles y compliance acorde a tu caso.",
       },
     ],
   },

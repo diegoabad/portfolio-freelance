@@ -100,10 +100,10 @@ export function Hero() {
               <a
                 href={homeSection("#proyectos")}
                 className="inline-flex w-full min-h-12 items-center justify-center gap-2 rounded-[10px] border-2 border-foreground/35 bg-transparent px-6 py-3.5 text-[15px] font-semibold text-foreground transition hover:border-foreground/55 hover:bg-foreground/5 active:scale-[0.98] sm:col-start-2 sm:row-start-1 sm:w-auto sm:text-base"
-                aria-label="Ver casos reales — ir a proyectos"
+                aria-label="Ver casos de éxito — ir a proyectos"
               >
                 <Play className="size-4 shrink-0 opacity-90" strokeWidth={2} aria-hidden />
-                Ver casos reales
+                Ver casos de éxito
               </a>
               <div className="flex w-full flex-col items-stretch gap-0 sm:col-start-1 sm:row-start-1 sm:w-fit sm:items-start">
                 <a

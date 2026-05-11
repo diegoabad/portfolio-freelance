@@ -11,8 +11,9 @@ Desarrollador de software (TypeScript, React, Next.js, Node.js, PostgreSQL). Tra
 - Turnos online: https://www.diegoabad.com/sistema-turnos-online
 - Automatización de procesos: https://www.diegoabad.com/automatizacion-negocios
 - Software a medida: https://www.diegoabad.com/desarrollo-software-medida
-- Software para clínicas: https://www.diegoabad.com/software-para-clinicas
+- Desarrollo de aplicaciones móviles (empresas, clínicas, turnos, autogestión): https://www.diegoabad.com/software-para-clinicas
 - Gestión de inventario / stock: https://www.diegoabad.com/sistema-gestion-inventario
+- Blog (guías: WhatsApp, turnos, automatización, software a medida, apps, inventario): https://www.diegoabad.com/blog
 
 ## Mapa del sitio (máquinas)
 

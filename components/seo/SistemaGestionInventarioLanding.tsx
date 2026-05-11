@@ -21,7 +21,7 @@ const CATEGORY = "Gestión de inventario";
 const HERO = {
   title: "Sistema de control de stock e inventario",
   subtitle:
-    "Movimientos, stock y productos con reglas claras: sabés qué hay, qué se vendió y qué reponer, con menos diferencias entre depósito y ventas y sin depender solo de planillas o anotaciones sueltas.",
+    "Movimientos, entradas y salidas en un solo lugar: software de inventario para empresas, control de stock para consultorios o sistema de gestión de insumos médicos con varios puntos de uso. Sirve para depósito y ventas, gestión de stock automatizada en pymes o control de materiales médicos sin depender solo de Excel y anotaciones sueltas.",
 };
 
 const MORE_SOLUTIONS = [
@@ -29,7 +29,7 @@ const MORE_SOLUTIONS = [
   { href: "/sistema-turnos-online", label: "Turnos online" },
   { href: "/automatizacion-negocios", label: "Automatización de procesos" },
   { href: "/desarrollo-software-medida", label: "Software a medida" },
-  { href: "/software-para-clinicas", label: "Software para clínicas" },
+  { href: "/software-para-clinicas", label: "Aplicaciones móviles" },
 ] as const;
 
 const CONTEXTO_ITEMS = [
@@ -38,6 +38,7 @@ const CONTEXTO_ITEMS = [
   "Movimientos que no se actualizan",
   "Ventas que no impactan en el inventario",
   "Anotaciones manuales que se pierden",
+  "Insumos o descartables en clínica sin trazabilidad entre gabinete, depósito y recepción",
 ] as const;
 
 const RIESGO_ITEMS = [
@@ -64,6 +65,7 @@ const PROPUESTA_ITEMS = [
   "Actualizar stock automáticamente",
   "Evitar errores manuales",
   "Tener visibilidad clara del inventario",
+  "Soportar varias ubicaciones o consumo interno (p. ej. insumos por sector en centros de salud)",
 ] as const;
 
 const BENEFICIOS = [
@@ -118,6 +120,15 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
     q: "¿Vale la pena implementar un sistema de stock?",
     blocks: [{ type: "p", text: "Si tenés errores o desorganización, el impacto suele ser inmediato." }],
   },
+  {
+    q: "¿Sirve como software de inventario para empresas y control de insumos en clínicas?",
+    blocks: [
+      {
+        type: "p",
+        text: "Sí: el mismo enfoque de plataforma de control de inventario sirve para retail y depósitos, o para control de insumos para clínicas y stock en centros médicos con reglas por ubicación o sector. Si necesitás automatización de inventario empresarial conectada a ventas o consumo interno, se integra según tu operación.",
+      },
+    ],
+  },
 ];
 
 export function SistemaGestionInventarioLanding() {
@@ -165,7 +176,7 @@ export function SistemaGestionInventarioLanding() {
               id="problema-heading"
               className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
             >
-              Tu control de stock es un caos entre Excel y anotaciones
+              Tu stock es un caos entre Excel y anotaciones
             </h2>
             <div className="relative mt-8 overflow-hidden rounded-2xl border border-primary/30 bg-primary/6 px-6 py-8 md:px-8 md:py-9">
               <div

@@ -6,13 +6,15 @@ import { Hero } from "@/components/site/Hero";
 import { Nav } from "@/components/site/Nav";
 import { Process } from "@/components/site/Process";
 import { Services } from "@/components/site/Services";
+import { BlogSection } from "@/components/site/BlogSection";
+import { Testimonials } from "@/components/site/Testimonials";
 
 /** Debajo del pliegue: chunk aparte y sin competir con el LCP del hero. */
 const About = dynamic(() => import("@/components/site/About").then((m) => ({ default: m.About })), {
   loading: () => (
     <section
       id="sobre-mi"
-      className="relative py-20 md:py-28 lg:py-32"
+      className="relative border-t border-border py-20 md:py-28 lg:py-32"
       aria-busy="true"
       aria-label="Cargando sección Sobre mí"
     >
@@ -57,8 +59,10 @@ export default function Home() {
       <Hero />
       <Services />
       <Projects />
+      <Testimonials />
       <About />
       <Process />
+      <BlogSection />
       <Contact />
       <Footer />
     </main>

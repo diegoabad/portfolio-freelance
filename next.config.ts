@@ -33,6 +33,7 @@ const nextConfig: NextConfig = {
       { source: "/logo-da.png", headers: [{ key: "Cache-Control", value: staticImageCache }] },
       { source: "/avatar-about.png", headers: [{ key: "Cache-Control", value: staticImageCache }] },
       { source: "/projects/:path*", headers: [{ key: "Cache-Control", value: staticImageCache }] },
+      { source: "/testimonials/:path*", headers: [{ key: "Cache-Control", value: staticImageCache }] },
     ];
   },
   async redirects() {

@@ -5,24 +5,27 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { BrandLogoMark } from "@/components/site/BrandLogoMark";
-import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
-import { HERO_NAV_CTA_LABEL } from "@/lib/contact";
 import { homeSection } from "@/lib/home-links";
 import { SERVICE_LANDING_PAGES, SERVICE_SLUGS } from "@/lib/service-landings";
 import { BRAND_TAGLINE } from "@/lib/site";
 
-const SECTION_IDS = ["top", "servicios", "proyectos", "sobre-mi", "proceso", "contacto"] as const;
+const SECTION_IDS = ["top", "servicios", "proyectos", "testimonios", "sobre-mi", "proceso", "contacto"] as const;
 
 type SectionId = (typeof SECTION_IDS)[number];
 
-const links: { id: SectionId; label: string; hash: string }[] = [
-  { id: "top", label: "Inicio", hash: "#top" },
-  { id: "servicios", label: "Servicios", hash: "#servicios" },
-  { id: "proyectos", label: "Casos reales", hash: "#proyectos" },
-  { id: "sobre-mi", label: "Sobre mí", hash: "#sobre-mi" },
-  { id: "proceso", label: "Cómo trabajamos", hash: "#proceso" },
-  { id: "contacto", label: "Contacto", hash: "#contacto" },
-];
+type HashNavLink = { kind: "hash"; id: SectionId; label: string; hash: string };
+type RouteNavLink = { kind: "route"; label: string; href: "/blog" };
+
+const navLinks: readonly (HashNavLink | RouteNavLink)[] = [
+  { kind: "hash", id: "top", label: "Inicio", hash: "#top" },
+  { kind: "hash", id: "servicios", label: "Servicios", hash: "#servicios" },
+  { kind: "hash", id: "proyectos", label: "Casos de éxito", hash: "#proyectos" },
+  { kind: "hash", id: "testimonios", label: "Testimonios", hash: "#testimonios" },
+  { kind: "hash", id: "sobre-mi", label: "Sobre mí", hash: "#sobre-mi" },
+  { kind: "hash", id: "proceso", label: "Cómo trabajamos", hash: "#proceso" },
+  { kind: "route", label: "Blog", href: "/blog" },
+  { kind: "hash", id: "contacto", label: "Contacto", hash: "#contacto" },
+] as const;
 
 function readActiveFromHash(): SectionId {
   if (typeof window === "undefined") return "top";
@@ -41,7 +44,7 @@ export function Nav() {
   const [active, setActive] = useState<SectionId>("top");
   const [servicesMenu, setServicesMenu] = useState<{ anchorPath: string } | null>(null);
   const servicesRef = useRef<HTMLDivElement>(null);
-  /** En `/`, barra transparente arriba del hero; al hacer scroll gana fondo (solo aplica en `md+`). */
+  /** En `/`, barra transparente arriba del hero; al hacer scroll gana fondo (viewport ≥ 1100px). */
   const [navSolid, setNavSolid] = useState(() => pathname !== "/");
 
   const servicesOpen = servicesMenu !== null && servicesMenu.anchorPath === pathname;
@@ -129,8 +132,9 @@ export function Nav() {
     return active === id ? "text-primary font-semibold" : "text-white/90 hover:text-white transition-colors";
   };
 
-  const ctaClass =
-    "inline-flex items-center justify-center gap-2 rounded-[10px] border-2 border-primary bg-primary px-3 lg:px-4 py-2 text-sm md:text-base font-semibold text-primary-foreground hover:opacity-90 transition shrink-0 whitespace-nowrap max-w-[min(100vw-10rem,16rem)] lg:max-w-none";
+  const blogNavDesktopClass =
+    "whitespace-nowrap shrink-0 transition-colors " +
+    (pathname.startsWith("/blog") ? "text-primary font-semibold" : "text-white/90 hover:text-white");
 
   const closeServicesMenu = () => {
     setServicesMenu(null);
@@ -178,28 +182,28 @@ export function Nav() {
 
   const headerSurfaceClass =
     isHome && !navSolid
-      ? "bg-background md:bg-transparent md:backdrop-blur-none md:supports-backdrop-filter:bg-transparent"
-      : "bg-background md:bg-background md:backdrop-blur-none";
+      ? "bg-background min-[1100px]:bg-transparent min-[1100px]:backdrop-blur-none min-[1100px]:supports-backdrop-filter:bg-transparent"
+      : "bg-background min-[1100px]:bg-background min-[1100px]:backdrop-blur-none";
 
   const headerBorderClass =
     isHome && !navSolid ? "border-b border-transparent" : "border-b border-primary/18";
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 w-full ${headerBorderClass} transition-[background-color,backdrop-filter,border-color] duration-300 ease-out max-md:flex max-md:max-h-dvh max-md:flex-col max-md:overflow-hidden md:overflow-visible ${headerSurfaceClass}`}
+      className={`fixed top-0 inset-x-0 z-50 w-full ${headerBorderClass} transition-[background-color,backdrop-filter,border-color] duration-300 ease-out max-[1099px]:flex max-[1099px]:max-h-dvh max-[1099px]:flex-col max-[1099px]:overflow-hidden min-[1100px]:overflow-visible ${headerSurfaceClass}`}
     >
-      <div className="relative max-w-site mx-auto w-full shrink-0 px-4 sm:px-6 lg:px-10 flex min-h-21 md:min-h-24 items-center justify-between md:justify-center py-3 md:py-[7px]">
+      <div className="relative max-w-site mx-auto w-full shrink-0 px-4 sm:px-6 lg:px-10 flex min-h-21 min-[1100px]:min-h-24 items-center justify-between gap-3 py-3 min-[1100px]:py-[7px]">
         <a
           href={homeSection("#top")}
           onClick={() => isHome && bumpActiveFromUrlHash()}
-          className="flex min-w-0 shrink-0 items-center gap-2.5 z-20 md:absolute md:left-6 lg:left-10 md:top-1/2 md:-translate-y-1/2 md:flex-none md:max-w-none md:pr-0 pr-2"
+          className="flex min-w-0 shrink-0 items-center gap-2.5 z-20 pr-1 min-[1100px]:pr-0"
         >
           <BrandLogoMark
             size={42}
             priority
             className={
               isHome && !navSolid
-                ? "drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] md:drop-shadow-[0_2px_14px_rgba(0,0,0,0.9)]"
+                ? "drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] min-[1100px]:drop-shadow-[0_2px_14px_rgba(0,0,0,0.9)]"
                 : undefined
             }
           />
@@ -211,12 +215,13 @@ export function Nav() {
           </span>
         </a>
 
+        <div className="flex min-w-0 flex-1 items-center justify-end">
         <nav
-          className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center gap-2 lg:gap-5 xl:gap-7 text-sm md:text-base pointer-events-auto max-w-[min(100%-12rem,52rem)] flex-wrap font-medium"
+          className="hidden min-[1100px]:flex items-center justify-end gap-2 lg:gap-5 xl:gap-7 text-sm min-[1100px]:text-base pointer-events-auto flex-wrap font-medium"
           aria-label="Principal"
         >
-          {links.map((l) =>
-            l.id === "servicios" ? (
+          {navLinks.map((l) =>
+            l.kind === "hash" && l.id === "servicios" ? (
               <div key={l.hash} className="relative shrink-0" ref={servicesRef}>
                 <button
                   type="button"
@@ -266,6 +271,15 @@ export function Nav() {
                   </div>
                 )}
               </div>
+            ) : l.kind === "route" ? (
+              <Link
+                key={l.href}
+                href={l.href}
+                aria-current={pathname.startsWith("/blog") ? "page" : undefined}
+                className={blogNavDesktopClass}
+              >
+                {l.label}
+              </Link>
             ) : (
               <a
                 key={l.hash}
@@ -279,22 +293,9 @@ export function Nav() {
           )}
         </nav>
 
-        <div className="hidden md:flex absolute right-6 lg:right-10 top-1/2 -translate-y-1/2 z-20 items-center">
-          <a
-            href={homeSection("#contacto")}
-            onClick={() => isHome && bumpActiveFromUrlHash()}
-            className={ctaClass}
-            aria-label={`${HERO_NAV_CTA_LABEL} — ir a contacto`}
-          >
-            <WhatsAppIcon size={20} className="shrink-0 text-primary-foreground" />
-            {HERO_NAV_CTA_LABEL}
-          </a>
-        </div>
-
-        <div className="flex md:hidden items-center shrink-0 z-20">
           <button
             type="button"
-            className={`p-2 rounded-lg transition ${
+            className={`min-[1100px]:hidden shrink-0 z-20 p-2 rounded-lg transition ${
               isHome && !navSolid ? "text-white hover:bg-white/10" : "text-foreground hover:bg-muted"
             }`}
             onClick={() => setOpen((v) => !v)}
@@ -306,10 +307,10 @@ export function Nav() {
       </div>
 
       {open && (
-        <div className="md:hidden flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-y-contain border-t border-border bg-surface shadow-[0_18px_48px_-20px_oklch(0.02_0.02_270/0.75)] [touch-action:pan-y]">
+        <div className="min-[1100px]:hidden flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-y-contain border-t border-border bg-surface shadow-[0_18px_48px_-20px_oklch(0.02_0.02_270/0.75)] [touch-action:pan-y]">
           <nav className="max-w-site mx-auto w-full px-6 py-4 flex flex-col gap-1 pb-[max(1rem,env(safe-area-inset-bottom))]" aria-label="Principal móvil">
-            {links.map((l) =>
-              l.id === "servicios" ? (
+            {navLinks.map((l) =>
+              l.kind === "hash" && l.id === "servicios" ? (
                 <details key={l.hash} className="group rounded-xl">
                   <summary
                     className={`flex cursor-pointer list-none items-center justify-between gap-2 py-2.5 px-3 -mx-1 rounded-xl text-base transition-colors hover:bg-surface-elevated [&::-webkit-details-marker]:hidden ${serviciosActive ? "text-primary font-semibold" : "text-white/90"}`}
@@ -352,6 +353,18 @@ export function Nav() {
                     })}
                   </div>
                 </details>
+              ) : l.kind === "route" ? (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  aria-current={pathname.startsWith("/blog") ? "page" : undefined}
+                  className={`py-2.5 text-base rounded-xl px-3 -mx-1 transition-colors hover:bg-surface-elevated ${
+                    pathname.startsWith("/blog") ? "font-semibold text-primary" : "text-white/90"
+                  }`}
+                >
+                  {l.label}
+                </Link>
               ) : (
                 <a
                   key={l.hash}

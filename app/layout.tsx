@@ -29,25 +29,37 @@ const metadataBase = new URL(siteUrl ?? "http://localhost:3000");
 const seoTitle = "Diego Abad — desarrollador de software y automatizaciones";
 
 const seoDescription =
-  "Software a medida, automatización de procesos (integraciones e inteligencia artificial donde suma), bots de WhatsApp, apps y sistemas web con React y Next.js. Proyectos para negocios en Argentina y Latinoamérica.";
+  "Desarrollo de software a medida en Argentina, automatización de procesos (n8n, APIs, integraciones), bots de WhatsApp con IA, sistema de turnos online, apps móviles para clínicas, control de stock e inventario. React, Next.js, Node.js y TypeScript para empresas y pymes en LATAM.";
 
 const keywords = [
   "Diego Abad",
-  "desarrollador de software",
-  "desarrollador fullstack",
+  "desarrollador de software Argentina",
+  "desarrollador fullstack Buenos Aires",
   "software a medida",
   "desarrollo web",
+  "desarrollo de aplicaciones móviles",
   "React",
   "Next.js",
   "Node.js",
   "TypeScript",
+  "Flutter",
   "automatización de procesos",
+  "automatización empresarial Argentina",
   "inteligencia artificial",
   "agentes de IA",
   "bots de WhatsApp",
+  "chatbot WhatsApp empresas",
+  "sistema de turnos online",
+  "agenda médica online",
+  "software para clínicas",
+  "control de stock",
+  "inventario clínicas",
   "integraciones API",
+  "n8n",
   "PostgreSQL",
+  "desarrollo de software para pymes",
   "Argentina",
+  "Latinoamérica",
 ];
 
 export const metadata: Metadata = {

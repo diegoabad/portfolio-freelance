@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
-import { CalendarDays, Code2, MessageCircle, Package, Stethoscope, Zap } from "lucide-react";
+import { CalendarDays, Code2, MessageCircle, Package, Smartphone, Zap } from "lucide-react";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 import { HERO_NAV_CTA_LABEL, PRIMARY_CTA_SUBLINE } from "@/lib/contact";
 import { homeSection } from "@/lib/home-links";
@@ -11,7 +11,7 @@ const CARD_ICON: Record<ServiceLandingSlug, LucideIcon> = {
   "sistema-turnos-online": CalendarDays,
   "automatizacion-negocios": Zap,
   "desarrollo-software-medida": Code2,
-  "software-para-clinicas": Stethoscope,
+  "software-para-clinicas": Smartphone,
   "sistema-gestion-inventario": Package,
 };
 

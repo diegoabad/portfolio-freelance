@@ -19,16 +19,16 @@ import { EVALUATION_OFFER_FAQ, LANDING_CONSULT_CTA, REL_WHATSAPP_EXTERNAL, WHATS
 const CATEGORY = "Turnos online";
 
 const HERO = {
-  title: "Sistema de gestión de turnos online",
+  title: "Sistema de turnos online: agenda médica y reservas",
   subtitle:
-    "Podés combinar agendas donde el paciente o cliente autogestiona su turno (reserva y cambios dentro de reglas), un panel para que empleados carguen disponibilidad y operen el día a día, y—cuando tiene sentido—agentes de inteligencia artificial que ayudan a decidir qué ofrecer según políticas de agenda, huecos y tipo de servicio. Todo con confirmaciones y recordatorios para bajar cancelaciones de último momento.",
+    "Un sistema de reservas online con autogestión, reglas claras y agenda online con recordatorios automáticos. Pensado para agenda médica online, turnos online para clínicas, software de agenda para consultorios o sistema de citas online para clínicas privadas; también centros de estética, profesionales independientes y plataforma de turnos online en Argentina cuando hace falta orden y trazabilidad. Coordiná turnos online con WhatsApp sin perder una sola fuente de verdad.",
 };
 
 const MORE_SOLUTIONS = [
   { href: "/bots-whatsapp", label: "Bots de WhatsApp" },
   { href: "/automatizacion-negocios", label: "Automatización de procesos" },
   { href: "/desarrollo-software-medida", label: "Software a medida" },
-  { href: "/software-para-clinicas", label: "Software para clínicas" },
+  { href: "/software-para-clinicas", label: "Aplicaciones móviles" },
   { href: "/sistema-gestion-inventario", label: "Gestión de inventario" },
 ] as const;
 
@@ -113,7 +113,7 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
     blocks: [
       {
         type: "p",
-        text: "Sí, el sistema se ajusta según el tipo de servicio, horarios y forma de trabajo.",
+        text: "Sí: el mismo enfoque de sistema de turnos online sirve para distintos rubros. Se ajusta según servicios, horarios y políticas—desde agenda médica online y software de turnos para consultorios hasta turnos online para clínicas con varios profesionales.",
       },
     ],
   },
@@ -122,7 +122,7 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
     blocks: [
       {
         type: "p",
-        text: "Sí, se pueden enviar recordatorios automáticos para reducir cancelaciones.",
+        text: "Sí: automatización de turnos y recordatorios (SMS, mail, WhatsApp u otros canales según política) para bajar cancelaciones y huecos. Es parte natural de un software de turnos online o de una agenda online con recordatorios automáticos alineada a tu operación.",
       },
     ],
   },
@@ -131,7 +131,7 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
     blocks: [
       {
         type: "p",
-        text: "Sí, se puede integrar con WhatsApp para mejorar la gestión de turnos.",
+        text: "Sí: muchos equipos combinan agenda con turnos médicos por WhatsApp—recordatorios, confirmaciones o primer contacto—para que el paciente no quede colgado en el chat. La idea es que WhatsApp alimente o consulte el mismo sistema de reservas online, no un calendario paralelo sin reglas.",
       },
     ],
   },
@@ -234,12 +234,17 @@ export function SistemaTurnosOnlineLanding() {
                 aria-hidden
               />
               <div className="relative space-y-4 text-lg font-medium leading-relaxed text-foreground md:text-xl">
-                <p>Gestionar turnos manualmente suele generar errores, desorganización y pérdida de tiempo.</p>
+                <p>
+                  Gestionar turnos manualmente suele generar errores, desorganización y pérdida de tiempo—especialmente
+                  cuando necesitás un <strong className="font-semibold text-foreground">sistema de turnos online</strong>{" "}
+                  que no sea “otra planilla”.
+                </p>
                 <p className="border-t border-primary/20 pt-4 font-normal text-muted-foreground md:text-[17px]">
-                  A medida que aumentan los clientes, la agenda se vuelve difícil de controlar—y si todo pasa por mensajes,
-                  tu equipo deja de estar disponible para atender y termina “coordinando huecos”. Una agenda con
-                  autogestión del paciente y reglas claras libera ese tiempo; los empleados siguen controlando lo que
-                  corresponde desde el mismo sistema, y la IA puede ayudar solo donde vos definís que encaje.
+                  A medida que aumentan los clientes, la agenda se vuelve difícil de controlar—y si todo pasa por
+                  mensajes, tu equipo termina coordinando huecos en lugar de atender. Un{" "}
+                  <strong className="font-semibold text-foreground/95">sistema de reservas online</strong> con
+                  autogestión y reglas claras libera ese tiempo; los empleados siguen controlando lo que corresponde
+                  desde el mismo lugar, y la IA puede ayudar solo donde definís que encaje.
                 </p>
               </div>
             </div>
@@ -260,6 +265,31 @@ export function SistemaTurnosOnlineLanding() {
                   <li key={item}>{item}</li>
                 ))}
               </ul>
+              <h3 className="mt-8 font-display text-lg font-semibold tracking-tight text-foreground md:text-xl">
+                Agenda médica online, clínicas y consultorios
+              </h3>
+              <p className="mt-3">
+                Un <strong className="font-semibold text-foreground">sistema de turnos online</strong> fuerte también
+                funciona como <strong className="font-semibold text-foreground">sistema de reservas online</strong> para
+                equipos con varios profesionales o consultorios: turnos online para clínicas,{" "}
+                <strong className="font-semibold text-foreground">agenda médica online</strong> con políticas de
+                cancelación y, en consultorios,{" "}
+                <strong className="font-semibold text-foreground">software de turnos para consultorios</strong> que
+                ordena la recepción sin depender solo del teléfono.
+              </p>
+              <p className="mt-4 text-muted-foreground">
+                Si tu operación es mayoritariamente clínica, conviene revisar también{" "}
+                <Link href="/software-para-clinicas" className="font-medium text-primary underline-offset-4 hover:underline">
+                  aplicaciones móviles
+                </Link>
+                . Si el cuello de botella es el WhatsApp, los{" "}
+                <Link href="/bots-whatsapp" className="font-medium text-primary underline-offset-4 hover:underline">
+                  bots de WhatsApp
+                </Link>{" "}
+                ayudan a encaminar{" "}
+                <strong className="font-semibold text-foreground">turnos médicos por WhatsApp</strong> hacia la misma
+                agenda con reglas claras.
+              </p>
             </div>
           </section>
 

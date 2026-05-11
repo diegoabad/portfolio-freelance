@@ -9,7 +9,7 @@ const aboutActionBtn =
 
 export function About() {
   return (
-    <section id="sobre-mi" className="relative py-20 md:py-28 lg:py-32">
+    <section id="sobre-mi" className="relative border-t border-border py-20 md:py-28 lg:py-32">
       <div className="max-w-site mx-auto px-6 lg:px-10">
         <div className="max-w-3xl">
           <span className="text-xs uppercase tracking-[0.2em] text-primary font-medium">Sobre mí</span>
@@ -51,29 +51,22 @@ export function About() {
 
               <div className="mt-5 md:mt-6 space-y-3 md:space-y-4 text-left text-base md:text-lg leading-relaxed text-foreground/90">
                 <p>
-                  Soy <span className="text-primary font-medium">desarrollador de software</span> con{" "}
-                  <span className="text-primary font-medium">más de 4 años de experiencia</span>, trabajando tanto de forma
-                  independiente como en empresas.
+                  Soy <span className="text-primary font-medium">desarrollador de software</span> y hace más de 4 años
+                  trabajo creando soluciones para empresas, negocios y profesionales.
                 </p>
                 <p>
                   Actualmente participo en proyectos del{" "}
-                  <span className="text-primary font-medium">sector salud en INECO</span>, donde desarrollo soluciones que
-                  impactan en la <span className="text-primary font-medium">operación diaria</span> de profesionales y
-                  equipos.
+                  <span className="text-primary font-medium">sector salud en INECO</span>, desarrollando herramientas que
+                  ayudan a optimizar procesos y mejorar el trabajo diario de equipos y profesionales.
                 </p>
                 <p>
-                  En paralelo, realizo <span className="text-primary font-medium">desarrollos freelance</span> para
-                  distintos clientes, enfocándome en{" "}
-                  <span className="text-primary font-medium">sistemas a medida, automatizaciones e integraciones</span>.
+                  Además, trabajo de forma independiente ayudando a distintos clientes a digitalizar y automatizar sus
+                  negocios mediante páginas web, sistemas a medida, integraciones, automatizaciones y soluciones con{" "}
+                  <span className="text-primary font-medium">inteligencia artificial</span>.
                 </p>
                 <p>
-                  A nivel técnico, trabajo principalmente con{" "}
-                  <span className="text-primary font-medium">
-                    JavaScript/TypeScript, Next.js, Node.js, PostgreSQL y Docker
-                  </span>
-                  , y uso <span className="text-primary font-medium">n8n</span> e{" "}
-                  <span className="text-primary font-medium">inteligencia artificial</span> para automatizar procesos e
-                  integrar sistemas.
+                  Me enfoco en crear herramientas simples, útiles y adaptadas a cada necesidad, buscando que la tecnología
+                  realmente ayude a ahorrar tiempo, organizar procesos y mejorar la atención al cliente.
                 </p>
               </div>
 

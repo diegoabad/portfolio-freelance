@@ -5,8 +5,8 @@ import {
   CircleAlert,
   HelpCircle,
   Layers,
+  Smartphone,
   Sparkles,
-  Stethoscope,
 } from "lucide-react";
 import {
   FaqBlocks,
@@ -16,12 +16,14 @@ import {
   type FaqBlock,
 } from "@/components/seo/landing-blocks";
 import { EVALUATION_OFFER_FAQ, LANDING_CONSULT_CTA, REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
-const CATEGORY = "Software para clínicas";
+const CATEGORY = "Desarrollo de aplicaciones móviles";
 
 const HERO = {
-  title: "Software de gestión para clínicas",
+  title: "Desarrollo de aplicaciones móviles",
+  lead: "Apps móviles para empresas, clínicas y negocios",
   subtitle:
-    "Pacientes, turnos e historia clínica en un solo lugar: acceso rápido a lo relevante, menos papeles y menos datos repartidos entre Excel y chats. Tu equipo atiende; el sistema ordena lo administrativo.",
+    "Tus clientes y tu equipo esperan resolver todo desde el celular. Desarrollo de aplicaciones móviles en Argentina para turnos, autogestión, app para gestión de pacientes o aplicación móvil para turnos médicos, con integración a APIs y sistemas existentes. Cuando conviene unificar Android e iPhone, evaluamos desarrollo multiplataforma (por ejemplo Flutter).",
+  presupuesto: "Pedí tu presupuesto sin cargo",
 };
 
 const MORE_SOLUTIONS = [
@@ -32,59 +34,85 @@ const MORE_SOLUTIONS = [
   { href: "/sistema-gestion-inventario", label: "Gestión de inventario" },
 ] as const;
 
+const PROBLEMA_BULLETS = [
+  "consultas por WhatsApp",
+  "reservas manuales",
+  "seguimiento por mensajes",
+  "información dispersa",
+  "procesos que solo funcionan desde una computadora",
+] as const;
+
 const CONTEXTO_ITEMS = [
-  "Pacientes registrados en Excel",
-  "Historias clínicas en papel",
-  "Turnos gestionados por WhatsApp o agenda",
-  "Información distribuida en distintos lugares",
+  "Clientes preguntando siempre lo mismo",
+  "Procesos que requieren llamadas o mensajes",
+  "Información distribuida entre sistemas",
+  "Dificultad para acceder desde el celular",
+  "Equipos resolviendo tareas manualmente",
 ] as const;
 
 const RIESGO_ITEMS = [
-  "Pérdida o duplicación de información",
-  "Errores en la atención",
-  "Dificultad para acceder a historiales",
-  "Desorganización en turnos",
-  "Dependencia total de procesos manuales",
+  "Pérdida de tiempo operativo",
+  "Demoras en respuestas",
+  "Mala experiencia para clientes",
+  "Dependencia de procesos manuales",
+  "Errores administrativos",
+  "Dificultad para escalar la operación",
 ] as const;
 
 const FORMAS = [
-  { title: "Seguir usando Excel y papel", body: "Limitado cuando crece la operación.", highlight: false },
-  { title: "Digitalizar parcialmente la información", body: "Mejora algo, pero sigue fragmentado.", highlight: false },
-  { title: "Usar herramientas genéricas", body: "A veces no encajan con flujo clínico real.", highlight: false },
   {
-    title: "Implementar un sistema de gestión",
-    body: "Centralizado y adaptado a tu forma de trabajo.",
+    title: "Seguir usando WhatsApp y planillas",
+    body: "Funciona al principio, pero se vuelve limitado cuando crece la operación.",
+    highlight: false,
+  },
+  {
+    title: "Usar aplicaciones genéricas",
+    body: "A veces no se adaptan a la forma real de trabajar del negocio.",
+    highlight: false,
+  },
+  {
+    title: "Resolver todo manualmente",
+    body: "Genera más carga operativa y pérdida de tiempo.",
+    highlight: false,
+  },
+  {
+    title: "Desarrollar una aplicación móvil personalizada",
+    body: "Adaptada a los procesos, clientes y necesidades reales de la empresa.",
     highlight: true,
   },
 ] as const;
 
 const PROPUESTA_ITEMS = [
-  "Centralizar la información de pacientes",
-  "Registrar historias clínicas digitalmente",
-  "Organizar turnos en un solo lugar",
-  "Automatizar procesos administrativos",
+  "Autogestión de clientes",
+  "Reservas y turnos online",
+  "Seguimiento en tiempo real",
+  "Notificaciones automáticas",
+  "Integración con sistemas existentes",
+  "Operaciones desde cualquier lugar",
 ] as const;
 
 const BENEFICIOS = [
-  "Toda la información en un solo lugar",
-  "Acceso rápido a historiales",
-  "Menos errores administrativos",
-  "Mejor organización de turnos",
-  "Mayor control de la operación",
+  "Mejor experiencia para clientes",
+  "Menos tareas manuales",
+  "Acceso rápido desde el celular",
+  "Procesos más ágiles",
+  "Mayor organización operativa",
+  "Integración entre áreas y sistemas",
 ] as const;
 
 const SEÑALES = [
-  "Usás Excel para gestionar pacientes",
-  "Tenés historias clínicas en papel",
-  "La información está dispersa",
-  "Se pierden datos o hay errores",
-  "La gestión depende de procesos manuales",
+  "Tus clientes dependen de WhatsApp para todo",
+  "Hay demasiados procesos manuales",
+  "Tu sistema no funciona bien desde el celular",
+  "Se pierde tiempo organizando información",
+  "Tu operación depende demasiado de personas",
+  "Necesitás dar acceso rápido desde cualquier lugar",
 ] as const;
 
 const MSG_HERO =
-  "Hola Diego, quiero contarte cómo trabaja mi clínica y ver si un sistema de gestión encaja. Me interesa un presupuesto sin cargo.";
+  "Hola Diego, quiero desarrollar una aplicación móvil (Android/iPhone) para mi negocio. Me interesa presupuesto sin cargo.";
 const MSG_CASO =
-  "Hola Diego, quiero contarte mi caso (clínica / pacientes / turnos) para ver opciones y qué presupuesto podría ser.";
+  "Hola Diego, mi operación depende mucho de WhatsApp y procesos manuales. Quiero ver cómo llevarlo a una app móvil con integraciones.";
 
 function waHref(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
@@ -92,41 +120,61 @@ function waHref(message: string) {
 
 const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
   {
-    q: "¿Cuánto cuesta un sistema de gestión para clínicas?",
+    q: "¿Desarrollás aplicaciones para Android y iPhone?",
     blocks: [
       {
         type: "p",
-        text: "Depende del nivel de personalización, cantidad de módulos, integraciones y cómo trabaja tu centro: no hay un número único sin antes entender el alcance.",
+        text: "Sí. Las aplicaciones pueden orientarse a Android, iOS o ambos, según alcance y prioridad de negocio.",
+      },
+    ],
+  },
+  {
+    q: "¿La app puede conectarse con mis sistemas actuales?",
+    blocks: [
+      {
+        type: "p",
+        text: "Sí. Se pueden integrar APIs, CRMs, sistemas internos y herramientas existentes cuando hay documentación o acceso técnico.",
+      },
+    ],
+  },
+  {
+    q: "¿Las aplicaciones son personalizadas?",
+    blocks: [{ type: "p", text: "Sí. Cada app se desarrolla según la operación y las necesidades del negocio." }],
+  },
+  {
+    q: "¿Se pueden enviar notificaciones automáticas?",
+    blocks: [
+      {
+        type: "p",
+        text: "Sí. Las apps pueden incluir notificaciones push, recordatorios y alertas automáticas, con reglas y permisos acordados.",
+      },
+    ],
+  },
+  {
+    q: "¿Conviene desarrollar una app para mi negocio?",
+    blocks: [
+      {
+        type: "p",
+        text: "Depende del tipo de operación, cantidad de clientes y procesos que quieras digitalizar. Lo evaluamos en una charla inicial sin compromiso.",
       },
       { type: "p", text: EVALUATION_OFFER_FAQ },
     ],
   },
   {
-    q: "¿Se adapta a la forma de trabajo de mi clínica?",
-    blocks: [{ type: "p", text: "Sí, el sistema se diseña en base a cómo trabaja cada clínica." }],
-  },
-  {
-    q: "¿Se pueden digitalizar historias clínicas?",
-    blocks: [{ type: "p", text: "Sí, el sistema permite reemplazar registros en papel por historial digital." }],
-  },
-  {
-    q: "¿Se puede integrar con otras herramientas?",
-    blocks: [{ type: "p", text: "Sí, se puede integrar con agendas, WhatsApp u otros sistemas." }],
-  },
-  {
-    q: "¿Es solo para clínicas grandes?",
-    blocks: [{ type: "p", text: "No. Clínicas medianas o en crecimiento suelen beneficiarse mucho de centralizar su operación." }],
-  },
-  {
-    q: "¿Vale la pena dejar Excel y papel?",
+    q: "¿La aplicación puede incluir turnos, pagos o seguimiento?",
     blocks: [
       {
         type: "p",
-        text: "Cuando la cantidad de pacientes crece, mantener ese sistema suele generar más problemas que soluciones.",
+        text: "Sí. Las funcionalidades se adaptan según lo que necesite cada negocio: turnos, pagos, seguimiento, documentación y más.",
       },
+    ],
+  },
+  {
+    q: "¿Desarrollan apps para clínicas, pacientes y equipos internos?",
+    blocks: [
       {
-        type: "callout",
-        text: "Un sistema centralizado mejora organización, reduce errores y permite escalar.",
+        type: "p",
+        text: "Sí: aplicaciones móviles personalizadas para flujos reales—desde app para clínicas y consultorios hasta desarrollo de app para pacientes (avisos, turnos, formularios o enlaces a lo que ya tengas), siempre acotando alcance y permisos. También soluciones mobile para empresas que combinan operación y autogestión del cliente.",
       },
     ],
   },
@@ -153,14 +201,16 @@ export function SoftwareParaClinicasLanding() {
             />
             <div className="relative space-y-4">
               <div className="inline-flex items-center gap-2 rounded-full border border-primary/35 bg-primary/10 px-3 py-1 text-xs font-medium text-foreground">
-                <Stethoscope className="h-3.5 w-3.5 text-primary shrink-0" aria-hidden />
+                <Smartphone className="h-3.5 w-3.5 text-primary shrink-0" aria-hidden />
                 <span className="text-primary">{CATEGORY}</span>
               </div>
               <h1 className="mt-2 font-display text-3xl font-semibold tracking-tight text-pretty text-foreground sm:text-4xl md:text-[2.65rem] md:leading-[1.12]">
                 {HERO.title}
               </h1>
-              <p className="text-lg leading-relaxed text-muted-foreground md:text-xl">{HERO.subtitle}</p>
-              <div className="mt-8 flex flex-wrap items-center gap-4">
+              <p className="mt-3 text-xl font-semibold tracking-tight text-foreground md:text-2xl">{HERO.lead}</p>
+              <p className="mt-4 text-lg leading-relaxed text-muted-foreground md:text-xl">{HERO.subtitle}</p>
+              <p className="mt-4 text-sm font-semibold uppercase tracking-[0.16em] text-primary">{HERO.presupuesto}</p>
+              <div className="mt-6 flex flex-wrap items-center gap-4">
                 <LandingWaCta
                   href={waHref(MSG_HERO)}
                   rel={REL_WHATSAPP_EXTERNAL}
@@ -177,7 +227,7 @@ export function SoftwareParaClinicasLanding() {
               id="problema-heading"
               className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
             >
-              Información de pacientes en Excel y papel
+              Muchas operaciones siguen dependiendo de WhatsApp, llamadas y procesos manuales
             </h2>
             <div className="relative mt-8 overflow-hidden rounded-2xl border border-primary/30 bg-primary/6 px-6 py-8 md:px-8 md:py-9">
               <div
@@ -185,9 +235,14 @@ export function SoftwareParaClinicasLanding() {
                 aria-hidden
               />
               <div className="relative space-y-4 text-lg font-medium leading-relaxed text-foreground md:text-xl">
-                <p>Muchas clínicas manejan su información en planillas de Excel y registros en papel.</p>
+                <p>Muchos negocios todavía manejan:</p>
+                <ul className="list-disc space-y-2 pl-6 text-base font-normal text-foreground/95 md:text-[17px] marker:text-primary">
+                  {PROBLEMA_BULLETS.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
                 <p className="border-t border-primary/20 pt-4 font-normal text-muted-foreground md:text-[17px]">
-                  Esto genera desorganización, dificultad para acceder a datos y dependencia de procesos manuales.
+                  Esto genera demoras, desorganización y dependencia constante del equipo.
                 </p>
               </div>
             </div>
@@ -195,15 +250,21 @@ export function SoftwareParaClinicasLanding() {
 
           <section className="mt-16 md:mt-20" aria-labelledby="contexto-heading">
             <SectionKicker n="02">Contexto</SectionKicker>
-            <div className="mt-3 space-y-5 text-foreground/95 leading-relaxed md:text-[17px]">
-              <p>En el día a día, esto suele verse así:</p>
+            <h2
+              id="contexto-heading"
+              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+            >
+              Cómo suele verse este problema en el día a día
+            </h2>
+            <div className="mt-6 space-y-5 text-foreground/95 leading-relaxed md:text-[17px]">
+              <p>Normalmente termina pasando algo así:</p>
               <ul className="list-disc space-y-2 pl-5 marker:text-primary">
                 {CONTEXTO_ITEMS.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
               <p className="font-medium text-foreground">
-                A medida que crece la cantidad de pacientes, este sistema se vuelve difícil de sostener.
+                A medida que crece la operación, sostener esto se vuelve cada vez más difícil.
               </p>
             </div>
           </section>
@@ -214,9 +275,12 @@ export function SoftwareParaClinicasLanding() {
               id="riesgo-heading"
               className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
             >
-              Qué pasa si seguís trabajando así
+              Qué pasa cuando todo sigue siendo manual
             </h2>
-            <div className="mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+            <p className="mt-5 text-foreground/95 leading-relaxed md:text-[17px]">
+              Trabajar sin una aplicación móvil suele generar:
+            </p>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
               {RIESGO_ITEMS.map((text) => (
                 <div
                   key={text}
@@ -228,7 +292,7 @@ export function SoftwareParaClinicasLanding() {
               ))}
             </div>
             <p className="mt-8 rounded-xl border border-primary/30 bg-primary/10 px-4 py-3 text-sm font-medium text-foreground leading-relaxed md:text-[15px]">
-              La operación se vuelve más lenta y menos confiable.
+              El negocio pierde agilidad y muchas tareas terminan dependiendo siempre de una persona.
             </p>
           </section>
 
@@ -238,7 +302,7 @@ export function SoftwareParaClinicasLanding() {
               id="enfoque-heading"
               className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
             >
-              Cómo se suele resolver este problema
+              Cómo suelen resolver esto las empresas
             </h2>
             <div className="mt-8 grid auto-rows-fr gap-4 md:grid-cols-2">
               {FORMAS.map((f, i) => (
@@ -277,7 +341,7 @@ export function SoftwareParaClinicasLanding() {
               ))}
             </div>
             <p className="mt-8 rounded-xl border border-primary/30 bg-primary/10 px-4 py-3 text-sm font-medium text-foreground leading-relaxed md:text-[15px]">
-              Cuando la operación crece, se necesita una solución centralizada.
+              Cuando la operación crece, la experiencia móvil deja de ser opcional.
             </p>
           </section>
 
@@ -292,10 +356,10 @@ export function SoftwareParaClinicasLanding() {
                   id="propuesta-heading"
                   className="font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
                 >
-                  Cómo implemento sistemas para clínicas
+                  Cómo desarrollo aplicaciones móviles a medida
                 </h2>
                 <p className="mt-5 text-foreground/95 leading-relaxed md:text-[17px]">
-                  Desarrollo sistemas de gestión que permiten:
+                  Desarrollo apps móviles para Android y iPhone que permiten:
                 </p>
                 <ul className="mt-3 list-disc space-y-2 pl-5 text-foreground/95 leading-relaxed marker:text-primary md:text-[17px]">
                   {PROPUESTA_ITEMS.map((item) => (
@@ -303,7 +367,7 @@ export function SoftwareParaClinicasLanding() {
                   ))}
                 </ul>
                 <p className="mt-5 text-muted-foreground leading-relaxed md:text-[17px]">
-                  Cada sistema se adapta a la forma de trabajo de la clínica.
+                  Cada aplicación se adapta al flujo real de trabajo del negocio.
                 </p>
               </div>
             </div>
@@ -315,7 +379,7 @@ export function SoftwareParaClinicasLanding() {
               id="resultado-heading"
               className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
             >
-              Qué cambia con un sistema de gestión
+              Qué cambia con una aplicación móvil
             </h2>
             <div className="mt-8 flex flex-wrap gap-2.5">
               {BENEFICIOS.map((b) => (
@@ -328,6 +392,9 @@ export function SoftwareParaClinicasLanding() {
                 </span>
               ))}
             </div>
+            <p className="mt-8 text-sm font-medium leading-relaxed text-muted-foreground md:text-[15px]">
+              La operación se vuelve más rápida, accesible y escalable.
+            </p>
           </section>
 
           <section className="mt-16 md:mt-20" aria-labelledby="senales-heading">
@@ -336,7 +403,7 @@ export function SoftwareParaClinicasLanding() {
               id="senales-heading"
               className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
             >
-              Señales de que necesitás un sistema para tu clínica
+              Señales de que tu negocio necesita una app móvil
             </h2>
             <ul className="mt-8 grid gap-3 md:grid-cols-2">
               {SEÑALES.map((text) => (
@@ -350,7 +417,7 @@ export function SoftwareParaClinicasLanding() {
               ))}
             </ul>
             <p className="mt-8 rounded-xl border border-primary/30 bg-primary/10 px-4 py-3 text-sm font-medium text-foreground leading-relaxed md:text-[15px]">
-              Si te pasa esto, tu sistema actual ya no escala.
+              Si esto pasa, probablemente ya necesitás una solución móvil adaptada a tu operación.
             </p>
           </section>
 
@@ -360,26 +427,29 @@ export function SoftwareParaClinicasLanding() {
               id="caso-heading"
               className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
             >
-              Ejemplo de sistema implementado
+              Ejemplo de aplicación móvil implementada
             </h2>
             <figure className="relative mt-8 overflow-hidden rounded-2xl border border-primary/25 bg-linear-to-br from-surface/80 to-primary/4 p-6 md:p-8">
               <div
                 className="pointer-events-none absolute right-0 top-0 h-24 w-24 translate-x-1/4 -translate-y-1/4 rounded-full bg-primary/15 blur-2xl"
                 aria-hidden
               />
-              <Stethoscope className="relative h-8 w-8 text-primary" aria-hidden />
+              <Smartphone className="relative h-8 w-8 text-primary" aria-hidden />
               <div className="relative mt-4 space-y-4 text-base leading-relaxed text-foreground/95 md:text-lg">
                 <p>
-                  Una clínica gestionaba pacientes en Excel y mantenía historias clínicas en papel, lo que dificultaba
-                  el acceso a la información y generaba errores.
+                  Un negocio gestionaba reservas, seguimiento y comunicación completamente por WhatsApp y llamadas.
                 </p>
                 <p className="text-muted-foreground md:text-[17px]">
-                  Se implementó un sistema que centraliza pacientes, historial y turnos en un solo lugar.
+                  Se desarrolló una aplicación móvil conectada a sus sistemas internos para centralizar operaciones y
+                  permitir autogestión desde el celular.
                 </p>
-                <p className="rounded-xl border border-primary/30 bg-primary/10 px-4 py-3 font-medium text-foreground md:text-[17px]">
-                  <span className="text-primary">Resultado:</span> mejor organización, acceso inmediato a la información
-                  y reducción de errores administrativos.
-                </p>
+                <p className="font-medium text-foreground md:text-[17px]">Resultado:</p>
+                <ul className="list-disc space-y-1 pl-5 text-muted-foreground md:text-[17px] marker:text-primary">
+                  <li>menos carga operativa</li>
+                  <li>respuestas más rápidas</li>
+                  <li>mejor experiencia para clientes</li>
+                  <li>procesos más organizados</li>
+                </ul>
               </div>
             </figure>
           </section>
@@ -390,7 +460,7 @@ export function SoftwareParaClinicasLanding() {
               id="faq-heading"
               className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
             >
-              Preguntas frecuentes
+              Preguntas frecuentes sobre aplicaciones móviles
             </h2>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
               Abrí la pregunta que te interese; el contenido sigue indexable para buscadores.
@@ -399,7 +469,7 @@ export function SoftwareParaClinicasLanding() {
               {FAQ_ITEMS.map(({ q, blocks }) => (
                 <details
                   key={q}
-                  name="faq-software-para-clinicas"
+                  name="faq-apps-moviles"
                   className="group border-b border-border last:border-b-0 open:bg-muted/15 transition-colors"
                 >
                   <summary className="flex cursor-pointer list-none items-center gap-3 px-4 py-4 pr-3 text-left transition-colors hover:bg-muted/20 md:px-5 md:py-[1.05rem] [&::-webkit-details-marker]:hidden marker:content-none">
@@ -429,7 +499,11 @@ export function SoftwareParaClinicasLanding() {
               aria-hidden
             />
             <p className="relative text-lg font-medium leading-relaxed text-foreground md:text-xl">
-              Si tu clínica está manejando información en Excel y papel, podemos ver cómo organizar todo en un sistema.
+              Si tu operación depende demasiado de WhatsApp, llamadas o procesos manuales, podemos analizar cómo
+              llevarlo a una aplicación móvil.
+            </p>
+            <p className="relative mt-3 text-sm font-semibold uppercase tracking-[0.16em] text-primary">
+              Pedí tu presupuesto sin cargo
             </p>
             <div className="relative mt-8">
               <LandingWaCta href={waHref(MSG_CASO)} rel={REL_WHATSAPP_EXTERNAL} main={LANDING_CONSULT_CTA} />
@@ -438,9 +512,7 @@ export function SoftwareParaClinicasLanding() {
 
           <section className="mt-16 border-t border-border pt-12 md:mt-20">
             <h2 className="font-display text-lg font-semibold text-foreground">Explorá más soluciones</h2>
-            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-              Otros enfoques que suelen ir de la mano con lo que estás buscando.
-            </p>
+            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">Otros servicios relacionados.</p>
             <nav
               aria-label="Soluciones relacionadas"
               className="mt-6 overflow-hidden rounded-2xl border border-border bg-background/60 shadow-[inset_0_1px_0_0_rgb(255_255_255/5%)]"

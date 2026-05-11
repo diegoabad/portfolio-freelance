@@ -10,9 +10,11 @@ import { LinkedInGlyph } from "@/components/site/SimpleIcons";
 const quickLinks = [
   { href: "/#top", label: "Inicio" },
   { href: "/#servicios", label: "Servicios" },
-  { href: "/#proyectos", label: "Casos reales" },
+  { href: "/#proyectos", label: "Casos de éxito" },
+  { href: "/#testimonios", label: "Testimonios" },
   { href: "/#sobre-mi", label: "Sobre mí" },
   { href: "/#proceso", label: "Cómo trabajamos" },
+  { href: "/blog", label: "Blog" },
   { href: "/#contacto", label: "Contacto" },
 ] as const;
 

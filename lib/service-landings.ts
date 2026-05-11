@@ -8,12 +8,16 @@ export type ServiceInterlink = { href: string; label: string };
 export const SEO_INTERLINK_TRIO: readonly ServiceInterlink[] = [];
 
 /** Chip destacado (home + hero landing) — sin montos; foco en valor. */
-export const HIGHLIGHT_CHIP_BOTS_WHATSAPP = "Bots con reglas · IA · 24/7 e integraciones";
-export const HIGHLIGHT_CHIP_TURNOS = "Autogestión · reglas · equipo e IA";
+export const HIGHLIGHT_CHIP_BOTS_WHATSAPP =
+  "Bot de WhatsApp · inteligencia artificial · integraciones";
+export const HIGHLIGHT_CHIP_TURNOS = "Agendas online · Autogestión · Recordatorios";
 export const HIGHLIGHT_CHIP_AUTOMATIZACION = "APIs, CRM y agentes de IA";
-export const HIGHLIGHT_CHIP_SOFTWARE_MEDIDA = "Stack a medida · alineado a tu operación";
-export const HIGHLIGHT_CHIP_CLINICAS = "Pacientes · historial digital · turnos";
-export const HIGHLIGHT_CHIP_INVENTARIO = "Stock real · movimientos en un solo lugar";
+export const HIGHLIGHT_CHIP_SOFTWARE_MEDIDA =
+  "Software a medida · reglas propias, integraciones · un solo producto";
+export const HIGHLIGHT_CHIP_CLINICAS =
+  "Apps móviles · Android y iPhone · Notificaciones · Autogestión";
+export const HIGHLIGHT_CHIP_INVENTARIO =
+  "Stock en tiempo real · Movimientos · Inventario · Control · Clínicas e insumos";
 
 const NBOTS: ServiceInterlink = { href: "/bots-whatsapp", label: "Bots de WhatsApp" };
 const NTURNOS: ServiceInterlink = { href: "/sistema-turnos-online", label: "Turnos online" };
@@ -22,7 +26,7 @@ const NAUTO: ServiceInterlink = {
   label: "Automatización de procesos",
 };
 const NMEDIDA: ServiceInterlink = { href: "/desarrollo-software-medida", label: "Software a medida" };
-const NCLINICAS: ServiceInterlink = { href: "/software-para-clinicas", label: "Software para clínicas" };
+const NCLINICAS: ServiceInterlink = { href: "/software-para-clinicas", label: "Aplicaciones móviles" };
 const NSTOCK: ServiceInterlink = {
   href: "/sistema-gestion-inventario",
   label: "Gestión de inventario",
@@ -34,18 +38,18 @@ export const SERVICE_LANDING_PAGES = [
     categoryHeading: "Bots de WhatsApp",
     homePainTitle: "Perdés clientes por no responder WhatsApp a tiempo",
     homeCardSubtitle:
-      "Bots con flujos definidos o con inteligencia artificial: menos mensajes sin respuesta y menos presión sobre tu equipo.",
+      "Desarrollo e implementación de bot de WhatsApp con IA e integración con agendas y CRM: chatbot para atención al cliente, consultas por WhatsApp y menos carga para tu equipo (empresas, pymes y clínicas en Argentina).",
     homeCardBadge: HIGHLIGHT_CHIP_BOTS_WHATSAPP,
     homeCardCta: PRIMARY_CTA_LABEL,
-    title: "Bots de WhatsApp",
+    title: "Bots de WhatsApp para negocios",
     metaDescription:
-      "Bots de WhatsApp con reglas o inteligencia artificial: automatización, flujos, CRM y agenda. Menos tiempo perdido y mejor uso de tu equipo.",
+      "Bots de WhatsApp para negocios en Argentina: desarrollo de bot y chatbot para atención al cliente por WhatsApp, automatización de WhatsApp para pymes, bot con IA e integración de WhatsApp con sistemas. Consultorios médicos, clínicas y centros de estética. Implementación y soporte.",
     subtitle:
-      "Implementá bots con respuestas y reglas claras, o conversaciones apoyadas en inteligencia artificial cuando hace falta entender mejor al cliente. Todo integrado con CRM, agenda y tu operación—menos consultas perdidas y menos horas-hombre en lo repetitivo.",
+      "Implementá bots de WhatsApp con inteligencia artificial para interpretar mejor cada consulta, integrados con agendas y CRM. Chatbot para atención al cliente, automatización de consultas y espacio para la atención humana donde aporta (empresas, pymes y salud en Argentina).",
     problem:
       "¿El WhatsApp explota y tu equipo no da más? Además del tiempo perdido, cada mensaje sin respuesta es venta o cliente que se enfría; y la alternativa de sumar gente suma sueldos, capacitación y gestión.",
     solution:
-      "Diseñamos automatización con bots convencionales (menús, reglas, derivaciones) y, cuando corresponde, capas de inteligencia artificial para interpretar mejor lo que escribe la gente—siempre con espacio para la atención humana donde aporta.",
+      "Diseñamos automatización en WhatsApp con inteligencia artificial cuando corresponde, integración con agendas y CRM, y derivaciones claras—siempre con espacio para la atención humana donde aporta.",
     benefits: [
       "Atención 24/7",
       "Menos carga y costo oculto en horas del equipo",
@@ -59,18 +63,18 @@ export const SERVICE_LANDING_PAGES = [
     categoryHeading: "Turnos online",
     homePainTitle: "Agendas desordenadas y cancelaciones constantes",
     homeCardSubtitle:
-      "Agendas con autogestión del paciente, panel para tu equipo y—si hace falta—agentes de inteligencia artificial según reglas de disponibilidad.",
+      "Sistema de turnos online y agenda digital con autogestión, recordatorios automáticos e integración con WhatsApp: reservas y coordinación en un solo lugar (clínicas, consultorios y negocios).",
     homeCardBadge: HIGHLIGHT_CHIP_TURNOS,
     homeCardCta: "Coordinemos tu agenda",
-    title: "Turnos online",
+    title: "Sistema de turnos online",
     metaDescription:
-      "Turnos online: autogestión del paciente, reglas de agenda, uso por empleados y opción de agentes de IA. Confirmaciones, recordatorios e integraciones.",
+      "Sistema de turnos online y agenda médica online en Argentina: software de turnos para clínicas y consultorios, sistema de citas online, agenda digital con recordatorios automáticos, turnos online con WhatsApp y desarrollo de sistema de turnos a medida.",
     subtitle:
-      "Centralizá reservas con agendas donde el paciente o cliente puede autogestionar turnos dentro de reglas claras, mientras tu equipo opera desde un mismo lugar. Cuando el caso lo amerita, sumamos inteligencia artificial para ayudar a elegir huecos, aplicar políticas de agenda y coordinar sin caos entre canales.",
+      "Un sistema de reservas online centraliza la agenda: autogestión con reglas, recordatorios automáticos y turnos online con WhatsApp cuando el canal convive con la agenda—desde clínicas y consultorios hasta centros de estética y equipos en Argentina.",
     problem:
-      "¿Los turnos viven repartidos entre WhatsApp, llamadas y planillas, con superposiciones y cancelaciones sin control—y tu equipo pierde tiempo en coordinar lo que el paciente podría resolver solo con reglas bien definidas?",
+      "¿Tu agenda vive entre WhatsApp, llamadas y planillas, con superposiciones y cancelaciones? Sin un sistema de turnos online o un software de turnos para consultorios bien definido, el equipo pierde tiempo coordinando lo que el paciente podría resolver con autogestión y reglas claras.",
     solution:
-      "Implemento sistemas de turnos con reglas de negocio visibles para todos: autogestión para quien reserva, herramientas para empleados y, si suma, agentes de inteligencia artificial que respetan esas reglas para sugerir horarios o responder sobre disponibilidad.",
+      "Implemento sistemas de turnos online con reglas visibles: turnos online para clínicas, agenda médica online o sistema de reservas online para equipos. Autogestión, panel para empleados, recordatorios y—si suma—IA y coordinación de turnos médicos por WhatsApp con integraciones a bots.",
     benefits: [
       "Menos cancelaciones y mejor ocupación",
       "Autogestión del paciente con límites claros (menos ida y vuelta)",
@@ -84,20 +88,20 @@ export const SERVICE_LANDING_PAGES = [
   {
     slug: "automatizacion-negocios",
     categoryHeading: "Automatización de procesos",
-    homePainTitle: "Tareas manuales que te hacen perder horas",
+    homePainTitle: "Tareas manuales que te hacen perder tiempo y recursos",
     homeCardSubtitle:
-      "Flujos con integraciones (CRM, APIs, planillas) y, cuando suma, inteligencia artificial y agentes acotados a tus reglas.",
+      "Automatización de procesos y workflows en Argentina: integración de sistemas, n8n cuando encaja, IA acotada y menos tareas administrativas repetitivas (clínicas, recepción, CRM, reportes).",
     homeCardBadge: HIGHLIGHT_CHIP_AUTOMATIZACION,
     homeCardCta: "Revisamos tu caso",
-    title: "Automatización de procesos",
+    title: "Automatización de procesos para empresas",
     metaDescription:
-      "Automatización de procesos con integraciones y flujos a medida; opción de inteligencia artificial y agentes para clasificar, resumir o decidir pasos dentro de reglas claras.",
+      "Automatización de procesos para empresas y clínicas en Argentina: automatización administrativa, tareas repetitivas, workflows, integración y automatización de sistemas, n8n donde aplica, recepción y procesos médicos administrativos. IA acotada a reglas.",
     subtitle:
-      "Conectá planillas, CRM, APIs y mensajería para que la información fluya sola. Donde el proceso lo permite, sumamos inteligencia artificial o agentes que ejecutan tareas repetibles bajo reglas que vos definís—menos carga manual y menos errores al copiar datos.",
+      "Integración y automatización de sistemas (planillas, CRM, APIs, mensajería): menos tareas repetitivas a mano y más flujos auditables; n8n u otros conectores cuando encajan. IA opcional y acotada—menos carga administrativa en empresas, recepción y centros médicos.",
     problem:
-      "¿Seguís perdiendo horas en lo mismo cada semana? Mensajes, planillas, datos cargados a mano… y además aparecen tareas donde el texto no es 100% predecible y un simple “si/no” no alcanza.",
+      "¿Tu equipo sigue perdiendo horas en lo mismo cada semana? Mensajes, planillas, datos cargados a mano y procesos administrativos que no escalan—en consultorios y clínicas también aparece facturación de profesionales, autorizaciones y reportes que deberían ser automatización de procesos administrativos, no copy-paste eterno.",
     solution:
-      "Te propongo automatizaciones a medida que conectan tus herramientas y sacan lo repetitivo del medio: flujos clásicos (reglas, webhooks, n8n) y, cuando corresponde, capas de inteligencia artificial o agentes que respetan políticas claras para clasificar, extraer o preparar datos antes de que lleguen a un humano.",
+      "Diseño automatización empresarial a medida: integraciones (n8n, webhooks, APIs), reglas claras y—cuando suma—automatización con IA o agentes que preparan información antes de un humano. Aplicable a operaciones generales y a automatización de procesos en clínicas cuando la prioridad es orden administrativo sin romper compliance.",
     benefits: [
       "Menos trabajo manual",
       "Integraciones estables entre sistemas",
@@ -110,16 +114,16 @@ export const SERVICE_LANDING_PAGES = [
   {
     slug: "desarrollo-software-medida",
     categoryHeading: "Software a medida",
-    homePainTitle: "Los sistemas que usás no se adaptan a tu negocio",
+    homePainTitle: "El software enlatado no se ajusta a tu clínica ni a tu operación",
     homeCardSubtitle:
-      "Soluciones diseñadas para tu negocio cuando lo estándar ya no alcanza.",
+      "Desarrollo de software a medida en Argentina: sistemas personalizados con integraciones y entregas por etapas, para pymes, empresas y operación en salud cuando el genérico no alcanza.",
     homeCardBadge: HIGHLIGHT_CHIP_SOFTWARE_MEDIDA,
     homeCardCta: "Definamos el alcance",
     title: "Software a medida",
     metaDescription:
-      "Sistemas y software a medida alineados a tu operación: procesos centralizados, integraciones y paneles. Charlamos y te paso presupuesto sin cargo.",
+      "Desarrollo de software a medida en Argentina: sistemas y plataformas web personalizadas para empresas y pymes, software para clínicas y consultorios, gestión médica, fullstack e integraciones. Presupuesto sin cargo.",
     subtitle:
-      "Diseño y desarrollo sistemas alineados a tu operación: reglas propias, integraciones y paneles en un mismo producto. Entregas por etapas para que veas avances reales desde el inicio.",
+      "Desarrollo de plataformas web a medida y sistemas internos personalizados: reglas propias, integraciones y paneles en un mismo producto. Entregas por etapas para pymes, empresas y operación en salud.",
     problem:
       "¿Usás herramientas genéricas que no encajan con tu forma de trabajar y terminás compensando con planillas y tareas manuales?",
     solution:
@@ -135,53 +139,54 @@ export const SERVICE_LANDING_PAGES = [
   },
   {
     slug: "software-para-clinicas",
-    categoryHeading: "Software para clínicas",
-    homePainTitle: "Tu clínica sigue usando Excel y historias clínicas en papel",
+    categoryHeading: "Desarrollo de aplicaciones móviles",
+    homePainTitle: "Tus clientes esperan resolver todo desde el celular",
     homeCardSubtitle:
-      "Centralizá pacientes, turnos e historial en un solo sistema y evitá errores, desorganización y pérdida de información.",
+      "Desarrollo de apps móviles para empresas y clínicas: turnos, pacientes, autogestión y notificaciones; Android, iPhone o multiplataforma cuando conviene.",
     homeCardBadge: HIGHLIGHT_CHIP_CLINICAS,
-    homeCardCta: "Charlemos de tu clínica",
-    title: "Software para clínicas",
+    homeCardCta: "Coordinemos tu app",
+    title: "Desarrollo de aplicaciones móviles",
     metaDescription:
-      "Gestión para clínicas: pacientes, historial digital y turnos en un solo sistema. Propuesta según módulos y alcance.",
+      "Desarrollo de aplicaciones móviles en Argentina: apps para clínicas y consultorios, pacientes y turnos médicos, Android e iPhone, multiplataforma (p. ej. Flutter), integración con sistemas y soluciones mobile para empresas.",
     subtitle:
-      "Pacientes, turnos e historia clínica en un solo lugar: acceso rápido a lo relevante, menos papeles y menos datos repartidos entre Excel y chats. Tu equipo atiende; el sistema ordena lo administrativo.",
+      "Desarrollo de aplicaciones móviles para Android e iPhone (o multiplataforma cuando conviene): turnos, pacientes, autogestión y operación en tiempo real, con integración a lo que ya usás.",
     problem:
-      "¿Gestionás pacientes en Excel, historias en papel y turnos por WhatsApp, con información dispersa y riesgo de errores o pérdida de datos?",
+      "¿Seguís con consultas por WhatsApp, reservas manuales, seguimiento por mensajes e información dispersa? Eso genera demoras, desorganización y dependencia constante del equipo.",
     solution:
-      "Implemento sistemas de gestión adaptados a tu clínica: información centralizada, historial digital, turnos ordenados y automatización administrativa donde suma.",
+      "Desarrollo aplicaciones móviles a medida para Android e iPhone: autogestión, reservas y turnos, seguimiento en tiempo real, notificaciones automáticas e integración con APIs, CRMs o sistemas internos. Cada app se adapta al flujo real del negocio.",
     benefits: [
-      "Toda la información en un solo lugar",
-      "Acceso rápido a historiales",
-      "Menos errores administrativos",
-      "Mejor organización de turnos",
-      "Mayor control de la operación",
+      "Mejor experiencia para clientes y equipo",
+      "Menos tareas manuales",
+      "Acceso rápido desde el celular",
+      "Procesos más ágiles y organizados",
+      "Integración entre áreas y sistemas",
+      "Operación más escalable",
     ],
     moreInterlinks: [NBOTS, NTURNOS, NAUTO, NMEDIDA, NSTOCK],
   },
   {
     slug: "sistema-gestion-inventario",
     categoryHeading: "Gestión de inventario",
-    homePainTitle: "Tu control de stock es un caos entre Excel y anotaciones",
+    homePainTitle: "Tu stock es un caos entre Excel y anotaciones",
     homeCardSubtitle:
-      "Organizá tu inventario en un solo sistema y evitá errores, pérdidas y desorden.",
+      "Software de inventario y control de stock: movimientos centralizados para depósito, ventas o insumos en clínicas y consultorios, con menos errores y pérdidas.",
     homeCardBadge: HIGHLIGHT_CHIP_INVENTARIO,
     homeCardCta: "Ordenemos tu stock",
     title: "Stock e inventario",
     metaDescription:
-      "Control de stock e inventario centralizado: movimientos claros y menos errores. Alcance y presupuesto según tu operación.",
+      "Sistema de control de stock e inventario: software para empresas y pymes, clínicas y consultorios, insumos médicos, depósitos, gestión automatizada y plataforma de inventario a medida en Argentina.",
     subtitle:
-      "Movimientos, stock y productos con reglas claras: sabés qué hay, qué se vendió y qué reponer, con menos diferencias entre depósito y ventas y sin depender solo de planillas o anotaciones sueltas.",
+      "Software de inventario con movimientos y stock bajo reglas claras: depósito, ventas, consumo interno o insumos médicos en clínicas y consultorios, sin vivir del Excel.",
     problem:
-      "¿El inventario está en Excel y anotaciones, los datos no coinciden y perdés claridad para comprar, vender o armar pedidos?",
+      "¿El inventario está en Excel y anotaciones, los datos no coinciden entre depósito, recepción o sucursales, y perdés claridad para comprar, vender o armar pedidos —incluso con insumos críticos en salud?",
     solution:
-      "Implemento un sistema de inventario adaptado a tu operación: movimientos en un solo lugar, actualización automática del stock e integración con ventas cuando haga falta.",
+      "Implemento un sistema de inventario adaptado a tu operación: movimientos en un solo lugar, actualización del stock en tiempo real, entradas y salidas auditables e integración con ventas o consumo interno cuando haga falta.",
     benefits: [
       "Control real del stock",
-      "Menos errores",
-      "Mejor organización",
+      "Menos errores entre depósito, ventas y consumo interno",
+      "Mejor organización (retail, depósito o insumos en clínicas)",
       "Decisiones más claras",
-      "Procesos más confiables",
+      "Procesos más confiables y auditables",
     ],
     moreInterlinks: [NBOTS, NTURNOS, NAUTO, NMEDIDA, NCLINICAS],
   },
@@ -210,59 +215,145 @@ export function getHomeCardCta(page: ServiceLandingPageData): string {
 /** Palabras clave extra para landings principales (metadata `keywords`). */
 const SERVICE_SEO_KEYWORDS: Partial<Record<ServiceLandingSlug, readonly string[]>> = {
   "automatizacion-negocios": [
-    "automatización de procesos",
-    "integración de sistemas",
-    "inteligencia artificial para empresas",
-    "agentes de automatización",
-    "tareas manuales",
-    "flujos de trabajo",
-    "n8n",
+    "automatización de procesos para clínicas",
+    "automatización administrativa para empresas",
+    "automatización de tareas repetitivas",
+    "automatización de procesos internos",
+    "automatización para consultorios médicos",
+    "automatización de tareas administrativas en salud",
+    "automatización empresarial en argentina",
+    "integración y automatización de sistemas",
+    "automatización de workflows empresariales",
+    "automatización con inteligencia artificial",
+    "automatización de procesos manuales",
+    "automatización de gestión administrativa",
+    "optimización de procesos empresariales",
+    "automatización de carga de datos",
+    "automatización para centros médicos",
+    "automatización de tareas operativas",
+    "digitalización y automatización empresarial",
+    "automatización de procesos con n8n",
+    "automatización de tareas de recepción",
+    "automatización de procesos médicos",
+    "facturación de profesionales",
     "API",
     "CRM",
   ],
   "bots-whatsapp": [
-    "bots de WhatsApp",
-    "bots con inteligencia artificial",
-    "automatización WhatsApp",
-    "WhatsApp Business",
-    "respuestas automáticas",
-    "agentes de IA",
+    "bot de whatsapp para clínicas en argentina",
+    "desarrollo de bot de whatsapp para empresas",
+    "chatbot para atención al cliente por whatsapp",
+    "automatización de whatsapp para negocios",
+    "bot de whatsapp con inteligencia artificial",
+    "implementación de chatbot para empresas",
+    "bot de whatsapp para consultorios médicos",
+    "chatbot para centros de estética",
+    "automatizar respuestas de whatsapp business",
+    "sistema de atención automática por whatsapp",
+    "bot de whatsapp para ventas y soporte",
+    "desarrollo de chatbot en argentina",
+    "automatización de consultas por whatsapp",
+    "chatbot para turnos y atención al cliente",
+    "servicio de automatización de whatsapp",
+    "bot de whatsapp para pymes",
+    "chatbot empresarial en argentina",
+    "integración de whatsapp con sistemas",
+    "bot de whatsapp para atención médica",
+    "soluciones de whatsapp automation para empresas",
+    "integración con agendas",
     "CRM",
-    "atención al cliente",
   ],
   "desarrollo-software-medida": [
-    "software a medida",
-    "desarrollo a medida",
-    "sistemas a medida",
-    "integración",
-    "paneles administrativos",
+    "desarrollo de software a medida argentina",
+    "software personalizado para empresas",
+    "desarrollo de sistemas a medida",
+    "software para clínicas a medida",
+    "desarrollo de software para consultorios",
+    "empresa de software a medida",
+    "desarrollo de sistemas empresariales",
+    "software personalizado para negocios",
+    "desarrollo de plataformas web a medida",
+    "sistema de gestión personalizado",
+    "desarrollo de software para salud",
+    "soluciones de software empresariales",
+    "desarrollo de sistemas administrativos",
+    "software para automatizar procesos",
+    "desarrollo fullstack para empresas",
+    "desarrollo de aplicaciones empresariales",
+    "sistemas internos personalizados",
+    "software para gestión médica",
+    "desarrollo de software para pymes",
+    "empresa de desarrollo de software argentina",
   ],
   "sistema-turnos-online": [
-    "turnos online",
-    "agenda online",
+    "sistema de turnos online para clínicas",
+    "agenda online para consultorios médicos",
+    "software de turnos online argentina",
+    "sistema de reservas online para empresas",
+    "agenda digital para centros médicos",
+    "turnos online con whatsapp",
+    "software para gestión de turnos médicos",
+    "sistema de citas online para clínicas",
+    "agenda online para profesionales",
+    "automatización de turnos y recordatorios",
+    "sistema de reservas para centros de estética",
+    "agenda médica online personalizada",
+    "desarrollo de sistema de turnos a medida",
+    "plataforma de turnos online argentina",
+    "software de agenda para consultorios",
+    "sistema de gestión de turnos médicos",
+    "turnos online para negocios",
+    "solución de reservas online para empresas",
+    "agenda online con recordatorios automáticos",
+    "software de citas para clínicas privadas",
     "autogestión de turnos",
-    "gestión de turnos",
-    "agenda con inteligencia artificial",
     "agentes de IA para turnos",
-    "recordatorios automáticos",
-    "cancelaciones",
-    "WhatsApp",
   ],
   "software-para-clinicas": [
-    "software para clínicas",
-    "gestión de pacientes",
-    "historia clínica digital",
-    "turnos",
-    "Excel",
-    "consultorio",
+    "desarrollo de aplicaciones móviles argentina",
+    "app para clínicas y consultorios",
+    "desarrollo de apps para empresas",
+    "aplicaciones móviles para negocios",
+    "desarrollo de app para pacientes",
+    "desarrollo de apps para salud",
+    "aplicación móvil para centros médicos",
+    "desarrollo mobile a medida",
+    "crear app para empresa",
+    "aplicaciones móviles personalizadas",
+    "desarrollo de apps android y iphone",
+    "empresa de desarrollo mobile argentina",
+    "app para gestión de pacientes",
+    "desarrollo de aplicaciones para clínicas",
+    "software mobile para empresas",
+    "aplicación móvil para turnos médicos",
+    "desarrollo de apps multiplataforma",
+    "app personalizada para negocios",
+    "desarrollo flutter argentina",
+    "soluciones mobile para empresas",
+    "notificaciones push",
   ],
   "sistema-gestion-inventario": [
-    "control de stock",
-    "inventario",
-    "gestión de productos",
-    "movimientos",
-    "Excel",
-    "depósito",
+    "sistema de control de stock para clínicas",
+    "software de inventario para empresas",
+    "control de stock para consultorios",
+    "sistema de gestión de insumos médicos",
+    "software de stock a medida",
+    "control de inventario para negocios",
+    "sistema de stock para centros médicos",
+    "software para control de insumos",
+    "gestión de stock automatizada",
+    "desarrollo de sistema de inventario",
+    "control de materiales médicos",
+    "software para stock e inventario",
+    "sistema de inventario personalizado",
+    "control de stock para pymes",
+    "automatización de inventario empresarial",
+    "software de gestión de depósitos",
+    "control de insumos para clínicas",
+    "sistema de inventario en argentina",
+    "software administrativo de stock",
+    "plataforma de control de inventario",
+    "stock en tiempo real",
   ],
 };
 
