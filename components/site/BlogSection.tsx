@@ -15,11 +15,11 @@ export function BlogSection() {
           <div className="max-w-3xl">
             <span className="text-xs uppercase tracking-[0.2em] text-primary font-medium">Blog</span>
             <h2 className="mt-3 text-4xl md:text-5xl font-display font-semibold tracking-tight text-pretty">
-              Ideas sobre <span className="text-primary">software y operación</span>
+              Guías sobre <span className="text-primary">WhatsApp, turnos y software</span>
             </h2>
             <p className="mt-3 md:mt-4 text-muted-foreground leading-relaxed md:text-lg">
-              Artículos con fecha, FAQs y enlaces a servicios: automatización, WhatsApp para negocios y cómo encarar
-              proyectos con sentido.
+              Temas que salen seguido en proyectos reales — automatización, clínicas, stock — explicados en simple, con
+              enlaces a servicios cuando tiene sentido.
             </p>
           </div>
           <Link

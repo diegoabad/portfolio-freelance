@@ -21,7 +21,7 @@ export function generateStaticParams() {
   return getAllBlogSlugs().map((slug) => ({ slug }));
 }
 
-function buildArticleJsonLd(post: BlogPost, url: string) {
+function buildArticleJsonLd(post: BlogPost, url: string, imageUrls?: string[]) {
   const desc = post.metaDescription ?? post.description;
   const base: Record<string, unknown> = {
     "@context": "https://schema.org",
@@ -34,10 +34,18 @@ function buildArticleJsonLd(post: BlogPost, url: string) {
       name: "Diego Abad",
       url: LINKEDIN_PROFILE_URL,
     },
+    publisher: {
+      "@type": "Person",
+      name: "Diego Abad",
+      url: LINKEDIN_PROFILE_URL,
+    },
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     articleSection: blogTopicLabel(post.topicTrack),
     inLanguage: "es-AR",
   };
+  if (imageUrls?.length) {
+    base.image = imageUrls;
+  }
   if (post.keywords?.length) {
     base.keywords = [...post.keywords].slice(0, 20).join(", ");
   }
@@ -71,6 +79,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = post.metaDescription ?? post.description;
 
   const ogTags = post.keywords?.length ? [...post.keywords].slice(0, 12) : undefined;
+  const defaultOgImage = siteBase ? new URL("/opengraph-image", siteBase).toString() : undefined;
 
   return {
     title,
@@ -88,6 +97,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       locale: "es_AR",
       siteName: "Diego Abad",
       ...(canonical ? { url: canonical } : {}),
+      ...(defaultOgImage ? { images: [{ url: defaultOgImage, alt: title }] } : {}),
     },
     twitter: {
       card: "summary_large_image",
@@ -107,13 +117,16 @@ export default async function BlogPostPage({ params }: Props) {
   const canonical = siteBase ? new URL(`/blog/${slug}`, siteBase).toString() : "";
   const faqItems = getFaqItemsFromPost(post);
   const faqJsonLd = faqItems.length > 0 ? buildFaqPageJsonLd(faqItems) : null;
+  const articleOgImage = siteBase ? new URL("/opengraph-image", siteBase).toString() : undefined;
 
   return (
     <PageShell>
       {canonical ? (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(buildArticleJsonLd(post, canonical)) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(buildArticleJsonLd(post, canonical, articleOgImage ? [articleOgImage] : undefined)),
+          }}
         />
       ) : null}
       {faqJsonLd ? (
@@ -122,6 +135,18 @@ export default async function BlogPostPage({ params }: Props) {
       <main className="flex-1 border-b border-border bg-background">
         <article className="max-w-site mx-auto px-4 sm:px-6 lg:px-10 py-12 md:py-16 lg:py-20">
           <div className="mx-auto w-full max-w-3xl">
+            <nav
+              className="mb-4 text-[13px] font-mono leading-snug text-muted-foreground wrap-break-word md:mb-5 md:text-sm"
+              aria-label="Ruta del artículo"
+            >
+              <Link href="/blog" className="text-muted-foreground underline-offset-2 transition-colors hover:text-primary hover:underline">
+                blog
+              </Link>
+              <span className="text-muted-foreground/65" aria-hidden>
+                /
+              </span>
+              <span className="text-muted-foreground/90">{slug}</span>
+            </nav>
             <header>
               <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-muted-foreground">
                 <BlogTopicChip track={post.topicTrack} />

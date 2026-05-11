@@ -362,6 +362,7 @@ export function buildServicePageMetadata(slug: ServiceLandingSlug): Metadata {
   const base = getSiteUrl();
   const canonical = base ? new URL(`/${slug}`, base).toString() : undefined;
   const keywords = SERVICE_SEO_KEYWORDS[slug];
+  const defaultOg = base ? new URL("/opengraph-image", base).toString() : undefined;
 
   return {
     title: p.title,
@@ -375,12 +376,14 @@ export function buildServicePageMetadata(slug: ServiceLandingSlug): Metadata {
       locale: "es_AR",
       siteName: "Diego Abad",
       ...(canonical ? { url: canonical } : {}),
+      ...(defaultOg ? { images: [{ url: defaultOg, alt: p.title }] } : {}),
     },
     twitter: {
       card: "summary_large_image",
       title: p.title,
       description: p.metaDescription,
     },
+    robots: { index: true, follow: true },
   };
 }
 

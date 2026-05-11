@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Figtree, Outfit } from "next/font/google";
 import { AmbientOrbs } from "@/components/site/AmbientOrbs";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { buildSiteVerification } from "@/lib/seo-verification";
 import { getSiteUrl, LINKEDIN_PROFILE_URL } from "@/lib/site";
 import "./globals.css";
 
@@ -30,6 +31,12 @@ const seoTitle = "Diego Abad — desarrollador de software y automatizaciones";
 
 const seoDescription =
   "Desarrollo de software a medida en Argentina, automatización de procesos (n8n, APIs, integraciones), bots de WhatsApp con IA, sistema de turnos online, apps móviles para clínicas, control de stock e inventario. React, Next.js, Node.js y TypeScript para empresas y pymes en LATAM.";
+
+export const viewport: Viewport = {
+  themeColor: "#52a8ff",
+  width: "device-width",
+  initialScale: 1,
+};
 
 const keywords = [
   "Diego Abad",
@@ -62,8 +69,11 @@ const keywords = [
   "Latinoamérica",
 ];
 
+const siteVerification = buildSiteVerification();
+
 export const metadata: Metadata = {
   metadataBase,
+  applicationName: "Diego Abad",
   title: {
     default: seoTitle,
     template: "%s | Diego Abad",
@@ -73,6 +83,8 @@ export const metadata: Metadata = {
   authors: [{ name: "Diego Abad", url: LINKEDIN_PROFILE_URL }],
   creator: "Diego Abad",
   publisher: "Diego Abad",
+  referrer: "origin-when-cross-origin",
+  ...(siteVerification ? { verification: siteVerification } : {}),
   robots: {
     index: true,
     follow: true,

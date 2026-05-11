@@ -1,110 +1,9 @@
-import dynamic from "next/dynamic";
-
-const CaseStudyGallery = dynamic(
-  () => import("@/components/site/CaseStudyGallery").then((mod) => mod.CaseStudyGallery),
-  {
-    loading: () => (
-      <div
-        className="mt-5 md:mt-6 aspect-video sm:aspect-16/10 rounded-xl border border-border bg-muted/20 animate-pulse"
-        aria-hidden
-      />
-    ),
-  },
-);
-
-const projects = [
-  {
-    tag: "App pacientes - INECO",
-    title: "Aplicación para gestión clínica",
-    problem:
-      "La gestión de pacientes, turnos y evaluaciones estaba distribuida en múltiples herramientas, generando errores y pérdida de información.",
-    solution:
-      "Aplicación centralizada para la gestión clínica, con agenda, seguimiento de pacientes y acceso unificado a la información.",
-    result:
-      "Operación más ordenada, reducción del trabajo administrativo y mejor acceso a la información clínica.",
-    images: [
-      "/projects/ineco/04-nuevo-turno.png",
-      "/projects/ineco/01-inicio.png",
-      "/projects/ineco/02-elegir-profesional.png",
-      "/projects/ineco/03-mis-recetas.png",
-    ],
-  },
-  {
-    tag: "Cotilink",
-    title: "Plataforma de presupuestos digitales",
-    problem:
-      "Los presupuestos se enviaban en PDF sin visibilidad sobre si el cliente los veía o avanzaba.",
-    solution:
-      "Plataforma web con presupuestos interactivos, seguimiento en tiempo real y aprobación online.",
-    result: "Mayor control del proceso comercial y mejora en el cierre de ventas.",
-    images: [
-      "/projects/cotilink/01-login.png",
-      "/projects/cotilink/02-dashboard.png",
-      "/projects/cotilink/03-editor.png",
-      "/projects/cotilink/04-detalle-linea.png",
-      "/projects/cotilink/05-confirmar-proyecto.png",
-    ],
-  },
-  {
-    tag: "Bot de WhatsApp",
-    title: "Automatización de atención por WhatsApp",
-    problem: "Equipos saturados respondiendo consultas repetitivas sin seguimiento ordenado.",
-    solution:
-      "Plataforma integrada con bots de WhatsApp (con y sin IA) para responder consultas, automatizar flujos y gestionar conversaciones.",
-    result: "Respuestas 24/7, menor carga operativa y mejor organización de la atención.",
-    images: [
-      "/projects/chatbot/01-simulacion-conversacion.png",
-      "/projects/chatbot/02-panel-intenciones.png",
-    ],
-  },
-  {
-    tag: "Informes con IA - INECO",
-    title: "Plataforma de informes clínicos con IA",
-    problem:
-      "Pasar de notas clínicas a informes profesionales implicaba mucho trabajo manual y formatos poco uniformes.",
-    solution:
-      "Aplicación web para tomar notas estructuradas, elegir el tipo de informe y generar documentos con IA, con historial y exportación.",
-    result: "Informes en minutos, menos carga administrativa y documentación más consistente.",
-    images: [
-      "/projects/informes/01-login.png",
-      "/projects/informes/02-landing.png",
-      "/projects/informes/03-creador-informes.png",
-    ],
-  },
-  {
-    tag: "Hablán",
-    title: "Plataforma de ejercicios cognitivos",
-    problem:
-      "Los profesionales debían crear ejercicios manualmente para pacientes con dificultades de comprensión.",
-    solution:
-      "Plataforma con ejercicios interactivos para trabajar interpretación y habilidades cognitivas.",
-    result: "Ahorro de tiempo en la preparación y mejor adherencia de los pacientes.",
-    images: [
-      "/projects/hablan/01-mis-actividades.png",
-      "/projects/hablan/02-mi-progreso.png",
-      "/projects/hablan/03-palabra-imagen-intro.png",
-      "/projects/hablan/04-ejercicio-palabra-imagen.png",
-    ],
-  },
-  {
-    tag: "Cogniare",
-    title: "Sistema de gestión para profesionales de salud",
-    problem:
-      "Psicólogos y psicopedagogos gestionaban pacientes y turnos en múltiples herramientas o de forma manual.",
-    solution:
-      "Plataforma centralizada para gestión de pacientes, agenda y seguimiento clínico.",
-    result: "Organización de la información y ahorro de tiempo administrativo.",
-    images: [
-      "/projects/cogniare/01-login.png",
-      "/projects/cogniare/02-gestion-turnos.png",
-      "/projects/cogniare/03-pacientes.png",
-      "/projects/cogniare/04-ficha-paciente.png",
-    ],
-  },
-];
+import Link from "next/link";
+import { ArrowUpRight, Sparkles } from "lucide-react";
+import { caseStudies } from "@/lib/case-studies";
 
 export function Projects() {
-  const total = projects.length;
+  const total = caseStudies.length;
 
   return (
     <section
@@ -118,43 +17,55 @@ export function Projects() {
             Del problema a la <span className="text-primary">solución</span>
           </h2>
           <p className="mt-3 md:mt-4 text-muted-foreground leading-relaxed">
-            {total} proyectos con contexto de cliente: qué pasaba, qué se construyó y qué cambió en la operación.
+            {total} proyectos reales: resumen aquí; capturas y contexto ampliado en la página de cada caso.
           </p>
         </div>
 
-        <div className="mt-8 md:mt-10 lg:mt-12 grid lg:grid-cols-2 gap-4 md:gap-5">
-          {projects.map((p, i) => (
-            <article
-              key={p.title}
-              className="group relative rounded-2xl border border-border bg-background/60 p-6 md:p-8 backdrop-blur hover:border-primary/40 transition"
+        <div className="mt-8 md:mt-10 lg:mt-12 grid lg:grid-cols-2 gap-5 md:gap-6">
+          {caseStudies.map((p, i) => (
+            <Link
+              key={p.slug}
+              href={`/proyectos/${p.slug}`}
+              aria-label={`Ver caso de éxito: ${p.title}`}
+              className="group relative flex min-h-[220px] flex-col overflow-hidden rounded-2xl border-2 border-border bg-linear-to-br from-primary/[0.07] via-background/90 to-background/70 p-6 shadow-[0_12px_40px_-24px_rgba(0,0,0,0.45)] backdrop-blur-md transition duration-300 hover:border-primary/50 hover:shadow-[0_20px_48px_-20px_oklch(0.55_0.14_250/0.22)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:min-h-0 sm:p-7 md:p-8 **:cursor-pointer"
             >
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <span className="text-xs rounded-full bg-primary/15 text-primary px-3 py-1 font-medium">{p.tag}</span>
-                <span className="text-xs text-muted-foreground font-mono tabular-nums">
-                  {String(i + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+              {/* Halo decorativo (misma idea que cards de servicios) */}
+              <div
+                className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-primary/20 blur-3xl opacity-40 transition-opacity duration-500 group-hover:opacity-100"
+                aria-hidden
+              />
+              <div
+                className="pointer-events-none absolute inset-y-3 left-0 w-1 rounded-full bg-linear-to-b from-primary via-primary/70 to-primary/25 opacity-90"
+                aria-hidden
+              />
+
+              <div className="relative flex min-h-0 flex-1 flex-col pl-4 sm:pl-5">
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <span className="inline-flex max-w-[min(100%,14rem)] items-center gap-2 rounded-full border border-primary/25 bg-primary/12 px-3 py-1.5 text-xs font-semibold text-primary shadow-[inset_0_1px_0_0_rgb(255_255_255_/0.06)] sm:max-w-[calc(100%-5rem)]">
+                    <Sparkles className="h-3.5 w-3.5 shrink-0 opacity-90" strokeWidth={2.25} aria-hidden />
+                    <span className="leading-tight">{p.tag}</span>
+                  </span>
+                  <span className="shrink-0 rounded-lg border border-primary/30 bg-background/80 px-2.5 py-1 font-mono text-[11px] font-bold tabular-nums tracking-wide text-primary shadow-sm sm:text-xs">
+                    {String(i + 1).padStart(2, "0")}
+                    <span className="font-medium text-muted-foreground">/</span>
+                    {String(total).padStart(2, "0")}
+                  </span>
+                </div>
+
+                <h3 className="mt-5 font-display text-xl font-semibold leading-snug tracking-tight text-foreground transition-colors duration-200 group-hover:text-primary md:mt-6 md:text-2xl">
+                  {p.title}
+                </h3>
+
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground md:text-[15px] md:leading-relaxed">
+                  {p.cardSummary}
+                </p>
+
+                <span className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-[10px] border-2 border-primary/50 bg-primary/12 py-3 text-sm font-bold text-primary transition duration-200 group-hover:border-primary group-hover:bg-primary/18 group-hover:gap-2.5 sm:mt-7 sm:w-fit sm:px-6">
+                  Ver caso completo
+                  <ArrowUpRight className="h-4 w-4 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
                 </span>
               </div>
-              <h3 className="mt-5 md:mt-6 text-xl md:text-2xl font-display font-semibold leading-snug">{p.title}</h3>
-
-              {"images" in p && p.images && p.images.length > 0 ? (
-                <CaseStudyGallery images={p.images} altPrefix={p.title} />
-              ) : null}
-
-              <dl className="mt-5 md:mt-6 space-y-3 md:space-y-4 text-sm">
-                <div>
-                  <dt className="text-xs uppercase tracking-wider text-muted-foreground">Problema</dt>
-                  <dd className="mt-1 text-foreground/90 leading-relaxed">{p.problem}</dd>
-                </div>
-                <div>
-                  <dt className="text-xs uppercase tracking-wider text-muted-foreground">Solución</dt>
-                  <dd className="mt-1 text-foreground/90 leading-relaxed">{p.solution}</dd>
-                </div>
-                <div>
-                  <dt className="text-xs uppercase tracking-wider text-primary">Resultado</dt>
-                  <dd className="mt-1 text-foreground leading-relaxed">{p.result}</dd>
-                </div>
-              </dl>
-            </article>
+            </Link>
           ))}
         </div>
       </div>

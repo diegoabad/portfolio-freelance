@@ -7,6 +7,8 @@ const cvDescription =
   "Curriculum vitae de Diego Abad: desarrollador de software fullstack en Buenos Aires (Argentina). React, Next.js, Node.js, TypeScript, Flutter, PostgreSQL, automatización de procesos, integraciones e inteligencia artificial en el flujo de desarrollo. CV online actualizado.";
 
 const siteBase = getSiteUrl();
+/** Portfolio público (misma lógica que sitemap / canonical). */
+const publicPortfolioUrl = siteBase ?? "https://www.diegoabad.com";
 const cvCanonical = siteBase ? new URL("/curriculum", siteBase).toString() : undefined;
 
 export const metadata: Metadata = {
@@ -135,11 +137,11 @@ export default function CurriculumPage() {
             </a>
             <a
               className="contact-item"
-              href="https://www.diegoabad.com"
+              href={publicPortfolioUrl}
               target="_blank"
               rel="noopener"
-              aria-label="Sitio web: www.diegoabad.com"
-              title="www.diegoabad.com"
+              aria-label={`Sitio web: ${publicPortfolioUrl.replace(/^https?:\/\//, "")}`}
+              title={publicPortfolioUrl.replace(/^https?:\/\//, "")}
             >
               <svg
                 viewBox="0 0 24 24"
@@ -171,7 +173,7 @@ export default function CurriculumPage() {
             </a>
             <a
               className="contact-item"
-              href="https://www.linkedin.com/in/diegoabad-fullstack"
+              href={LINKEDIN_PROFILE_URL}
               target="_blank"
               rel="noopener"
               aria-label="Perfil de LinkedIn: linkedin.com/in/diegoabad-fullstack"

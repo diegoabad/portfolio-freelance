@@ -24,6 +24,7 @@ const blogIndexKeywords = [
 
 const siteBase = getSiteUrl();
 const canonical = siteBase ? new URL("/blog", siteBase).toString() : undefined;
+const blogOgImage = siteBase ? new URL("/opengraph-image", siteBase).toString() : undefined;
 
 export const metadata: Metadata = {
   title,
@@ -37,6 +38,7 @@ export const metadata: Metadata = {
     locale: "es_AR",
     siteName: "Diego Abad",
     ...(canonical ? { url: canonical } : {}),
+    ...(blogOgImage ? { images: [{ url: blogOgImage, alt: title }] } : {}),
   },
   twitter: {
     card: "summary_large_image",
@@ -57,8 +59,8 @@ export default function BlogIndexPage() {
             </h1>
             <p className="mt-3 text-lg md:text-xl text-muted-foreground leading-relaxed text-pretty">
               En este apartado voy sumando artículos que me hubiera gustado leer antes: temas que aparecen seguido en
-              proyectos reales — turnos, WhatsApp, clínicas, stock, apps o desarrollo a medida — contados con mano
-              liviana, para que te orientes sin marearte.
+              proyectos reales — turnos, WhatsApp, clínicas, stock, apps o desarrollo a medida — explicados de forma
+              simple, para ubicarte sin rodeos.
             </p>
           </header>
 

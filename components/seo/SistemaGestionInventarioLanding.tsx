@@ -1,18 +1,13 @@
-import Link from "next/link";
-import {
-  ChevronDown,
-  CheckCircle2,
-  CircleAlert,
-  HelpCircle,
-  Layers,
-  Package,
-  Sparkles,
-} from "lucide-react";
+import { ChevronDown, HelpCircle, Package } from "lucide-react";
 import {
   FaqBlocks,
+  LandingReadingMain,
+  LandingRelatedNav,
   LandingWaCta,
-  LANDING_ARTICLE_MAX_CLASS,
+  LANDING_SECTION,
   SectionKicker,
+  landingBodyClass,
+  landingH2Class,
   type FaqBlock,
 } from "@/components/seo/landing-blocks";
 import { EVALUATION_OFFER_FAQ, LANDING_CONSULT_CTA, REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
@@ -24,7 +19,7 @@ const HERO = {
     "Movimientos, entradas y salidas en un solo lugar: software de inventario para empresas, control de stock para consultorios o sistema de gestión de insumos médicos con varios puntos de uso. Sirve para depósito y ventas, gestión de stock automatizada en pymes o control de materiales médicos sin depender solo de Excel y anotaciones sueltas.",
 };
 
-const MORE_SOLUTIONS = [
+const RELATED_LINKS = [
   { href: "/bots-whatsapp", label: "Bots de WhatsApp" },
   { href: "/sistema-turnos-online", label: "Turnos online" },
   { href: "/automatizacion-negocios", label: "Automatización de procesos" },
@@ -133,57 +128,35 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
 
 export function SistemaGestionInventarioLanding() {
   return (
-    <div className="relative flex-1 overflow-hidden">
-      <div
-        className="pointer-events-none absolute -top-24 right-0 h-[420px] w-[420px] rounded-full bg-primary/12 blur-[100px]"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute bottom-0 left-1/2 h-[320px] w-[min(100%,520px)] -translate-x-1/2 rounded-full bg-primary/8 blur-[90px]"
-        aria-hidden
-      />
+    <LandingReadingMain>
+      <header className="border-b border-border pb-8 md:pb-10">
+        <div className="inline-flex items-center gap-2 rounded-full bg-primary/15 px-3 py-1 text-xs font-medium text-primary">
+          <Package className="h-3.5 w-3.5 shrink-0" aria-hidden />
+          {CATEGORY}
+        </div>
+        <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight text-pretty text-foreground md:text-4xl lg:text-[2.35rem] lg:leading-tight">
+          {HERO.title}
+        </h1>
+        <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">{HERO.subtitle}</p>
+        <div className="mt-6 flex flex-wrap gap-4">
+          <LandingWaCta
+            href={waHref(MSG_HERO)}
+            rel={REL_WHATSAPP_EXTERNAL}
+            main={LANDING_CONSULT_CTA}
+            hideWhatsAppIconMobile
+          />
+        </div>
+      </header>
 
-      <div className="relative mx-auto w-full max-w-site px-4 sm:px-6 lg:px-10 py-12 lg:py-20">
-        <article className={LANDING_ARTICLE_MAX_CLASS}>
-          <header className="relative overflow-hidden rounded-3xl border border-border/90 bg-linear-to-b from-surface/90 via-surface/50 to-background/30 p-8 shadow-[inset_0_1px_0_0_rgb(255_255_255/6%),0_24px_64px_-32px_rgb(0_0_0/0.45)] md:p-10">
-            <div
-              className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-primary/15 blur-3xl"
-              aria-hidden
-            />
-            <div className="relative space-y-4">
-              <div className="inline-flex items-center gap-2 rounded-full border border-primary/35 bg-primary/10 px-3 py-1 text-xs font-medium text-foreground">
-                <Package className="h-3.5 w-3.5 text-primary shrink-0" aria-hidden />
-                <span className="text-primary">{CATEGORY}</span>
-              </div>
-              <h1 className="mt-2 font-display text-3xl font-semibold tracking-tight text-pretty text-foreground sm:text-4xl md:text-[2.65rem] md:leading-[1.12]">
-                {HERO.title}
-              </h1>
-              <p className="text-lg leading-relaxed text-muted-foreground md:text-xl">{HERO.subtitle}</p>
-              <div className="mt-8 flex flex-wrap items-center gap-4">
-                <LandingWaCta
-                  href={waHref(MSG_HERO)}
-                  rel={REL_WHATSAPP_EXTERNAL}
-                  main={LANDING_CONSULT_CTA}
-                  hideWhatsAppIconMobile
-                />
-              </div>
-            </div>
-          </header>
-
-          <section className="mt-16 md:mt-20" aria-labelledby="problema-heading">
+          <section className={LANDING_SECTION} aria-labelledby="problema-heading">
             <SectionKicker n="01">Problema</SectionKicker>
             <h2
               id="problema-heading"
-              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+              className={landingH2Class}
             >
               Tu stock es un caos entre Excel y anotaciones
             </h2>
-            <div className="relative mt-8 overflow-hidden rounded-2xl border border-primary/30 bg-primary/6 px-6 py-8 md:px-8 md:py-9">
-              <div
-                className="pointer-events-none absolute -left-12 bottom-0 h-36 w-36 rounded-full bg-primary/20 blur-3xl"
-                aria-hidden
-              />
-              <div className="relative space-y-4 text-lg font-medium leading-relaxed text-foreground md:text-xl">
+            <div className="mt-8 space-y-4 border-l-2 border-primary/35 py-1 pl-5 text-lg font-medium leading-relaxed text-foreground md:pl-6 md:text-xl">
                 <p>
                   Cuando el inventario se maneja con planillas, notas o registros manuales, es muy difícil tener claridad
                   real.
@@ -191,11 +164,10 @@ export function SistemaGestionInventarioLanding() {
                 <p className="border-t border-primary/20 pt-4 font-normal text-muted-foreground md:text-[17px]">
                   Los datos no coinciden, se pierden movimientos y el control se vuelve cada vez más complejo.
                 </p>
-              </div>
             </div>
           </section>
 
-          <section className="mt-16 md:mt-20" aria-labelledby="contexto-heading">
+          <section className={LANDING_SECTION} aria-labelledby="contexto-heading">
             <SectionKicker n="02">Contexto</SectionKicker>
             <div className="mt-3 space-y-5 text-foreground/95 leading-relaxed md:text-[17px]">
               <p>En el día a día esto suele verse así:</p>
@@ -204,73 +176,56 @@ export function SistemaGestionInventarioLanding() {
                   <li key={item}>{item}</li>
                 ))}
               </ul>
-              <p className="rounded-xl border border-primary/30 bg-primary/10 px-4 py-3 text-sm font-medium text-foreground md:text-[15px]">
+              <p className="border-l-2 border-primary/40 py-1 pl-4 text-sm font-medium text-foreground md:pl-5 md:text-[15px]">
                 El sistema existe, pero no es confiable.
               </p>
             </div>
           </section>
 
-          <section className="mt-16 md:mt-20" aria-labelledby="riesgo-heading">
+          <section className={LANDING_SECTION} aria-labelledby="riesgo-heading">
             <SectionKicker n="03">Riesgo</SectionKicker>
             <h2
               id="riesgo-heading"
-              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+              className={landingH2Class}
             >
               Qué pasa cuando no tenés control del stock
             </h2>
-            <div className="mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+            <ul className="mt-6 list-disc space-y-2 pl-5 marker:text-primary md:text-[17px]">
               {RIESGO_ITEMS.map((text) => (
-                <div
-                  key={text}
-                  className="flex gap-3 rounded-xl border border-border/90 bg-background/40 px-4 py-4 backdrop-blur-sm"
-                >
-                  <CircleAlert className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
-                  <p className="text-sm leading-snug text-foreground/95 md:text-[15px]">{text}</p>
-                </div>
+                <li key={text} className="text-foreground/95">
+                  {text}
+                </li>
               ))}
-            </div>
-            <p className="mt-8 rounded-xl border border-primary/30 bg-primary/10 px-4 py-3 text-sm font-medium text-foreground leading-relaxed md:text-[15px]">
+            </ul>
+            <p className="mt-6 border-l-2 border-primary/40 py-1 pl-4 text-sm font-medium text-foreground md:pl-5 md:text-[15px]">
               El problema no es el stock, es la falta de control.
             </p>
           </section>
 
-          <section className="mt-16 md:mt-20" aria-labelledby="enfoque-heading">
+          <section className={LANDING_SECTION} aria-labelledby="enfoque-heading">
             <SectionKicker n="04">Enfoque</SectionKicker>
             <h2
               id="enfoque-heading"
-              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+              className={landingH2Class}
             >
               Cómo se suele resolver este problema
             </h2>
-            <div className="mt-8 grid auto-rows-fr gap-4 md:grid-cols-2">
+            <div className="mt-6 space-y-8">
               {FORMAS.map((f, i) => (
                 <div
                   key={f.title}
                   className={
                     f.highlight
-                      ? "relative flex h-full flex-col overflow-hidden rounded-2xl border-2 border-primary/50 bg-linear-to-br from-primary/12 via-primary/6 to-transparent p-5 shadow-[0_0_0_1px_rgb(var(--color-primary)/0.12)] md:p-6 ring-1 ring-primary/20"
-                      : "flex h-full flex-col rounded-2xl border border-border bg-surface/40 p-5 md:p-6"
+                      ? "border-l-2 border-primary/45 py-1 pl-5 md:pl-6"
+                      : "border-l border-border/80 py-1 pl-5 md:pl-6"
                   }
                 >
-                  {f.highlight && (
-                    <div
-                      className="pointer-events-none absolute -right-6 top-1/2 h-28 w-28 -translate-y-1/2 rounded-full bg-primary/20 blur-2xl"
-                      aria-hidden
-                    />
-                  )}
-                  <p className="relative flex items-baseline gap-2 font-display text-base font-semibold text-foreground">
-                    <span
-                      className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-xs font-bold ${
-                        f.highlight ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
-                      }`}
-                    >
-                      {i + 1}
-                    </span>
-                    {f.title}
+                  <p className="font-display text-base font-semibold text-foreground">
+                    <span className="tabular-nums text-primary">{i + 1}.</span> {f.title}
                   </p>
                   <p
-                    className={`relative mt-3 flex-1 pl-9 text-sm leading-relaxed md:text-[15px] ${
-                      f.highlight ? "text-foreground/95" : "text-muted-foreground"
+                    className={`mt-2 text-sm leading-relaxed md:text-[15px] ${
+                      f.highlight ? "text-foreground/90" : "text-muted-foreground"
                     }`}
                   >
                     {f.body}
@@ -278,126 +233,99 @@ export function SistemaGestionInventarioLanding() {
                 </div>
               ))}
             </div>
-            <p className="mt-8 rounded-xl border border-primary/30 bg-primary/10 px-4 py-3 text-sm font-medium text-foreground leading-relaxed md:text-[15px]">
+            <p className="mt-8 border-l-2 border-primary/40 py-1 pl-4 text-sm font-medium text-foreground md:pl-5 md:text-[15px]">
               Cuando el negocio crece, el control manual deja de funcionar.
             </p>
           </section>
 
-          <section className="mt-16 md:mt-20" aria-labelledby="propuesta-heading">
+          <section className={LANDING_SECTION} aria-labelledby="propuesta-heading">
             <SectionKicker n="05">Propuesta</SectionKicker>
-            <div className="mt-3 rounded-2xl border border-border bg-surface/35 p-6 md:flex md:items-start md:gap-8 md:p-8">
-              <div className="mx-auto flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary/15 text-primary md:mx-0">
-                <Layers className="h-7 w-7" aria-hidden />
-              </div>
-              <div className="mt-6 w-full min-w-0 flex-1 md:mt-0">
-                <h2
-                  id="propuesta-heading"
-                  className="font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
-                >
-                  Cómo implemento sistemas de control de stock
-                </h2>
-                <p className="mt-5 text-foreground/95 leading-relaxed md:text-[17px]">
-                  Desarrollo sistemas que permiten:
-                </p>
-                <ul className="mt-3 list-disc space-y-2 pl-5 text-foreground/95 leading-relaxed marker:text-primary md:text-[17px]">
-                  {PROPUESTA_ITEMS.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-                <p className="mt-5 text-muted-foreground leading-relaxed md:text-[17px]">
-                  Cada solución se adapta al tipo de operación del negocio.
-                </p>
-              </div>
+            <h2 id="propuesta-heading" className={landingH2Class}>
+              Cómo implemento sistemas de control de stock
+            </h2>
+            <div className={landingBodyClass}>
+              <p className="text-foreground/95">Desarrollo sistemas que permiten:</p>
+              <ul className="list-disc space-y-2 pl-5 marker:text-primary">
+                {PROPUESTA_ITEMS.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+              <p className="text-muted-foreground">Cada solución se adapta al tipo de operación del negocio.</p>
             </div>
           </section>
 
-          <section className="mt-16 md:mt-20" aria-labelledby="resultado-heading">
+          <section className={LANDING_SECTION} aria-labelledby="resultado-heading">
             <SectionKicker n="06">Resultado</SectionKicker>
             <h2
               id="resultado-heading"
-              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+              className={landingH2Class}
             >
               Qué cambia cuando organizás tu inventario
             </h2>
-            <div className="mt-8 flex flex-wrap gap-2.5">
+            <ul className="mt-6 list-disc space-y-2 pl-5 marker:text-primary md:text-[17px]">
               {BENEFICIOS.map((b) => (
-                <span
-                  key={b}
-                  className="inline-flex items-center gap-2 rounded-full border border-primary/35 bg-primary/10 px-4 py-2 text-sm font-medium text-foreground shadow-[inset_0_1px_0_0_rgb(255_255_255/8%)]"
-                >
-                  <Sparkles className="h-3.5 w-3.5 text-primary shrink-0" aria-hidden />
+                <li key={b} className="text-foreground/95">
                   {b}
-                </span>
-              ))}
-            </div>
-          </section>
-
-          <section className="mt-16 md:mt-20" aria-labelledby="senales-heading">
-            <SectionKicker n="07">Señales</SectionKicker>
-            <h2
-              id="senales-heading"
-              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
-            >
-              Señales de que necesitás un sistema de stock
-            </h2>
-            <ul className="mt-8 grid gap-3 md:grid-cols-2">
-              {SEÑALES.map((text) => (
-                <li
-                  key={text}
-                  className="flex gap-3 rounded-xl border border-border bg-background/30 px-4 py-3.5 backdrop-blur-sm"
-                >
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
-                  <span className="text-sm leading-snug text-foreground/95 md:text-[15px]">{text}</span>
                 </li>
               ))}
             </ul>
-            <p className="mt-8 rounded-xl border border-primary/30 bg-primary/10 px-4 py-3 text-sm font-medium text-foreground leading-relaxed md:text-[15px]">
+          </section>
+
+          <section className={LANDING_SECTION} aria-labelledby="senales-heading">
+            <SectionKicker n="07">Señales</SectionKicker>
+            <h2
+              id="senales-heading"
+              className={landingH2Class}
+            >
+              Señales de que necesitás un sistema de stock
+            </h2>
+            <ul className="mt-6 list-disc space-y-2 pl-5 marker:text-primary md:text-[17px]">
+              {SEÑALES.map((text) => (
+                <li key={text} className="text-foreground/95">
+                  {text}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 border-l-2 border-primary/40 py-1 pl-4 text-sm font-medium text-foreground md:pl-5 md:text-[15px]">
               Si te pasa esto, tu sistema actual no es suficiente.
             </p>
           </section>
 
-          <section className="mt-16 md:mt-20" aria-labelledby="caso-heading">
+          <section className={LANDING_SECTION} aria-labelledby="caso-heading">
             <SectionKicker n="08">Caso</SectionKicker>
             <h2
               id="caso-heading"
-              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+              className={landingH2Class}
             >
               Ejemplo de sistema implementado
             </h2>
-            <figure className="relative mt-8 overflow-hidden rounded-2xl border border-primary/25 bg-linear-to-br from-surface/80 to-primary/4 p-6 md:p-8">
-              <div
-                className="pointer-events-none absolute right-0 top-0 h-24 w-24 translate-x-1/4 -translate-y-1/4 rounded-full bg-primary/15 blur-2xl"
-                aria-hidden
-              />
-              <Package className="relative h-8 w-8 text-primary" aria-hidden />
-              <div className="relative mt-4 space-y-4 text-base leading-relaxed text-foreground/95 md:text-lg">
-                <p>
-                  Un negocio manejaba su stock entre Excel y anotaciones manuales, lo que generaba diferencias
-                  constantes entre lo registrado y lo real.
-                </p>
-                <p className="text-muted-foreground md:text-[17px]">
-                  Se implementó un sistema que centraliza los movimientos y actualiza el inventario automáticamente.
-                </p>
-                <p className="rounded-xl border border-primary/30 bg-primary/10 px-4 py-3 font-medium text-foreground md:text-[17px]">
-                  <span className="text-primary">Resultado:</span> control preciso del stock, menos errores y mejor
-                  organización.
-                </p>
-              </div>
-            </figure>
+            <div className={`${landingBodyClass} mt-8`}>
+              <p className="text-base leading-relaxed text-foreground/95 md:text-lg">
+                Un negocio manejaba su stock entre Excel y anotaciones manuales, lo que generaba diferencias constantes
+                entre lo registrado y lo real.
+              </p>
+              <p className="text-muted-foreground md:text-[17px]">
+                Se implementó un sistema que centraliza los movimientos y actualiza el inventario automáticamente.
+              </p>
+              <p className="border-l-2 border-primary/40 py-1 pl-4 font-medium text-foreground md:pl-5 md:text-[17px]">
+                <span className="text-primary">Resultado:</span> control preciso del stock, menos errores y mejor
+                organización.
+              </p>
+            </div>
           </section>
 
-          <section className="mt-16 md:mt-20" aria-labelledby="faq-heading">
+          <section className={LANDING_SECTION} aria-labelledby="faq-heading">
             <SectionKicker n="09">FAQ</SectionKicker>
             <h2
               id="faq-heading"
-              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+              className={landingH2Class}
             >
               Preguntas frecuentes
             </h2>
-            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
               Abrí la pregunta que te interese; el contenido sigue indexable para buscadores.
             </p>
-            <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-surface/40 shadow-[inset_0_1px_0_0_rgb(255_255_255/5%)]">
+            <div className="mt-6 divide-y divide-border border-t border-border">
               {FAQ_ITEMS.map(({ q, blocks }) => (
                 <details
                   key={q}
@@ -425,44 +353,16 @@ export function SistemaGestionInventarioLanding() {
             </div>
           </section>
 
-          <section className="relative mt-16 overflow-hidden rounded-3xl border border-primary/40 bg-linear-to-br from-primary/14 via-primary/6 to-transparent px-6 py-10 md:mt-20 md:px-10 md:py-12">
-            <div
-              className="pointer-events-none absolute -left-16 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-primary/20 blur-3xl"
-              aria-hidden
-            />
-            <p className="relative text-lg font-medium leading-relaxed text-foreground md:text-xl">
+          <section className={LANDING_SECTION}>
+            <p className="text-lg font-medium leading-relaxed text-foreground md:text-xl">
               Si tu stock está desordenado entre Excel y anotaciones, podemos ver cómo organizarlo en un sistema.
             </p>
-            <div className="relative mt-8">
+            <div className="mt-8">
               <LandingWaCta href={waHref(MSG_CASO)} rel={REL_WHATSAPP_EXTERNAL} main={LANDING_CONSULT_CTA} />
             </div>
           </section>
 
-          <section className="mt-16 border-t border-border pt-12 md:mt-20">
-            <h2 className="font-display text-lg font-semibold text-foreground">Explorá más soluciones</h2>
-            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-              Otros enfoques que suelen ir de la mano con lo que estás buscando.
-            </p>
-            <nav
-              aria-label="Soluciones relacionadas"
-              className="mt-6 overflow-hidden rounded-2xl border border-border bg-background/60 shadow-[inset_0_1px_0_0_rgb(255_255_255/5%)]"
-            >
-              <ul className="divide-y divide-border">
-                {MORE_SOLUTIONS.map((l) => (
-                  <li key={l.href}>
-                    <Link
-                      href={l.href}
-                      className="group flex items-center gap-4 px-4 py-4 text-left text-sm font-medium text-foreground transition-colors hover:bg-surface md:px-5 md:py-4 md:text-[15px]"
-                    >
-                      <span className="group-hover:text-primary transition-colors">{l.label}</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </section>
-        </article>
-      </div>
-    </div>
+          <LandingRelatedNav links={RELATED_LINKS} />
+    </LandingReadingMain>
   );
 }

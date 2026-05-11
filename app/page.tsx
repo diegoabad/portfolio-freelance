@@ -6,8 +6,6 @@ import { Hero } from "@/components/site/Hero";
 import { Nav } from "@/components/site/Nav";
 import { Process } from "@/components/site/Process";
 import { Services } from "@/components/site/Services";
-import { BlogSection } from "@/components/site/BlogSection";
-import { Testimonials } from "@/components/site/Testimonials";
 
 /** Debajo del pliegue: chunk aparte y sin competir con el LCP del hero. */
 const About = dynamic(() => import("@/components/site/About").then((m) => ({ default: m.About })), {
@@ -43,6 +41,54 @@ const Projects = dynamic(() => import("@/components/site/Projects").then((m) => 
         <div className="mt-8 md:mt-10 grid lg:grid-cols-2 gap-4 md:gap-5">
           {[0, 1].map((k) => (
             <div key={k} className="min-h-[22rem] rounded-2xl border border-border bg-background/40 animate-pulse" />
+          ))}
+        </div>
+      </div>
+    </section>
+  ),
+});
+
+/** Incluye `blog-posts` (contenido largo): chunk aparte para menos JS inicial y mejor prioridad de red. */
+const BlogSection = dynamic(() => import("@/components/site/BlogSection").then((m) => ({ default: m.BlogSection })), {
+  loading: () => (
+    <section
+      id="blog"
+      className="relative border-t border-border py-20 md:py-28 lg:py-32"
+      aria-busy="true"
+      aria-label="Cargando blog"
+    >
+      <div className="max-w-site mx-auto px-6 lg:px-10">
+        <div className="h-4 w-24 rounded bg-muted/35 animate-pulse" />
+        <div className="mt-4 h-11 max-w-sm rounded-lg bg-muted/30 animate-pulse md:h-12 md:max-w-md" />
+        <div className="mt-3 h-14 max-w-2xl rounded-lg bg-muted/20 animate-pulse" />
+        <div className="mt-10 grid gap-4 md:gap-5 lg:grid-cols-3">
+          {[0, 1, 2].map((k) => (
+            <div
+              key={k}
+              className="min-h-[220px] rounded-2xl border border-border bg-background/40 animate-pulse md:min-h-[240px]"
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  ),
+});
+
+const Testimonials = dynamic(() => import("@/components/site/Testimonials").then((m) => ({ default: m.Testimonials })), {
+  loading: () => (
+    <section
+      id="testimonios"
+      className="relative border-t border-border py-20 md:py-28 lg:py-32"
+      aria-busy="true"
+      aria-label="Cargando testimonios"
+    >
+      <div className="max-w-site mx-auto px-6 lg:px-10">
+        <div className="h-4 w-32 rounded bg-muted/35 animate-pulse" />
+        <div className="mt-4 h-12 max-w-lg rounded-lg bg-muted/30 animate-pulse md:h-14" />
+        <div className="mt-3 h-12 max-w-2xl rounded-lg bg-muted/20 animate-pulse" />
+        <div className="mt-10 grid gap-4 md:gap-5 lg:grid-cols-2">
+          {[0, 1].map((k) => (
+            <div key={k} className="min-h-[280px] rounded-2xl border border-border bg-background/40 animate-pulse" />
           ))}
         </div>
       </div>

@@ -1,20 +1,14 @@
 import Link from "next/link";
-import {
-  ChevronDown,
-  CheckCircle2,
-  CircleAlert,
-  HelpCircle,
-  Layers,
-  ListChecks,
-  Sparkles,
-  Wrench,
-  Zap,
-} from "lucide-react";
+import { ChevronDown, HelpCircle, Zap } from "lucide-react";
 import {
   FaqBlocks,
+  LandingReadingMain,
+  LandingRelatedNav,
   LandingWaCta,
-  LANDING_ARTICLE_MAX_CLASS,
+  LANDING_SECTION,
   SectionKicker,
+  landingBodyClass,
+  landingH2Class,
   type FaqBlock,
 } from "@/components/seo/landing-blocks";
 import { EVALUATION_OFFER_FAQ, LANDING_CONSULT_CTA } from "@/lib/contact";
@@ -27,7 +21,7 @@ const HERO = {
     "Automatización empresarial en Argentina con integración y automatización de sistemas (planillas, CRM, APIs, mensajería): menos automatización de tareas repetitivas a mano y más flujos auditables. Cuando encaja, automatización de procesos con n8n, webhooks o conectores; y donde suma, automatización con IA o agentes bajo reglas. Aplicable a automatización administrativa para empresas, recepción, clínicas y automatización de tareas administrativas en salud.",
 };
 
-const MORE_SOLUTIONS = [
+const RELATED_LINKS = [
   { href: "/bots-whatsapp", label: "Bots de WhatsApp" },
   { href: "/sistema-turnos-online", label: "Turnos online" },
   { href: "/desarrollo-software-medida", label: "Software a medida" },
@@ -268,52 +262,30 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
 
 export function AutomatizacionNegociosLanding() {
   return (
-    <div className="relative flex-1 overflow-hidden">
-      <div
-        className="pointer-events-none absolute -top-24 right-0 h-[420px] w-[420px] rounded-full bg-primary/12 blur-[100px]"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute bottom-0 left-1/2 h-[320px] w-[min(100%,520px)] -translate-x-1/2 rounded-full bg-primary/8 blur-[90px]"
-        aria-hidden
-      />
+    <LandingReadingMain>
+      <header className="border-b border-border pb-8 md:pb-10">
+        <div className="inline-flex items-center gap-2 rounded-full bg-primary/15 px-3 py-1 text-xs font-medium text-primary">
+          <Zap className="h-3.5 w-3.5 shrink-0" aria-hidden />
+          {CATEGORY}
+        </div>
+        <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight text-pretty text-foreground md:text-4xl lg:text-[2.35rem] lg:leading-tight">
+          {HERO.title}
+        </h1>
+        <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">{HERO.subtitle}</p>
+        <div className="mt-6 flex flex-wrap gap-4">
+          <LandingWaCta href={homeSection("#contacto")} main={LANDING_CONSULT_CTA} hideWhatsAppIconMobile />
+        </div>
+      </header>
 
-      <div className="relative mx-auto w-full max-w-site px-4 sm:px-6 lg:px-10 py-12 lg:py-20">
-        <article className={LANDING_ARTICLE_MAX_CLASS}>
-          <header className="relative overflow-hidden rounded-3xl border border-border/90 bg-linear-to-b from-surface/90 via-surface/50 to-background/30 p-8 shadow-[inset_0_1px_0_0_rgb(255_255_255/6%),0_24px_64px_-32px_rgb(0_0_0/0.45)] md:p-10">
-            <div
-              className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-primary/15 blur-3xl"
-              aria-hidden
-            />
-            <div className="relative">
-              <div className="inline-flex items-center gap-2 rounded-full border border-primary/35 bg-primary/10 px-3 py-1 text-xs font-medium text-foreground">
-                <Zap className="h-3.5 w-3.5 text-primary shrink-0" aria-hidden />
-                <span className="text-primary">{CATEGORY}</span>
-              </div>
-              <h1 className="mt-5 font-display text-3xl font-semibold tracking-tight text-pretty text-foreground sm:text-4xl md:text-[2.65rem] md:leading-[1.12]">
-                {HERO.title}
-              </h1>
-              <p className="mt-5 text-lg leading-relaxed text-muted-foreground md:text-xl">{HERO.subtitle}</p>
-              <div className="mt-8 flex flex-wrap items-center gap-4">
-                <LandingWaCta href={homeSection("#contacto")} main={LANDING_CONSULT_CTA} hideWhatsAppIconMobile />
-              </div>
-            </div>
-          </header>
-
-          <section className="mt-16 md:mt-20" aria-labelledby="problema-heading">
+          <section className={LANDING_SECTION} aria-labelledby="problema-heading">
             <SectionKicker n="01">El problema</SectionKicker>
             <h2
               id="problema-heading"
-              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+              className={landingH2Class}
             >
               Tareas manuales que te hacen perder tiempo y recursos en tu negocio
             </h2>
-            <div className="relative mt-8 overflow-hidden rounded-2xl border border-primary/30 bg-primary/6 px-6 py-8 md:px-8 md:py-9">
-              <div
-                className="pointer-events-none absolute -left-12 bottom-0 h-36 w-36 rounded-full bg-primary/20 blur-3xl"
-                aria-hidden
-              />
-              <div className="relative space-y-4 text-lg font-medium leading-relaxed text-foreground md:text-xl">
+            <div className="mt-8 space-y-4 border-l-2 border-primary/35 py-1 pl-5 text-lg font-medium leading-relaxed text-foreground md:pl-6 md:text-xl">
                 <p>¿Seguís perdiendo tiempo todas las semanas haciendo lo mismo?</p>
                 <p className="font-normal text-foreground/90 md:text-[17px]">
                   Responder mensajes, cargar datos en planillas, copiar información entre sistemas o coordinar tareas
@@ -326,38 +298,28 @@ export function AutomatizacionNegociosLanding() {
                   que la automatización de procesos administrativos (pagos, facturación de profesionales, reportes) no
                   frene el crecimiento.
                 </p>
-              </div>
             </div>
           </section>
 
-          <section className="mt-16 md:mt-20" aria-labelledby="ejemplos-heading">
+          <section className={LANDING_SECTION} aria-labelledby="ejemplos-heading">
             <SectionKicker n="02">Contexto</SectionKicker>
-            <h3
-              id="ejemplos-heading"
-              className="mt-3 font-display text-xl font-semibold tracking-tight text-foreground md:text-2xl"
-            >
+            <h2 id="ejemplos-heading" className={landingH2Class}>
               Ejemplos de tareas manuales comunes
-            </h3>
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+            </h2>
+            <ul className="mt-6 list-disc space-y-2 pl-5 marker:text-primary md:text-[17px]">
               {EJEMPLOS_TAREAS.map((text) => (
-                <li
-                  key={text}
-                  className="flex gap-3 rounded-xl border border-border bg-surface/50 p-4 shadow-[inset_0_1px_0_0_rgb(255_255_255/5%)] transition-colors hover:border-primary/35 hover:bg-surface"
-                >
-                  <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/12 text-primary">
-                    <ListChecks className="h-4 w-4" aria-hidden />
-                  </span>
-                  <span className="text-sm font-medium leading-snug text-foreground/95 md:text-[15px]">{text}</span>
+                <li key={text} className="text-foreground/95">
+                  {text}
                 </li>
               ))}
             </ul>
           </section>
 
-          <section className="mt-16 md:mt-20" aria-labelledby="clinicas-admin-heading">
+          <section className={LANDING_SECTION} aria-labelledby="clinicas-admin-heading">
             <SectionKicker n="02b">Rubros</SectionKicker>
             <h2
               id="clinicas-admin-heading"
-              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+              className={landingH2Class}
             >
               Clínicas, consultorios y administración
             </h2>
@@ -383,87 +345,66 @@ export function AutomatizacionNegociosLanding() {
             </div>
           </section>
 
-          <section className="mt-16 md:mt-20" aria-labelledby="consecuencias-heading">
+          <section className={LANDING_SECTION} aria-labelledby="consecuencias-heading">
             <SectionKicker n="03">Riesgos</SectionKicker>
             <h2
               id="consecuencias-heading"
-              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+              className={landingH2Class}
             >
               Qué pasa cuando todo depende de tareas manuales
             </h2>
-            <div className="mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+            <ul className="mt-6 list-disc space-y-2 pl-5 marker:text-primary md:text-[17px]">
               {CONSECUENCIAS.map((text) => (
-                <div
-                  key={text}
-                  className="flex gap-3 rounded-xl border border-border/90 bg-background/40 px-4 py-4 backdrop-blur-sm"
-                >
-                  <CircleAlert className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
-                  <p className="text-sm leading-snug text-foreground/95 md:text-[15px]">{text}</p>
-                </div>
+                <li key={text} className="text-foreground/95">
+                  {text}
+                </li>
               ))}
-            </div>
+            </ul>
           </section>
 
-          <section className="mt-16 md:mt-20" aria-labelledby="formas-heading">
+          <section className={LANDING_SECTION} aria-labelledby="formas-heading">
             <SectionKicker n="04">Enfoques</SectionKicker>
             <h2
               id="formas-heading"
-              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+              className={landingH2Class}
             >
               Formas de reducir tareas manuales en un negocio
             </h2>
             <p className="mt-5 text-foreground/90 leading-relaxed md:text-[17px]">
               Existen distintas formas de abordar este problema, dependiendo del nivel de complejidad:
             </p>
-            <div className="mt-8 grid auto-rows-fr gap-4 md:grid-cols-2">
-              <div className="flex h-full flex-col rounded-2xl border border-border bg-surface/40 p-5 md:p-6">
-                <p className="flex items-baseline gap-2 font-display text-base font-semibold text-foreground">
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-muted text-xs font-bold text-muted-foreground">
-                    1
-                  </span>
-                  Opción 1: Procesos manuales optimizados
+            <div className="mt-6 space-y-8">
+              <div className="border-l border-border/80 py-1 pl-5 md:pl-6">
+                <p className="font-display text-base font-semibold text-foreground">
+                  <span className="tabular-nums text-muted-foreground">1.</span> Opción 1: Procesos manuales optimizados
                 </p>
-                <p className="mt-3 flex-1 pl-9 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
                   Organizar mejor tareas y flujos puede ayudar, pero tiene un límite.
                 </p>
               </div>
-              <div className="flex h-full flex-col rounded-2xl border border-border bg-surface/40 p-5 md:p-6">
-                <p className="flex items-baseline gap-2 font-display text-base font-semibold text-foreground">
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-muted text-xs font-bold text-muted-foreground">
-                    2
-                  </span>
-                  Opción 2: Herramientas estándar
+              <div className="border-l border-border/80 py-1 pl-5 md:pl-6">
+                <p className="font-display text-base font-semibold text-foreground">
+                  <span className="tabular-nums text-muted-foreground">2.</span> Opción 2: Herramientas estándar
                 </p>
-                <p className="mt-3 flex-1 pl-9 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
-                  Existen plataformas que automatizan partes del proceso, pero muchas veces no se adaptan
-                  completamente.
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
+                  Existen plataformas que automatizan partes del proceso, pero muchas veces no se adaptan completamente.
                 </p>
               </div>
-              <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border-2 border-primary/50 bg-linear-to-br from-primary/12 via-primary/6 to-transparent p-5 shadow-[0_0_0_1px_rgb(var(--color-primary)/0.12)] md:p-6 ring-1 ring-primary/20">
-                <div
-                  className="pointer-events-none absolute -right-6 top-1/2 h-28 w-28 -translate-y-1/2 rounded-full bg-primary/20 blur-2xl"
-                  aria-hidden
-                />
-                <p className="relative flex items-baseline gap-2 font-display text-base font-semibold text-foreground">
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary text-xs font-bold text-primary-foreground">
-                    3
-                  </span>
-                  Opción 3: Automatización de procesos
+              <div className="border-l-2 border-primary/45 py-1 pl-5 md:pl-6">
+                <p className="font-display text-base font-semibold text-foreground">
+                  <span className="tabular-nums text-primary">3.</span> Opción 3: Automatización de procesos
                 </p>
-                <p className="relative mt-3 flex-1 pl-9 text-sm leading-relaxed text-foreground/95 md:text-[15px]">
+                <p className="mt-2 text-sm leading-relaxed text-foreground/95 md:text-[15px]">
                   Conecta sistemas y elimina lo repetitivo con integraciones y reglas; cuando el caso lo pide, incorpora
                   inteligencia artificial o agentes que ejecutan pasos acotados (por ejemplo clasificar pedidos o preparar
                   datos antes de que un humano valide).
                 </p>
               </div>
-              <div className="flex h-full flex-col rounded-2xl border border-border bg-surface/40 p-5 md:p-6">
-                <p className="flex items-baseline gap-2 font-display text-base font-semibold text-foreground">
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-muted text-xs font-bold text-muted-foreground">
-                    4
-                  </span>
-                  Opción 4: Software a medida
+              <div className="border-l border-border/80 py-1 pl-5 md:pl-6">
+                <p className="font-display text-base font-semibold text-foreground">
+                  <span className="tabular-nums text-muted-foreground">4.</span> Opción 4: Software a medida
                 </p>
-                <p className="mt-3 flex-1 pl-9 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
                   Cuando el negocio tiene necesidades específicas, desarrollar una solución personalizada es la mejor
                   alternativa.
                 </p>
@@ -471,129 +412,104 @@ export function AutomatizacionNegociosLanding() {
             </div>
           </section>
 
-          <section className="mt-16 md:mt-20" aria-labelledby="propuesta-heading">
+          <section className={LANDING_SECTION} aria-labelledby="propuesta-heading">
             <SectionKicker n="05">Propuesta</SectionKicker>
-            <div className="mt-3 rounded-2xl border border-border bg-surface/35 p-6 md:flex md:items-start md:gap-8 md:p-8">
-              <div className="mx-auto flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary/15 text-primary md:mx-0">
-                <Wrench className="h-7 w-7" aria-hidden />
-              </div>
-              <div className="mt-6 w-full min-w-0 flex-1 md:mt-0">
-                <h2
-                  id="propuesta-heading"
-                  className="font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
-                >
-                  Cómo automatizo procesos en negocios
-                </h2>
-                <div className="mt-5 space-y-4 text-foreground/95 leading-relaxed md:text-[17px]">
-                  <p>
-                    Desarrollo automatizaciones a medida que conectan tus herramientas y eliminan tareas repetitivas:
-                    webhooks, APIs, planillas, CRM y mensajería en un mismo flujo.
-                  </p>
-                  <p>
-                    Cuando el proceso tiene variación en el lenguaje o en los datos de entrada, evaluamos si conviene
-                    sumar <strong className="font-semibold text-foreground">inteligencia artificial</strong> (por ejemplo
-                    para clasificar, extraer campos o armar borradores) o{" "}
-                    <strong className="font-semibold text-foreground">agentes de automatización</strong> que encadenan
-                    pasos con reglas y validaciones—siempre con auditoría y revisión humana donde aplica.
-                  </p>
-                  <p>
-                    Desde flujos simples hasta procesos más complejos, el objetivo es reducir el trabajo manual y dejar
-                    criterio humano para lo que realmente lo necesita.
-                  </p>
-                </div>
-              </div>
+            <h2 id="propuesta-heading" className={landingH2Class}>
+              Cómo automatizo procesos en negocios
+            </h2>
+            <div className={landingBodyClass}>
+              <p className="text-foreground/95">
+                Desarrollo automatizaciones a medida que conectan tus herramientas y eliminan tareas repetitivas:
+                webhooks, APIs, planillas, CRM y mensajería en un mismo flujo.
+              </p>
+              <p className="text-foreground/95">
+                Cuando el proceso tiene variación en el lenguaje o en los datos de entrada, evaluamos si conviene sumar{" "}
+                <strong className="font-semibold text-foreground">inteligencia artificial</strong> (por ejemplo para
+                clasificar, extraer campos o armar borradores) o{" "}
+                <strong className="font-semibold text-foreground">agentes de automatización</strong> que encadenan pasos con
+                reglas y validaciones—siempre con auditoría y revisión humana donde aplica.
+              </p>
+              <p className="text-foreground/95">
+                Desde flujos simples hasta procesos más complejos, el objetivo es reducir el trabajo manual y dejar criterio
+                humano para lo que realmente lo necesita.
+              </p>
             </div>
           </section>
 
-          <section className="mt-16 md:mt-20" aria-labelledby="beneficios-heading">
+          <section className={LANDING_SECTION} aria-labelledby="beneficios-heading">
             <SectionKicker n="06">Resultados</SectionKicker>
             <h2
               id="beneficios-heading"
-              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+              className={landingH2Class}
             >
               Beneficios de automatizar procesos
             </h2>
-            <div className="mt-8 flex flex-wrap gap-2.5">
+            <ul className="mt-6 list-disc space-y-2 pl-5 marker:text-primary md:text-[17px]">
               {BENEFICIOS.map((b) => (
-                <span
-                  key={b}
-                  className="inline-flex items-center gap-2 rounded-full border border-primary/35 bg-primary/10 px-4 py-2 text-sm font-medium text-foreground shadow-[inset_0_1px_0_0_rgb(255_255_255/8%)]"
-                >
-                  <Sparkles className="h-3.5 w-3.5 text-primary shrink-0" aria-hidden />
+                <li key={b} className="text-foreground/95">
                   {b}
-                </span>
-              ))}
-            </div>
-          </section>
-
-          <section className="mt-16 md:mt-20" aria-labelledby="cuando-heading">
-            <SectionKicker n="07">Señales</SectionKicker>
-            <h2
-              id="cuando-heading"
-              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
-            >
-              Cuándo tiene sentido automatizar procesos
-            </h2>
-            <ul className="mt-8 grid gap-3 md:grid-cols-2">
-              {CUANDO.map((text) => (
-                <li
-                  key={text}
-                  className="flex gap-3 rounded-xl border border-border bg-background/30 px-4 py-3.5 backdrop-blur-sm"
-                >
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
-                  <span className="text-sm leading-snug text-foreground/95 md:text-[15px]">{text}</span>
                 </li>
               ))}
             </ul>
           </section>
 
-          <section className="mt-16 md:mt-20" aria-labelledby="ejemplo-heading">
+          <section className={LANDING_SECTION} aria-labelledby="cuando-heading">
+            <SectionKicker n="07">Señales</SectionKicker>
+            <h2
+              id="cuando-heading"
+              className={landingH2Class}
+            >
+              Cuándo tiene sentido automatizar procesos
+            </h2>
+            <ul className="mt-6 list-disc space-y-2 pl-5 marker:text-primary md:text-[17px]">
+              {CUANDO.map((text) => (
+                <li key={text} className="text-foreground/95">
+                  {text}
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section className={LANDING_SECTION} aria-labelledby="ejemplo-heading">
             <SectionKicker n="08">Caso</SectionKicker>
             <h2
               id="ejemplo-heading"
-              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+              className={landingH2Class}
             >
               Ejemplo de automatización
             </h2>
-            <figure className="relative mt-8 overflow-hidden rounded-2xl border border-primary/25 bg-linear-to-br from-surface/80 to-primary/4 p-6 md:p-8">
-              <div
-                className="pointer-events-none absolute right-0 top-0 h-24 w-24 translate-x-1/4 -translate-y-1/4 rounded-full bg-primary/15 blur-2xl"
-                aria-hidden
-              />
-              <Layers className="relative h-8 w-8 text-primary" aria-hidden />
-              <div className="relative mt-4 space-y-4 text-base leading-relaxed text-foreground/95 md:text-lg">
-                <p>
-                  Un negocio registraba sus ventas en una planilla de Excel y luego tenía que generar las facturas
-                  manualmente, copiando los datos en el sistema de facturación.
-                </p>
-                <p className="text-muted-foreground md:text-[17px]">
-                  Esto generaba pérdida de tiempo, errores y retrabajo.
-                </p>
-                <p>
-                  Se implementó una automatización que toma los datos desde la planilla y genera las facturas
-                  automáticamente; en otro flujo del mismo negocio se usó inteligencia artificial solo para normalizar
-                  descripciones libres antes de validar con una persona.
-                </p>
-                <p className="rounded-xl border border-primary/30 bg-primary/10 px-4 py-3 font-medium text-foreground md:text-[17px]">
-                  <span className="text-primary">Resultado:</span> eliminación del trabajo manual repetitivo, menos errores,
-                  facturación más rápida y pasos con IA acotados a lo que el equipo revisa.
-                </p>
-              </div>
-            </figure>
+            <div className={`${landingBodyClass} mt-8`}>
+              <p className="text-base leading-relaxed text-foreground/95 md:text-lg">
+                Un negocio registraba sus ventas en una planilla de Excel y luego tenía que generar las facturas
+                manualmente, copiando los datos en el sistema de facturación.
+              </p>
+              <p className="text-muted-foreground md:text-[17px]">
+                Esto generaba pérdida de tiempo, errores y retrabajo.
+              </p>
+              <p className="text-foreground/95 md:text-[17px]">
+                Se implementó una automatización que toma los datos desde la planilla y genera las facturas automáticamente;
+                en otro flujo del mismo negocio se usó inteligencia artificial solo para normalizar descripciones libres
+                antes de validar con una persona.
+              </p>
+              <p className="border-l-2 border-primary/40 py-1 pl-4 font-medium text-foreground md:pl-5 md:text-[17px]">
+                <span className="text-primary">Resultado:</span> eliminación del trabajo manual repetitivo, menos errores,
+                facturación más rápida y pasos con IA acotados a lo que el equipo revisa.
+              </p>
+            </div>
           </section>
 
-          <section className="mt-16 md:mt-20" aria-labelledby="faq-heading">
+          <section className={LANDING_SECTION} aria-labelledby="faq-heading">
             <SectionKicker n="09">FAQ</SectionKicker>
             <h2
               id="faq-heading"
-              className="mt-3 font-display text-2xl font-semibold tracking-tight text-foreground md:text-[1.7rem]"
+              className={landingH2Class}
             >
               Preguntas frecuentes
             </h2>
-            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
               Abrí la pregunta que te interese; el contenido sigue indexable para buscadores.
             </p>
-            <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-surface/40 shadow-[inset_0_1px_0_0_rgb(255_255_255/5%)]">
+            <div className="mt-6 divide-y divide-border border-t border-border">
               {FAQ_ITEMS.map(({ q, blocks }) => (
                 <details
                   key={q}
@@ -621,45 +537,17 @@ export function AutomatizacionNegociosLanding() {
             </div>
           </section>
 
-          <section className="relative mt-16 overflow-hidden rounded-3xl border border-primary/40 bg-linear-to-br from-primary/14 via-primary/6 to-transparent px-6 py-10 md:mt-20 md:px-10 md:py-12">
-            <div
-              className="pointer-events-none absolute -left-16 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-primary/20 blur-3xl"
-              aria-hidden
-            />
-            <p className="relative text-lg font-medium leading-relaxed text-foreground md:text-xl">
+          <section className={LANDING_SECTION}>
+            <p className="text-lg font-medium leading-relaxed text-foreground md:text-xl">
               Si estás en esta situación, podemos analizar tu caso: integraciones puras, flujos híbridos o dónde tiene
               sentido sumar inteligencia artificial y agentes sin perder control de la operación.
             </p>
-            <div className="relative mt-8">
+            <div className="mt-8">
               <LandingWaCta href={homeSection("#contacto")} main={LANDING_CONSULT_CTA} />
             </div>
           </section>
 
-          <section className="mt-16 border-t border-border pt-12 md:mt-20">
-            <h2 className="font-display text-lg font-semibold text-foreground">Explorá más soluciones</h2>
-            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-              Otros enfoques que suelen ir de la mano con lo que estás buscando.
-            </p>
-            <nav
-              aria-label="Soluciones relacionadas"
-              className="mt-6 overflow-hidden rounded-2xl border border-border bg-background/60 shadow-[inset_0_1px_0_0_rgb(255_255_255/5%)]"
-            >
-              <ul className="divide-y divide-border">
-                {MORE_SOLUTIONS.map((l) => (
-                  <li key={l.href}>
-                    <Link
-                      href={l.href}
-                      className="group flex items-center gap-4 px-4 py-4 text-left text-sm font-medium text-foreground transition-colors hover:bg-surface md:px-5 md:py-4 md:text-[15px]"
-                    >
-                      <span className="group-hover:text-primary transition-colors">{l.label}</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </section>
-        </article>
-      </div>
-    </div>
+          <LandingRelatedNav links={RELATED_LINKS} />
+    </LandingReadingMain>
   );
 }

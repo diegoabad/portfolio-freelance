@@ -426,13 +426,31 @@ export function getAllBlogSlugs(): string[] {
   return posts.map((p) => p.slug);
 }
 
+const MONTHS_ES = [
+  "enero",
+  "febrero",
+  "marzo",
+  "abril",
+  "mayo",
+  "junio",
+  "julio",
+  "agosto",
+  "septiembre",
+  "octubre",
+  "noviembre",
+  "diciembre",
+] as const;
+
+/** Fecha legible idéntica en servidor y cliente (evita mismatch de hidratación con `toLocaleDateString`). */
 export function formatBlogDate(isoDate: string): string {
-  const d = new Date(isoDate + "T12:00:00");
-  return d.toLocaleDateString("es-AR", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(isoDate.trim());
+  if (!m) return isoDate;
+  const year = Number(m[1]);
+  const month = Number(m[2]);
+  const day = Number(m[3]);
+  const monthName = MONTHS_ES[month - 1];
+  if (!monthName || day < 1 || day > 31) return isoDate;
+  return `${day} de ${monthName} de ${year}`;
 }
 
 export function getFaqItemsFromPost(post: BlogPost): { question: string; answer: string }[] {

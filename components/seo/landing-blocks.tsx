@@ -3,19 +3,76 @@ import Link from "next/link";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 import { homeSection } from "@/lib/home-links";
 
+/** Separación entre bloques (mismo ritmo que blog / casos de éxito). */
+export const LANDING_SECTION =
+  "mt-10 md:mt-12 border-t border-border pt-10 md:pt-12 scroll-mt-28";
+
+export const landingH2Class =
+  "mt-3 font-display text-xl font-semibold tracking-tight text-pretty text-foreground md:text-2xl";
+
+export const landingBodyClass = "mt-6 space-y-5 text-foreground/95 leading-relaxed md:text-[17px]";
+
+/** Contenedor principal alineado a artículos del blog y fichas de proyecto. */
+export function LandingReadingMain({ children }: { children: ReactNode }) {
+  return (
+    <main className="flex-1 border-b border-border bg-background">
+      <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-10 py-12 md:py-16 lg:py-20">
+        <div className="mx-auto w-full max-w-3xl">{children}</div>
+      </div>
+    </main>
+  );
+}
+
+/** Lista de enlaces relacionados sin “caja” pesada. */
+export function LandingRelatedNav({
+  heading = "Explorá más soluciones",
+  description = "Otros enfoques que suelen ir de la mano con lo que estás buscando.",
+  links,
+}: {
+  heading?: string;
+  description?: string;
+  links: readonly { href: string; label: string }[];
+}) {
+  return (
+    <section className={`${LANDING_SECTION}`} aria-labelledby="landing-related-heading">
+      <h2 id="landing-related-heading" className={landingH2Class}>
+        {heading}
+      </h2>
+      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{description}</p>
+      <ul className="mt-6 space-y-1">
+        {links.map((l) => (
+          <li key={l.href}>
+            <Link
+              href={l.href}
+              className="group inline-flex py-2 text-sm font-medium text-foreground transition-colors hover:text-primary md:text-[15px]"
+            >
+              <span className="border-b border-transparent group-hover:border-primary/50">{l.label}</span>
+              <span className="ml-1 text-primary opacity-0 transition-opacity group-hover:opacity-100" aria-hidden>
+                →
+              </span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
 export type FaqBlock =
   | { type: "p"; text: string }
   | { type: "ul"; intro?: string; items: string[] }
   | { type: "callout"; text: string }
   | { type: "calloutContact"; before: string; linkText: string; after: string };
 
-/** Ancho del cuerpo alineado al contenedor del Nav (`max-w-site` / `--max-width-site` + padding en la página). */
-export const LANDING_ARTICLE_MAX_CLASS = "w-full";
+/** @deprecated Prefer `<LandingReadingMain>`; se mantiene por si algún import legacy. */
+export const LANDING_ARTICLE_MAX_CLASS = "mx-auto w-full max-w-3xl";
 
 export function SectionKicker({ n, children }: { n: string; children: ReactNode }) {
   return (
-    <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
-      <span className="text-muted-foreground/80">{n}</span> · {children}
+    <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+      <span className="text-primary">{n}</span>
+      <span className="text-muted-foreground/70"> · </span>
+      {children}
     </p>
   );
 }
@@ -47,7 +104,7 @@ export function FaqBlocks({ blocks, className = "" }: { blocks: FaqBlock[]; clas
           return (
             <p
               key={i}
-              className="rounded-xl border border-primary/30 bg-primary/10 px-4 py-3 font-medium text-foreground"
+              className="border-l-2 border-primary/40 py-1 pl-4 text-sm font-medium text-foreground md:text-[15px]"
             >
               {b.text}
             </p>
@@ -57,7 +114,7 @@ export function FaqBlocks({ blocks, className = "" }: { blocks: FaqBlock[]; clas
           return (
             <p
               key={i}
-              className="rounded-xl border border-primary/30 bg-primary/10 px-4 py-3 font-medium text-foreground"
+              className="border-l-2 border-primary/40 py-1 pl-4 text-sm font-medium text-foreground md:text-[15px]"
             >
               {b.before}
               <Link href={homeSection("#contacto")} className="text-primary underline-offset-4 hover:underline">

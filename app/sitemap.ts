@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getBlogIndexLastModified, getBlogSitemapEntries } from "@/lib/blog-posts";
+import { caseStudies } from "@/lib/case-studies";
 import { SERVICE_SLUGS } from "@/lib/service-landings";
 import { getSiteUrl } from "@/lib/site";
 
@@ -28,6 +29,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.68,
   }));
 
+  const caseStudyPages = caseStudies.map((c) => ({
+    url: `${base}/proyectos/${c.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.72,
+  }));
+
   return [
     {
       url: base,
@@ -43,6 +51,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     blogIndex,
     ...blogPosts,
+    ...caseStudyPages,
     ...landings,
     {
       url: `${base}/llms.txt`,

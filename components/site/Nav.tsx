@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, type MouseEvent } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { BrandLogoMark } from "@/components/site/BrandLogoMark";
+import { caseStudies } from "@/lib/case-studies";
 import { homeSection } from "@/lib/home-links";
 import { SERVICE_LANDING_PAGES, SERVICE_SLUGS } from "@/lib/service-landings";
 import { BRAND_TAGLINE } from "@/lib/site";
@@ -43,15 +44,20 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<SectionId>("top");
   const [servicesMenu, setServicesMenu] = useState<{ anchorPath: string } | null>(null);
+  const [projectsMenu, setProjectsMenu] = useState<{ anchorPath: string } | null>(null);
   const servicesRef = useRef<HTMLDivElement>(null);
+  const projectsRef = useRef<HTMLDivElement>(null);
   /** En `/`, barra transparente arriba del hero; al hacer scroll gana fondo (viewport ≥ 1100px). */
   const [navSolid, setNavSolid] = useState(() => pathname !== "/");
 
   const servicesOpen = servicesMenu !== null && servicesMenu.anchorPath === pathname;
+  const projectsOpen = projectsMenu !== null && projectsMenu.anchorPath === pathname;
 
   const isHome = pathname === "/";
   const isServiceRoute = SERVICE_SLUGS.some((slug) => pathname === `/${slug}`);
+  const isProjectRoute = pathname.startsWith("/proyectos");
   const serviciosActive = (isHome && active === "servicios") || isServiceRoute;
+  const proyectosActive = (isHome && active === "proyectos") || isProjectRoute;
 
   /** Tras clic en ancla, el hash a veces se actualiza después del handler; `hashchange` no siempre dispara (p. ej. mismo cliente). */
   const bumpActiveFromUrlHash = () => {
@@ -90,17 +96,24 @@ export function Nav() {
   }, [isHome]);
 
   useEffect(() => {
-    if (!servicesOpen) return;
-    const dismissMenuAndResyncNav = () => {
+    if (!servicesOpen && !projectsOpen) return;
+    const dismissServices = () => {
       setServicesMenu(null);
       if (pathname === "/") bumpActiveFromUrlHash();
     };
+    const dismissProjects = () => {
+      setProjectsMenu(null);
+      if (pathname === "/") bumpActiveFromUrlHash();
+    };
     const onDocMouseDown = (e: globalThis.MouseEvent) => {
-      if (servicesRef.current?.contains(e.target as Node)) return;
-      dismissMenuAndResyncNav();
+      const t = e.target as Node;
+      if (servicesOpen && servicesRef.current && !servicesRef.current.contains(t)) dismissServices();
+      if (projectsOpen && projectsRef.current && !projectsRef.current.contains(t)) dismissProjects();
     };
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") dismissMenuAndResyncNav();
+      if (e.key !== "Escape") return;
+      if (servicesOpen) dismissServices();
+      if (projectsOpen) dismissProjects();
     };
     document.addEventListener("mousedown", onDocMouseDown);
     window.addEventListener("keydown", onKey);
@@ -108,7 +121,7 @@ export function Nav() {
       document.removeEventListener("mousedown", onDocMouseDown);
       window.removeEventListener("keydown", onKey);
     };
-  }, [servicesOpen, pathname]);
+  }, [servicesOpen, projectsOpen, pathname]);
 
   /** En móvil, evita que el scroll mueva la página debajo del header fijo mientras el menú está abierto. */
   useEffect(() => {
@@ -141,14 +154,36 @@ export function Nav() {
     if (isHome) bumpActiveFromUrlHash();
   };
 
+  const closeProjectsMenu = () => {
+    setProjectsMenu(null);
+    if (isHome) bumpActiveFromUrlHash();
+  };
+
   const toggleServicesMenu = () => {
     if (servicesOpen) closeServicesMenu();
-    else setServicesMenu({ anchorPath: pathname });
+    else {
+      setProjectsMenu(null);
+      setServicesMenu({ anchorPath: pathname });
+    }
+  };
+
+  const toggleProjectsMenu = () => {
+    if (projectsOpen) closeProjectsMenu();
+    else {
+      setServicesMenu(null);
+      setProjectsMenu({ anchorPath: pathname });
+    }
   };
 
   const servicesTriggerClass = serviciosActive
     ? "text-primary font-semibold"
     : servicesOpen
+      ? "text-white font-medium"
+      : "text-white/90 hover:text-white transition-colors";
+
+  const projectsTriggerClass = proyectosActive
+    ? "text-primary font-semibold"
+    : projectsOpen
       ? "text-white font-medium"
       : "text-white/90 hover:text-white transition-colors";
 
@@ -162,9 +197,22 @@ export function Nav() {
       : dropdownItemClass;
   };
 
+  const projectItemClass = (slug: string) => {
+    const here = pathname === `/proyectos/${slug}`;
+    return here
+      ? `${dropdownItemClass} font-semibold text-primary bg-primary/10`
+      : dropdownItemClass;
+  };
+
   /** Home con `/#servicios`: resalta «Todos los servicios» en el menú (no aplica en landings sueltas). */
   const todosServiciosMenuClass =
     isHome && active === "servicios" && !isServiceRoute
+      ? `${dropdownItemClass} font-semibold text-primary bg-primary/10`
+      : dropdownItemClass;
+
+  /** Home con `/#proyectos`: resalta «Todos los casos» si no estamos en una página de proyecto. */
+  const todosProyectosMenuClass =
+    isHome && active === "proyectos" && !isProjectRoute
       ? `${dropdownItemClass} font-semibold text-primary bg-primary/10`
       : dropdownItemClass;
 
@@ -174,10 +222,42 @@ export function Nav() {
     }, 60);
   };
 
-  const onClickTodosServicios = () => {
+  /** Clic normal (no nueva pestaña / medio): evita que Next.js vaya a `/` y deje el scroll arriba sin respetar el hash. */
+  const isPlainLeftClick = (e: MouseEvent<HTMLAnchorElement>) =>
+    !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) && e.button === 0;
+
+  const onClickTodosServicios = (e: MouseEvent<HTMLAnchorElement>) => {
+    if (!isPlainLeftClick(e)) return;
+    e.preventDefault();
     closeServicesMenu();
-    bumpActiveFromUrlHash();
-    if (pathname === "/") scrollToServiciosSection();
+    setOpen(false);
+    if (pathname === "/") {
+      window.history.pushState(null, "", "#servicios");
+      bumpActiveFromUrlHash();
+      scrollToServiciosSection();
+      return;
+    }
+    window.location.assign("/#servicios");
+  };
+
+  const scrollToProyectosSection = () => {
+    window.setTimeout(() => {
+      document.getElementById("proyectos")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 60);
+  };
+
+  const onClickTodosProyectos = (e: MouseEvent<HTMLAnchorElement>) => {
+    if (!isPlainLeftClick(e)) return;
+    e.preventDefault();
+    closeProjectsMenu();
+    setOpen(false);
+    if (pathname === "/") {
+      window.history.pushState(null, "", "#proyectos");
+      bumpActiveFromUrlHash();
+      scrollToProyectosSection();
+      return;
+    }
+    window.location.assign("/#proyectos");
   };
 
   const headerSurfaceClass =
@@ -243,7 +323,7 @@ export function Nav() {
                     id="nav-servicios-menu"
                     role="menu"
                     aria-labelledby="nav-servicios-trigger"
-                    className="absolute left-1/2 top-full z-[60] pt-2 -translate-x-1/2 min-w-[min(100vw-2rem,17.5rem)]"
+                    className="absolute left-1/2 top-full z-60 pt-2 -translate-x-1/2 min-w-[min(100vw-2rem,17.5rem)]"
                   >
                     <div className="rounded-xl border border-border bg-background py-2 shadow-lg shadow-black/10">
                       <a
@@ -265,6 +345,58 @@ export function Nav() {
                           onClick={closeServicesMenu}
                         >
                           {p.categoryHeading}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : l.kind === "hash" && l.id === "proyectos" ? (
+              <div key={l.hash} className="relative shrink-0" ref={projectsRef}>
+                <button
+                  type="button"
+                  id="nav-proyectos-trigger"
+                  className={`inline-flex items-center gap-0.5 whitespace-nowrap rounded-md px-0.5 py-1 ${projectsTriggerClass}`}
+                  aria-expanded={projectsOpen}
+                  aria-haspopup="true"
+                  aria-controls="nav-proyectos-menu"
+                  onClick={toggleProjectsMenu}
+                >
+                  {l.label}
+                  <ChevronDown
+                    className={`h-3.5 w-3.5 shrink-0 opacity-80 transition-transform duration-200 ${projectsOpen ? "rotate-180" : ""}`}
+                    aria-hidden
+                  />
+                </button>
+                {projectsOpen && (
+                  <div
+                    id="nav-proyectos-menu"
+                    role="menu"
+                    aria-labelledby="nav-proyectos-trigger"
+                    className="absolute left-1/2 top-full z-60 pt-2 -translate-x-1/2 min-w-[min(100vw-2rem,20rem)] max-h-[min(70vh,28rem)] overflow-y-auto overscroll-y-contain"
+                  >
+                    <div className="rounded-xl border border-border bg-background py-2 shadow-lg shadow-black/10">
+                      <a
+                        href={homeSection("#proyectos")}
+                        role="menuitem"
+                        className={todosProyectosMenuClass}
+                        onClick={onClickTodosProyectos}
+                      >
+                        Todos los casos
+                      </a>
+                      <div className="my-1 h-px bg-border" role="separator" />
+                      {caseStudies.map((p) => (
+                        <Link
+                          key={p.slug}
+                          href={`/proyectos/${p.slug}`}
+                          role="menuitem"
+                          className={projectItemClass(p.slug)}
+                          aria-current={pathname === `/proyectos/${p.slug}` ? "page" : undefined}
+                          onClick={closeProjectsMenu}
+                          aria-label={p.title}
+                          title={p.title}
+                        >
+                          {p.navShortLabel}
                         </Link>
                       ))}
                     </div>
@@ -348,6 +480,47 @@ export function Nav() {
                           className={`py-2 text-base transition-colors ${here ? "font-semibold text-primary" : "text-white/90 hover:text-primary"}`}
                         >
                           {p.categoryHeading}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </details>
+              ) : l.kind === "hash" && l.id === "proyectos" ? (
+                <details key={l.hash} className="group rounded-xl">
+                  <summary
+                    className={`flex cursor-pointer list-none items-center justify-between gap-2 py-2.5 px-3 -mx-1 rounded-xl text-base transition-colors hover:bg-surface-elevated [&::-webkit-details-marker]:hidden ${proyectosActive ? "text-primary font-semibold" : "text-white/90"}`}
+                  >
+                    <span>Casos de éxito</span>
+                    <ChevronDown
+                      className="h-4 w-4 shrink-0 opacity-70 transition-transform duration-200 group-open:rotate-180"
+                      aria-hidden
+                    />
+                  </summary>
+                  <div className="mt-1 mb-1 ml-2 flex flex-col gap-0.5 border-l border-border pl-3">
+                    <a
+                      href={homeSection("#proyectos")}
+                      onClick={onClickTodosProyectos}
+                      className={`block rounded-md py-2 text-base transition-colors ${
+                        isHome && active === "proyectos" && !isProjectRoute
+                          ? "font-semibold text-primary bg-primary/10 px-2 -mx-1"
+                          : "text-white/90 hover:text-primary px-2 -mx-1"
+                      }`}
+                    >
+                      Todos los casos
+                    </a>
+                    {caseStudies.map((p) => {
+                      const here = pathname === `/proyectos/${p.slug}`;
+                      return (
+                        <Link
+                          key={p.slug}
+                          href={`/proyectos/${p.slug}`}
+                          onClick={() => setOpen(false)}
+                          aria-current={here ? "page" : undefined}
+                          aria-label={p.title}
+                          title={p.title}
+                          className={`rounded-md py-2 text-base leading-snug transition-colors ${here ? "font-semibold text-primary px-2 -mx-1 bg-primary/10" : "text-white/90 hover:text-primary px-2 -mx-1"}`}
+                        >
+                          {p.navShortLabel}
                         </Link>
                       );
                     })}

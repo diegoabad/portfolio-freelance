@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { BrandLogoMark } from "@/components/site/BrandLogoMark";
-import { BRAND_TAGLINE } from "@/lib/site";
+import { BRAND_TAGLINE, LINKEDIN_PROFILE_URL } from "@/lib/site";
 import { REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 import { FooterCopyrightLine } from "@/components/site/FooterCopyrightLine";
@@ -78,7 +78,7 @@ export function Footer() {
                   <WhatsAppIcon size={22} />
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/diegoabad-fullstack/"
+                  href={LINKEDIN_PROFILE_URL}
                   target="_blank"
                   rel="noreferrer"
                   className="h-11 w-11 rounded-xl border-2 border-primary bg-surface/60 grid place-items-center text-primary hover:text-primary-foreground hover:bg-primary transition shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background md:h-9 md:w-9 md:rounded-[10px] [&_svg]:size-[22px] md:[&_svg]:size-[18px]"
