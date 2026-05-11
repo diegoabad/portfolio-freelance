@@ -5,8 +5,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { BrandLogoMark } from "@/components/site/BrandLogoMark";
+import { PricingRegionSwitcher } from "@/components/site/PricingRegionSwitcher";
 import { caseStudies } from "@/lib/case-studies";
 import { homeSection } from "@/lib/home-links";
+import type { PricingRegion } from "@/lib/pricing-region";
 import { SERVICE_LANDING_PAGES, SERVICE_SLUGS } from "@/lib/service-landings";
 import { BRAND_TAGLINE } from "@/lib/site";
 
@@ -39,7 +41,7 @@ function readActiveFromHash(): SectionId {
 /** Píxeles de scroll en home antes de mostrar fondo sólido en la barra (solo desktop). */
 const HOME_NAV_SOLID_SCROLL_Y = 72;
 
-export function Nav() {
+export function Nav({ pricingRegion }: { pricingRegion: PricingRegion }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<SectionId>("top");
@@ -47,7 +49,7 @@ export function Nav() {
   const [projectsMenu, setProjectsMenu] = useState<{ anchorPath: string } | null>(null);
   const servicesRef = useRef<HTMLDivElement>(null);
   const projectsRef = useRef<HTMLDivElement>(null);
-  /** En `/`, barra transparente arriba del hero; al hacer scroll gana fondo (viewport ≥ 1100px). */
+  /** En `/`, barra transparente arriba del hero; al hacer scroll gana fondo (viewport ≥ 1200px). */
   const [navSolid, setNavSolid] = useState(() => pathname !== "/");
 
   const servicesOpen = servicesMenu !== null && servicesMenu.anchorPath === pathname;
@@ -262,28 +264,28 @@ export function Nav() {
 
   const headerSurfaceClass =
     isHome && !navSolid
-      ? "bg-background min-[1100px]:bg-transparent min-[1100px]:backdrop-blur-none min-[1100px]:supports-backdrop-filter:bg-transparent"
-      : "bg-background min-[1100px]:bg-background min-[1100px]:backdrop-blur-none";
+      ? "bg-background min-[1200px]:bg-transparent min-[1200px]:backdrop-blur-none min-[1200px]:supports-backdrop-filter:bg-transparent"
+      : "bg-background min-[1200px]:bg-background min-[1200px]:backdrop-blur-none";
 
   const headerBorderClass =
     isHome && !navSolid ? "border-b border-transparent" : "border-b border-primary/18";
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 w-full ${headerBorderClass} transition-[background-color,backdrop-filter,border-color] duration-300 ease-out max-[1099px]:flex max-[1099px]:max-h-dvh max-[1099px]:flex-col max-[1099px]:overflow-hidden min-[1100px]:overflow-visible ${headerSurfaceClass}`}
+      className={`fixed top-0 inset-x-0 z-50 w-full ${headerBorderClass} transition-[background-color,backdrop-filter,border-color] duration-300 ease-out max-[1199px]:flex max-[1199px]:max-h-dvh max-[1199px]:flex-col max-[1199px]:overflow-hidden min-[1200px]:overflow-visible ${headerSurfaceClass}`}
     >
-      <div className="relative max-w-site mx-auto w-full shrink-0 px-4 sm:px-6 lg:px-10 flex min-h-21 min-[1100px]:min-h-24 items-center justify-between gap-3 py-3 min-[1100px]:py-[7px]">
+      <div className="relative max-w-site mx-auto w-full shrink-0 px-4 sm:px-6 lg:px-10 flex min-h-21 min-[1200px]:min-h-24 items-center justify-between gap-3 py-3 min-[1200px]:py-[7px]">
         <a
           href={homeSection("#top")}
           onClick={() => isHome && bumpActiveFromUrlHash()}
-          className="flex min-w-0 shrink-0 items-center gap-2.5 z-20 pr-1 min-[1100px]:pr-0"
+          className="flex min-w-0 shrink-0 items-center gap-2.5 z-20 pr-1 min-[1200px]:pr-0"
         >
           <BrandLogoMark
             size={42}
             priority
             className={
               isHome && !navSolid
-                ? "drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] min-[1100px]:drop-shadow-[0_2px_14px_rgba(0,0,0,0.9)]"
+                ? "drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] min-[1200px]:drop-shadow-[0_2px_14px_rgba(0,0,0,0.9)]"
                 : undefined
             }
           />
@@ -295,9 +297,9 @@ export function Nav() {
           </span>
         </a>
 
-        <div className="flex min-w-0 flex-1 items-center justify-end">
+        <div className="flex min-w-0 flex-1 items-center justify-end gap-2 sm:gap-3">
         <nav
-          className="hidden min-[1100px]:flex items-center justify-end gap-2 lg:gap-5 xl:gap-7 text-sm min-[1100px]:text-base pointer-events-auto flex-wrap font-medium"
+          className="hidden min-[1200px]:flex items-center justify-end gap-2 lg:gap-5 xl:gap-7 text-sm min-[1200px]:text-base pointer-events-auto flex-wrap font-medium"
           aria-label="Principal"
         >
           {navLinks.map((l) =>
@@ -425,9 +427,13 @@ export function Nav() {
           )}
         </nav>
 
+          <div className="hidden min-[1200px]:flex shrink-0 items-center pl-1">
+            <PricingRegionSwitcher initialRegion={pricingRegion} />
+          </div>
+
           <button
             type="button"
-            className={`min-[1100px]:hidden shrink-0 z-20 p-2 rounded-lg transition ${
+            className={`min-[1200px]:hidden shrink-0 z-20 p-2 rounded-lg transition ${
               isHome && !navSolid ? "text-white hover:bg-white/10" : "text-foreground hover:bg-muted"
             }`}
             onClick={() => setOpen((v) => !v)}
@@ -439,8 +445,14 @@ export function Nav() {
       </div>
 
       {open && (
-        <div className="min-[1100px]:hidden flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-y-contain border-t border-border bg-surface shadow-[0_18px_48px_-20px_oklch(0.02_0.02_270/0.75)] [touch-action:pan-y]">
-          <nav className="max-w-site mx-auto w-full px-6 py-4 flex flex-col gap-1 pb-[max(1rem,env(safe-area-inset-bottom))]" aria-label="Principal móvil">
+        <div className="min-[1200px]:hidden flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-y-contain border-t border-border bg-surface shadow-[0_18px_48px_-20px_oklch(0.02_0.02_270/0.75)] [touch-action:pan-y]">
+          <div className="max-w-site mx-auto flex w-full items-center justify-start px-6 py-2.5">
+            <PricingRegionSwitcher initialRegion={pricingRegion} />
+          </div>
+          <nav
+            className="max-w-site mx-auto w-full px-6 pt-1 flex flex-col gap-1 pb-[max(1rem,env(safe-area-inset-bottom))]"
+            aria-label="Principal móvil"
+          >
             {navLinks.map((l) =>
               l.kind === "hash" && l.id === "servicios" ? (
                 <details key={l.hash} className="group rounded-xl">

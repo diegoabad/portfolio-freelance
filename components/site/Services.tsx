@@ -4,6 +4,7 @@ import { CalendarDays, Code2, MessageCircle, Package, Smartphone, Zap } from "lu
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 import { HERO_NAV_CTA_LABEL, PRIMARY_CTA_SUBLINE } from "@/lib/contact";
 import { homeSection } from "@/lib/home-links";
+import { getPublicPriceTeaser, type PricingRegion } from "@/lib/pricing-region";
 import { SERVICE_LANDING_PAGES, splitHomeCardBadge, type ServiceLandingSlug } from "@/lib/service-landings";
 
 const CARD_ICON: Record<ServiceLandingSlug, LucideIcon> = {
@@ -25,15 +26,17 @@ type ServiceCard = {
   impact: string;
 };
 
-const serviceCards: ServiceCard[] = SERVICE_LANDING_PAGES.map((p) => ({
-  href: `/${p.slug}`,
-  slug: p.slug,
-  title: p.homePainTitle,
-  desc: p.homeCardSubtitle,
-  priceTeaser: p.homeCardPriceTeaser,
-  priceBenefit: p.homeCardPriceBenefit,
-  impact: p.homeCardBadge,
-}));
+function buildServiceCards(region: PricingRegion): ServiceCard[] {
+  return SERVICE_LANDING_PAGES.map((p) => ({
+    href: `/${p.slug}`,
+    slug: p.slug,
+    title: p.homePainTitle,
+    desc: p.homeCardSubtitle,
+    priceTeaser: getPublicPriceTeaser(p.slug, region),
+    priceBenefit: p.homeCardPriceBenefit,
+    impact: p.homeCardBadge,
+  }));
+}
 
 function ServiceIcon({ slug }: { slug: ServiceLandingSlug }) {
   const Icon = CARD_ICON[slug];
@@ -43,7 +46,8 @@ function ServiceIcon({ slug }: { slug: ServiceLandingSlug }) {
 const chipClass =
   "inline-flex max-w-full items-center rounded-full border border-primary/25 bg-primary/10 px-2 py-0.5 text-[10px] font-medium leading-tight text-primary/95 md:text-[11px]";
 
-export function Services() {
+export function Services({ pricingRegion }: { pricingRegion: PricingRegion }) {
+  const serviceCards = buildServiceCards(pricingRegion);
   return (
     <section id="servicios" className="relative py-9 md:py-[72px]">
       <div className="max-w-site mx-auto px-6 lg:px-10">

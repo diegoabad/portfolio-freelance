@@ -26,7 +26,6 @@ function postSearchHaystack(post: BlogPost): string {
     post.description,
     post.metaDescription ?? "",
     post.category,
-    ...(post.keywords ?? []),
   ].join(" ");
 }
 

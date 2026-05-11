@@ -12,7 +12,7 @@ import {
 } from "@/components/seo/landing-blocks";
 import { ServiceLandingHeroOffer } from "@/components/seo/ServiceLandingHeroOffer";
 import { EVALUATION_OFFER_FAQ, LANDING_CONSULT_CTA, REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
-import { serviceLandingPriceFaqCallout } from "@/lib/service-landings";
+import { serviceLandingPriceFaqCallout, type PricingRegion } from "@/lib/pricing-region";
 const CATEGORY = "Software a medida";
 
 const HERO = {
@@ -87,7 +87,8 @@ function waHref(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
-const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
+function buildFaqItems(region: PricingRegion): { q: string; blocks: FaqBlock[] }[] {
+  return [
   {
     q: "¿Cuánto cuesta desarrollar software a medida?",
     blocks: [
@@ -95,7 +96,7 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
         type: "p",
         text: "Depende del alcance, funcionalidades, integraciones y nivel de complejidad. No es lo mismo una herramienta simple que un sistema completo con múltiples módulos.",
       },
-      { type: "callout", text: serviceLandingPriceFaqCallout("desarrollo-software-medida") },
+      { type: "callout", text: serviceLandingPriceFaqCallout("desarrollo-software-medida", region) },
       { type: "p", text: EVALUATION_OFFER_FAQ },
     ],
   },
@@ -145,8 +146,10 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
     ],
   },
 ];
+}
 
-export function DesarrolloSoftwareMedidaLanding() {
+export function DesarrolloSoftwareMedidaLanding({ pricingRegion }: { pricingRegion: PricingRegion }) {
+  const faqItems = buildFaqItems(pricingRegion);
   return (
     <LandingReadingMain>
       <header className="border-b border-border pb-8 md:pb-10">
@@ -158,7 +161,7 @@ export function DesarrolloSoftwareMedidaLanding() {
           {HERO.title}
         </h1>
         <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">{HERO.subtitle}</p>
-        <ServiceLandingHeroOffer slug="desarrollo-software-medida" />
+        <ServiceLandingHeroOffer slug="desarrollo-software-medida" pricingRegion={pricingRegion} />
         <div className="mt-6 flex flex-wrap gap-4">
           <LandingWaCta
             href={waHref(MSG_HERO)}
@@ -348,7 +351,7 @@ export function DesarrolloSoftwareMedidaLanding() {
               Abrí la pregunta que te interese; el contenido sigue indexable para buscadores.
             </p>
             <div className="mt-6 divide-y divide-border border-t border-border">
-              {FAQ_ITEMS.map(({ q, blocks }) => (
+              {faqItems.map(({ q, blocks }) => (
                 <details
                   key={q}
                   name="faq-desarrollo-software-medida"

@@ -18,23 +18,6 @@ export const clinicasAutomationBlogArticles: BlogPost[] = [
       "Automatizar tareas administrativas en clínicas | Facturación e historias clínicas Argentina",
     metaDescription:
       "Automatización administrativa en clínicas y consultorios: facturación médica, historias clínicas, digitalización y tareas repetitivas en salud. Enlaces a software para clínicas y automatización.",
-    keywords: [
-      "automatización administrativa en clínicas",
-      "automatizar facturación médica",
-      "software para clínicas argentina",
-      "automatización de historias clínicas",
-      "digitalización de clínicas",
-      "automatización de procesos médicos",
-      "automatización de tareas repetitivas en salud",
-      "automatización para consultorios médicos",
-      "software administrativo para clínicas",
-      "automatización de profesionales médicos",
-      "gestión médica automatizada",
-      "automatización de documentación clínica",
-      "automatizar procesos en centros médicos",
-      "sistemas para clínicas y consultorios",
-      "automatización de carga administrativa",
-    ],
     publishedAt: "2026-04-22",
     category: "Clínicas y automatización",
     relatedPost: {
@@ -266,19 +249,6 @@ export const clinicasAutomationBlogArticles: BlogPost[] = [
     metaTitle: "Transformación digital en clínicas | Automatización médica Argentina",
     metaDescription:
       "Transformación digital en clínicas: automatización médica Argentina, digitalización de procesos médicos, software para gestión médica e integración de sistemas. Relacionado con software para clínicas y automatización.",
-    keywords: [
-      "transformación digital en clínicas",
-      "automatización médica argentina",
-      "digitalización de procesos médicos",
-      "automatización de clínicas privadas",
-      "software para gestión médica",
-      "automatizar historias clínicas",
-      "automatización de facturación médica",
-      "integración de sistemas médicos",
-      "optimización administrativa en salud",
-      "automatización de centros de salud",
-      "inteligencia artificial para clínicas",
-    ],
     publishedAt: "2026-05-03",
     category: "Clínicas y automatización",
     relatedPost: {

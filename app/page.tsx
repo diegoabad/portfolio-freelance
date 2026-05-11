@@ -6,6 +6,7 @@ import { Hero } from "@/components/site/Hero";
 import { Nav } from "@/components/site/Nav";
 import { Process } from "@/components/site/Process";
 import { Services } from "@/components/site/Services";
+import { getPricingRegion } from "@/lib/pricing-region";
 
 /** Debajo del pliegue: chunk aparte y sin competir con el LCP del hero. */
 const About = dynamic(() => import("@/components/site/About").then((m) => ({ default: m.About })), {
@@ -96,14 +97,15 @@ const Testimonials = dynamic(() => import("@/components/site/Testimonials").then
   ),
 });
 
-export default function Home() {
+export default async function Home() {
+  const pricingRegion = await getPricingRegion();
   return (
     <>
       <main className="relative z-10 min-h-screen flex-1 text-foreground">
       <FloatingWhatsAppDynamic />
-      <Nav />
+      <Nav pricingRegion={pricingRegion} />
       <Hero />
-      <Services />
+      <Services pricingRegion={pricingRegion} />
       <Projects />
       <Testimonials />
       <About />

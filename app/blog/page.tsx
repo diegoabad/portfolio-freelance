@@ -9,19 +9,6 @@ const title = "Blog — software, WhatsApp, turnos y automatización";
 const description =
   "Artículos sobre bots de WhatsApp para empresas y clínicas en Argentina, turnos online, automatización administrativa, software a medida, apps móviles, stock e inventario. Guías prácticas enlazadas a servicios.";
 
-const blogIndexKeywords = [
-  "blog desarrollo software Argentina",
-  "guías bots WhatsApp",
-  "automatización clínicas",
-  "turnos online consultorios",
-  "software a medida salud",
-  "apps móviles clínicas",
-  "control de stock inventario",
-  "chatbot WhatsApp pymes",
-  "automatización procesos Argentina",
-  "Diego Abad blog",
-];
-
 const siteBase = getSiteUrl();
 const canonical = siteBase ? new URL("/blog", siteBase).toString() : undefined;
 const blogOgImage = siteBase ? new URL("/opengraph-image", siteBase).toString() : undefined;
@@ -29,7 +16,6 @@ const blogOgImage = siteBase ? new URL("/opengraph-image", siteBase).toString() 
 export const metadata: Metadata = {
   title,
   description,
-  keywords: blogIndexKeywords,
   alternates: canonical ? { canonical } : undefined,
   openGraph: {
     title: `${title} | Diego Abad`,

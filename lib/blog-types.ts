@@ -39,7 +39,6 @@ export type BlogPost = {
   metaTitle?: string;
   /** Meta description SEO (opcional) */
   metaDescription?: string;
-  keywords?: readonly string[];
   publishedAt: string;
   /** Chip temático (p. ej. Automatizaciones, Software a medida). */
   topicTrack: BlogTopicTrack;

@@ -18,24 +18,10 @@ const posts: BlogPost[] = [
     topicTrack: "bots-whatsapp",
     title: "Bot de WhatsApp para negocios en Argentina: cómo automatizar consultas, ventas y turnos en 2026",
     description:
-      "Guía práctica: qué es un bot de WhatsApp, tipos (básico vs IA), beneficios para empresas y pymes en Argentina, rubros que más lo usan y qué tener en cuenta al presupuestar.",
+      "Qué vi en la práctica al armar bots en Argentina: volumen real de mensajes, cuándo alcanza un menú simple vs IA, números de ROI y errores que nadie te lista en el PDF comercial.",
     metaTitle: "Bot de WhatsApp para negocios en Argentina | Automatización y atención 2026",
     metaDescription:
-      "Descubrí cómo funcionan los bots de WhatsApp para empresas en Argentina y LATAM. Automatizá consultas, ventas y turnos con inteligencia artificial.",
-    keywords: [
-      "bot de whatsapp para negocios en argentina",
-      "automatización de whatsapp para empresas",
-      "bot de whatsapp para atención al cliente",
-      "chatbot para whatsapp argentina",
-      "bot de whatsapp para turnos online",
-      "automatizar mensajes de whatsapp negocio",
-      "chatbot para clínicas y consultorios",
-      "bot de whatsapp con inteligencia artificial",
-      "sistema de turnos por whatsapp",
-      "automatización de whatsapp para pymes",
-      "chatbot para ventas por whatsapp",
-      "bots de whatsapp para empresas en latam",
-    ],
+      "Bot de WhatsApp para empresas en Argentina: automatización real de consultas, turnos y ventas; cuándo conviene IA y errores típicos al implementar en pymes y clínicas.",
     publishedAt: "2026-04-26",
     category: "WhatsApp y automatización",
     relatedPost: {
@@ -45,75 +31,79 @@ const posts: BlogPost[] = [
         "Enfoque informacional: requisitos, API oficial, diferencias entre bot simple e IA, integraciones y errores comunes.",
     },
     resourceLinks: [
-      { href: "/bots-whatsapp", label: "Servicio: bots de WhatsApp" },
-      { href: "/sistema-turnos-online", label: "Turnos online y agenda" },
-      { href: "/software-para-clinicas", label: "Aplicaciones móviles" },
-      { href: "/automatizacion-negocios", label: "Automatización de procesos" },
-      { href: "/desarrollo-software-medida", label: "Desarrollo a medida" },
+      { href: "/bots-whatsapp", label: "Bots de WhatsApp" },
+      { href: "/sistema-turnos-online", label: "Sistema de turnos online" },
       { href: "/#contacto", label: "Contacto" },
-      { href: WA_BLOG, label: "Escribir por WhatsApp", external: true },
+      { href: WA_BLOG, label: "WhatsApp", external: true },
     ],
     content: [
       {
         type: "paragraph",
         segments: [
-          "Hoy muchas empresas reciben decenas o cientos de mensajes por día en WhatsApp. Consultas repetidas, pedidos de precios, horarios, ",
-          { href: "/sistema-turnos-online", label: "turnos online" },
-          " o seguimiento de clientes terminan consumiendo tiempo y generando demoras.",
+          "Hace unas semanas me escribió el dueño de un local de electrodomésticos en zona norte: querían ‘un bot con IA que entienda todo’. Cuando exportamos el historial del número, más del 60% eran tres preguntas: horario, si hay stock de tal modelo y cómo pagan. No hacía falta modelo de lenguaje para eso; hacía falta orden.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Un ",
-          { href: "/bots-whatsapp", label: "bot de WhatsApp para negocios" },
-          " permite automatizar gran parte de esas conversaciones, responder más rápido y mejorar la ",
-          { href: "/bots-whatsapp", label: "atención al cliente" },
-          " sin necesidad de tener una persona disponible las 24 horas.",
+          "En ese tipo de casos mido volumen antes de presupuestar: cuántos chats entrantes por día y cuántos son repetición. En uno parecido (salón + venta minorista), después de un ",
+          { href: "/bots-whatsapp", label: "menú fijo + respuestas cortas" },
+          ", la persona que atendía el mismo número pasó de ~140 respuestas manuales semanales a ~45 en las dos primeras semanas. El resto quedó cubierto por el flujo o derivado con etiqueta.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "En este artículo te muestro cómo funcionan los ",
-          { href: "/bots-whatsapp", label: "bots de WhatsApp" },
-          ", qué beneficios tienen la ",
-          { href: "/automatizacion-negocios", label: "automatización de WhatsApp para empresas" },
-          " y por qué cada vez más negocios en Argentina y Latinoamérica suman ",
-          { href: "/bots-whatsapp", label: "chatbot para WhatsApp en Argentina" },
-          ", a veces con ",
-          { href: "/bots-whatsapp", label: "bot de WhatsApp con inteligencia artificial" },
-          ". Si preferís una guía paso a paso, está el artículo ",
-          { href: "/blog/como-crear-bot-whatsapp-empresas-argentina", label: "cómo crear un bot de WhatsApp" },
-          ".",
+          "Opinión que no vende demos: el ",
+          { href: "/bots-whatsapp", label: "bot de WhatsApp con IA" },
+          " está de moda, pero en pymes argentinas el mejor primer paso suele ser un flujo con pocas opciones bien redactadas y un handoff claro a humano. La IA suma cuando ya sabés qué preguntas son ‘sucias’ y tenés datos para entrenar o limitar el comportamiento; si no, solo acelerás respuestas incorrectas.",
+        ],
+      },
+      {
+        type: "h2",
+        id: "lo-que-no-te-cuentan",
+        text: "Lo que no te cuentan en la propuesta comercial del bot",
+      },
+      {
+        type: "ul",
+        items: [
+          "Si no definís qué pasa cuando el bot no entiende, el cliente se queda colgado y culpa al negocio, no al proveedor.",
+          "Las plantillas de Meta y los límites de conversación importan: un ‘bot infinito’ en papel choca con la API real.",
+          "Duplicar número personal y Business sin reglas = dos verdades distintas; el caos se llama ‘ya lo arreglamos en el grupo’.",
+          "Medir solo ‘mensajes enviados’ es humo: necesitás tiempo hasta primera respuesta y cuántos chats llegan humano con contexto.",
+        ],
+      },
+      {
+        type: "h2",
+        id: "ejemplo-tecnico",
+        text: "Ejemplo técnico mínimo (webhook)",
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "En la práctica el WhatsApp Business API te pega un POST cuando entra un mensaje. Un handler puede devolver texto o pasar a un estado interno. Esquema simplificado del cuerpo que suele importar: `from` (teléfono), `message.type` (text, interactive…), y el payload del botón o del texto. Con eso alcanza para ‘si escribió 1 → horarios, si 2 → ubicación’ sin IA. Si después querés ",
+          { href: "/sistema-turnos-online", label: "turnos enlazados a agenda" },
+          ", el mismo evento dispara una consulta a tu API de slots y responde solo si hay disponibilidad real.",
         ],
       },
       { type: "h2", id: "que-es", text: "¿Qué es un bot de WhatsApp y cómo funciona?" },
       {
         type: "paragraph",
         segments: [
-          "Un bot de WhatsApp es un sistema que responde o guía conversaciones dentro del mismo canal. Suele combinarse con ",
-          { href: "/automatizacion-negocios", label: "automatización de mensajes de WhatsApp" },
-          " e integraciones (CRM, ",
-          { href: "/sistema-turnos-online", label: "agenda / sistema de turnos por WhatsApp" },
-          ", etc.).",
-        ],
-      },
-      {
-        type: "paragraph",
-        segments: [
-          "Puede funcionar con respuestas automáticas simples, menús, flujos guiados, integración con sistemas externos o ",
-          { href: "/bots-whatsapp", label: "inteligencia artificial" },
-          " cuando el texto no es 100% predecible.",
+          "Es software que responde o encamina conversaciones en el mismo canal donde ya te escribe la gente. Lo podés armar con menús, reglas o integraciones (CRM, ",
+          { href: "/sistema-turnos-online", label: "agenda" },
+          ", stock). La guía paso a paso va aparte: ",
+          { href: "/blog/como-crear-bot-whatsapp-empresas-argentina", label: "cómo crear un bot de WhatsApp" },
+          ".",
         ],
       },
       {
         type: "ul",
         items: [
-          "Responder preguntas frecuentes o mostrar precios y servicios",
-          "Tomar o coordinar turnos y enviar recordatorios",
-          "Derivar a una persona o equipo con contexto",
-          "Clasificar intención (ventas, soporte, turnos, reclamos)",
+          "FAQ, precios y políticas en texto corto",
+          "Turnos y recordatorios si hay sistema de respaldo",
+          "Derivación con resumen para la persona que sigue la charla",
+          "Etiquetas por intención (venta, reclamo, turno perdido)",
         ],
       },
       { type: "h2", id: "ventajas", text: "Ventajas de automatizar WhatsApp en un negocio" },
@@ -121,36 +111,28 @@ const posts: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Los clientes reciben respuesta aunque sea fuera de horario. Es la base del ",
-          { href: "/bots-whatsapp", label: "WhatsApp automatizado para negocios" },
-          " que no depende solo de “estar conectado”.",
+          "Fuera de horario al menos contestás algo útil: horario, link o ‘te derivamos mañana’. Eso ya filtra gente que solo curiosea.",
         ],
       },
       { type: "h3", id: "menos-repetido", text: "Menos tiempo en consultas repetidas" },
       {
         type: "paragraph",
         segments: [
-          "Horarios, ubicación, precios, medios de pago o disponibilidad: lo repetible vuelve al bot. En ",
-          { href: "/automatizacion-negocios", label: "automatización de WhatsApp para pymes" },
-          ", eso suele ser el primer ROI medible.",
+          "Lo repetible no debería pasar por una persona. Ahí está el ROI más fácil de mostrar en números internos.",
         ],
       },
       { type: "h3", id: "organizacion", text: "Mejor organización de conversaciones" },
       {
         type: "paragraph",
         segments: [
-          "Podés ordenar por intención (ventas, soporte, turnos, presupuestos). Complementa bien un ",
-          { href: "/bots-whatsapp", label: "chatbot para ventas por WhatsApp" },
-          " cuando el embudo empieza en el mismo número.",
+          "Si cada chat llega etiquetado, el equipo humano no empieza de cero. En ventas por WhatsApp eso se nota en cierres.",
         ],
       },
       { type: "h3", id: "conversion", text: "Más conversiones" },
       {
         type: "paragraph",
         segments: [
-          "Responder rápido en WhatsApp suele aumentar la probabilidad de cerrar. Un ",
-          { href: "/bots-whatsapp", label: "bot de WhatsApp para atención al cliente" },
-          " no reemplaza el criterio humano: lo prepara para cuando hace falta.",
+          "Responder rápido ayuda; responder bien ayuda más. El bot prepara; no reemplaza el criterio cuando el caso es sensible o caro.",
         ],
       },
       { type: "h2", id: "tipos", text: "Tipos de bots de WhatsApp para empresas" },
@@ -158,48 +140,42 @@ const posts: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Ideal para negocios chicos, consultorios, restaurantes o centros de estética. Encaja como ",
+          "Para consultorios, gastronomía o retail chico suele alcanzar: menú → respuesta → opción de hablar con alguien. Encaja bien como ",
           { href: "/bots-whatsapp", label: "bot de WhatsApp para turnos online" },
-          " cuando el flujo es claro (menú → horario → confirmación).",
+          " cuando el calendario ya existe y solo falta el canal.",
         ],
       },
       { type: "h3", id: "bot-ia", text: "Bot con inteligencia artificial" },
       {
         type: "paragraph",
         segments: [
-          "Conversaciones más flexibles: mejor interpretación de variaciones, más contexto y handoff a humano cuando corresponde. Si tu caso es clínica u hospitalidad, mirá también ",
-          { href: "/software-para-clinicas", label: "software para clínicas" },
-          " y cómo encaja el canal con la operación.",
+          "Sirve cuando el lenguaje varía mucho y tenés forma de acotar dominio (base de conocimiento, herramientas, revisión humana). Sin eso es juguete caro.",
         ],
       },
       { type: "h2", id: "rubros", text: "Empresas que más aprovechan los bots en Argentina" },
       {
         type: "ul",
         items: [
-          "Clínicas, consultorios y odontologías — chatbot para clínicas y consultorios",
-          "Centros de estética, gimnasios, restaurantes",
-          "Inmobiliarias, concesionarias, ecommerce",
-          "Estudios jurídicos y equipos con alto volumen de primera respuesta",
+          "Clínicas y consultorios (confirmación y derivación)",
+          "Estética, gimnasios, restaurantes (disponibilidad y FAQs)",
+          "Inmobiliarias y concesionarias (primer filtro)",
+          "Equipos con mucha primera respuesta y pocas personas",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Para ",
-          { href: "/software-para-clinicas", label: "clínicas" },
-          ", el bot suele convivir con políticas de datos y turnos: conviene definir reglas y qué queda fuera del automatismo.",
+          "En salud el bot tiene que convivir con responsabilidad sobre datos y límites de lo automatizable: mejor menos promesas y más claridad.",
         ],
       },
       { type: "h2", id: "precio", text: "¿Cuánto cuesta un bot de WhatsApp en Argentina?" },
       {
         type: "paragraph",
         segments: [
-          "Depende de la complejidad, integraciones, volumen de conversaciones y si hay ",
-          { href: "/bots-whatsapp", label: "IA" },
-          ". Suele haber implementación, mantenimiento y costos de plataforma/API. Para una charla concreta, ",
+          "Depende de integraciones, volumen mensual y si hay modelo generativo. Siempre hay implementación + mantenimiento + costo de plataforma/API. Para números sobre tu caso, ",
           { href: "/#contacto", label: "contactame" },
           " o ",
-          { href: WA_BLOG, label: "escribime por WhatsApp", external: true },
+          { href: WA_BLOG, label: "WhatsApp", external: true },
           ".",
         ],
       },
@@ -207,20 +183,16 @@ const posts: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "En Argentina y LATAM, WhatsApp sigue siendo un canal principal. La ",
-          { href: "/automatizacion-negocios", label: "automatización de WhatsApp para empresas" },
-          " ayuda a responder más rápido, perder menos oportunidades y ordenar mensajes sin inflar solo la nómina. Los ",
-          { href: "/bots-whatsapp", label: "bots de WhatsApp para empresas en LATAM" },
-          " ya no son exclusivos de grandes compañías.",
+          "Sí si ya tenés volumen y mensajes repetitivos. No si todavía no sabés qué querés que pase cuando alguien escribe ‘quiero hablar con una persona’. Empezá chico, medí, y recién ahí subí complejidad.",
         ],
       },
       { type: "h2", id: "conclusion", text: "Conclusión" },
       {
         type: "paragraph",
         segments: [
-          "Implementar un bot ya no es “solo para grandes”. Podés empezar con un flujo acotado y medir. Si necesitás algo que no entra en plantillas, ",
-          { href: "/desarrollo-software-medida", label: "desarrollo a medida" },
-          " o integraciones más profundas son el siguiente paso.",
+          "Un ",
+          { href: "/bots-whatsapp", label: "bot de WhatsApp para negocios" },
+          " bien acotado ordena el canal sin mitología. Si el flujo no entra en caja, ahí entra desarrollo o integraciones más profundas; lo charlamos cuando tengas el mapa de conversaciones.",
         ],
       },
       {
@@ -229,22 +201,22 @@ const posts: BlogPost[] = [
           {
             question: "¿Se puede automatizar WhatsApp Business?",
             answer:
-              "Sí: con bots y automatizaciones podés responder de forma automática y conectar WhatsApp con CRM, agenda u otros sistemas, según políticas y reglas de tu negocio.",
+              "Sí, con API oficial y reglas claras. Lo que no podés es prometer magia sin límites de plantillas ni políticas de uso.",
           },
           {
             question: "¿Cuánto cuesta un bot de WhatsApp en Argentina?",
             answer:
-              "Depende de la complejidad, integraciones y volumen de conversaciones mensuales. Lo habitual es separar implementación, mantenimiento y costos de plataforma o API.",
+              "Variable: flujo simple vs integraciones vs IA. Pedí siempre desglose implementación / mensual / mensajes.",
           },
           {
             question: "¿Los bots de WhatsApp usan inteligencia artificial?",
             answer:
-              "Algunos sí. Hay bots simples con menús y flujos, y soluciones con IA para respuestas más naturales cuando el caso lo amerita.",
+              "Algunos sí; muchos no lo necesitan al inicio. Menús bien escritos suelen resolver más de lo que se admite en LinkedIn.",
           },
           {
             question: "¿Qué negocios pueden usar bots de WhatsApp?",
             answer:
-              "Prácticamente cualquier negocio con consultas frecuentes por WhatsApp: desde pymes hasta equipos de atención más grandes.",
+              "Cualquiera con tráfico recurrente en el mismo número. Si recibís cinco mensajes por semana, probablemente antes necesitás difusión que automatización.",
           },
         ],
       },
@@ -259,18 +231,6 @@ const posts: BlogPost[] = [
     metaTitle: "Cómo crear un bot de WhatsApp | Empresas Argentina y LATAM",
     metaDescription:
       "Pasos para crear un chatbot en WhatsApp Business: API, automatización, IA opcional e integración con turnos y CRM. Enlaces a servicios y contacto.",
-    keywords: [
-      "como crear un bot de whatsapp",
-      "crear chatbot para whatsapp business",
-      "bot de whatsapp para empresas argentina",
-      "automatizar whatsapp business",
-      "chatbot whatsapp con inteligencia artificial",
-      "whatsapp automation argentina",
-      "bot para responder mensajes de whatsapp",
-      "chatbot para atención al cliente whatsapp",
-      "integrar whatsapp con sistema de turnos",
-      "bot de whatsapp para ventas",
-    ],
     publishedAt: "2026-05-07",
     category: "WhatsApp y automatización",
     relatedPost: {

@@ -47,9 +47,6 @@ function buildArticleJsonLd(post: BlogPost, url: string, imageUrls?: string[]) {
   if (imageUrls?.length) {
     base.image = imageUrls;
   }
-  if (post.keywords?.length) {
-    base.keywords = [...post.keywords].slice(0, 20).join(", ");
-  }
   return base;
 }
 
@@ -79,13 +76,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = post.metaTitle ?? post.title;
   const description = post.metaDescription ?? post.description;
 
-  const ogTags = post.keywords?.length ? [...post.keywords].slice(0, 12) : undefined;
   const defaultOgImage = siteBase ? new URL("/opengraph-image", siteBase).toString() : undefined;
 
   return {
     title,
     description,
-    ...(post.keywords?.length ? { keywords: [...post.keywords] } : {}),
     alternates: canonical ? { canonical } : undefined,
     openGraph: {
       title,
@@ -94,7 +89,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: post.publishedAt,
       modifiedTime: post.publishedAt,
       authors: ["Diego Abad"],
-      ...(ogTags?.length ? { tags: ogTags } : {}),
       locale: "es_AR",
       siteName: "Diego Abad",
       ...(canonical ? { url: canonical } : {}),

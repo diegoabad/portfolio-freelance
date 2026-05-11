@@ -228,175 +228,21 @@ export function splitHomeCardBadge(badge: string): string[] {
     .filter(Boolean);
 }
 
-/** Precio orientativo + beneficio para FAQs, alineado a la tarjeta del home. */
-export function serviceLandingPriceFaqCallout(slug: ServiceLandingSlug): string {
-  const page = getServiceLanding(slug);
-  if (!page) return "";
-  return `Referencia orientativa en Argentina: ${page.homeCardPriceTeaser}. ${page.homeCardPriceBenefit}`;
-}
-
 /** Texto del enlace en cada card de servicios en el home. */
 export function getHomeCardCta(page: ServiceLandingPageData): string {
   const withCta = page as ServiceLandingPageData & { homeCardCta?: string };
   return typeof withCta.homeCardCta === "string" ? withCta.homeCardCta : "Ver solución";
 }
 
-/** Palabras clave extra para landings principales (metadata `keywords`). */
-const SERVICE_SEO_KEYWORDS: Partial<Record<ServiceLandingSlug, readonly string[]>> = {
-  "automatizacion-negocios": [
-    "automatización de procesos para clínicas",
-    "automatización administrativa para empresas",
-    "automatización de tareas repetitivas",
-    "automatización de procesos internos",
-    "automatización para consultorios médicos",
-    "automatización de tareas administrativas en salud",
-    "automatización empresarial en argentina",
-    "integración y automatización de sistemas",
-    "automatización de workflows empresariales",
-    "automatización con inteligencia artificial",
-    "automatización de procesos manuales",
-    "automatización de gestión administrativa",
-    "optimización de procesos empresariales",
-    "automatización de carga de datos",
-    "automatización para centros médicos",
-    "automatización de tareas operativas",
-    "digitalización y automatización empresarial",
-    "automatización de procesos con n8n",
-    "automatización de tareas de recepción",
-    "automatización de procesos médicos",
-    "facturación de profesionales",
-    "API",
-    "CRM",
-  ],
-  "bots-whatsapp": [
-    "bot de whatsapp para clínicas en argentina",
-    "desarrollo de bot de whatsapp para empresas",
-    "chatbot para atención al cliente por whatsapp",
-    "automatización de whatsapp para negocios",
-    "bot de whatsapp con inteligencia artificial",
-    "implementación de chatbot para empresas",
-    "bot de whatsapp para consultorios médicos",
-    "chatbot para centros de estética",
-    "automatizar respuestas de whatsapp business",
-    "sistema de atención automática por whatsapp",
-    "bot de whatsapp para ventas y soporte",
-    "desarrollo de chatbot en argentina",
-    "automatización de consultas por whatsapp",
-    "chatbot para turnos y atención al cliente",
-    "servicio de automatización de whatsapp",
-    "bot de whatsapp para pymes",
-    "chatbot empresarial en argentina",
-    "integración de whatsapp con sistemas",
-    "bot de whatsapp para atención médica",
-    "soluciones de whatsapp automation para empresas",
-    "integración con agendas",
-    "CRM",
-  ],
-  "desarrollo-software-medida": [
-    "desarrollo de software a medida argentina",
-    "software personalizado para empresas",
-    "desarrollo de sistemas a medida",
-    "software para clínicas a medida",
-    "desarrollo de software para consultorios",
-    "empresa de software a medida",
-    "desarrollo de sistemas empresariales",
-    "software personalizado para negocios",
-    "desarrollo de plataformas web a medida",
-    "sistema de gestión personalizado",
-    "desarrollo de software para salud",
-    "soluciones de software empresariales",
-    "desarrollo de sistemas administrativos",
-    "software para automatizar procesos",
-    "desarrollo fullstack para empresas",
-    "desarrollo de aplicaciones empresariales",
-    "sistemas internos personalizados",
-    "software para gestión médica",
-    "desarrollo de software para pymes",
-    "empresa de desarrollo de software argentina",
-  ],
-  "sistema-turnos-online": [
-    "sistema de turnos online para clínicas",
-    "agenda online para consultorios médicos",
-    "software de turnos online argentina",
-    "sistema de reservas online para empresas",
-    "agenda digital para centros médicos",
-    "turnos online con whatsapp",
-    "software para gestión de turnos médicos",
-    "sistema de citas online para clínicas",
-    "agenda online para profesionales",
-    "automatización de turnos y recordatorios",
-    "sistema de reservas para centros de estética",
-    "agenda médica online personalizada",
-    "desarrollo de sistema de turnos a medida",
-    "plataforma de turnos online argentina",
-    "software de agenda para consultorios",
-    "sistema de gestión de turnos médicos",
-    "turnos online para negocios",
-    "solución de reservas online para empresas",
-    "agenda online con recordatorios automáticos",
-    "software de citas para clínicas privadas",
-    "autogestión de turnos",
-    "agentes de IA para turnos",
-  ],
-  "software-para-clinicas": [
-    "desarrollo de aplicaciones móviles argentina",
-    "app para clínicas y consultorios",
-    "desarrollo de apps para empresas",
-    "aplicaciones móviles para negocios",
-    "desarrollo de app para pacientes",
-    "desarrollo de apps para salud",
-    "aplicación móvil para centros médicos",
-    "desarrollo mobile a medida",
-    "crear app para empresa",
-    "aplicaciones móviles personalizadas",
-    "desarrollo de apps android y iphone",
-    "empresa de desarrollo mobile argentina",
-    "app para gestión de pacientes",
-    "desarrollo de aplicaciones para clínicas",
-    "software mobile para empresas",
-    "aplicación móvil para turnos médicos",
-    "desarrollo de apps multiplataforma",
-    "app personalizada para negocios",
-    "desarrollo flutter argentina",
-    "soluciones mobile para empresas",
-    "notificaciones push",
-  ],
-  "sistema-gestion-inventario": [
-    "sistema de control de stock para clínicas",
-    "software de inventario para empresas",
-    "control de stock para consultorios",
-    "sistema de gestión de insumos médicos",
-    "software de stock a medida",
-    "control de inventario para negocios",
-    "sistema de stock para centros médicos",
-    "software para control de insumos",
-    "gestión de stock automatizada",
-    "desarrollo de sistema de inventario",
-    "control de materiales médicos",
-    "software para stock e inventario",
-    "sistema de inventario personalizado",
-    "control de stock para pymes",
-    "automatización de inventario empresarial",
-    "software de gestión de depósitos",
-    "control de insumos para clínicas",
-    "sistema de inventario en argentina",
-    "software administrativo de stock",
-    "plataforma de control de inventario",
-    "stock en tiempo real",
-  ],
-};
-
 export function buildServicePageMetadata(slug: ServiceLandingSlug): Metadata {
   const p = PAGE_MAP[slug];
   const base = getSiteUrl();
   const canonical = base ? new URL(`/${slug}`, base).toString() : undefined;
-  const keywords = SERVICE_SEO_KEYWORDS[slug];
   const defaultOg = base ? new URL("/opengraph-image", base).toString() : undefined;
 
   return {
     title: p.title,
     description: p.metaDescription,
-    ...(keywords ? { keywords: [...keywords] } : {}),
     ...(canonical ? { alternates: { canonical } } : {}),
     openGraph: {
       title: p.title,

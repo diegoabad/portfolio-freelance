@@ -14,7 +14,7 @@ import {
 import { ServiceLandingHeroOffer } from "@/components/seo/ServiceLandingHeroOffer";
 import { EVALUATION_OFFER_FAQ, LANDING_CONSULT_CTA } from "@/lib/contact";
 import { homeSection } from "@/lib/home-links";
-import { serviceLandingPriceFaqCallout } from "@/lib/service-landings";
+import { serviceLandingPriceFaqCallout, type PricingRegion } from "@/lib/pricing-region";
 const CATEGORY = "Automatización de procesos";
 
 const HERO = {
@@ -67,7 +67,8 @@ const CUANDO = [
   "Cuando hay texto o datos semiestructurados y una automatización “rígida” no alcanza sin un poco de inteligencia artificial",
 ] as const;
 
-const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
+function buildFaqItems(region: PricingRegion): { q: string; blocks: FaqBlock[] }[] {
+  return [
   {
     q: "¿Cuánto cuesta automatizar procesos en un negocio?",
     blocks: [
@@ -75,7 +76,7 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
         type: "p",
         text: "El costo depende del tipo de automatización y la complejidad del proceso: no es lo mismo automatizar tareas simples que integrar varios sistemas o flujos más complejos.",
       },
-      { type: "callout", text: serviceLandingPriceFaqCallout("automatizacion-negocios") },
+      { type: "callout", text: serviceLandingPriceFaqCallout("automatizacion-negocios", region) },
       {
         type: "ul",
         intro: "En general, el valor se define según:",
@@ -262,8 +263,10 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
     ],
   },
 ];
+}
 
-export function AutomatizacionNegociosLanding() {
+export function AutomatizacionNegociosLanding({ pricingRegion }: { pricingRegion: PricingRegion }) {
+  const faqItems = buildFaqItems(pricingRegion);
   return (
     <LandingReadingMain>
       <header className="border-b border-border pb-8 md:pb-10">
@@ -275,7 +278,7 @@ export function AutomatizacionNegociosLanding() {
           {HERO.title}
         </h1>
         <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">{HERO.subtitle}</p>
-        <ServiceLandingHeroOffer slug="automatizacion-negocios" />
+        <ServiceLandingHeroOffer slug="automatizacion-negocios" pricingRegion={pricingRegion} />
         <div className="mt-6 flex flex-wrap gap-4">
           <LandingWaCta href={homeSection("#contacto")} main={LANDING_CONSULT_CTA} hideWhatsAppIconMobile />
         </div>
@@ -514,7 +517,7 @@ export function AutomatizacionNegociosLanding() {
               Abrí la pregunta que te interese; el contenido sigue indexable para buscadores.
             </p>
             <div className="mt-6 divide-y divide-border border-t border-border">
-              {FAQ_ITEMS.map(({ q, blocks }) => (
+              {faqItems.map(({ q, blocks }) => (
                 <details
                   key={q}
                   name="faq-automatizacion-procesos"

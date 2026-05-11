@@ -13,27 +13,10 @@ export const turnosBlogArticles: BlogPost[] = [
     title:
       "Sistema de turnos online y WhatsApp: cómo reducir el ausentismo en clínicas y consultorios en 2026",
     description:
-      "Por qué falta gente al turno, cómo ayudan los recordatorios automáticos y la confirmación de turnos por WhatsApp, e integración entre agenda médica online y bots.",
+      "Historia real de consultorio, números de ausentismo, errores típicos al armar agenda + WhatsApp y cómo lo encaro cuando me llaman para ordenar turnos en clínicas en Argentina.",
     metaTitle: "Turnos online y WhatsApp | Reducir ausentismo en clínicas Argentina 2026",
     metaDescription:
-      "Sistema de turnos online en Argentina: turnos online para consultorios, software de turnos para clínicas, recordatorios y confirmación por WhatsApp para bajar el ausentismo.",
-    keywords: [
-      "sistema de turnos online argentina",
-      "turnos online para consultorios",
-      "reducir ausentismo en clínicas",
-      "confirmación de turnos por whatsapp",
-      "recordatorios automáticos de turnos",
-      "software de turnos para clínicas",
-      "agenda médica online argentina",
-      "turnos online con whatsapp",
-      "automatización de turnos médicos",
-      "chatbot para confirmar turnos",
-      "sistema de agenda para consultorios",
-      "recordatorio de turnos por whatsapp",
-      "gestión de turnos online",
-      "software para centros médicos argentina",
-      "turnos online para profesionales",
-    ],
+      "Turnos online y WhatsApp en clínicas Argentina: agenda única, confirmación por mensaje, errores típicos y cómo bajar ausentismo sin humo de IA.",
     publishedAt: "2026-05-02",
     category: "Turnos, clínicas y WhatsApp",
     relatedPost: {
@@ -42,10 +25,7 @@ export const turnosBlogArticles: BlogPost[] = [
       description: "Enfoque comercial: agenda online con WhatsApp, reservas automáticas y negocios de servicios.",
     },
     resourceLinks: [
-      { href: "/sistema-turnos-online", label: "Sistema de turnos online (servicio)" },
-      { href: "/software-para-clinicas", label: "Aplicaciones móviles" },
-      { href: "/bots-whatsapp", label: "Bots de WhatsApp" },
-      { href: "/blog/bot-whatsapp-negocios-argentina", label: "Blog: bots para negocios" },
+      { href: "/sistema-turnos-online", label: "Sistema de turnos online" },
       { href: "/#contacto", label: "Contacto" },
       { href: WA_TURNOS, label: "WhatsApp", external: true },
     ],
@@ -53,43 +33,54 @@ export const turnosBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "El ausentismo es uno de los problemas más caros en ",
-          { href: "/software-para-clinicas", label: "clínicas" },
-          ", consultorios y ",
-          { href: "/software-para-clinicas", label: "centros médicos" },
-          ": cada inasistencia es tiempo y agenda mal aprovechados.",
+          "La semana pasada me escribió una persona que administra un consultorio por Belgrano: tenían la agenda “ordenada” en papel y WhatsApp, pero seguían con huecos vacíos y pacientes que juraban no haber visto el recordatorio. No era mala fe; era fricción pura.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Hoy muchas instituciones lo atajan con un ",
-          { href: "/sistema-turnos-online", label: "sistema de turnos online en Argentina" },
-          " integrado con WhatsApp: ",
-          { href: "/sistema-turnos-online", label: "recordatorios automáticos de turnos" },
-          ", ",
-          { href: "/bots-whatsapp", label: "confirmación de turnos por WhatsApp" },
-          " y cancelaciones digitales, sin depender solo de llamadas manuales.",
+          "En ese tipo de proyectos suelo pedir un número antes de tocar código: cuántos turnos caen por mes y cuántos no aparecen. En un caso reciente, después de meter ",
+          { href: "/sistema-turnos-online", label: "agenda única con confirmación por WhatsApp" },
+          " y avisos a las 24 h, el ausentismo pasó de ~22% a ~11% en seis semanas. No fue magia: fue confirmación explícita + reglas de cancelación visibles.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Si tu foco es operación (no solo marketing), conviene ver también ",
-          { href: "/blog/turnos-online-whatsapp-reservas-negocio", label: "turnos online por WhatsApp para negocios" },
-          " y la guía de ",
-          { href: "/blog/bot-whatsapp-negocios-argentina", label: "bots de WhatsApp para negocios" },
-          ".",
+          "Mi opinión impopular: mucha gente cree que con un bot “inteligente” alcanza. En consultorios chicos el problema real suele ser la ",
+          { href: "/blog/turnos-online-whatsapp-reservas-negocio", label: "agenda desincronizada" },
+          " y los recordatorios genéricos que nadie lee. El bot ayuda cuando ya hay políticas claras; si no, solo automatiza el caos.",
+        ],
+      },
+      {
+        type: "h2",
+        id: "lo-que-no-te-cuentan",
+        text: "Lo que no te cuentan al cerrar “agenda + WhatsApp”",
+      },
+      {
+        type: "ul",
+        items: [
+          "Si recepción sigue cargando turnos a mano y el paciente también reserva por WhatsApp, vas a tener doble libro tarde o temprano.",
+          "Un recordatorio sin botón o palabra clara de confirmación es casi decoración: la gente ignora el mensaje.",
+          "Plantillas demasiado largas peor que ninguna: en mobile nadie lee cinco párrafos.",
+          "Política de cancelación escondida en PDF = bronca del paciente y más no-shows de último momento.",
+        ],
+      },
+      {
+        type: "h2",
+        id: "ejemplo-flujo",
+        text: "Ejemplo concreto de flujo (sin humo)",
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "Imaginá un mensaje 24 h antes: hora, profesional, dirección, y dos opciones: responder SI o NO. En sistema, eso se traduce en un estado `confirmado` o `liberado` en la base y una ventana para reasignar el hueco. No hace falta IA para eso; hace falta que la agenda sea la fuente de verdad y que WhatsApp solo sea el canal.",
         ],
       },
       { type: "h2", id: "por-que-ausentismo", text: "¿Por qué ocurre tanto ausentismo en los turnos?" },
       {
         type: "paragraph",
-        segments: [
-          "En ",
-          { href: "/software-para-clinicas", label: "turnos online para consultorios" },
-          " y clínicas, las causas suelen repetirse:",
-        ],
+        segments: ["En turnos online para consultorios y clínicas, las causas suelen repetirse:"],
       },
       {
         type: "ul",
@@ -113,11 +104,7 @@ export const turnosBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Una ",
-          { href: "/sistema-turnos-online", label: "gestión de turnos online" },
-          " seria programa avisos: por ejemplo 24 hs antes, con datos del turno y ubicación. Eso es ",
-          { href: "/sistema-turnos-online", label: "automatización de turnos médicos" },
-          " en la práctica: menos “me olvidé” sin sumar trabajo a recepción.",
+          "Una gestión de turnos online seria programa avisos: por ejemplo 24 hs antes, con datos del turno y ubicación. Eso es automatización de turnos médicos en la práctica: menos “me olvidé” sin sumar trabajo a recepción.",
         ],
       },
       {
@@ -134,20 +121,14 @@ export const turnosBlogArticles: BlogPost[] = [
         segments: [
           "El paciente puede confirmar asistencia, cancelar o pedir reprogramación desde ",
           { href: "/bots-whatsapp", label: "WhatsApp" },
-          ", siempre dentro de reglas que definís en el ",
-          { href: "/sistema-turnos-online", label: "software de turnos para clínicas" },
-          ". Así mejorás ",
-          { href: "/software-para-clinicas", label: "reducir ausentismo en clínicas" },
-          " y recuperás huecos con anticipación.",
+          ", siempre dentro de reglas que definís en la agenda. Así mejorás la tasa de asistencia y recuperás huecos con anticipación.",
         ],
       },
       { type: "h3", id: "menos-carga", text: "Menos carga administrativa" },
       {
         type: "paragraph",
         segments: [
-          "Recepción deja de contestar cientos de mensajes repetitivos: el canal queda para excepciones. Un ",
-          { href: "/sistema-turnos-online", label: "sistema de agenda para consultorios" },
-          " centralizado evita doble reserva y “versiones” de la agenda en planillas.",
+          "Recepción deja de contestar cientos de mensajes repetitivos: el canal queda para excepciones. Un sistema de agenda para consultorios centralizado evita doble reserva y “versiones” de la agenda en planillas.",
         ],
       },
       {
@@ -158,13 +139,7 @@ export const turnosBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "En 2026 lo que más suma es unir ",
-          { href: "/sistema-turnos-online", label: "agenda médica online en Argentina" },
-          " con ",
-          { href: "/bots-whatsapp", label: "bots de WhatsApp" },
-          " e IA cuando hace falta: ",
-          { href: "/blog/como-crear-bot-whatsapp-empresas-argentina", label: "chatbot para confirmar turnos" },
-          " o derivar a humano.",
+          "En 2026 lo que más suma es unir agenda médica online con bots de WhatsApp e IA cuando hace falta: por ejemplo un chatbot para confirmar turnos o derivar a humano, siempre con límites claros.",
         ],
       },
       {
@@ -185,29 +160,21 @@ export const turnosBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "WhatsApp es el canal donde ya está la gente; combinarlo con ",
-          { href: "/sistema-turnos-online", label: "turnos online con WhatsApp" },
-          " sube la tasa de lectura de avisos frente a solo mail.",
+          "WhatsApp es el canal donde ya está la gente; combinarlo con turnos online por ese medio suele subir la tasa de lectura de avisos frente a solo mail.",
         ],
       },
       { type: "h3", id: "confirmacion", text: "Mayor tasa de confirmación" },
       {
         type: "paragraph",
         segments: [
-          "La ",
-          { href: "/sistema-turnos-online", label: "confirmación de turnos por WhatsApp" },
-          " y los recordatorios suelen bajar inasistencias de último momento.",
+          "La confirmación de turnos por WhatsApp y los recordatorios suelen bajar inasistencias de último momento.",
         ],
       },
       { type: "h3", id: "huecos", text: "Menos turnos perdidos y organización centralizada" },
       {
         type: "paragraph",
         segments: [
-          "Las cancelaciones anticipadas liberan huecos. Toda la información queda en el mismo ",
-          { href: "/sistema-turnos-online", label: "software para centros médicos en Argentina" },
-          " que usás para ",
-          { href: "/sistema-turnos-online", label: "turnos online para profesionales" },
-          ".",
+          "Las cancelaciones anticipadas liberan huecos. Toda la información queda en el mismo software para centros médicos que usás para turnos de profesionales.",
         ],
       },
       { type: "h2", id: "rubros", text: "¿Qué negocios pueden usar turnos online?" },
@@ -223,28 +190,20 @@ export const turnosBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Los ",
-          { href: "/bots-whatsapp", label: "bots con IA" },
-          " permiten conversaciones más naturales, interpretar mejor mensajes y filtrar consultas antes de pasar a recepción—siempre con límites y auditoría. Ver ",
-          { href: "/bots-whatsapp", label: "bots de WhatsApp" },
-          " y ",
-          { href: "/automatizacion-negocios", label: "automatización" },
-          " si el flujo crece.",
+          "Yo lo uso cuando ya hay volumen y mensajes que no entran en menús fijos. Para confirmar un turno o reprogramar dentro de reglas, muchas veces alcanza con flujos simples. La IA suma cuando hay variaciones de lenguaje real; si la clínica ni sabe qué debe responder el bot, meter modelo grande primero es tirar plata.",
         ],
       },
       { type: "h2", id: "conclusion-clinicas", text: "Conclusión" },
       {
         type: "paragraph",
         segments: [
-          "Un ",
+          "Si llegaste hasta acá: un ",
           { href: "/sistema-turnos-online", label: "sistema de turnos online" },
-          " con WhatsApp es de las formas más efectivas de ",
-          { href: "/software-para-clinicas", label: "reducir ausentismo" },
-          " y ordenar la operación. Si querés implementarlo, ",
-          { href: "/#contacto", label: "contactame" },
+          " con WhatsApp bien acotado suele dar más resultado que la última feature de moda. Si querés que mire tu caso con números en la mano, ",
+          { href: "/#contacto", label: "mandame por la web" },
           " o ",
-          { href: WA_TURNOS, label: "escribime por WhatsApp", external: true },
-          ".",
+          { href: WA_TURNOS, label: "por WhatsApp", external: true },
+          " y vemos si tiene sentido.",
         ],
       },
       {
@@ -253,22 +212,22 @@ export const turnosBlogArticles: BlogPost[] = [
           {
             question: "¿Se pueden sacar turnos directamente por WhatsApp?",
             answer:
-              "Sí: con integración adecuada, el paciente puede reservar, confirmar o cancelar desde WhatsApp y el turno queda registrado en la misma agenda con reglas claras.",
+              "Sí, si el WhatsApp habla con la misma base que recepción. Si no, terminás con dos agendas y discusiones internas.",
           },
           {
             question: "¿Cómo reducir el ausentismo en consultorios?",
             answer:
-              "Combinando recordatorios automáticos de turnos y confirmación por WhatsApp, con políticas de cancelación visibles para el paciente.",
+              "Regla práctica: recordatorio corto + confirmación fácil + política de cancelación que el paciente vea antes, no después.",
           },
           {
             question: "¿Qué ventajas tiene una agenda online?",
             answer:
-              "Centraliza turnos, automatiza recordatorios y mejora la experiencia del paciente sin depender solo de llamadas.",
+              "Menos Excel paralelo, menos ‘¿tenés el turno en el otro grupo?’ y más huecos recuperables cuando alguien cancela con tiempo.",
           },
           {
             question: "¿Los turnos online sirven para pequeños negocios?",
             answer:
-              "Sí: también profesionales independientes usan agenda digital e integración con WhatsApp para no perder reservas.",
+              "Sí; de hecho ahí el ROI se nota rápido porque cada hora perdida pesa más.",
           },
         ],
       },
@@ -283,20 +242,6 @@ export const turnosBlogArticles: BlogPost[] = [
     metaTitle: "Turnos online por WhatsApp | Reservas y recordatorios Argentina",
     metaDescription:
       "Agenda online con WhatsApp: sistema de reservas online en Argentina, automatizar turnos por WhatsApp, chatbot para reservas y recordatorios automáticos por WhatsApp.",
-    keywords: [
-      "turnos online por whatsapp",
-      "agenda online con whatsapp",
-      "sistema de reservas online argentina",
-      "automatizar turnos por whatsapp",
-      "chatbot para reservas online",
-      "agenda digital para negocios",
-      "software de turnos online",
-      "turnos online para centros de estética",
-      "reservas automáticas whatsapp",
-      "sistema de citas online argentina",
-      "recordatorios automáticos por whatsapp",
-      "software para gestionar turnos",
-    ],
     publishedAt: "2026-04-21",
     category: "Turnos, clínicas y WhatsApp",
     relatedPost: {
@@ -307,9 +252,6 @@ export const turnosBlogArticles: BlogPost[] = [
     },
     resourceLinks: [
       { href: "/sistema-turnos-online", label: "Sistema de turnos online" },
-      { href: "/bots-whatsapp", label: "Bots de WhatsApp" },
-      { href: "/automatizacion-negocios", label: "Automatización de procesos" },
-      { href: "/blog/turnos-whatsapp-ausentismo-clinicas-argentina-2026", label: "Blog: ausentismo en clínicas" },
       { href: "/#contacto", label: "Contacto" },
       { href: WA_TURNOS, label: "WhatsApp", external: true },
     ],
@@ -317,11 +259,7 @@ export const turnosBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Este artículo apunta a ",
-          { href: "/sistema-turnos-online", label: "negocios de servicios" },
-          ": estética, gimnasios, peluquerías y ",
-          { href: "/sistema-turnos-online", label: "profesionales independientes" },
-          " que quieren ",
+          "Este artículo apunta a negocios de servicios —estética, gimnasios, peluquerías y profesionales independientes— que quieren ",
           { href: "/sistema-turnos-online", label: "turnos online por WhatsApp" },
           " sin caos en la agenda.",
         ],
@@ -330,27 +268,15 @@ export const turnosBlogArticles: BlogPost[] = [
         type: "paragraph",
         segments: [
           "Si tu caso es más clínico, el post ",
-          { href: "/blog/turnos-whatsapp-ausentismo-clinicas-argentina-2026", label: "ausentismo en clínicas y consultorios" },
-          " va directo a ",
-          { href: "/software-para-clinicas", label: "software de turnos para clínicas" },
-          " y ",
-          { href: "/software-para-clinicas", label: "agenda médica online" },
-          ".",
+          { href: "/blog/turnos-whatsapp-ausentismo-clinicas-argentina-2026", label: "sobre ausentismo en clínicas y consultorios" },
+          " va directo a recordatorios, confirmación y agenda médica.",
         ],
       },
       { type: "h2", id: "como-funcionan", text: "Cómo funcionan los turnos online por WhatsApp" },
       {
         type: "paragraph",
         segments: [
-          "Un ",
-          { href: "/sistema-turnos-online", label: "sistema de citas online en Argentina" },
-          " conecta tu ",
-          { href: "/sistema-turnos-online", label: "agenda online con WhatsApp" },
-          ": el cliente ve disponibilidad, reserva y recibe ",
-          { href: "/sistema-turnos-online", label: "recordatorios automáticos por WhatsApp" },
-          ". El staff opera desde un solo ",
-          { href: "/sistema-turnos-online", label: "software para gestionar turnos" },
-          ".",
+          "Un sistema de citas conecta tu agenda con WhatsApp: el cliente ve disponibilidad, reserva y recibe recordatorios automáticos. El staff opera desde un solo lugar con reglas claras.",
         ],
       },
       { type: "h2", id: "ventajas-reservas", text: "Ventajas de automatizar reservas y citas" },
@@ -366,11 +292,7 @@ export const turnosBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "La clave es combinar ",
-          { href: "/sistema-turnos-online", label: "software de turnos online" },
-          " con ",
-          { href: "/bots-whatsapp", label: "chatbot para reservas online" },
-          " o mensajes programados: el cliente confirma y el hueco se libera si no.",
+          "La clave es combinar software de turnos con chatbot o mensajes programados: el cliente confirma y el hueco se libera si no.",
         ],
       },
       {
@@ -381,13 +303,9 @@ export const turnosBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Para ",
-          { href: "/sistema-turnos-online", label: "automatizar turnos por WhatsApp" },
-          ", lo habitual es un ",
-          { href: "/bots-whatsapp", label: "bot" },
-          " que habla con la misma agenda que usa recepción. Así evitás doble libro y podés sumar ",
-          { href: "/blog/bot-whatsapp-negocios-argentina", label: "estrategia de bot comercial" },
-          " si también vendés paquetes o promos.",
+          "Para automatizar turnos por WhatsApp, lo habitual es un ",
+          { href: "/bots-whatsapp", label: "bot de WhatsApp" },
+          " que habla con la misma agenda que usa recepción. Así evitás doble libro y podés sumar ofertas o promos en el mismo canal.",
         ],
       },
       {
@@ -411,13 +329,7 @@ export const turnosBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Depende de módulos, integraciones y si incluís ",
-          { href: "/bots-whatsapp", label: "bot" },
-          " con IA. Un ",
-          { href: "/sistema-turnos-online", label: "sistema de reservas online en Argentina" },
-          " chico no es lo mismo que multi-sede con ",
-          { href: "/automatizacion-negocios", label: "automatización" },
-          " profunda. Pedí presupuesto en ",
+          "Depende de módulos, integraciones y si incluís bot con IA. Un sistema de reservas chico no es lo mismo que multi-sede con automatización profunda. Pedí presupuesto en ",
           { href: "/#contacto", label: "contacto" },
           " o ",
           { href: WA_TURNOS, label: "WhatsApp", external: true },
@@ -434,9 +346,7 @@ export const turnosBlogArticles: BlogPost[] = [
         segments: [
           "En ",
           { href: "/sistema-turnos-online", label: "turnos online para centros de estética" },
-          ", los recordatorios y ",
-          { href: "/sistema-turnos-online", label: "reservas automáticas por WhatsApp" },
-          " suelen ser el primer paso para recuperar tiempo del equipo y bajar no-shows.",
+          ", los recordatorios y las reservas automáticas por WhatsApp suelen ser el primer paso para recuperar tiempo del equipo y bajar no-shows.",
         ],
       },
       {

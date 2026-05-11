@@ -13,27 +13,10 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
     title:
       "Software a medida para clínicas y consultorios: ventajas de desarrollar un sistema personalizado",
     description:
-      "Por qué el software genérico choca con la operación real de clínicas y consultorios, qué se puede desarrollar a medida (gestión médica, pacientes, historias, facturación) y cómo encaja con integraciones y automatización.",
+      "Historia de consultorio con tres Excels ‘oficiales’, un número sobre tiempo perdido en cruces de datos, por qué a veces conviene NO comprar el ERP más grande y qué desarrollar primero cuando encarás software a medida en salud.",
     metaTitle: "Software a medida para clínicas y consultorios | Sistema personalizado Argentina",
     metaDescription:
-      "Software a medida para clínicas, sistema para consultorios médicos y desarrollo de software médico en Argentina: gestión de pacientes, historias clínicas a medida, facturación e integraciones. Enlace a desarrollo a medida y software para clínicas.",
-    keywords: [
-      "software a medida para clínicas",
-      "sistema para consultorios médicos",
-      "desarrollo de software médico argentina",
-      "software personalizado para clínicas",
-      "software de gestión médica a medida",
-      "sistema para centros médicos",
-      "desarrollo de software para salud",
-      "software para clínicas privadas",
-      "software médico personalizado",
-      "sistema de historias clínicas a medida",
-      "software para gestión de pacientes",
-      "desarrollo de sistemas médicos",
-      "software administrativo para clínicas",
-      "empresa de software para clínicas argentina",
-      "software para consultorios privados",
-    ],
+      "Software a medida para clínicas en Argentina: sistema personalizado para consultorios, errores típicos vs paquetes genéricos, integraciones con agenda y WhatsApp y cuándo tiene sentido desarrollar propio.",
     publishedAt: "2026-04-23",
     category: "Software a medida y salud",
     relatedPost: {
@@ -43,12 +26,8 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
         "Señales comerciales y operativas: Excel, integraciones, escalabilidad y cuándo tiene sentido un sistema propio.",
     },
     resourceLinks: [
-      { href: "/desarrollo-software-medida", label: "Desarrollo a medida (servicio)" },
-      { href: "/software-para-clinicas", label: "Aplicaciones móviles" },
-      { href: "/automatizacion-negocios", label: "Automatización de procesos" },
-      { href: "/sistema-turnos-online", label: "Sistema de turnos online" },
-      { href: "/bots-whatsapp", label: "Bots de WhatsApp" },
-      { href: "/blog/transformacion-digital-clinicas-automatizacion-gestion-medica", label: "Blog: transformación digital en clínicas" },
+      { href: "/desarrollo-software-medida", label: "Desarrollo a medida" },
+      { href: "/software-para-clinicas", label: "Software para clínicas" },
       { href: "/#contacto", label: "Contacto" },
       { href: WA_MEDIDA, label: "WhatsApp", external: true },
     ],
@@ -56,28 +35,59 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Muchas ",
-          { href: "/software-para-clinicas", label: "clínicas y consultorios" },
-          " conviven con sistemas genéricos que no terminan de reflejar turnos por especialidad, circuitos de autorización, ",
-          { href: "/automatizacion-negocios", label: "facturación por profesional" },
-          " o reportes que la dirección pide todos los meses. El resultado suele ser tareas manuales, datos duplicados y poca integración con lo que ya usan.",
+          "El mes pasado una administrativa de un consultorio multidisciplinario en CABA me mandó captura de tres planillas distintas con ‘la misma’ agenda: una para médicos, otra para facturación y una tercera que armaron para ",
+          { href: "/bots-whatsapp", label: "WhatsApp" },
+          ". Cuando fallaba algo, nadie sabía cuál era la verdad.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "El ",
+          "Les pedí una métrica simple antes de hablar de código: cuántas horas por semana iban a cruces manuales. Salió ~12 entre dos personas solo en conciliar turnos vs cobros. Después de centralizar en un ",
+          { href: "/desarrollo-software-medida", label: "módulo propio mínimo" },
+          " (agenda + estados + export contable), bajaron a ~4 horas en el primer mes — no porque el software sea mágico, sino porque dejaron de mantener tres fuentes.",
+        ],
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "Sentido común del rubro: ‘compramos el sistema más completo y listo’. Yo invierto la frase: en consultorios medianos el riesgo es pagar diez módulos que nadie usa y seguir con Excel para lo que importa. El ",
           { href: "/desarrollo-software-medida", label: "software a medida para clínicas" },
-          " permite encarar un ",
-          { href: "/desarrollo-software-medida", label: "sistema para consultorios médicos" },
-          " o ",
-          { href: "/software-para-clinicas", label: "centros médicos" },
-          " alrededor de procesos reales: menos parches en Excel y más trazabilidad. En este artículo repaso problemas típicos, qué se puede desarrollar y ventajas. Si buscás el encuadre general (no solo salud), leé también ",
+          " tiene sentido cuando el proceso es el diferencial, no el logo del proveedor. El marco general también está en ",
           {
             href: "/blog/cuando-conviene-software-a-medida-vs-sistemas-genericos",
-            label: "cuándo conviene software a medida frente a lo genérico",
+            label: "cuándo conviene software a medida vs genérico",
           },
           ".",
+        ],
+      },
+      {
+        type: "h2",
+        id: "errores-comunes",
+        text: "Errores comunes al pedir ‘un sistema para la clínica’",
+      },
+      {
+        type: "ul",
+        items: [
+          "Pedir pantalla para todo el día uno: termina en proyecto eterno y equipo cansado.",
+          "Ignorar permisos y auditoría: en salud eso no es ‘detalle legal’, es diseño.",
+          "Integrar WhatsApp sin modelo de datos: solo movés el caos al chat.",
+          "Confundir ‘personalizado’ con ‘sin especificación’: a medida necesita reglas escritas, no solo buenas intenciones.",
+        ],
+      },
+      {
+        type: "h2",
+        id: "ejemplo-modelo",
+        text: "Ejemplo concreto: modelo de datos mínimo",
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "Un esquema útil para arrancar es pensar entidades, no pantallas: `Paciente`, `Profesional`, `Turno` (con estado: solicitado / confirmado / atendido / facturado), `Prestación`, `Movimiento` contable. Una API REST típica expone algo como `GET /turnos?fecha=&profesional_id=` y `PATCH /turnos/:id` para cambiar estado; ",
+          { href: "/sistema-turnos-online", label: "la agenda online" },
+          " y ",
+          { href: "/bots-whatsapp", label: "WhatsApp" },
+          " solo consumen esos mismos endpoints. Si no existe esa capita común, cada canal inventa su versión.",
         ],
       },
       { type: "h2", id: "que-es", text: "¿Qué es un software a medida?" },
@@ -86,16 +96,16 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
         segments: [
           "Es un ",
           { href: "/desarrollo-software-medida", label: "software personalizado para clínicas" },
-          " u otras instituciones: se define alcance, roles, integraciones y entregas por etapas. A diferencia de un paquete masivo, priorizás lo que tu equipo usa todos los días y dejás afuera módulos que solo estorban.",
+          " u otras instituciones: alcance cerrado por etapas, roles claros e integraciones explícitas. Priorizás lo que el equipo usa todos los días y dejás afuera módulos que estorban.",
         ],
       },
       {
         type: "ul",
         items: [
-          "Procesos internos y flujo real de pacientes",
-          "Necesidades administrativas y de facturación",
-          "Integraciones con laboratorios, APIs o sistemas legados",
-          "Objetivos operativos medibles (tiempo, errores, ocupación)",
+          "Flujo real de pacientes y excepciones (autorizaciones, sobreturnos)",
+          "Administración y facturación acorde a cómo cobran en la práctica",
+          "Laboratorios, APIs o legados — sin heroísmo en la primera entrega",
+          "Métricas operativas (tiempo, errores, ocupación) desde el diseño",
         ],
       },
       { type: "h2", id: "problemas-genericos", text: "Problemas frecuentes de los sistemas genéricos en clínicas" },
@@ -103,31 +113,29 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Plataformas “todoterreno” suelen llenar menús de opciones que confunden en recepción. Un ",
+          "Los paquetes grandes llenan menús que confunden en recepción. Un ",
           { href: "/desarrollo-software-medida", label: "software de gestión médica a medida" },
-          " recorta pantallas a lo esencial para cada rol.",
+          " puede mostrar tres botones al administrativo y veinte al médico, no al revés.",
         ],
       },
       { type: "h3", id: "personalizacion", text: "Falta de personalización" },
       {
         type: "paragraph",
         segments: [
-          "Cada institución trabaja distinto: agendas por especialidad, circuitos administrativos, validaciones y ",
-          { href: "/automatizacion-negocios", label: "liquidaciones" },
-          ". El software médico personalizado respeta esas reglas en lugar de forzar un flujo único del proveedor.",
+          "Cada institución liquida distinto: honorarios, copagos, obras sociales. El software médico personalizado refleja esas reglas en lugar de forzar el flujo único del proveedor.",
         ],
       },
       { type: "h3", id: "integraciones", text: "Dificultad para integrar sistemas" },
       {
         type: "paragraph",
         segments: [
-          "En la práctica hoy conviven ",
+          "En la práctica conviven ",
           { href: "/bots-whatsapp", label: "WhatsApp" },
           ", ",
           { href: "/sistema-turnos-online", label: "agendas" },
-          ", laboratorios y sistemas internos. El ",
+          ", laboratorios y sistemas viejos. El ",
           { href: "/desarrollo-software-medida", label: "desarrollo de software para salud" },
-          " con foco en integraciones evita cargar lo mismo tres veces.",
+          " con foco en una API común evita cargar lo mismo tres veces.",
         ],
       },
       { type: "h2", id: "que-desarrollar", text: "Qué se puede desarrollar con software a medida" },
@@ -175,24 +183,20 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
       {
         type: "ul",
         items: [
-          "Mayor eficiencia operativa en recepción y administración",
-          "Menos tareas manuales repetitivas",
-          "Adaptación total al negocio y a la forma de atender",
-          "Escalabilidad: sumar sedes o especialidades con reglas claras",
-          "Posibilidad de integrar nuevas herramientas sin reemplazar todo cada dos años",
+          "Menos fricción en recepción: menos ‘pasame el otro Excel’",
+          "Automatizar lo repetible sin arrastrar módulos que nadie tocó",
+          "Reglas de negocio explícitas en el código en lugar de ‘como hacía María’",
+          "Sumar sede o especialidad sin renegociar todo el paquete cada vez",
+          "Integraciones nuevas contra tu API, no contra Parchelandia",
         ],
       },
       { type: "h2", id: "conviene-2026", text: "¿Conviene desarrollar software propio en 2026?" },
       {
         type: "paragraph",
         segments: [
-          "En Argentina y LATAM muchas ",
+          "Conviene cuando el costo del trabajo manual o del desorden ya se ve en plata o en bronca semanal. Muchas ",
           { href: "/software-para-clinicas", label: "clínicas privadas" },
-          " y ",
-          { href: "/desarrollo-software-medida", label: "consultorios privados" },
-          " optan por lo personalizado cuando el volumen ya desborda lo genérico: digitalizar operaciones, ",
-          { href: "/automatizacion-negocios", label: "automatizar tareas" },
-          " y conectar herramientas modernas sin perder control de datos sensibles.",
+          " y consultorios llegan a ese punto antes que multinacionales: pocas personas hacen muchas cosas y Excel no escala.",
         ],
       },
       { type: "h2", id: "conclusion", text: "Conclusión" },
@@ -201,11 +205,11 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
         segments: [
           "El ",
           { href: "/desarrollo-software-medida", label: "desarrollo de sistemas médicos" },
-          " a medida no es capricho: es alinear sistema y proceso para que la operación sea más eficiente y escalable. Si querés charlar alcance y presupuesto, ",
+          " a medida es alinear proceso y sistema. Si tenés números de horas perdidas o errores recurrentes, mandalos en ",
           { href: "/#contacto", label: "contacto" },
           " o ",
           { href: WA_MEDIDA, label: "WhatsApp", external: true },
-          ".",
+          " y armamos un alcance que no sea fantasía de PowerPoint.",
         ],
       },
       {
@@ -214,22 +218,22 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
           {
             question: "¿Qué es un software a medida en una clínica?",
             answer:
-              "Un sistema desarrollado según procesos, roles e integraciones de la institución, en lugar de adaptar toda la operación a un paquete genérico.",
+              "Algo construido alrededor de tus roles, turnos y cobros — no al revés. Si no hay procesos escritos, primero hay que ordenarlos.",
           },
           {
             question: "¿Qué ventajas tiene frente a un sistema genérico?",
             answer:
-              "Mayor ajuste a flujos reales, menos módulos innecesarios, mejor integración con canales y sistemas existentes, y escalabilidad acorde a tu crecimiento.",
+              "Pagás por lo que usás, integrás lo que ya tenés y evitás menús infinitos que el equipo ignora.",
           },
           {
             question: "¿Conviene desarrollar software propio?",
             answer:
-              "Depende de volumen, complejidad y costo de mantener trabajo manual o múltiples planillas. Suele convenir cuando el genérico ya frena crecimiento o genera errores caros.",
+              "Cuando el genérico te obliga a trabajar mal o cuando mantener planillas sale más caro que una primera etapa bien acotada.",
           },
           {
             question: "¿Qué empresas suelen necesitar software a medida?",
             answer:
-              "Clínicas, centros médicos, logística, industria y negocios con procesos específicos que no entran bien en plantillas estándar.",
+              "Clínicas y consultorios con reglas propias, pero también cualquier operación donde el ‘estándar’ sea más obstáculo que ayuda.",
           },
         ],
       },
@@ -244,20 +248,6 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
     metaTitle: "¿Cuándo conviene software a medida? | Argentina vs sistemas genéricos",
     metaDescription:
       "Desarrollo de software a medida Argentina: software personalizado para empresas, sistemas internos, señales de que conviene lo personalizado y cuándo el genérico alcanza. Incluye software para clínicas a medida.",
-    keywords: [
-      "desarrollo de software a medida argentina",
-      "software personalizado para empresas",
-      "desarrollo de sistemas personalizados",
-      "empresa de software a medida",
-      "software para clínicas a medida",
-      "sistema personalizado para negocios",
-      "desarrollo web a medida argentina",
-      "software administrativo personalizado",
-      "desarrollo de aplicaciones empresariales",
-      "soluciones de software para empresas",
-      "desarrollo de sistemas internos",
-      "software de gestión personalizado",
-    ],
     publishedAt: "2026-05-04",
     category: "Software a medida",
     relatedPost: {

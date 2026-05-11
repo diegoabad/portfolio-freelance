@@ -41,16 +41,6 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-/** Pocas frases relevantes; Google ignora keywords para ranking desde hace años. */
-const keywords = [
-  "desarrollo software a medida Buenos Aires",
-  "Diego Abad desarrollador fullstack",
-  "bots WhatsApp empresas Argentina",
-  "automatización procesos pymes",
-  "software para clínicas turnos online",
-  "React Next.js Node.js freelance Argentina",
-];
-
 const siteVerification = buildSiteVerification();
 
 const defaultOgAbsolute = siteUrl ? new URL("/opengraph-image", siteUrl).toString() : undefined;
@@ -63,7 +53,6 @@ export const metadata: Metadata = {
     template: "%s | Diego Abad",
   },
   description: seoDescription,
-  keywords,
   authors: [{ name: "Diego Abad", url: LINKEDIN_PROFILE_URL }],
   creator: "Diego Abad",
   publisher: "Diego Abad",
