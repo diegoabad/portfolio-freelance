@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Figtree, Outfit } from "next/font/google";
 import { AmbientOrbs } from "@/components/site/AmbientOrbs";
+import { GoogleTagManager } from "@/components/seo/GoogleTagManager";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildSiteVerification } from "@/lib/seo-verification";
 import { getSiteUrl, LINKEDIN_PROFILE_URL } from "@/lib/site";
@@ -126,6 +127,7 @@ export default function RootLayout({
   return (
     <html lang="es-AR" className={`${figtree.variable} ${outfit.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
+        <GoogleTagManager />
         <JsonLd />
         <AmbientOrbs />
         {children}
