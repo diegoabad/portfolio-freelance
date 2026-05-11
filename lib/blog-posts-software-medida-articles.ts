@@ -27,7 +27,6 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
     },
     resourceLinks: [
       { href: "/desarrollo-software-medida", label: "Desarrollo a medida" },
-      { href: "/software-para-clinicas", label: "Software para clínicas" },
       { href: "/#contacto", label: "Contacto" },
       { href: WA_MEDIDA, label: "WhatsApp", external: true },
     ],
@@ -43,17 +42,13 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Les pedí una métrica simple antes de hablar de código: cuántas horas por semana iban a cruces manuales. Salió ~12 entre dos personas solo en conciliar turnos vs cobros. Después de centralizar en un ",
-          { href: "/desarrollo-software-medida", label: "módulo propio mínimo" },
-          " (agenda + estados + export contable), bajaron a ~4 horas en el primer mes — no porque el software sea mágico, sino porque dejaron de mantener tres fuentes.",
+          "Les pedí una métrica simple antes de hablar de código: cuántas horas por semana iban a cruces manuales. Salió ~12 entre dos personas solo en conciliar turnos vs cobros. Después de centralizar en un módulo propio mínimo (agenda + estados + export contable), bajaron a ~4 horas en el primer mes — no porque el software sea mágico, sino porque dejaron de mantener tres fuentes.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Sentido común del rubro: ‘compramos el sistema más completo y listo’. Yo invierto la frase: en consultorios medianos el riesgo es pagar diez módulos que nadie usa y seguir con Excel para lo que importa. El ",
-          { href: "/desarrollo-software-medida", label: "software a medida para clínicas" },
-          " tiene sentido cuando el proceso es el diferencial, no el logo del proveedor. El marco general también está en ",
+          "Sentido común del rubro: ‘compramos el sistema más completo y listo’. Yo invierto la frase: en consultorios medianos el riesgo es pagar diez módulos que nadie usa y seguir con Excel para lo que importa. El software a medida para clínicas tiene sentido cuando el proceso es el diferencial, no el logo del proveedor. El marco general también está en ",
           {
             href: "/blog/cuando-conviene-software-a-medida-vs-sistemas-genericos",
             label: "cuándo conviene software a medida vs genérico",
@@ -85,18 +80,14 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
         segments: [
           "Un esquema útil para arrancar es pensar entidades, no pantallas: `Paciente`, `Profesional`, `Turno` (con estado: solicitado / confirmado / atendido / facturado), `Prestación`, `Movimiento` contable. Una API REST típica expone algo como `GET /turnos?fecha=&profesional_id=` y `PATCH /turnos/:id` para cambiar estado; ",
           { href: "/sistema-turnos-online", label: "la agenda online" },
-          " y ",
-          { href: "/bots-whatsapp", label: "WhatsApp" },
-          " solo consumen esos mismos endpoints. Si no existe esa capita común, cada canal inventa su versión.",
+          " y WhatsApp solo consumen esos mismos endpoints. Si no existe esa capa común, cada canal inventa su versión.",
         ],
       },
       { type: "h2", id: "que-es", text: "¿Qué es un software a medida?" },
       {
         type: "paragraph",
         segments: [
-          "Es un ",
-          { href: "/desarrollo-software-medida", label: "software personalizado para clínicas" },
-          " u otras instituciones: alcance cerrado por etapas, roles claros e integraciones explícitas. Priorizás lo que el equipo usa todos los días y dejás afuera módulos que estorban.",
+          "Es un software personalizado para clínicas u otras instituciones: alcance cerrado por etapas, roles claros e integraciones explícitas. Priorizás lo que el equipo usa todos los días y dejás afuera módulos que estorban.",
         ],
       },
       {
@@ -113,9 +104,7 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Los paquetes grandes llenan menús que confunden en recepción. Un ",
-          { href: "/desarrollo-software-medida", label: "software de gestión médica a medida" },
-          " puede mostrar tres botones al administrativo y veinte al médico, no al revés.",
+          "Los paquetes grandes llenan menús que confunden en recepción. Un software de gestión médica a medida puede mostrar tres botones al administrativo y veinte al médico, no al revés.",
         ],
       },
       { type: "h3", id: "personalizacion", text: "Falta de personalización" },
@@ -129,13 +118,7 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "En la práctica conviven ",
-          { href: "/bots-whatsapp", label: "WhatsApp" },
-          ", ",
-          { href: "/sistema-turnos-online", label: "agendas" },
-          ", laboratorios y sistemas viejos. El ",
-          { href: "/desarrollo-software-medida", label: "desarrollo de software para salud" },
-          " con foco en una API común evita cargar lo mismo tres veces.",
+          "En la práctica conviven WhatsApp, agendas, laboratorios y sistemas viejos. El desarrollo de software para salud con foco en una API común evita cargar lo mismo tres veces.",
         ],
       },
       { type: "h2", id: "que-desarrollar", text: "Qué se puede desarrollar con software a medida" },
@@ -143,9 +126,7 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Desde un ",
-          { href: "/desarrollo-software-medida", label: "software para gestión de pacientes" },
-          " hasta paneles de operación: lo importante es definir qué es sistema de registro y qué puede resolverse con ",
+          "Desde un software para gestión de pacientes hasta paneles de operación: lo importante es definir qué es sistema de registro y qué puede resolverse con ",
           { href: "/automatizacion-procesos-clinicas", label: "automatización" },
           " entre APIs.",
         ],
@@ -154,9 +135,7 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Un ",
-          { href: "/desarrollo-software-medida", label: "sistema de historias clínicas a medida" },
-          " prioriza plantillas, permisos y auditoría según tu práctica. No es lo mismo un consultorio que un ",
+          "Un sistema de historias clínicas a medida prioriza plantillas, permisos y auditoría según tu práctica. No es lo mismo un consultorio que un ",
           { href: "/software-para-clinicas", label: "centro con varias sedes" },
           ".",
         ],
@@ -165,18 +144,14 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Módulos de ",
-          { href: "/desarrollo-software-medida", label: "software administrativo para clínicas" },
-          " para honorarios, copagos y reportes suelen ser el primer ROI cuando hoy vivís en planillas.",
+          "Módulos de software administrativo para clínicas para honorarios, copagos y reportes suelen ser el primer ROI cuando hoy vivís en planillas.",
         ],
       },
       { type: "h3", id: "dashboards", text: "Dashboards, reportes y automatizaciones" },
       {
         type: "paragraph",
         segments: [
-          "Reportes para dirección, tableros de ocupación o ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatizaciones administrativas" },
-          " pueden formar parte del mismo producto o conectarse por integraciones.",
+          "Reportes para dirección, tableros de ocupación o automatizaciones administrativas pueden formar parte del mismo producto o conectarse por integraciones.",
         ],
       },
       { type: "h2", id: "ventajas", text: "Ventajas de desarrollar un sistema personalizado" },
@@ -194,20 +169,14 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Conviene cuando el costo del trabajo manual o del desorden ya se ve en plata o en bronca semanal. Muchas ",
-          { href: "/software-para-clinicas", label: "clínicas privadas" },
-          " y consultorios llegan a ese punto antes que multinacionales: pocas personas hacen muchas cosas y Excel no escala.",
+          "Conviene cuando el costo del trabajo manual o del desorden ya se ve en plata o en bronca semanal. Muchas clínicas privadas y consultorios llegan a ese punto antes que multinacionales: pocas personas hacen muchas cosas y Excel no escala.",
         ],
       },
       { type: "h2", id: "conclusion", text: "Conclusión" },
       {
         type: "paragraph",
         segments: [
-          "El ",
-          { href: "/desarrollo-software-medida", label: "desarrollo de sistemas médicos" },
-          " a medida es alinear proceso y sistema. Si tenés números de horas perdidas o errores recurrentes, mandalos en ",
-          { href: "/#contacto", label: "contacto" },
-          " o ",
+          "El desarrollo de sistemas médicos a medida es alinear proceso y sistema. Si tenés números de horas perdidas o errores recurrentes, mandalos por contacto en el sitio o ",
           { href: WA_MEDIDA, label: "WhatsApp", external: true },
           " y armamos un alcance que no sea fantasía de PowerPoint.",
         ],
