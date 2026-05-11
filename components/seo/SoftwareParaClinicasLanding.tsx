@@ -10,7 +10,9 @@ import {
   landingH2Class,
   type FaqBlock,
 } from "@/components/seo/landing-blocks";
+import { ServiceLandingHeroOffer } from "@/components/seo/ServiceLandingHeroOffer";
 import { EVALUATION_OFFER_FAQ, LANDING_CONSULT_CTA, REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
+import { serviceLandingPriceFaqCallout } from "@/lib/service-landings";
 const CATEGORY = "Desarrollo de aplicaciones móviles";
 
 const HERO = {
@@ -152,6 +154,7 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
         type: "p",
         text: "Depende del tipo de operación, cantidad de clientes y procesos que quieras digitalizar. Lo evaluamos en una charla inicial sin compromiso.",
       },
+      { type: "callout", text: serviceLandingPriceFaqCallout("software-para-clinicas") },
       { type: "p", text: EVALUATION_OFFER_FAQ },
     ],
   },
@@ -188,6 +191,7 @@ export function SoftwareParaClinicasLanding() {
         </h1>
         <p className="mt-3 text-lg font-semibold tracking-tight text-foreground md:text-xl">{HERO.lead}</p>
         <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">{HERO.subtitle}</p>
+        <ServiceLandingHeroOffer slug="software-para-clinicas" />
         <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-primary">{HERO.presupuesto}</p>
         <div className="mt-6 flex flex-wrap gap-4">
           <LandingWaCta

@@ -1,4 +1,4 @@
-import { CONTACT_EMAIL } from "@/lib/contact";
+import { CONTACT_EMAIL, WHATSAPP_NUMBER } from "@/lib/contact";
 import { getSiteUrl, LINKEDIN_PROFILE_URL } from "@/lib/site";
 
 const KNOWS_ABOUT = [
@@ -48,11 +48,37 @@ export function JsonLd() {
   if (base) {
     person["@id"] = `${base}/#person`;
     person.url = base;
+    person.worksFor = { "@id": `${base}/#professionalService` };
   }
 
   const graph: Record<string, unknown>[] = [person];
 
   if (base) {
+    const ogImage = new URL("/opengraph-image", base).toString();
+    graph.push({
+      "@type": ["ProfessionalService", "LocalBusiness"],
+      "@id": `${base}/#professionalService`,
+      name: "Diego Abad — Desarrollo de software y automatización",
+      description:
+        "Consultoría y desarrollo de software a medida en Buenos Aires y Argentina: automatización, bots de WhatsApp, turnos online, apps para clínicas e inventario.",
+      url: base,
+      email: CONTACT_EMAIL,
+      telephone: `+${WHATSAPP_NUMBER}`,
+      image: ogImage,
+      priceRange: "$$",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Buenos Aires",
+        addressRegion: "AR-C",
+        addressCountry: "AR",
+      },
+      areaServed: [
+        { "@type": "City", name: "Buenos Aires", containedInPlace: { "@type": "Country", name: "Argentina" } },
+        { "@type": "Country", name: "Argentina" },
+      ],
+      founder: { "@id": `${base}/#person` },
+    });
+
     graph.push({
       "@type": "WebSite",
       "@id": `${base}/#website`,
@@ -61,7 +87,7 @@ export function JsonLd() {
       description:
         "Software a medida y desarrollo web en Argentina: automatización de procesos, bots de WhatsApp, turnos online, apps para clínicas, stock e inventario. React, Next.js y Node.js.",
       inLanguage: "es-AR",
-      publisher: { "@id": `${base}/#person` },
+      publisher: { "@id": `${base}/#professionalService` },
     });
   }
 

@@ -11,13 +11,13 @@ export const SEO_INTERLINK_TRIO: readonly ServiceInterlink[] = [];
 export const HIGHLIGHT_CHIP_BOTS_WHATSAPP =
   "Bot de WhatsApp · inteligencia artificial · integraciones";
 export const HIGHLIGHT_CHIP_TURNOS = "Agendas online · Autogestión · Recordatorios";
-export const HIGHLIGHT_CHIP_AUTOMATIZACION = "APIs, CRM y agentes de IA";
+export const HIGHLIGHT_CHIP_AUTOMATIZACION = "APIs de terceros · CRM · Agentes de IA";
 export const HIGHLIGHT_CHIP_SOFTWARE_MEDIDA =
-  "Software a medida · reglas propias, integraciones · un solo producto";
+  "Software a medida · Reglas propias · Integraciones";
 export const HIGHLIGHT_CHIP_CLINICAS =
-  "Apps móviles · Android y iPhone · Notificaciones · Autogestión";
+  "Apps móviles · Android y iPhone · Autogestión";
 export const HIGHLIGHT_CHIP_INVENTARIO =
-  "Stock en tiempo real · Movimientos · Inventario · Control · Clínicas e insumos";
+  "Stock en tiempo real · Inventario · Control";
 
 const NBOTS: ServiceInterlink = { href: "/bots-whatsapp", label: "Bots de WhatsApp" };
 const NTURNOS: ServiceInterlink = { href: "/sistema-turnos-online", label: "Turnos online" };
@@ -40,6 +40,9 @@ export const SERVICE_LANDING_PAGES = [
     homeCardSubtitle:
       "Desarrollo e implementación de bot de WhatsApp con IA e integración con agendas y CRM: chatbot para atención al cliente, consultas por WhatsApp y menos carga para tu equipo (empresas, pymes y clínicas en Argentina).",
     homeCardBadge: HIGHLIGHT_CHIP_BOTS_WHATSAPP,
+    /** Precio orientativo en home (detalle en landing / FAQ). */
+    homeCardPriceTeaser: "Desde ARS 600.000",
+    homeCardPriceBenefit: "Respuestas 24/7 sin sumar personal dedicado solo al WhatsApp.",
     homeCardCta: PRIMARY_CTA_LABEL,
     title: "Bots de WhatsApp para negocios",
     metaDescription:
@@ -65,6 +68,8 @@ export const SERVICE_LANDING_PAGES = [
     homeCardSubtitle:
       "Sistema de turnos online y agenda digital con autogestión, recordatorios automáticos e integración con WhatsApp: reservas y coordinación en un solo lugar (clínicas, consultorios y negocios).",
     homeCardBadge: HIGHLIGHT_CHIP_TURNOS,
+    homeCardPriceTeaser: "Desde ARS 900.000",
+    homeCardPriceBenefit: "Menos cancelaciones y agenda ordenada en un solo lugar.",
     homeCardCta: "Coordinemos tu agenda",
     title: "Sistema de turnos online",
     metaDescription:
@@ -92,6 +97,8 @@ export const SERVICE_LANDING_PAGES = [
     homeCardSubtitle:
       "Automatización de procesos y workflows en Argentina: integración de sistemas, n8n cuando encaja, IA acotada y menos tareas administrativas repetitivas (clínicas, recepción, CRM, reportes).",
     homeCardBadge: HIGHLIGHT_CHIP_AUTOMATIZACION,
+    homeCardPriceTeaser: "Desde ARS 300.000",
+    homeCardPriceBenefit: "Ahorrá horas de trabajo manual cada semana.",
     homeCardCta: "Revisamos tu caso",
     title: "Automatización de procesos para empresas",
     metaDescription:
@@ -118,6 +125,8 @@ export const SERVICE_LANDING_PAGES = [
     homeCardSubtitle:
       "Desarrollo de software a medida en Argentina: sistemas personalizados con integraciones y entregas por etapas, para pymes, empresas y operación en salud cuando el genérico no alcanza.",
     homeCardBadge: HIGHLIGHT_CHIP_SOFTWARE_MEDIDA,
+    homeCardPriceTeaser: "Proyectos desde ARS 1.500.000",
+    homeCardPriceBenefit: "Un sistema que encaja en tu operación; el alcance define el resto.",
     homeCardCta: "Definamos el alcance",
     title: "Software a medida",
     metaDescription:
@@ -144,6 +153,9 @@ export const SERVICE_LANDING_PAGES = [
     homeCardSubtitle:
       "Desarrollo de apps móviles para empresas y clínicas: turnos, pacientes, autogestión y notificaciones; Android, iPhone o multiplataforma cuando conviene.",
     homeCardBadge: HIGHLIGHT_CHIP_CLINICAS,
+    homeCardPriceTeaser: "Desde ARS 2.000.000",
+    homeCardPriceBenefit:
+      "Fidelizá clientes con tu app: autogestión, recordatorios, turnos y más.",
     homeCardCta: "Coordinemos tu app",
     title: "Desarrollo de aplicaciones móviles",
     metaDescription:
@@ -171,6 +183,8 @@ export const SERVICE_LANDING_PAGES = [
     homeCardSubtitle:
       "Software de inventario y control de stock: movimientos centralizados para depósito, ventas o insumos en clínicas y consultorios, con menos errores y pérdidas.",
     homeCardBadge: HIGHLIGHT_CHIP_INVENTARIO,
+    homeCardPriceTeaser: "Desde ARS 800.000",
+    homeCardPriceBenefit: "Stock claro: menos errores entre depósito, ventas y sucursales.",
     homeCardCta: "Ordenemos tu stock",
     title: "Stock e inventario",
     metaDescription:
@@ -204,6 +218,21 @@ const PAGE_MAP = Object.fromEntries(SERVICE_LANDING_PAGES.map((p) => [p.slug, p]
 
 export function getServiceLanding(slug: string): ServiceLandingPageData | undefined {
   return PAGE_MAP[slug as ServiceLandingSlug];
+}
+
+/** Palabras clave del chip de la home (separador medio ·). */
+export function splitHomeCardBadge(badge: string): string[] {
+  return badge
+    .split(/\s*·\s*/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
+
+/** Precio orientativo + beneficio para FAQs, alineado a la tarjeta del home. */
+export function serviceLandingPriceFaqCallout(slug: ServiceLandingSlug): string {
+  const page = getServiceLanding(slug);
+  if (!page) return "";
+  return `Referencia orientativa en Argentina: ${page.homeCardPriceTeaser}. ${page.homeCardPriceBenefit}`;
 }
 
 /** Texto del enlace en cada card de servicios en el home. */
@@ -382,6 +411,7 @@ export function buildServicePageMetadata(slug: ServiceLandingSlug): Metadata {
       card: "summary_large_image",
       title: p.title,
       description: p.metaDescription,
+      ...(defaultOg ? { images: { url: defaultOg, alt: p.title } } : {}),
     },
     robots: { index: true, follow: true },
   };

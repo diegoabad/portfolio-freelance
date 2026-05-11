@@ -3,6 +3,7 @@ import { Figtree, Outfit } from "next/font/google";
 import { AmbientOrbs } from "@/components/site/AmbientOrbs";
 import { GoogleTagManager } from "@/components/seo/GoogleTagManager";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { SOCIAL_IMAGE_ALT_DEFAULT, SOCIAL_IMAGE_SIZE } from "@/lib/social-image-meta";
 import { buildSiteVerification } from "@/lib/seo-verification";
 import { getSiteUrl, LINKEDIN_PROFILE_URL } from "@/lib/site";
 import "./globals.css";
@@ -28,7 +29,8 @@ const siteUrl = getSiteUrl();
 /** URLs absolutas para OG/Twitter (en local puede ser localhost si no hay env). */
 const metadataBase = new URL(siteUrl ?? "http://localhost:3000");
 
-const seoTitle = "Diego Abad — desarrollador de software y automatizaciones";
+/** Título orientado a búsquedas no marcadas (servicio + ubicación); la plantilla `%s | Diego Abad` sigue valiendo en páginas hijas. */
+const seoTitle = "Diego Abad | Desarrollo de Software a Medida · Buenos Aires";
 
 const seoDescription =
   "Desarrollo de software a medida en Argentina, automatización de procesos (n8n, APIs, integraciones), bots de WhatsApp con IA, sistema de turnos online, apps móviles para clínicas, control de stock e inventario. React, Next.js, Node.js y TypeScript para empresas y pymes en LATAM.";
@@ -39,38 +41,19 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+/** Pocas frases relevantes; Google ignora keywords para ranking desde hace años. */
 const keywords = [
-  "Diego Abad",
-  "desarrollador de software Argentina",
-  "desarrollador fullstack Buenos Aires",
-  "software a medida",
-  "desarrollo web",
-  "desarrollo de aplicaciones móviles",
-  "React",
-  "Next.js",
-  "Node.js",
-  "TypeScript",
-  "Flutter",
-  "automatización de procesos",
-  "automatización empresarial Argentina",
-  "inteligencia artificial",
-  "agentes de IA",
-  "bots de WhatsApp",
-  "chatbot WhatsApp empresas",
-  "sistema de turnos online",
-  "agenda médica online",
-  "software para clínicas",
-  "control de stock",
-  "inventario clínicas",
-  "integraciones API",
-  "n8n",
-  "PostgreSQL",
-  "desarrollo de software para pymes",
-  "Argentina",
-  "Latinoamérica",
+  "desarrollo software a medida Buenos Aires",
+  "Diego Abad desarrollador fullstack",
+  "bots WhatsApp empresas Argentina",
+  "automatización procesos pymes",
+  "software para clínicas turnos online",
+  "React Next.js Node.js freelance Argentina",
 ];
 
 const siteVerification = buildSiteVerification();
+
+const defaultOgAbsolute = siteUrl ? new URL("/opengraph-image", siteUrl).toString() : undefined;
 
 export const metadata: Metadata = {
   metadataBase,
@@ -102,11 +85,31 @@ export const metadata: Metadata = {
     locale: "es_AR",
     siteName: "Diego Abad",
     ...(siteUrl ? { url: siteUrl } : {}),
+    ...(defaultOgAbsolute
+      ? {
+          images: [
+            {
+              url: defaultOgAbsolute,
+              width: SOCIAL_IMAGE_SIZE.width,
+              height: SOCIAL_IMAGE_SIZE.height,
+              alt: SOCIAL_IMAGE_ALT_DEFAULT,
+            },
+          ],
+        }
+      : {}),
   },
   twitter: {
     card: "summary_large_image",
     title: seoTitle,
     description: seoDescription,
+    ...(defaultOgAbsolute
+      ? {
+          images: {
+            url: defaultOgAbsolute,
+            alt: SOCIAL_IMAGE_ALT_DEFAULT,
+          },
+        }
+      : {}),
   },
   category: "technology",
   /** Misma marca que app/icon.png; favicon.ico generado desde ese PNG para clientes que piden /.ico */

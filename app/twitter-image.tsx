@@ -1,6 +1,6 @@
-import { createSocialImage, socialImageSize } from "@/lib/create-social-image";
+import { createSocialImage, DEFAULT_SOCIAL_IMAGE_ALT, socialImageSize } from "@/lib/create-social-image";
 
-export const alt = "Diego Abad — desarrollador de software y automatizaciones";
+export const alt = DEFAULT_SOCIAL_IMAGE_ALT;
 
 export const size = socialImageSize;
 

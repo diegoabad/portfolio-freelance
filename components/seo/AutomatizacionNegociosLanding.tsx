@@ -11,8 +11,10 @@ import {
   landingH2Class,
   type FaqBlock,
 } from "@/components/seo/landing-blocks";
+import { ServiceLandingHeroOffer } from "@/components/seo/ServiceLandingHeroOffer";
 import { EVALUATION_OFFER_FAQ, LANDING_CONSULT_CTA } from "@/lib/contact";
 import { homeSection } from "@/lib/home-links";
+import { serviceLandingPriceFaqCallout } from "@/lib/service-landings";
 const CATEGORY = "Automatización de procesos";
 
 const HERO = {
@@ -73,6 +75,7 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
         type: "p",
         text: "El costo depende del tipo de automatización y la complejidad del proceso: no es lo mismo automatizar tareas simples que integrar varios sistemas o flujos más complejos.",
       },
+      { type: "callout", text: serviceLandingPriceFaqCallout("automatizacion-negocios") },
       {
         type: "ul",
         intro: "En general, el valor se define según:",
@@ -272,6 +275,7 @@ export function AutomatizacionNegociosLanding() {
           {HERO.title}
         </h1>
         <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">{HERO.subtitle}</p>
+        <ServiceLandingHeroOffer slug="automatizacion-negocios" />
         <div className="mt-6 flex flex-wrap gap-4">
           <LandingWaCta href={homeSection("#contacto")} main={LANDING_CONSULT_CTA} hideWhatsAppIconMobile />
         </div>

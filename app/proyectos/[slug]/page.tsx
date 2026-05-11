@@ -58,6 +58,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: `${title} | Diego Abad`,
       description: study.seoDescription,
+      ...(ogImage?.[0]
+        ? { images: { url: ogImage[0].url.toString(), alt: ogImage[0].alt ?? title } }
+        : {}),
     },
     robots: { index: true, follow: true },
   };
@@ -106,7 +109,10 @@ export default async function CaseStudyPage({ params }: Props) {
               <h1 className="mt-4 text-3xl font-display font-semibold tracking-tight text-pretty text-foreground md:text-4xl lg:text-[2.35rem] lg:leading-tight">
                 {study.title}
               </h1>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
+              <blockquote className="mt-5 rounded-r-xl border border-primary/15 border-l-[3px] border-l-primary bg-primary/[0.07] px-4 py-3.5 text-base font-medium leading-snug text-pretty text-foreground shadow-[inset_0_1px_0_0_rgb(255_255_255_/0.05)] md:mt-6 md:px-5 md:py-4 md:text-lg md:leading-relaxed">
+                {study.detailHighlight}
+              </blockquote>
+              <p className="mt-5 text-base leading-relaxed text-muted-foreground md:mt-6 md:text-lg">
                 {study.detailLead ?? study.cardSummary}
               </p>
             </header>

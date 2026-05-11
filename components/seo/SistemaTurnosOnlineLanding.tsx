@@ -11,7 +11,9 @@ import {
   landingH2Class,
   type FaqBlock,
 } from "@/components/seo/landing-blocks";
+import { ServiceLandingHeroOffer } from "@/components/seo/ServiceLandingHeroOffer";
 import { EVALUATION_OFFER_FAQ, LANDING_CONSULT_CTA, REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
+import { serviceLandingPriceFaqCallout } from "@/lib/service-landings";
 const CATEGORY = "Turnos online";
 
 const HERO = {
@@ -101,6 +103,7 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
         type: "p",
         text: "Depende del nivel de automatización, integraciones y personalización: no es lo mismo una agenda básica que un sistema conectado con otras herramientas.",
       },
+      { type: "callout", text: serviceLandingPriceFaqCallout("sistema-turnos-online") },
       { type: "p", text: EVALUATION_OFFER_FAQ },
     ],
   },
@@ -189,6 +192,7 @@ export function SistemaTurnosOnlineLanding() {
           {HERO.title}
         </h1>
         <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">{HERO.subtitle}</p>
+        <ServiceLandingHeroOffer slug="sistema-turnos-online" />
         <div className="mt-6 flex flex-wrap gap-4">
           <LandingWaCta
             href={waHref(MSG_HERO)}

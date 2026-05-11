@@ -48,6 +48,8 @@ export type BlogPost = {
   content: readonly BlogContentBlock[];
   /** Enlaces útiles al final (servicios, contacto, WhatsApp) */
   resourceLinks?: readonly { href: string; label: string; external?: boolean }[];
+  /** Sobrescribe titular o texto del CTA final (si falta, usa el default por `topicTrack`). */
+  closingCta?: Partial<{ headline: string; supporting: string }>;
   /** Otro artículo del blog */
   relatedPost?: BlogRelatedPost;
 };

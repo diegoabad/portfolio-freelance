@@ -83,15 +83,15 @@ export function Hero() {
               className="font-display max-w-3xl text-4xl font-semibold leading-[1.1] tracking-tight text-foreground text-pretty sm:text-5xl md:text-6xl lg:text-[3.25rem] xl:text-7xl motion-safe:animate-[hero-nudge-up_0.6s_cubic-bezier(0.22,1,0.36,1)_backwards] motion-reduce:animate-none"
               style={{ animationDelay: "40ms" }}
             >
-              Desarrollo de <span className="text-primary">software</span> a medida para negocios que quieren crecer.
+              Desarrollo de <span className="text-primary">software</span> a medida para clínicas y negocios que quieren crecer.
             </h1>
 
             <p
               className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground md:mt-7 md:text-xl motion-safe:animate-[fade-in-up_0.65s_cubic-bezier(0.22,1,0.36,1)_backwards] motion-reduce:animate-none"
               style={{ animationDelay: "120ms" }}
             >
-              Ayudo a empresas a automatizar procesos, integrar sistemas y construir soluciones que generan{" "}
-              <span className="font-medium text-primary">resultados reales</span>.
+              Te ayudo a automatizar tareas, integrar sistemas y construir soluciones a medida para que ahorres tiempo,
+              reduzcas trabajo manual y optimices costos.
             </p>
 
             <div

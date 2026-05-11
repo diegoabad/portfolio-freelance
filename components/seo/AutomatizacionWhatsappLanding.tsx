@@ -16,8 +16,10 @@ import {
   landingH2Class,
   type FaqBlock,
 } from "@/components/seo/landing-blocks";
+import { ServiceLandingHeroOffer } from "@/components/seo/ServiceLandingHeroOffer";
 import { EVALUATION_OFFER_FAQ, LANDING_CONSULT_CTA } from "@/lib/contact";
 import { homeSection } from "@/lib/home-links";
+import { serviceLandingPriceFaqCallout } from "@/lib/service-landings";
 const CATEGORY = "Bots de WhatsApp";
 
 const RELATED_LINKS = [
@@ -98,6 +100,7 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
         type: "p",
         text: "Depende del nivel de automatización, volumen de mensajes, integraciones (CRM, agenda, etc.) y complejidad del flujo de atención.",
       },
+      { type: "callout", text: serviceLandingPriceFaqCallout("bots-whatsapp") },
       { type: "p", text: EVALUATION_OFFER_FAQ },
     ],
   },
@@ -177,6 +180,7 @@ export function AutomatizacionWhatsappLanding() {
           {HERO.title}
         </h1>
         <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">{HERO.subtitle}</p>
+        <ServiceLandingHeroOffer slug="bots-whatsapp" />
         <div className="mt-6 flex flex-wrap gap-4">
           <LandingWaCta href={homeSection("#contacto")} main={LANDING_CONSULT_CTA} hideWhatsAppIconMobile />
         </div>

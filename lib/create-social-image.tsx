@@ -3,8 +3,10 @@ import path from "path";
 import { ImageResponse } from "next/og";
 import { LOGO_DA_FILE_PATH } from "@/lib/brand-assets";
 
-const W = 1200;
-const H = 630;
+import { SOCIAL_IMAGE_SIZE } from "@/lib/social-image-meta";
+
+const W = SOCIAL_IMAGE_SIZE.width;
+const H = SOCIAL_IMAGE_SIZE.height;
 
 /** Vista previa al compartir en WhatsApp, LinkedIn, X, Slack, etc. */
 export async function createSocialImage() {
@@ -98,4 +100,6 @@ export async function createSocialImage() {
   );
 }
 
-export const socialImageSize = { width: W, height: H };
+export const socialImageSize = SOCIAL_IMAGE_SIZE;
+
+export { SOCIAL_IMAGE_ALT_DEFAULT as DEFAULT_SOCIAL_IMAGE_ALT } from "@/lib/social-image-meta";

@@ -4,7 +4,7 @@ import { CalendarDays, Code2, MessageCircle, Package, Smartphone, Zap } from "lu
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 import { HERO_NAV_CTA_LABEL, PRIMARY_CTA_SUBLINE } from "@/lib/contact";
 import { homeSection } from "@/lib/home-links";
-import { SERVICE_LANDING_PAGES, type ServiceLandingSlug } from "@/lib/service-landings";
+import { SERVICE_LANDING_PAGES, splitHomeCardBadge, type ServiceLandingSlug } from "@/lib/service-landings";
 
 const CARD_ICON: Record<ServiceLandingSlug, LucideIcon> = {
   "bots-whatsapp": MessageCircle,
@@ -20,6 +20,8 @@ type ServiceCard = {
   slug: ServiceLandingSlug;
   title: string;
   desc: string;
+  priceTeaser: string;
+  priceBenefit: string;
   impact: string;
 };
 
@@ -28,6 +30,8 @@ const serviceCards: ServiceCard[] = SERVICE_LANDING_PAGES.map((p) => ({
   slug: p.slug,
   title: p.homePainTitle,
   desc: p.homeCardSubtitle,
+  priceTeaser: p.homeCardPriceTeaser,
+  priceBenefit: p.homeCardPriceBenefit,
   impact: p.homeCardBadge,
 }));
 
@@ -35,6 +39,9 @@ function ServiceIcon({ slug }: { slug: ServiceLandingSlug }) {
   const Icon = CARD_ICON[slug];
   return <Icon className="size-7 shrink-0 text-primary" strokeWidth={2} aria-hidden />;
 }
+
+const chipClass =
+  "inline-flex max-w-full items-center rounded-full border border-primary/25 bg-primary/10 px-2 py-0.5 text-[10px] font-medium leading-tight text-primary/95 md:text-[11px]";
 
 export function Services() {
   return (
@@ -56,19 +63,33 @@ export function Services() {
             <Link
               key={card.href}
               href={card.href}
-              className="group relative block cursor-pointer overflow-hidden rounded-2xl border border-border bg-surface/50 p-5 md:p-6 backdrop-blur transition hover:border-primary/40 hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background [&_*]:cursor-pointer"
-              aria-label={`${card.title} — ir al servicio`}
+              className="group relative flex h-full min-h-[188px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-border bg-surface/50 p-5 md:p-6 backdrop-blur transition hover:border-primary/40 hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background [&_*]:cursor-pointer"
+              aria-label={`${card.title}. ${card.priceTeaser}. ${card.priceBenefit} — ir al servicio`}
             >
               <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-primary/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-              <div className="relative flex flex-col h-full min-h-[188px] md:min-h-0">
-                <ServiceIcon slug={card.slug} />
-                <h3 className="mt-4 md:mt-5 text-lg md:text-xl font-display font-semibold text-foreground group-hover:text-primary transition-colors">
+              <div className="relative flex min-h-0 flex-1 flex-col">
+                <div className="flex items-start gap-3">
+                  <ServiceIcon slug={card.slug} />
+                  <div className="flex min-w-0 flex-1 flex-wrap gap-1.5 content-start pt-0.5">
+                    {splitHomeCardBadge(card.impact).map((kw, i) => (
+                      <span key={`${card.slug}-${i}-${kw}`} className={chipClass}>
+                        {kw}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <h3 className="mt-3 text-lg font-display font-semibold tracking-tight text-foreground transition-colors group-hover:text-primary md:mt-4 md:text-xl">
                   {card.title}
                 </h3>
-                <p className="mt-2 md:mt-2.5 text-sm md:text-[15px] text-muted-foreground leading-relaxed flex-1">{card.desc}</p>
-                <p className="mt-3 md:mt-4 inline-flex w-fit max-w-full rounded-md border border-primary/20 bg-primary/[0.07] px-2.5 py-1 text-[11px] font-medium text-primary leading-snug md:text-xs">
-                  {card.impact}
+                <p className="mt-3 min-h-0 flex-1 text-sm leading-relaxed text-muted-foreground md:mt-4 md:text-[15px]">
+                  {card.desc}
                 </p>
+                <div className="mt-auto shrink-0 pt-2 md:pt-2.5">
+                  <div className="border-t border-border/60 pt-2 md:pt-2.5">
+                    <p className="text-sm font-semibold tabular-nums text-primary md:text-[15px]">{card.priceTeaser}</p>
+                    <p className="mt-1 text-[11px] leading-snug text-muted-foreground md:text-[12px]">{card.priceBenefit}</p>
+                  </div>
+                </div>
               </div>
             </Link>
           ))}

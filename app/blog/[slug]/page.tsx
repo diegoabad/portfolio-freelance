@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Calendar, ChevronLeft, ExternalLink } from "lucide-react";
+import { BlogPostClosingCta } from "@/components/blog/BlogPostClosingCta";
 import { BlogPostContent } from "@/components/blog/BlogPostContent";
 import { BlogTopicChip } from "@/components/blog/BlogTopicChip";
 import { PageShell } from "@/components/site/PageShell";
@@ -103,6 +104,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title,
       description,
+      ...(defaultOgImage ? { images: { url: defaultOgImage, alt: title } } : {}),
     },
     robots: { index: true, follow: true },
   };
@@ -166,6 +168,8 @@ export default async function BlogPostPage({ params }: Props) {
             <div className="prose-blog mt-10 border-t border-border pt-10 md:mt-12 md:pt-12">
               <BlogPostContent blocks={post.content} />
             </div>
+
+            <BlogPostClosingCta track={post.topicTrack} closingCta={post.closingCta} />
           </div>
 
           {post.resourceLinks && post.resourceLinks.length > 0 ? (

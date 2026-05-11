@@ -7,6 +7,21 @@ import { LINKEDIN_PROFILE_URL } from "@/lib/site";
 const aboutActionBtn =
   "inline-flex min-w-0 w-full items-center justify-center gap-2 rounded-[10px] border border-primary/45 bg-primary/[0.09] px-4 py-2.5 text-sm font-semibold text-primary backdrop-blur-sm shadow-[inset_0_1px_0_0_rgb(255_255_255_/0.06)] transition hover:border-primary/80 hover:bg-primary/[0.15] hover:shadow-[0_0_26px_-10px_rgb(82_168_255_/0.42)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
+/** Dos métricas arriba; bloque de foco en salud a todo el ancho debajo. */
+const ABOUT_STATS_NUMERIC = [
+  { figure: "+4", text: "años desarrollando software" },
+  { figure: "+15", text: "proyectos entregados" },
+] as const;
+
+const ABOUT_HEALTH_FOCUS = {
+  title: "Sector salud y automatizaciones",
+  description:
+    "Gran parte de mi trabajo reciente está en instituciones de salud: productos en uso real, integración con equipos clínicos y procesos donde importa la claridad para pacientes y para quienes operan día a día.",
+};
+
+const aboutStatCardClass =
+  "rounded-xl border border-border/70 bg-linear-to-br from-primary/[0.07] via-muted/10 to-transparent px-3.5 py-3 shadow-[inset_0_1px_0_0_rgb(255_255_255_/0.04)] md:px-4 md:py-3.5";
+
 export function About() {
   return (
     <section id="sobre-mi" className="relative py-9 md:py-[72px]">
@@ -61,16 +76,37 @@ export function About() {
                 </p>
                 <p>
                   Además, trabajo de forma independiente ayudando a distintos clientes a digitalizar y automatizar sus
-                  negocios mediante páginas web, sistemas a medida, integraciones, automatizaciones y soluciones con{" "}
+                  negocios mediante sistemas a medida, integraciones, automatizaciones y soluciones con{" "}
                   <span className="text-primary font-medium">inteligencia artificial</span>.
-                </p>
-                <p>
-                  Me enfoco en crear herramientas simples, útiles y adaptadas a cada necesidad, buscando que la tecnología
-                  realmente ayude a ahorrar tiempo, organizar procesos y mejorar la atención al cliente.
                 </p>
               </div>
 
-              <div className="mt-6 md:mt-8 grid w-full max-w-md grid-cols-2 gap-3">
+              <div
+                className="mt-6 grid w-full grid-cols-2 gap-3 md:mt-7 md:gap-3.5"
+                role="group"
+                aria-label="Trayectoria y foco"
+              >
+                {ABOUT_STATS_NUMERIC.map((item) => (
+                  <div key={item.figure} className={aboutStatCardClass}>
+                    <p className="font-display text-2xl font-semibold tabular-nums tracking-tight text-primary md:text-[1.65rem] md:leading-none">
+                      {item.figure}
+                    </p>
+                    <p className="mt-1.5 text-[11px] leading-snug text-muted-foreground md:text-xs md:leading-snug">
+                      {item.text}
+                    </p>
+                  </div>
+                ))}
+                <div className={`${aboutStatCardClass} col-span-2 md:px-5 md:py-4`}>
+                  <p className="font-display text-[15px] font-semibold tracking-tight text-primary md:text-base">
+                    {ABOUT_HEALTH_FOCUS.title}
+                  </p>
+                  <p className="mt-2 text-xs leading-relaxed text-muted-foreground md:text-sm md:leading-relaxed">
+                    {ABOUT_HEALTH_FOCUS.description}
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-5 grid w-full grid-cols-2 gap-3 md:mt-7">
                 <a
                   href={LINKEDIN_PROFILE_URL}
                   target="_blank"

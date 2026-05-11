@@ -17,8 +17,12 @@ export type CaseStudy = {
   navShortLabel: string;
   /** Resumen corto para la card del home (sin competir con la página completa). */
   cardSummary: string;
+  /** Ventajas breves en la card del home (chips compactos). */
+  cardChips: readonly string[];
   /** Párrafo bajo el título en `/proyectos/[slug]`; si no hay, se usa `cardSummary`. */
   detailLead?: string;
+  /** Frase de valor destacada en el detalle del caso (entre título y párrafo largo). */
+  detailHighlight: string;
   /** Meta description / OG. */
   seoDescription: string;
   problem: string;
@@ -35,8 +39,11 @@ export const caseStudies: readonly CaseStudy[] = [
     navShortLabel: "INECO · app pacientes",
     cardSummary:
       "Fidelizar al paciente y darle autonomía: turnos en autogestión, pedidos de recetas digitales con su profesional de confianza y un cronograma de actividades entre consultas.",
+    cardChips: ["Menos carga en recepción", "Turnos en autogestión", "Pacientes más autónomos"],
     detailLead:
       "La app acompaña al paciente fuera del consultorio: concentra reservas y reprogramaciones, canaliza los pedidos de receta hacia el profesional que ya lo atiende y ordena qué hacer día a día con un cronograma de actividades alineado al plan de cuidado — menos idas y vueltas y una experiencia más continua con la institución.",
+    detailHighlight:
+      "Más autonomía para pacientes y menos tareas manuales para el equipo.",
     seoDescription:
       "Caso INECO: aplicación móvil para pacientes — autogestión de turnos, recetas digitales con el profesional de confianza y cronograma de actividades para mejorar adherencia y vínculo.",
     problem:
@@ -59,8 +66,10 @@ export const caseStudies: readonly CaseStudy[] = [
     navShortLabel: "Cotilink",
     cardSummary:
       "Del armado del presupuesto al seguimiento comercial: visto, aceptado o rechazado, con un mini CRM por oportunidad y acciones para recuperar presupuestos que se enfriaron.",
+    cardChips: ["Seguimiento comercial", "Presupuestos centralizados", "Menos seguimiento manual"],
     detailLead:
       "La propuesta nace y vive en la web: el equipo arma líneas, versiones y envíos; el cliente ve el presupuesto en contexto y el sistema registra cada paso. Estados claros (visto, aceptado, rechazado), un tablero liviano tipo mini CRM para priorizar seguimiento y disparadores pensados para volver a contactar cuando el trato queda colgado — sin depender de PDFs sueltos ni del “a ver si me contesta”.",
+    detailHighlight: "Menos seguimiento manual y más control sobre cada presupuesto enviado.",
     seoDescription:
       "Caso Cotilink: presupuestos digitales con seguimiento (visto, aceptado, rechazado), mini CRM comercial y foco en recuperar oportunidades estancadas.",
     problem:
@@ -84,8 +93,10 @@ export const caseStudies: readonly CaseStudy[] = [
     navShortLabel: "Bot WhatsApp",
     cardSummary:
       "Bot con o sin IA que responde FAQs de la clínica y enruta intenciones (facturas, turnos, reclamos) a un panel que guarda todo por tipo de consulta — con historial útil para mejorar mensajes y campañas según lo que más preguntan.",
+    cardChips: ["Respuestas automáticas", "Menos consultas repetitivas", "Integración con agendas"],
     detailLead:
       "Se arma un asistente en WhatsApp alineado al protocolo de la institución: puede operar con reglas fijas o con IA según el caso, contesta preguntas frecuentes con criterio y detecta intenciones configurables — pedir facturas, sacar turnos, canal de quejas u otras — que aterrizan en una plataforma donde queda organizada la información por intención. Además se registran interacciones y motivos de consulta para ver patrones (qué se pregunta, en qué horarios, qué se corta) y alimentar comunicación institucional o piezas de difusión con datos reales, siempre con foco en buenas prácticas y consentimiento donde aplique.",
+    detailHighlight: "Menos consultas repetitivas y respuestas más rápidas para los pacientes.",
     seoDescription:
       "Caso bot WhatsApp para clínicas: FAQs, intenciones (facturas, turnos, quejas), panel por tipo de consulta y métricas para orientar comunicación y campañas.",
     problem:
@@ -103,8 +114,11 @@ export const caseStudies: readonly CaseStudy[] = [
     navShortLabel: "INECO · informes IA",
     cardSummary:
       "Notas ordenadas por voz o texto con plantillas de consulta; la IA arma el informe respetando lineamientos generales y un prompt definido por el profesional (secciones, extensión y tono).",
+    cardChips: ["Menos tiempo administrativo", "Informes asistidos por IA", "Voz a texto"],
     detailLead:
       "Desarrollada para INECO, la plataforma guía al equipo a capturar la consulta con método: el tomador de notas admite dictado y texto, y ofrece distintas plantillas para estructurar la entrevista según el tipo de encuentro. Toda esa información se vuelca a un motor de IA que combina políticas institucionales generales con un prompt parametrizable por los propios profesionales — así el borrador respeta el esquema deseado (secciones, largo, tono clínico-administrativo o más breve) y queda listo para revisión humana antes de salir.",
+    detailHighlight:
+      "Reducción del tiempo administrativo en la generación de informes clínicos.",
     seoDescription:
       "Caso INECO: informes clínicos con IA — notas por voz y texto, plantillas de consulta, lineamientos generales y prompt profesional para controlar secciones, extensión y tono del informe.",
     problem:
@@ -126,8 +140,10 @@ export const caseStudies: readonly CaseStudy[] = [
     navShortLabel: "Hablán",
     cardSummary:
       "Actividades para que el paciente practique en casa: cada profesional arma su plan eligiendo tipos de ejercicio (memoria, palabra–imagen, identificación, etc.) sin rediseñar todo desde cero cada vez.",
+    cardChips: ["Reutilización de actividades", "Seguimiento del paciente", "Menos trabajo repetitivo"],
     detailLead:
       "Hablán apunta a la práctica entre sesiones: el profesional crea y asigna actividades pensadas para el hogar, a partir de un catálogo de formatos interactivos — por ejemplo tareas de memoria, asociación palabra–imagen, reconocimiento de términos u otros esquemas que el equipo elige según el objetivo terapéutico. Así el paciente entrena con ejercicios guiados fuera del consultorio y el especialista conserva control sobre qué se envía y con qué intensidad.",
+    detailHighlight: "Menos tiempo preparando actividades y más continuidad para el paciente.",
     seoDescription:
       "Caso Hablán: plataforma de actividades cognitivas para el hogar — el profesional crea tareas y elige tipos de ejercicio (memoria, palabra–imagen, identificación).",
     problem:
@@ -150,8 +166,10 @@ export const caseStudies: readonly CaseStudy[] = [
     navShortLabel: "Cogniare",
     cardSummary:
       "Agenda digital, historia clínica del paciente, espacio de intercambio tipo blog entre colegas, adjuntos y registro de diagnósticos — todo integrado para el consultorio.",
+    cardChips: ["Historia clínica centralizada", "Agenda integrada", "Menos información dispersa"],
     detailLead:
       "Cogniare apunta a quienes atienden en salud mental y afines: ofrece agenda online, seguimiento del paciente en una historia unificada, un canal tipo blog para que los profesionales compartan contenido o novedades entre pares, guardado ordenado de archivos (estudios, consentimientos, informes) y flujos para documentar diagnósticos y evolución sin saltar entre cuatro aplicaciones distintas.",
+    detailHighlight: "Menos información dispersa y más organización para el equipo.",
     seoDescription:
       "Caso Cogniare: plataforma para profesionales de la salud — agenda digital, historia del paciente, blog entre profesionales, archivos y diagnósticos.",
     problem:

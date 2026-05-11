@@ -10,7 +10,9 @@ import {
   landingH2Class,
   type FaqBlock,
 } from "@/components/seo/landing-blocks";
+import { ServiceLandingHeroOffer } from "@/components/seo/ServiceLandingHeroOffer";
 import { EVALUATION_OFFER_FAQ, LANDING_CONSULT_CTA, REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
+import { serviceLandingPriceFaqCallout } from "@/lib/service-landings";
 const CATEGORY = "Gestión de inventario";
 
 const HERO = {
@@ -96,6 +98,7 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
         type: "p",
         text: "Depende del nivel de personalización, integraciones (ventas, facturación, depósitos), volumen de productos y movimientos.",
       },
+      { type: "callout", text: serviceLandingPriceFaqCallout("sistema-gestion-inventario") },
       { type: "p", text: EVALUATION_OFFER_FAQ },
     ],
   },
@@ -138,6 +141,7 @@ export function SistemaGestionInventarioLanding() {
           {HERO.title}
         </h1>
         <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">{HERO.subtitle}</p>
+        <ServiceLandingHeroOffer slug="sistema-gestion-inventario" />
         <div className="mt-6 flex flex-wrap gap-4">
           <LandingWaCta
             href={waHref(MSG_HERO)}

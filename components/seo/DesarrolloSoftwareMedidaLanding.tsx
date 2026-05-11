@@ -10,7 +10,9 @@ import {
   landingH2Class,
   type FaqBlock,
 } from "@/components/seo/landing-blocks";
+import { ServiceLandingHeroOffer } from "@/components/seo/ServiceLandingHeroOffer";
 import { EVALUATION_OFFER_FAQ, LANDING_CONSULT_CTA, REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
+import { serviceLandingPriceFaqCallout } from "@/lib/service-landings";
 const CATEGORY = "Software a medida";
 
 const HERO = {
@@ -93,6 +95,7 @@ const FAQ_ITEMS: { q: string; blocks: FaqBlock[] }[] = [
         type: "p",
         text: "Depende del alcance, funcionalidades, integraciones y nivel de complejidad. No es lo mismo una herramienta simple que un sistema completo con múltiples módulos.",
       },
+      { type: "callout", text: serviceLandingPriceFaqCallout("desarrollo-software-medida") },
       { type: "p", text: EVALUATION_OFFER_FAQ },
     ],
   },
@@ -155,6 +158,7 @@ export function DesarrolloSoftwareMedidaLanding() {
           {HERO.title}
         </h1>
         <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">{HERO.subtitle}</p>
+        <ServiceLandingHeroOffer slug="desarrollo-software-medida" />
         <div className="mt-6 flex flex-wrap gap-4">
           <LandingWaCta
             href={waHref(MSG_HERO)}

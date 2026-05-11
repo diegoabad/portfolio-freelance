@@ -2,6 +2,10 @@ import Link from "next/link";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import { caseStudies } from "@/lib/case-studies";
 
+/** Misma escala visual que los chips de la sección Servicios. */
+const caseStudyChipClass =
+  "inline-flex max-w-full items-center rounded-full border border-primary/25 bg-primary/10 px-2 py-0.5 text-[10px] font-medium leading-tight text-primary/95 md:text-[11px]";
+
 export function Projects() {
   const total = caseStudies.length;
 
@@ -27,7 +31,7 @@ export function Projects() {
               key={p.slug}
               href={`/proyectos/${p.slug}`}
               aria-label={`Ver caso de éxito: ${p.title}`}
-              className="group relative flex min-h-[220px] flex-col overflow-hidden rounded-2xl border-2 border-border bg-linear-to-br from-primary/[0.07] via-background/90 to-background/70 p-6 shadow-[0_12px_40px_-24px_rgba(0,0,0,0.45)] backdrop-blur-md transition duration-300 hover:border-primary/50 hover:shadow-[0_20px_48px_-20px_oklch(0.55_0.14_250/0.22)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:min-h-0 sm:p-7 md:p-8 **:cursor-pointer"
+              className="group relative flex min-h-[240px] flex-col overflow-hidden rounded-2xl border-2 border-border bg-linear-to-br from-primary/[0.07] via-background/90 to-background/70 p-6 shadow-[0_12px_40px_-24px_rgba(0,0,0,0.45)] backdrop-blur-md transition duration-300 hover:border-primary/50 hover:shadow-[0_20px_48px_-20px_oklch(0.55_0.14_250/0.22)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:min-h-0 sm:p-7 md:p-8 [&_*]:cursor-pointer"
             >
               {/* Halo decorativo (misma idea que cards de servicios) */}
               <div
@@ -56,7 +60,18 @@ export function Projects() {
                   {p.title}
                 </h3>
 
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground md:text-[15px] md:leading-relaxed">
+                <ul
+                  className="mt-2.5 flex list-none flex-wrap gap-1.5 content-start md:mt-3"
+                  aria-label="Ventajas destacadas del proyecto"
+                >
+                  {p.cardChips.map((chip, ci) => (
+                    <li key={`${p.slug}-${ci}-${chip}`}>
+                      <span className={caseStudyChipClass}>{chip}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground md:mt-3.5 md:text-[15px] md:leading-relaxed">
                   {p.cardSummary}
                 </p>
 

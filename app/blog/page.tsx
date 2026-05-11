@@ -44,6 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${title} | Diego Abad`,
     description,
+    ...(blogOgImage ? { images: { url: blogOgImage, alt: `${title} | Diego Abad` } } : {}),
   },
   robots: { index: true, follow: true },
 };
