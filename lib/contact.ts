@@ -1,5 +1,5 @@
 export const WHATSAPP_NUMBER = "541141499723";
-export const CONTACT_EMAIL = "diegoabad.2289@gmail.com";
+export const CONTACT_EMAIL = "contacto@diegoabad.com";
 
 /** `nofollow` reduce rastreos masivos a wa.me (auditores suelen marcar 429 como “enlace roto”). */
 export const REL_WHATSAPP_EXTERNAL = "nofollow noreferrer noopener" as const;

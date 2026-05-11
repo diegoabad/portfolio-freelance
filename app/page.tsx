@@ -61,11 +61,11 @@ const BlogSection = dynamic(() => import("@/components/site/BlogSection").then((
         <div className="h-4 w-24 rounded bg-muted/35 animate-pulse" />
         <div className="mt-4 h-11 max-w-sm rounded-lg bg-muted/30 animate-pulse md:h-12 md:max-w-md" />
         <div className="mt-3 h-14 max-w-2xl rounded-lg bg-muted/20 animate-pulse" />
-        <div className="mt-10 grid gap-4 md:gap-5 lg:grid-cols-3">
-          {[0, 1, 2].map((k) => (
+        <div className="mt-10 flex gap-5 overflow-hidden pb-2">
+          {[0, 1].map((k) => (
             <div
               key={k}
-              className="min-h-[220px] rounded-2xl border border-border bg-background/40 animate-pulse md:min-h-[240px]"
+              className="min-h-[200px] w-full min-w-full shrink-0 rounded-2xl border border-border bg-background/40 animate-pulse md:min-h-[210px] md:w-[calc((100%-1.25rem)/2)] md:min-w-[calc((100%-1.25rem)/2)]"
             />
           ))}
         </div>

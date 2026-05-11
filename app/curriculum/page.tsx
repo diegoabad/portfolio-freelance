@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CvMobileContactHints } from "@/app/curriculum/CvMobileContactHints";
+import { CONTACT_EMAIL } from "@/lib/contact";
 import { getSiteUrl, LINKEDIN_PROFILE_URL } from "@/lib/site";
 
 const cvDescription =
@@ -104,9 +105,9 @@ export default function CurriculumPage() {
             </span>
             <a
               className="contact-item"
-              href="mailto:diegoabad.2289@gmail.com"
-              aria-label="Enviar email a diegoabad.2289@gmail.com"
-              title="diegoabad.2289@gmail.com"
+              href={`mailto:${CONTACT_EMAIL}`}
+              aria-label={`Enviar email a ${CONTACT_EMAIL}`}
+              title={CONTACT_EMAIL}
             >
               <svg
                 viewBox="0 0 24 24"
@@ -120,7 +121,7 @@ export default function CurriculumPage() {
                 <rect x="2" y="4" width="20" height="16" rx="2" />
                 <path d="m22 7-10 6L2 7" />
               </svg>
-              <span className="contact-label">diegoabad.2289@gmail.com</span>
+              <span className="contact-label">{CONTACT_EMAIL}</span>
             </a>
             <a
               className="contact-item"

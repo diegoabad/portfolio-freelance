@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { BlogPostCard } from "@/components/blog/BlogPostCard";
+import { BlogIndexListing } from "@/components/blog/BlogIndexListing";
 import { PageShell } from "@/components/site/PageShell";
 import { blogPostsSorted } from "@/lib/blog-posts";
 import { getSiteUrl } from "@/lib/site";
@@ -64,11 +64,7 @@ export default function BlogIndexPage() {
             </p>
           </header>
 
-          <div className="mt-12 md:mt-14 grid gap-4 md:gap-5 lg:grid-cols-2" aria-label="Entradas del blog">
-            {blogPostsSorted.map((post) => (
-              <BlogPostCard key={post.slug} post={post} headingLevel="h2" />
-            ))}
-          </div>
+          <BlogIndexListing posts={blogPostsSorted} />
         </div>
       </main>
     </PageShell>

@@ -148,10 +148,10 @@ export default async function BlogPostPage({ params }: Props) {
               <span className="text-muted-foreground/90">{slug}</span>
             </nav>
             <header>
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-muted-foreground">
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted-foreground">
                 <BlogTopicChip track={post.topicTrack} />
-                <time className="inline-flex items-center gap-1.5 tabular-nums" dateTime={post.publishedAt}>
-                  <Calendar className="h-3.5 w-3.5 shrink-0 text-primary/70" aria-hidden />
+                <time className="inline-flex items-center gap-1.5 tabular-nums leading-none" dateTime={post.publishedAt}>
+                  <Calendar className="h-[1em] w-[1em] shrink-0 text-primary/70" aria-hidden />
                   Publicado el {formatBlogDate(post.publishedAt)}
                 </time>
               </div>
