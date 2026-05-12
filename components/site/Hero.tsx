@@ -41,19 +41,29 @@ export function Hero() {
         className="pointer-events-none absolute inset-y-0 right-0 z-1 left-[28%] sm:left-[34%] md:left-[38%] lg:left-[40%] xl:left-[42%]"
         aria-hidden
       >
+        {/**
+         * Móvil (viewport &lt; md): sin hero-decor.png — suele ser LCP con mucho retraso de renderizado.
+         * Brillo radial liviano; desktop sin cambios.
+         */}
         <div
-          className="absolute inset-0 opacity-[0.28] max-md:opacity-[0.21] mask-[linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.2)_12%,rgba(0,0,0,0.65)_32%,black_52%,black_88%,rgba(0,0,0,0.35)_100%),linear-gradient(to_bottom,black_0%,black_58%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.2)_12%,rgba(0,0,0,0.65)_32%,black_52%,black_88%,rgba(0,0,0,0.35)_100%),linear-gradient(to_bottom,black_0%,black_58%,transparent_100%)] mask-intersect [-webkit-mask-composite:source-in] mask-[100%_100%,100%_100%]"
-        >
-          <Image
-            src={HERO_DECOR_SRC}
-            alt=""
-            fill
-            priority
-            fetchPriority="high"
-            quality={68}
-            className="object-cover object-[52%_44%] sm:object-[48%_48%] md:object-[6%_56%] lg:object-[4%_55%]"
-            sizes="(max-width:767px) 72vw, (max-width:1536px) 42vw, 680px"
-          />
+          className="absolute inset-0 opacity-[0.22] md:hidden bg-[radial-gradient(ellipse_90%_70%_at_78%_36%,color-mix(in_oklab,var(--primary)_38%,transparent),transparent_62%),linear-gradient(to_right,transparent,rgba(0,0,0,0.12)_35%,transparent)]"
+          aria-hidden
+        />
+        <div className="absolute inset-0 hidden md:block">
+          <div
+            className="absolute inset-0 opacity-[0.28] mask-[linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.2)_12%,rgba(0,0,0,0.65)_32%,black_52%,black_88%,rgba(0,0,0,0.35)_100%),linear-gradient(to_bottom,black_0%,black_58%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.2)_12%,rgba(0,0,0,0.65)_32%,black_52%,black_88%,rgba(0,0,0,0.35)_100%),linear-gradient(to_bottom,black_0%,black_58%,transparent_100%)] mask-intersect [-webkit-mask-composite:source-in] mask-[100%_100%,100%_100%]"
+          >
+            <Image
+              src={HERO_DECOR_SRC}
+              alt=""
+              fill
+              priority
+              fetchPriority="high"
+              quality={68}
+              className="object-cover object-[52%_44%] sm:object-[48%_48%] md:object-[6%_56%] lg:object-[4%_55%]"
+              sizes="(max-width:1536px) 42vw, 680px"
+            />
+          </div>
         </div>
         <div
           className="absolute inset-0 bg-[linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.3)_28%,rgba(0,0,0,0.45)_55%,rgba(0,0,0,0.38)_100%)]"
