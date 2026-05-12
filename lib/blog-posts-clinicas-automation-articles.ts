@@ -28,12 +28,9 @@ export const clinicasAutomationBlogArticles: BlogPost[] = [
         "Enfoque en modernización, integración de sistemas médicos e IA aplicada a la operación de centros de salud.",
     },
     resourceLinks: [
-      { href: "/software-para-clinicas", label: "Aplicaciones móviles" },
+      { href: "/software-para-clinicas", label: "Software para clínicas" },
       { href: "/automatizacion-procesos-clinicas", label: "Automatización de procesos" },
       { href: "/sistema-turnos-online", label: "Sistema de turnos online" },
-      { href: "/bots-whatsapp", label: "Bots de WhatsApp" },
-      { href: "/desarrollo-software-medida", label: "Desarrollo a medida" },
-      { href: "/blog/turnos-whatsapp-ausentismo-clinicas-argentina-2026", label: "Blog: turnos y ausentismo" },
       { href: "/#contacto", label: "Contacto" },
       { href: WA_CLINICAS, label: "WhatsApp", external: true },
     ],
@@ -47,15 +44,13 @@ export const clinicasAutomationBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Ahí la automatización no es ‘comprar IA’: es definir una fuente de verdad (¿el turno atendido manda? ¿la prestación cargada por el médico?) y hacer que el resto sea derivación de datos con reglas. Lo que no automatizás es el juicio clínico; automatizás el copy-paste entre ",
-          { href: "/sistema-turnos-online", label: "agenda" },
-          ", módulo administrativo y facturación.",
+          "Ahí la automatización no es ‘comprar IA’: es definir una fuente de verdad (¿el turno atendido manda? ¿la prestación cargada por el médico?) y hacer que el resto sea derivación de datos con reglas. Lo que no automatizás es el juicio clínico; automatizás el copy-paste entre agenda, módulo administrativo y facturación cuando esos tres ya hablan del mismo paciente y del mismo código de prestación.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Si querés el marco más amplio de modernización, leé ",
+          "Si querés el mapa más amplio de modernización y fases, leé ",
           {
             href: "/blog/transformacion-digital-clinicas-automatizacion-gestion-medica",
             label: "transformación digital en clínicas",
@@ -72,68 +67,43 @@ export const clinicasAutomationBlogArticles: BlogPost[] = [
       },
       { type: "h2", id: "procesos", text: "Tres frentes donde suele estar el ROI" },
       {
-        type: "h3",
-        id: "facturacion",
-        text: "Facturación y liquidaciones",
-      },
-      {
         type: "paragraph",
         segments: [
-          "Catálogo de prestaciones limpio, reglas de quién factura qué y exportación controlada al contador. Si el catálogo es un desastre, automatizar solo acelera el desastre: primero datos, después ",
-          { href: "/automatizacion-procesos-clinicas", label: "flujos" },
-          ".",
+          "Facturación y liquidaciones: catálogo de prestaciones limpio, reglas de quién factura qué y exportación controlada al contador. Si el catálogo es un desastre, automatizar solo acelera el desastre: primero datos, después flujos entre sistemas.",
         ],
       },
-      { type: "h3", id: "historias", text: "Historia y documentación (sin fantasía)" },
       {
         type: "paragraph",
         segments: [
-          "Centralizar plantillas, adjuntos y permisos reduce papel y idas y vueltas. IA para resumir notas administrativas o clasificar PDFs puede entrar después, con revisión humana y trazabilidad — nunca como ‘diagnóstico por chat’.",
+          "Historia y documentación: centralizar plantillas, adjuntos y permisos reduce papel y idas y vueltas. IA para resumir notas administrativas o clasificar PDFs puede entrar después, con revisión humana — nunca como ‘diagnóstico por chat’.",
         ],
       },
-      { type: "h3", id: "formularios", text: "Formularios y autorizaciones" },
       {
         type: "paragraph",
         segments: [
-          "Un solo lugar donde el paciente carga datos y esos datos alimentan agenda y administración, en lugar de tres formularios que nadie unifica.",
+          "Formularios y autorizaciones: un solo lugar donde el paciente carga datos y esos datos alimentan agenda y administración, en lugar de tres formularios que nadie unifica.",
         ],
       },
       { type: "h2", id: "integracion", text: "Integración real" },
       {
         type: "paragraph",
         segments: [
-          "APIs, webhooks o herramientas tipo n8n sirven cuando hay sistemas heterogéneos y un equipo que puede operar alertas. Si el stack es tan raro que ningún conector existe, ahí aparece ",
-          { href: "/desarrollo-software-medida", label: "desarrollo a medida" },
-          " en la capa de integración, no necesariamente reescribir todo.",
+          "APIs, webhooks o orquestadores sirven cuando hay sistemas heterogéneos y un equipo que puede operar alertas. Si el stack es tan raro que ningún conector existe, una capa de integración o desarrollo acotado en el medio suele ser más barato que reescribir todo el día uno.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Para turnos y confirmación por canal, el post ",
-          { href: "/blog/turnos-whatsapp-ausentismo-clinicas-argentina-2026", label: "turnos y ausentismo" },
-          " complementa esto con foco en paciente.",
+          "Para turnos, confirmación y ausentismo en el canal del paciente, el post ",
+          { href: "/blog/turnos-whatsapp-ausentismo-clinicas-argentina-2026", label: "turnos y ausentismo con WhatsApp" },
+          " complementa esto.",
         ],
       },
       { type: "h2", id: "conclusion", text: "Conclusión" },
       {
         type: "paragraph",
         segments: [
-          "Medí horas antes de pedir features: si no podés cuantificar el retrabajo, vas a comprar software por ansiedad. Cuando tenés número, el alcance se escribe solo.",
-        ],
-      },
-      {
-        type: "paragraph",
-        segments: [
-          "Para charlar tu caso: ",
-          { href: "/#contacto", label: "contacto" },
-          " o ",
-          { href: WA_CLINICAS, label: "WhatsApp", external: true },
-          ". Las landings de ",
-          { href: "/software-para-clinicas", label: "apps para clínicas" },
-          " y ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatización" },
-          " están en los enlaces del lateral.",
+          "Medí horas antes de pedir features: si no podés cuantificar el retrabajo, vas a comprar software por ansiedad. Cuando tenés número, el alcance se escribe solo. Para charlar tu caso usá el contacto del sitio o el WhatsApp de la caja de enlaces útiles más abajo.",
         ],
       },
       {
@@ -142,22 +112,22 @@ export const clinicasAutomationBlogArticles: BlogPost[] = [
           {
             question: "¿Qué tareas administrativas se pueden automatizar en una clínica?",
             answer:
-              "Entre otras: facturación y liquidaciones de profesionales, reportes, carga y validación de datos de pacientes, autorizaciones, cruces con laboratorio y comunicación de turnos (por ejemplo con WhatsApp). El alcance depende de sistemas actuales y normativa aplicable.",
+              "Las repetibles con regla clara: cruces agenda–prestación–facturación, reportes que hoy son pivot manual, validaciones de datos y avisos de estado. Lo que requiere criterio clínico no se ‘automatiza’ con un toggle.",
           },
           {
             question: "¿La automatización médica ayuda a reducir errores?",
             answer:
-              "Sí, cuando se reduce la carga manual y se define una fuente de verdad. Menos copiar y pegar entre planillas suele traducirse en menos inconsistencias y más trazabilidad.",
+              "Sí cuando hay una sola fuente de verdad y menos copiar/pegar entre planillas. No reemplaza responsabilidad sobre los datos.",
           },
           {
             question: "¿Las automatizaciones sirven para clínicas pequeñas?",
             answer:
-              "Sí. Incluso consultorios chicos suelen beneficiarse al ordenar turnos, recordatorios y tareas repetitivas antes de que el volumen los desborde.",
+              "Sí: muchas veces el impacto aparece antes del ‘gran hospital’, porque pocas personas concentran todo el retrabajo.",
           },
           {
             question: "¿Qué beneficios tiene digitalizar historias clínicas?",
             answer:
-              "Acceso más rápido a la información, menos papel, mejor coordinación entre profesionales y administración, y base para integraciones y reportes — siempre respetando seguridad y consentimientos.",
+              "Menos papel, acceso con permiso y auditoría, y base para integrar con administración — siempre con consentimiento y normativa aplicable.",
           },
         ],
       },
@@ -182,12 +152,9 @@ export const clinicasAutomationBlogArticles: BlogPost[] = [
         "Guía operativa: facturación de profesionales, historias clínicas, reportes e integraciones para el día a día.",
     },
     resourceLinks: [
-      { href: "/software-para-clinicas", label: "Aplicaciones móviles" },
+      { href: "/software-para-clinicas", label: "Software para clínicas" },
       { href: "/automatizacion-procesos-clinicas", label: "Automatización de procesos" },
       { href: "/sistema-turnos-online", label: "Sistema de turnos online" },
-      { href: "/bots-whatsapp", label: "Bots de WhatsApp" },
-      { href: "/desarrollo-software-medida", label: "Desarrollo a medida" },
-      { href: "/blog/como-automatizar-tareas-administrativas-clinicas", label: "Blog: tareas administrativas" },
       { href: "/#contacto", label: "Contacto" },
       { href: WA_CLINICAS, label: "WhatsApp", external: true },
     ],
@@ -206,7 +173,7 @@ export const clinicasAutomationBlogArticles: BlogPost[] = [
             href: "/blog/como-automatizar-tareas-administrativas-clinicas",
             label: "cómo automatizar tareas administrativas en clínicas",
           },
-          ". Acá te dejo fases que uso cuando entro a una institución que ya tiene software… pero sigue viviendo en Excel.",
+          ". Acá van fases que uso cuando la institución ya pagó software pero sigue viviendo en Excel.",
         ],
       },
       { type: "h2", id: "problemas", text: "Síntomas de mapa roto" },
@@ -222,20 +189,14 @@ export const clinicasAutomationBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "1) Inventario de sistemas y dueños de dato. 2) Una integración que duela poco y se note (ej. turno confirmado → estado visible en administración). 3) Recién ahí capas de ",
-          { href: "/bots-whatsapp", label: "WhatsApp" },
-          ", ",
-          { href: "/sistema-turnos-online", label: "agenda online" },
-          " más ambiciosa o IA administrativa. Saltarse la 1 es tirar plata.",
+          "1) Inventario de sistemas y dueños de dato. 2) Una integración que duela poco y se note (ej. turno confirmado → estado visible en administración). 3) Recién ahí canales tipo WhatsApp, agenda más ambiciosa o IA administrativa. Saltarse la 1 es tirar plata: el bot o el dashboard solo maquillan la misma incoherencia.",
         ],
       },
       { type: "h2", id: "facturacion-medica", text: "Facturación y prestaciones" },
       {
         type: "paragraph",
         segments: [
-          "El cuello suele ser catálogo y reglas de liquidación, no ‘falta de botón’. Automatizar facturación médica sin limpiar códigos y responsables es como automatizar un incendio. Cuando el catálogo respira, ",
-          { href: "/automatizacion-procesos-clinicas", label: "flujos de automatización" },
-          " entre módulos bajan retrabajo real.",
+          "El cuello suele ser catálogo y reglas de liquidación, no ‘falta de botón’. Automatizar facturación médica sin limpiar códigos y responsables es como automatizar un incendio. Cuando el catálogo respira, los flujos entre módulos bajan retrabajo real.",
         ],
       },
       { type: "h2", id: "digitalizacion-hc", text: "Historia clínica y compliance" },
@@ -249,32 +210,22 @@ export const clinicasAutomationBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Cuando el stack es heterogéneo, las APIs y webhooks pagan el almuerzo. Si dos vendors no se hablan y el negocio no puede esperar años de roadmap, una capa de integración o ",
-          { href: "/desarrollo-software-medida", label: "desarrollo a medida" },
-          " acotado suele ser más barato que pelear con ambos proveedores.",
+          "Cuando el stack es heterogéneo, las APIs y webhooks pagan el almuerzo. Si dos vendors no se hablan y el negocio no puede esperar años de roadmap, una capa de integración acotada suele ser más barata que pelear con ambos proveedores o que prometer un ‘big bang’ de reemplazo.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Paciente: si el dolor es ausentismo y recordatorios, mirá ",
+          "Si el dolor visible es ausentismo y recordatorios, el artículo sobre ",
           { href: "/blog/turnos-whatsapp-ausentismo-clinicas-argentina-2026", label: "turnos y WhatsApp" },
-          ".",
+          " va directo al paciente.",
         ],
       },
       { type: "h2", id: "software-gestion", text: "Próximo paso" },
       {
         type: "paragraph",
         segments: [
-          "Las landings de ",
-          { href: "/software-para-clinicas", label: "apps para clínicas" },
-          " y ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatización de procesos" },
-          " están enlazadas al costado. Si querés que mire tu mapa de datos antes de vender humo, ",
-          { href: "/#contacto", label: "contacto" },
-          " o ",
-          { href: WA_CLINICAS, label: "WhatsApp", external: true },
-          ".",
+          "Si querés que mire tu mapa de datos antes de vender humo, escribime por el contacto del sitio o por el WhatsApp de la caja de enlaces útiles más abajo.",
         ],
       },
       {
@@ -283,22 +234,22 @@ export const clinicasAutomationBlogArticles: BlogPost[] = [
           {
             question: "¿Qué tareas administrativas se pueden automatizar en una clínica?",
             answer:
-              "Facturación y liquidaciones, reportes, documentación y cargas de pacientes, validaciones, integraciones con laboratorio y comunicación de turnos, entre otras, según sistemas y normativa.",
+              "Las que tienen regla y origen de dato claro: cruces entre agenda y facturación, reportes repetitivos, validaciones y avisos de estado. El resto es consultoría de proceso, no licencias.",
           },
           {
             question: "¿La automatización médica ayuda a reducir errores?",
             answer:
-              "Sí, especialmente al eliminar duplicación manual y definir reglas y fuentes de verdad. No elimina la responsabilidad clínica ni legal sobre los datos.",
+              "Sí cuando baja el copy-paste y hay fuente de verdad. No elimina responsabilidad clínica ni legal.",
           },
           {
             question: "¿Qué beneficios tiene digitalizar historias clínicas?",
             answer:
-              "Acceso más rápido, menos papel, mejor coordinación y base para reportes e integraciones, con el debido control de accesos y auditoría.",
+              "Acceso con permiso, menos papel, auditoría y base para reportes — con control de accesos explícito.",
           },
           {
             question: "¿Las automatizaciones sirven para clínicas pequeñas?",
             answer:
-              "Sí: muchas veces el mayor impacto está en consultorios que están en el punto de inflexión entre “lo resolvemos a mano” y “ya no damos abasto”.",
+              "Sí: muchas veces el mayor impacto está cuando el equipo chico ya no da abasto con planillas.",
           },
         ],
       },

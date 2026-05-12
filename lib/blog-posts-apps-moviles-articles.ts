@@ -26,11 +26,8 @@ export const appsMovilesBlogArticles: BlogPost[] = [
       description: "Enfoque en beneficios, portal de pacientes, IA y nativa vs multiplataforma.",
     },
     resourceLinks: [
-      { href: "/software-para-clinicas", label: "Aplicaciones móviles (servicio)" },
+      { href: "/software-para-clinicas", label: "Software para clínicas" },
       { href: "/sistema-turnos-online", label: "Sistema de turnos online" },
-      { href: "/bots-whatsapp", label: "Bots de WhatsApp" },
-      { href: "/desarrollo-software-medida", label: "Software a medida" },
-      { href: "/blog/desarrollo-aplicaciones-moviles-clinicas-beneficios-ejemplos", label: "Blog: desarrollo y stack" },
       { href: "/#contacto", label: "Contacto" },
       { href: WA_APPS, label: "WhatsApp", external: true },
     ],
@@ -38,85 +35,59 @@ export const appsMovilesBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Una clínica me pasó analytics del ‘portal del paciente’: sesiones cortas, 60% abandonaba en la pantalla del PDF de indicaciones. No era diseño feo: era fricción real — nadie quiere hacer zoom a un A4 en el bondi. Ahí una ",
-          { href: "/software-para-clinicas", label: "app nativa o multiplataforma" },
-          " con la misma info en pantallas chicas y notificación push dejó de ser capricho y pasó a ser accesibilidad operativa.",
+          "Una clínica me pasó analytics del ‘portal del paciente’: sesiones cortas, 60% abandonaba en la pantalla del PDF de indicaciones. No era diseño feo: era fricción real — nadie quiere hacer zoom a un A4 en el bondi. Ahí una app con la misma información en pantallas chicas y notificación push dejó de ser capricho y pasó a ser accesibilidad operativa, siempre que detrás haya datos vivos y no un archivo que ‘sube alguien los viernes’.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Lo que no te venden en el pitch: si el backend sigue siendo Excel + mail, la app solo empaqueta el caos. La app brilla cuando turnos, estudios permitidos y avisos leen de la misma API que ya usa recepción — no de un archivo que ‘sube Mariana los viernes’.",
+          "Lo que no te venden en el pitch: si el backend sigue siendo Excel + mail, publicar en las tiendas solo empaqueta el caos. La app rinde cuando turnos, estudios permitidos y avisos leen de la misma API que ya usa recepción.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Para decisiones de stack y roadmap comercial, está el post hermano ",
+          "Para stack, integraciones y dónde meter IA sin prometer milagros, está el post ",
           {
             href: "/blog/desarrollo-aplicaciones-moviles-clinicas-beneficios-ejemplos",
             label: "desarrollo de apps para clínicas: beneficios y ejemplos",
           },
-          ".",
+          ". Acá me quedo en experiencia del paciente y en qué pedirle al proveedor sin humo.",
         ],
       },
       { type: "h2", id: "por-que-app", text: "¿Para qué sirve una app en salud hoy?" },
       {
         type: "paragraph",
         segments: [
-          "No es reemplazar al médico por chat: es sacar del teléfono fijo y del ‘te paso el link por WhatsApp’ las cosas repetibles — ",
-          { href: "/sistema-turnos-online", label: "reprogramar un turno" },
-          ", ver estado de un estudio si la política lo permite, leer indicaciones en texto legible, recibir aviso de que el profesional se retrasó 20 minutos. Cada función tiene que justificar menos llamadas a recepción; si no, es brochure digital.",
+          "No es reemplazar al médico por chat: es sacar del teléfono fijo y del ‘te paso el link por WhatsApp’ las cosas repetibles — reprogramar un turno contra la misma base que el calendario interno, ver estado de un estudio si la política lo permite, leer indicaciones en texto legible, avisar que el profesional se retrasó 20 minutos. Cada función tiene que bajar llamadas medibles a recepción; si no, es brochure digital.",
         ],
       },
-      { type: "h2", id: "mvp", text: "MVP que sí se usa (y no es lista infinita)" },
-      {
-        type: "ul",
-        items: [
-          "Login + perfil mínimo y política de datos visible.",
-          "Turnos contra la misma base que el calendario interno.",
-          "Notificaciones transaccionales (confirmación, cambio, recordatorio) — no spam de marketing.",
-        ],
-      },
+      { type: "h2", id: "mvp", text: "MVP que sí se usa" },
       {
         type: "paragraph",
         segments: [
-          "Segundo release: lo que pida tu compliance (documentos firmados, adjuntos, etc.). Primero que el paciente no tenga que llamarte para lo obvio.",
+          "Login mínimo y política de datos visible; turnos y cambios con notificaciones transaccionales (confirmación, cambio, recordatorio), no newsletter disfrazado. Segundo release: lo que exija compliance. Primero que el paciente no tenga que llamarte para lo obvio.",
         ],
       },
       { type: "h2", id: "comunicacion", text: "Convivencia con WhatsApp" },
       {
         type: "paragraph",
         segments: [
-          "El paciente va a seguir escribiendo al número conocido. La app y ",
-          { href: "/bots-whatsapp", label: "WhatsApp" },
-          " tienen que convivir: deep links, mismo paciente_id, handoff cuando el bot no alcanza. Si compiten sin integración, duplicás conversaciones y nadie sabe qué quedó vigente.",
+          "El paciente va a seguir escribiendo al número conocido. La app y WhatsApp tienen que convivir con el mismo paciente_id, deep links y handoff cuando el flujo automático no alcanza. Si compiten sin integración, duplicás conversaciones y nadie sabe qué quedó vigente.",
         ],
       },
       { type: "h2", id: "a-medida", text: "¿A medida desde el día uno?" },
       {
         type: "paragraph",
         segments: [
-          "Solo si ya tenés claros roles, datos sensibles y una API mínima. Si no, antes conviene ",
-          { href: "/desarrollo-software-medida", label: "ordenar dominio y endpoints" },
-          " que lanzar binarios a las tiendas. Una app mal alimentada es peor que un buen flujo web responsive conectado bien.",
+          "Solo si ya tenés roles, datos sensibles y una API mínima. Si no, antes conviene ordenar dominio y endpoints que lanzar binarios a las tiendas. Una app mal alimentada es peor que un buen flujo web responsive conectado bien.",
         ],
       },
       { type: "h2", id: "conclusion", text: "Conclusión" },
       {
         type: "paragraph",
         segments: [
-          "La experiencia del paciente en 2026 es celular + expectativa de respuesta rápida. Si la institución no puede sostener datos detrás, no arregla una app; si puede, el canal móvil destraba recepción de verdad.",
-        ],
-      },
-      {
-        type: "paragraph",
-        segments: [
-          "Para alcance: ",
-          { href: "/#contacto", label: "contacto" },
-          " o ",
-          { href: WA_APPS, label: "WhatsApp", external: true },
-          ".",
+          "La experiencia del paciente en 2026 es celular + expectativa de respuesta rápida. Si la institución no puede sostener datos detrás, no arregla una app; si puede, el canal móvil destraba recepción de verdad. Para alcance usá el contacto del sitio o el WhatsApp de la caja de enlaces útiles abajo.",
         ],
       },
       {
@@ -125,7 +96,7 @@ export const appsMovilesBlogArticles: BlogPost[] = [
           {
             question: "¿Qué va primero en una app de clínica?",
             answer:
-              "Lo que más llame genera: turnos y avisos transaccionales conectados a la agenda real. El resto se prioriza con métricas de soporte (cuántas llamadas caen por semana por tema X).",
+              "Turnos y avisos transaccionales conectados a la agenda real. El resto se prioriza con métricas de soporte (cuántas llamadas por semana por tema X).",
           },
           {
             question: "¿Hace falta publicar en App Store el día uno?",
@@ -135,7 +106,7 @@ export const appsMovilesBlogArticles: BlogPost[] = [
           {
             question: "¿Las apps reemplazan la historia clínica?",
             answer:
-              "No por defecto: exponen lo que normativa y consentimiento permitan; lo sensible sigue en el sistema de registro clínico con permisos fuertes.",
+              "No por defecto: exponen lo que normativa y consentimiento permitan; lo sensible sigue en el sistema de registro con permisos fuertes.",
           },
         ],
       },

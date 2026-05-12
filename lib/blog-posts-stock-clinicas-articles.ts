@@ -25,9 +25,6 @@ export const stockClinicasBlogArticles: BlogPost[] = [
     },
     resourceLinks: [
       { href: "/control-stock-clinicas", label: "Control de stock para clínicas" },
-      { href: "/automatizacion-procesos-clinicas", label: "Automatización de procesos" },
-      { href: "/desarrollo-software-medida", label: "Software a medida" },
-      { href: "/blog/automatizar-control-stock-clinicas-consultorios-medicos", label: "Blog: automatizar stock" },
       { href: "/#contacto", label: "Contacto" },
       { href: WA_STOCK, label: "WhatsApp", external: true },
     ],
@@ -43,13 +40,13 @@ export const stockClinicasBlogArticles: BlogPost[] = [
         segments: [
           "Ese es el patrón que veo antes de hablar de software: el stock no es un número, es un flujo de movimientos con responsable. Un ",
           { href: "/control-stock-clinicas", label: "sistema de control de stock" },
-          " serio empieza por definir `Item`, `Ubicación`, `Movimiento` (entrada, salida, transferencia, ajuste) y quién puede confirmar cada uno — no por elegir el color del dashboard.",
+          " serio empieza por definir ítem, ubicación y movimiento (entrada, salida, transferencia, ajuste) y quién puede confirmar cada uno — no por elegir el color del dashboard.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Si querés el enfoque en automatizar alertas e integraciones, seguí en ",
+          "Si querés el foco en alertas, umbrales e integración con compras, seguí en ",
           {
             href: "/blog/automatizar-control-stock-clinicas-consultorios-medicos",
             label: "cómo automatizar stock en clínicas",
@@ -61,33 +58,21 @@ export const stockClinicasBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Un faltante no es solo un gasto: puede frenar una cirugía o forzar un reemplazo de último minuto con proveedor caro. Los vencimientos mal llevados son riesgo directo. Por eso el inventario va ligado a trazabilidad y permisos, no a ‘cantidad aproximada en la heladera’.",
-        ],
-      },
-      {
-        type: "ul",
-        items: [
-          "Descartables y kits con lote cuando corresponde",
-          "Medicamentos según política interna (no doy consejo clínico; hablo de registro)",
-          "Insumos por sector (quirófano vs gabinete vs recepción)",
+          "Un faltante no es solo un gasto: puede frenar una cirugía o forzar un reemplazo de último minuto con proveedor caro. Los vencimientos mal llevados son riesgo directo. Por eso el inventario va ligado a trazabilidad y permisos: descartables y kits con lote cuando corresponde, medicamentos según política interna de la institución (hablo de registro, no de consejo clínico), insumos separados por sector (quirófano vs gabinete vs recepción).",
         ],
       },
       { type: "h2", id: "problemas", text: "Señales de que el Excel ya no alcanza" },
       {
-        type: "ul",
-        items: [
-          "Dos personas actualizan la misma hoja y ‘el que guardó último gana’.",
-          "Comprás urgente porque ‘no hay’ y al mes aparecen tres cajas detrás de un estante.",
-          "No podés responder en cinco minutos cuánto gastaste por especialidad en insumos.",
+        type: "paragraph",
+        segments: [
+          "Dos personas actualizan la misma hoja y gana ‘el que guardó último’; comprás urgente porque ‘no hay’ y al mes aparecen tres cajas detrás de un estante; dirección no puede responder en cinco minutos cuánto gastaron por especialidad en insumos. Cuando aparecen juntas, el Excel dejó de ser herramienta y pasó a ser parche.",
         ],
       },
       { type: "h2", id: "que-hace", text: "Qué debe hacer el sistema (mínimo viable)" },
       {
         type: "paragraph",
         segments: [
-          "Movimientos con auditoría, stock por ubicación, alertas de mínimo y alertas de vencimiento con reglas distintas por rubro. Reportes que dirección entienda sin pedirle a alguien que ‘arregle la pivot’. Si compras o facturación viven en otro sistema, ahí entra ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatización" },
-          " para que un movimiento aprobado dispare lo que corresponda sin reescribir a mano.",
+          "Movimientos con auditoría, stock por ubicación, alertas de mínimo y de vencimiento con reglas distintas por rubro, reportes que salgan de esos movimientos y no de una pivot frágil. Si compras o facturación viven en otro sistema, los eventos aprobados pueden disparar el siguiente paso por API o jobs — pero solo después de que el movimiento de stock sea la verdad operativa.",
         ],
       },
       {
@@ -98,33 +83,21 @@ export const stockClinicasBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Pensá tablas, no pantallas: `Producto` con unidad de medida, `StockUbicacion` con cantidad disponible y reservada, `Movimiento` con tipo y usuario. Desde ahí las pantallas son consecuencia. Si saltás este paso, terminás con un front lindo y números que nadie confía.",
+          "Pensá tablas, no pantallas: producto con unidad de medida, stock por ubicación con cantidad disponible y reservada, movimiento con tipo y usuario. Desde ahí las pantallas son consecuencia. Si saltás este paso, terminás con un front lindo y números que nadie confía.",
         ],
       },
       { type: "h2", id: "a-medida", text: "¿Todo a medida?" },
       {
         type: "paragraph",
         segments: [
-          "No siempre: a veces un núcleo estándar + ",
-          { href: "/desarrollo-software-medida", label: "reglas propias" },
-          " en la capa de integración alcanza. A medida tiene sentido cuando tus circuitos de consumo interno, kits o multi-sede no entran en plantillas.",
+          "No siempre: a veces alcanza un núcleo estándar más reglas propias en la capa de integración cuando tus circuitos de consumo interno, kits o multi-sede no entran en plantillas. A medida tiene sentido cuando el genérico te obliga a mentir en el depósito.",
         ],
       },
       { type: "h2", id: "conclusion", text: "Conclusión" },
       {
         type: "paragraph",
         segments: [
-          "Ordenar stock es ordenar responsabilidades. El software acelera lo que ya decidiste en papel; no reemplaza la conversación con depósito y gabinete.",
-        ],
-      },
-      {
-        type: "paragraph",
-        segments: [
-          "Para alcance: ",
-          { href: "/#contacto", label: "contacto" },
-          " o ",
-          { href: WA_STOCK, label: "WhatsApp", external: true },
-          ".",
+          "Ordenar stock es ordenar responsabilidades. El software acelera lo que ya decidiste en papel; no reemplaza la conversación con depósito y gabinete. Para alcance usá el contacto del sitio o el WhatsApp de la caja de enlaces útiles abajo.",
         ],
       },
       {
@@ -133,17 +106,17 @@ export const stockClinicasBlogArticles: BlogPost[] = [
           {
             question: "¿Qué es un sistema de control de stock para clínicas?",
             answer:
-              "Es un software para administrar insumos, materiales y movimientos con reglas, alertas y reportes adaptados a instituciones de salud.",
+              "Software para insumos y movimientos con reglas, alertas y reportes acordes a la operación — no un Excel con logo.",
           },
           {
             question: "¿Qué insumos se pueden controlar?",
             answer:
-              "Medicamentos según política interna, descartables, materiales médicos, insumos odontológicos, laboratorio, equipamiento y otros rubros definidos por la institución.",
+              "Los que la institución defina en catálogo: descartables, odontología, laboratorio, equipamiento, etc., con política interna para medicamentos.",
           },
           {
             question: "¿Se puede automatizar el inventario médico?",
             answer:
-              "Sí: movimientos automáticos, alertas de mínimos y vencimientos, e integración con compras u otros sistemas cuando hay APIs o procesos claros.",
+              "Sí: movimientos automáticos, alertas y conexión con compras cuando hay API o proceso claro. Sin movimiento auditado, no hay automatización real.",
           },
         ],
       },
@@ -208,13 +181,35 @@ export const stockClinicasBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Movimientos automáticos con permisos: al confirmar un consumo o una recepción de compra, que el stock se actualice solo y quede quién lo hizo. Control por ubicación o sector (depósito vs piso vs gabinete) con transferencias trazables, no un número global que nadie puede auditar cuando falta algo en un lugar y sobra en otro.",
+          "Movimientos automáticos con permisos: al confirmar un consumo o una recepción de compra, que el stock se actualice solo y quede quién lo hizo. Sin eso, cualquier dashboard es maquillaje.",
         ],
       },
+      { type: "h3", id: "sectores", text: "Control por sectores" },
       {
         type: "paragraph",
         segments: [
-          "Alertas con umbrales realistas por categoría y sede, vencimientos con reglas distintas por tipo de ítem, e historial de entradas, salidas y ajustes con motivo. Los reportes para dirección tienen que salir de esos movimientos, no de una pivot que se rompe cada vez que alguien inserta una fila.",
+          "El mismo insumo vive en depósito, piso, gabinete o quirófano: necesitás ubicaciones o sectores, transferencias con responsable y stock por lugar — no un número global que nadie puede auditar cuando falta en un piso y sobra en otro.",
+        ],
+      },
+      { type: "h3", id: "alertas", text: "Alertas inteligentes" },
+      {
+        type: "paragraph",
+        segments: [
+          "Umbrales por categoría y por sede (un guante no es igual que un reactivo que se usa una vez al mes). Vencimientos con reglas distintas por tipo de ítem y un dueño claro de quién actúa cuando salta la alerta; si no, volvés al ruido de ‘stock bajo’ a las 8:00 que todos ignoran.",
+        ],
+      },
+      { type: "h3", id: "historial", text: "Historial de movimientos" },
+      {
+        type: "paragraph",
+        segments: [
+          "Cada entrada, salida, ajuste o transferencia con usuario, timestamp y motivo. Esa cola es la base para explicar mermas, preparar auditorías y dejar de pelear por ‘quién tocó el Excel’.",
+        ],
+      },
+      { type: "h3", id: "reportes", text: "Reportes administrativos" },
+      {
+        type: "paragraph",
+        segments: [
+          "Valor por rubro, rotación, consumo por sector o comparación con compras: tienen que salir de los movimientos registrados, no de una pivot que se rompe cuando alguien inserta una fila.",
         ],
       },
       { type: "h2", id: "integracion", text: "Integración con el resto de la operación" },

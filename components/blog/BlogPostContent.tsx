@@ -66,6 +66,16 @@ export function BlogPostContent({ blocks }: { blocks: readonly BlogContentBlock[
             </ul>
           );
         }
+        if (block.type === "code") {
+          return (
+            <pre
+              key={i}
+              className="overflow-x-auto rounded-xl border border-border bg-muted/40 p-4 text-[13px] leading-relaxed text-foreground/95 md:text-sm"
+            >
+              <code className="font-mono whitespace-pre">{block.code}</code>
+            </pre>
+          );
+        }
         if (block.type === "faq") {
           return (
             <div key={i} className="mt-10 space-y-3 rounded-2xl border border-border bg-surface/40 p-5 md:p-6">

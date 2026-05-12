@@ -21,6 +21,7 @@ export type BlogContentBlock =
   | { type: "h2"; id?: string; text: string }
   | { type: "h3"; id?: string; text: string }
   | { type: "ul"; items: readonly string[] }
+  | { type: "code"; code: string }
   | { type: "faq"; items: readonly { question: string; answer: string }[] };
 
 export type BlogRelatedPost = {
