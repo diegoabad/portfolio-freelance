@@ -117,7 +117,7 @@ export const appsMovilesBlogArticles: BlogPost[] = [
     topicTrack: "apps-moviles",
     title: "Desarrollo de aplicaciones móviles para clínicas: beneficios, funciones y ejemplos reales",
     description:
-      "Qué entra en un portal de pacientes serio, cuándo Flutter vs nativo, IA solo para back-office acotado y checklist de integraciones antes de pedir presupuesto.",
+      "El 80% de las clínicas que piden app nativa no la necesitan: caso Belgrano (90% mobile, uso cada 2 meses), PWA vs React Native vs nativo, costos típicos y ‘lo que no te dicen’ de App Store y push en iOS.",
     metaTitle: "Desarrollo de apps para clínicas | Beneficios y ejemplos Argentina",
     metaDescription:
       "Desarrollo de apps para clínicas, aplicaciones móviles para salud y app para pacientes en Argentina: funciones, beneficios, IA, multiplataforma y enlaces a servicios del sitio.",
@@ -139,9 +139,13 @@ export const appsMovilesBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "En un laboratorio chico el ‘portal’ era un sitio responsive que el equipo actualizaba cuando podía: los resultados ‘llegaban cuando llegaban’ por mail. Definimos qué iba en la ",
-          { href: "/software-para-clinicas", label: "app de pacientes" },
-          " (solo estados y PDF cuando el LIS cerró el caso) y el teléfono dejó de explotar con ‘¿ya está?’ porque el estado venía de la misma cola que usa el técnico, no de un texto copiado a mano.",
+          "En la práctica, el 80% de las clínicas que me piden ‘una app’ no necesitan app nativa en tiendas: necesitan una web responsive bien hecha o un PWA. La app nativa tiene sentido para casos muy específicos (integración profunda con hardware, HealthKit, BLE, performance crítico offline). Para portal de pacientes, turnos y avisos, el PWA bien hecho gana nueve de cada diez veces a la nativa — mismo usuario, menos fricción de instalación.",
+        ],
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "Una clínica de neurología en Belgrano me pidió app. En analytics, ~90% del tráfico al portal era mobile pero el paciente entraba en promedio una vez cada dos meses. Nadie instala una app para usarla seis veces al año. App Store está saturada — tu clínica no es Instagram. Armamos un PWA que abre desde un link de WhatsApp y resolvió el caso por una fracción del presupuesto de nativa. Orden de magnitud que suelo ver en presupuestos en Argentina: nativa iOS+Android USD 6–12k; PWA equivalente funcional USD 1,5–3k. La tasa de instalación de apps de clínicas en población elegible suele quedar en 10–15%; el resto queda en la web aunque ‘tengan app’.",
         ],
       },
       {
@@ -152,22 +156,50 @@ export const appsMovilesBlogArticles: BlogPost[] = [
             href: "/blog/aplicaciones-moviles-clinicas-consultorios-experiencia-paciente-2026",
             label: "experiencia del paciente y qué entra en un MVP",
           },
-          ". Acá meto integraciones, stack y dónde tiene sentido IA sin prometer diagnóstico por chat.",
-        ],
-      },
-      { type: "h2", id: "que-puede", text: "Qué puede hacer la app sin ser un mini-EMR" },
-      {
-        type: "paragraph",
-        segments: [
-          "Portal serio = identidad + permisos + catálogo de acciones permitidas (turnos, pagos si aplica, descargas). La historia clínica completa suele quedarse en el sistema de registro; la app muestra vistas acotadas desde la API, no un zócalo de PDFs sin versión.",
+          ". Acá el foco es nativa vs PWA y costos ocultos de las tiendas.",
         ],
       },
       {
+        type: "h2",
+        id: "lo-que-no-te-dicen",
+        text: "Lo que no te dicen de publicar en tiendas",
+      },
+      {
+        type: "ul",
+        items: [
+          "Apple cobra programa de desarrollador (del orden de USD 99/año) y las compras in-app pasan por comisión de plataforma (históricamente hasta ~30% según categoría — revisá términos vigentes).",
+          "Cada release en iOS puede pasar por revisión de Apple (típico de 1 a varios días hábiles): no es deploy instantáneo como en web.",
+          "Mantener iOS + Android + web son tres superficies de producto, no una: triplicás bugs, releases y soporte.",
+          "Los push en iOS requieren permiso explícito; la mayoría no lo concede salvo que el valor sea obvio. Mail y WhatsApp transaccional suelen superar a ‘push de marketing’ en clínicas.",
+        ],
+      },
+      {
+        type: "h2",
+        id: "tabla",
+        text: "PWA vs React Native vs nativo (resumen)",
+      },
+      {
+        type: "code",
+        code: `| Criterio              | PWA / web app       | React Native        | Nativo iOS/Android   |
+|-----------------------|---------------------|---------------------|----------------------|
+| Instalación           | Link / “Agregar”  | Store               | Store                |
+| Actualizaciones       | Inmediata           | Build + store       | Build + store        |
+| Push notifications    | Android OK; iOS limitado / vía web push según plataforma | Sí con config       | Sí                   |
+| Integración hardware  | Limitada            | Media-alta          | Máxima               |
+| Costo típico clínica  | Bajo                | Medio               | Alto                 |
+| Cuándo                | Turnos, resultados, forms | App field + APIs | HealthKit, BLE, performance crítico |`,
+      },
+      {
+        type: "h2",
+        id: "que-puede",
+        text: "Qué puede hacer el frente sin ser un mini-EMR",
+      },
+      {
         type: "paragraph",
         segments: [
-          "Turnos: siempre contra ",
+          "Portal serio = identidad + permisos + catálogo de acciones permitidas (turnos, pagos si aplica, descargas). La historia clínica completa suele quedarse en el sistema de registro; el frente muestra vistas acotadas desde la API. Turnos: siempre contra ",
           { href: "/sistema-turnos-online", label: "agenda con locks reales" },
-          ". Notificaciones: transaccionales, no newsletter disfrazado. WhatsApp puede ser primer contacto y deep link a la app cuando hace falta contexto persistente, pero mismo paciente_id y mismas reglas — si no, duplicás conversaciones y nadie sabe qué quedó vigente.",
+          ". Nadie instala una app para usarla seis veces al año: diseñá para eso.",
         ],
       },
       { type: "h2", id: "integracion", text: "Integración: checklist antes de pedir presupuesto" },
@@ -192,18 +224,11 @@ export const appsMovilesBlogArticles: BlogPost[] = [
           "Casos que sí vi: resumir texto administrativo ya validado por humano, clasificar tickets de soporte, extraer campos de formularios. Lo que no prometo: diagnóstico libre. Si un vendor te vende lo segundo sin gobernanza, corrés riesgo legal y de reputación.",
         ],
       },
-      { type: "h2", id: "nativa-multi", text: "Flutter / multiplataforma vs nativo" },
-      {
-        type: "paragraph",
-        segments: [
-          "Multiplataforma gana cuando el grueso es formularios, listas y push y no necesitás hardware raro ni SDK del fabricante en sangre. Nativo gana cuando el performance o integración con dispositivo es crítico. La decisión sale de medir las tres pantallas que más queman soporte, no del logo del framework.",
-        ],
-      },
       { type: "h2", id: "conclusion", text: "Conclusión" },
       {
         type: "paragraph",
         segments: [
-          "Una app de clínica es frente fino sobre datos ordenados. Si el modelo y los endpoints no están, publicar en las tiendas solo empaqueta el caos. Para presupuesto usá el contacto del sitio o el WhatsApp de la caja de enlaces útiles abajo.",
+          "Un frente de clínica es capa fina sobre datos ordenados. Si el modelo y los endpoints no están, publicar en las tiendas solo empaqueta el caos. Para presupuesto usá el contacto del sitio o el WhatsApp de la caja de enlaces útiles abajo.",
         ],
       },
       {

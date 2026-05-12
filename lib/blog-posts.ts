@@ -157,7 +157,7 @@ const posts: BlogPost[] = [
     topicTrack: "bots-whatsapp",
     title: "Cómo crear un bot de WhatsApp para empresas en Argentina y Latinoamérica paso a paso",
     description:
-      "Guía técnica-operativa: API de Meta, plantillas y webhooks, cuándo alcanza un menú fijo vs IA, integración con agenda real y errores típicos antes del primer deploy.",
+      "No empieces por plataforma: clasificá cientos de mensajes reales. Caso ARS ~200k/mes en ‘IA’ sin datos (70% mal), costos de plantillas Meta, webhooks text/interactive/button y handoff a humano.",
     metaTitle: "Cómo crear un bot de WhatsApp | Empresas Argentina y LATAM",
     metaDescription:
       "API de Meta, plantillas y webhooks, menú vs IA, integración con agenda real y errores típicos antes del primer deploy. Enlaces a servicios y contacto.",
@@ -178,93 +178,130 @@ const posts: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Una pyme de servicios en CABA me pidió ‘el bot con IA ya’ con el número todavía en modo personal. El cuello de botella no era el modelo: era verificación de empresa, plantillas aprobadas y definir quién atiende cuando el flujo se rompe. Dos semanas se fueron solo en trámites y pruebas con Meta, cero líneas de ‘inteligencia’.",
+          "No empieces por elegir plataforma. Empezá clasificando al menos trescientos o quinientos mensajes reales de tu número. Si no podés categorizarlos a mano (intención, resultado, si hizo falta humano), no podés automatizar con criterio: solo vas a comprar humo con API.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Si querés el enfoque comercial con números y rubros, está el otro post del blog sobre el ",
+          "Un cliente llegó con un proveedor que le vendía ‘el mejor bot con IA’ por ~ARS 200.000 al mes. Cuando pedí los logs de un mes, el bot respondía mal alrededor del 70% de las consultas porque nunca lo entrenaron con datos del negocio: precios viejos, políticas inventadas, derivaciones al número equivocado. Estaba pagando varios millones de pesos al año para un loro caro; el tiempo real ahorrado en recepción fue cero. El bot con IA sin datos de tu negocio es un asistente genérico: si lo único que ‘sabe’ es lo que suena en Internet, muchas veces vas a tener mejores resultados con un menú fijo de cinco opciones.",
+        ],
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "La métrica importante no es ‘mensajes enviados’: es casos resueltos sin humano, con trazabilidad y sin inventar. Si querés el enfoque comercial con rubros y costos, está el post sobre el ",
           { href: "/blog/bot-whatsapp-negocios-argentina", label: "bot de WhatsApp para negocios en Argentina" },
-          ". Acá queda lo técnico-operativo: cómo llegar a producción sin que el canal se te venga abajo a la segunda semana.",
+          ". Acá queda lo técnico-operativo para no fundirte antes del primer deploy.",
         ],
+      },
+      {
+        type: "h2",
+        id: "lo-que-no-te-dicen",
+        text: "Lo que no te dicen del canal oficial",
+      },
+      {
+        type: "ul",
+        items: [
+          "Las plantillas de WhatsApp Business API tienen costo por conversación/mensaje que depende del país y categoría (órdenes de USD 0,005 a ~0,08 por unidad según tipo y región — revisá la grilla vigente de Meta).",
+          "WhatsApp puede limitar o suspender el número si te marcan spam o si violás políticas de opt-in; no siempre hay ‘segundo aviso’ negociable.",
+          "La verificación de negocio en Meta suele tardar semanas (típico 2–4): sin eso, muchas plantillas y límites quedan trabados.",
+          "‘API oficial’ no es gratis: sumás costo de BSP/plataforma + conversaciones + lo que cobre quien implementa. El sticker ‘oficial’ no borra la matemática.",
+        ],
+      },
+      { type: "h2", id: "paso-1", text: "1. Inventario de intents (antes del código)" },
+      {
+        type: "paragraph",
+        segments: [
+          "Exportá conversaciones, etiquetá intención y resultado. Si el 60% cae en cinco buckets (precio, turno, ubicación, obra social, hablar con persona), tu roadmap ya está escrito. Si no sale eso, el problema no es el modelo de lenguaje: es que el negocio no tiene respuestas canónicas.",
+        ],
+      },
+      { type: "h2", id: "paso-2", text: "2. API oficial y cumplimiento" },
+      {
+        type: "paragraph",
+        segments: [
+          "En producción casi siempre es WhatsApp Business Platform: número de negocio, token, verificación de empresa y plantillas para hablar fuera de la ventana de 24 h. Eso define si el recordatorio sale o queda en cola; no es un trámite de más.",
+        ],
+      },
+      {
+        type: "h2",
+        id: "webhook-tipos",
+        text: "3. Webhook entrante: text, interactive, botones",
       },
       {
         type: "paragraph",
         segments: [
-          "En el kickoff les pido una hoja con cinco intents concretos (horario, precio, ubicación, turno, hablar con humano). Si no salen, no hay bot que salve: hay ganas de meter IA antes de saber qué contestar. En la práctica, la mayoría de lo que entra por WhatsApp en retail y servicios cae en menos de diez respuestas templadas bien escritas.",
-        ],
-      },
-      { type: "h2", id: "paso-1", text: "1. Objetivo y alcance (sin humo)" },
-      {
-        type: "paragraph",
-        segments: [
-          "Definí si el canal resuelve FAQs, deriva con contexto o consulta ",
-          { href: "/sistema-turnos-online", label: "turnos contra la misma agenda que usa recepción" },
-          ". Si el calendario vive en un Excel paralelo al chat, primero unificá fuente de verdad y recién después automatizá respuestas; si no, el bot va a ofrecer huecos que no existen o a pisar reservas hechas a mano.",
-        ],
-      },
-      {
-        type: "paragraph",
-        segments: [
-          "Medí mensajes entrantes por día hábil y cuántos son la misma pregunta con distinta redacción. Por debajo de unas treinta conversaciones útiles por día, muchas veces conviene plantillas + ventana humana antes de invertir en flujos complejos o en modelo generativo.",
-        ],
-      },
-      { type: "h2", id: "paso-2", text: "2. API oficial y qué implica en la práctica" },
-      {
-        type: "paragraph",
-        segments: [
-          "En producción casi siempre es WhatsApp Business Platform (Cloud API o BSP): número de negocio, token, verificación de empresa y plantillas para hablar fuera de la ventana de 24 h. Eso define si el recordatorio de turno sale o queda en cola; no es un trámite de más.",
-        ],
-      },
-      {
-        type: "paragraph",
-        segments: [
-          "El webhook recibe un JSON (texto, lista o botón) y respondés con otro POST a la API. Con un menú 1/2/3 ya filtrás buena parte del ruido. La IA entra cuando ese esquema está estable y tenés plan para cuando el modelo alucina o se va de tema.",
+          "Tu servidor recibe un POST con `entry[].changes[].value.messages[]`. El campo `type` te dice cómo parsear: `text` trae `text.body`; `interactive` trae `button_reply` o `list_reply` con `id` estable (mejor que parsear texto libre). Las respuestas a botones de plantillas suelen llegar como `interactive`. Unificar todo a ‘acción interna’ antes de contestar reduce sorpresas.",
         ],
       },
       {
         type: "code",
-        code: `// Ejemplo mínimo (Node): leer un texto "1/2/3" y responder con plantilla o texto.
-// El payload real de Meta es más largo; esto muestra solo lo que importa para decidir.
+        code: `// Payload simplificado (Meta Cloud API): tres formas típicas de entrada
+{
+  "entry": [{
+    "changes": [{
+      "value": {
+        "messages": [
+          {
+            "from": "54911XXXXXXXX",
+            "type": "text",
+            "text": { "body": "quiero reprogramar el martes" }
+          },
+          {
+            "from": "54911XXXXXXXX",
+            "type": "interactive",
+            "interactive": {
+              "type": "button_reply",
+              "button_reply": { "id": "intent_turnos", "title": "Turnos" }
+            }
+          },
+          {
+            "from": "54911XXXXXXXX",
+            "type": "interactive",
+            "interactive": {
+              "type": "list_reply",
+              "list_reply": { "id": "svc_cardio", "title": "Cardiología" }
+            }
+          }
+        ]
+      }
+    }]
+  }]
+}
 
-const msg = body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
-const from = msg?.from;
-if (msg?.type === "text") {
-  const t = msg.text?.body?.trim();
-  if (t === "1") await waSendText(from, "Horario: Lun–Vie 9–18. Dirección: …");
-  if (t === "2") await waSendTemplate(from, "turnos_disponibles", { lang: "es" });
-  if (t === "3") await waSendText(from, "Te derivamos con recepción en breve.");
-}`,
+// Handoff a humano: si confidence < umbral OR intent === "humano"
+// → crear ticket en CRM con transcript + dejar de autoresponder.`,
       },
-      { type: "h2", id: "paso-3", text: "3. Menú fijo vs modelo generativo" },
+      { type: "h2", id: "paso-3", text: "4. Menú fijo vs modelo generativo" },
       {
         type: "paragraph",
         segments: [
-          "Menús interactivos y respuestas cortas = menos tokens, menos ‘el bot inventó un precio’ y menos sorpresas con políticas de Meta. Si el usuario escribe muy libre pero el dominio es acotado (tipos de estudio, planes), puede sumar un clasificador — siempre atado a tu base o a jobs propios que lean datos reales, no a texto suelto que suene convincente.",
+          "Menús interactivos y respuestas atadas a tu base = menos tokens y menos ‘el bot inventó un precio’. La IA suma cuando ya medís qué no entra en menú y tenés dataset y revisiones humanas. Si no podés clasificar mensajes a mano, no hay magia: solo riesgo.",
         ],
       },
-      { type: "h2", id: "paso-4", text: "4. Integraciones que valen la pena" },
+      { type: "h2", id: "paso-4", text: "5. Integraciones que valen la pena" },
       {
         type: "paragraph",
         segments: [
-          "El bot es un altavoz: si no escribe donde mira recepción, sumás ruido. CRM, tickets y agenda tienen que ser la fuente de verdad; WhatsApp solo dispara lecturas y escrituras acotadas. Si las reglas son tan particulares que ningún SaaS las banca, la etapa dos puede ser un módulo propio — nunca el día uno sin volumen y sin intents claros.",
+          "El bot es tubería: tiene que leer y escribir donde mira recepción — ",
+          { href: "/sistema-turnos-online", label: "agenda con locks reales" },
+          ", CRM o tickets. Si el calendario vive en Excel paralelo al chat, primero unificá fuente de verdad.",
         ],
       },
-      { type: "h2", id: "paso-5", text: "5. Errores que veo una y otra vez" },
+      { type: "h2", id: "paso-5", text: "6. Errores que veo una y otra vez" },
       {
         type: "ul",
         items: [
-          "Dos humanos y el bot contestando el mismo número sin protocolo: respuestas contradictorias y el cliente cree que el negocio no tiene cabeza.",
-          "Flujo de error indefinido: el peor caso no es el silencio, es el loop de ‘¿podés reformular?’ sin oferta de hablar con persona.",
-          "Dashboard de vanidad: ‘mensajes enviados’ no paga sueldos; importan tiempo hasta primera respuesta útil y cuántos chats llegan a humano con resumen útil.",
+          "Dos humanos y el bot contestando el mismo número sin protocolo: respuestas contradictorias.",
+          "Flujo de error indefinido: loop de ‘¿podés reformular?’ sin oferta clara de hablar con persona.",
+          "Dashboard de vanidad: ‘mensajes enviados’ no paga sueldos; importan casos resueltos sin humano y tiempo hasta primera respuesta útil.",
         ],
       },
       { type: "h2", id: "siguiente", text: "Siguiente paso" },
       {
         type: "paragraph",
         segments: [
-          "Si ya tenés intents, volumen y número en Business API, se puede armar alcance en una llamada corta. Escribime con esos tres datos desde el contacto del sitio o por WhatsApp usando el enlace de la caja de abajo.",
+          "Si ya tenés muestra de mensajes, intents y número en Business API, se puede armar alcance en una llamada corta. Escribime con esos datos desde el contacto del sitio o por WhatsApp usando el enlace de la caja de abajo.",
         ],
       },
       {

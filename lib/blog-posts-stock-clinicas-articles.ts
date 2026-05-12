@@ -127,7 +127,7 @@ export const stockClinicasBlogArticles: BlogPost[] = [
     topicTrack: "stock-inventario",
     title: "Cómo automatizar el control de stock en clínicas y consultorios médicos",
     description:
-      "Regla de tres umbrales que sí disparan alerta, por qué la automatización sin movimientos auditables es humo, y cómo conectar compras sin duplicar el Excel.",
+      "Automatizar stock sin auditar físico primero es digitalizar el caos: caso Quilmes 42 cajas en sistema vs 6 reales, análisis ABC, modelo Producto/Lote/Movimiento y por qué el 80% del problema es disciplina antes que software.",
     metaTitle: "Automatizar stock en clínicas | Inventario médico Argentina",
     metaDescription:
       "Automatización de stock para clínicas, software de inventario médico y control de insumos en consultorios: alertas, sectores, integración y menos carga operativa.",
@@ -148,27 +148,61 @@ export const stockClinicasBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Una farmacia interna tenía alertas de ‘stock bajo’ todos los días a las 8:00 y las ignoraban: el 70% eran falsos positivos porque el umbral era el mismo para insumos de alto rotación y para ítems que se usaban una vez al mes. Al bajar mínimos por categoría y por sede, las alertas volvieron a significar algo y dejaron de ser ruido de fondo.",
+          "Automatizar el stock sin auditar físicamente primero es digitalizar el caos. El 80% de los problemas que veo en consultorios se resuelven con disciplina de registro, no con software más caro. No empieces automatizando: empezá contando. Hasta que cada salida tenga responsable y cada entrada tenga conteo, el sistema más caro va a registrar mentiras prolijas.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Automatizar inventario no es ‘mandar un mail’: es que un movimiento confirmado (consumo, compra recibida, transferencia) actualice stock y deje rastro auditable. Si eso no pasa, seguís con Excel con pasos extra. El servicio de ",
-          { href: "/control-stock-clinicas", label: "control de stock para clínicas" },
-          " tiene que apoyarse en ese principio o los números no los va a defender nadie en una auditoría.",
+          "En una clínica de ginecología en Quilmes el sistema decía 42 cajas de un anticonceptivo específico; el conteo físico dio 6. La discrepancia era del orden del 86%: meses de salidas sin registro porque ‘lo cargo después’. Automatizar ese flujo sin corregir hábitos hubiera sido optimizar la mentira. Automatizar el caos es digitalizar la mentira.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "El artículo hermano sobre pérdidas, vencimientos y modelo mínimo de tablas está en ",
+          "El artículo hermano sobre pérdidas, vencimientos y operación diaria está en ",
           {
             href: "/blog/sistema-control-stock-clinicas-insumos-medicos-perdidas",
             label: "stock en clínicas e insumos médicos",
           },
-          ".",
+          ". Acá el foco es auditoría, ABC y qué modelo de datos mínimo sostiene una automatización que no miente.",
         ],
+      },
+      {
+        type: "h2",
+        id: "lo-que-no-te-dicen",
+        text: "Lo que no te dicen antes de comprar ‘módulo de inventario’",
+      },
+      {
+        type: "ul",
+        items: [
+          "Los códigos de barra suman cuando hay alta rotación y muchas SKUs parecidas; sobran cuando tenés ~200 ítems estables y pocos movimientos: a veces checklist + responsable alcanza más que hardware.",
+          "Stock por sector multiplica complejidad: si no hay disciplina de transferencia con firma o equivalente, solo tenés tres números en desacuerdo en lugar de uno.",
+          "Análisis ABC: el 20% de los ítems suele representar el 80% del valor o del riesgo — ese 20% se cuenta semanalmente; el resto puede ir mensual. Mejor un sistema simple usado bien que un ERP usado mal.",
+        ],
+      },
+      {
+        type: "h2",
+        id: "modelo-datos",
+        text: "Modelo de datos mínimo y auditoría cíclica",
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "Antes del software: contar. Después, un modelo pequeño y honesto: producto, lote o equivalente cuando aplica vencimiento, movimiento (entrada / salida / ajuste) con usuario y motivo. La auditoría física debe preceder a la implementación o solo vas a conciliar fantasía.",
+        ],
+      },
+      {
+        type: "code",
+        code: `-- Tablas mínimas (conceptual)
+Producto(id, nombre, sku, umbral_abc, unidad)
+Lote(id, producto_id, nro_lote, vencimiento, cantidad_inicial)
+Movimiento(id, producto_id, lote_id nullable, tipo, cantidad, usuario_id, motivo, created_at)
+
+-- Workflow ABC (ejemplo)
+-- Semanal: todos los productos etiquetados A (alto impacto)
+-- Mensual: B y C por muestreo o rotación
+-- Ajuste: solo con rol autorizado + comentario obligatorio`,
       },
       { type: "h2", id: "problemas", text: "Qué pasa cuando el control es solo ‘la planilla’" },
       {
@@ -177,11 +211,13 @@ export const stockClinicasBlogArticles: BlogPost[] = [
           "Aparecen mermas sin explicación que en realidad son consumos sin registro, faltantes críticos antes de agendas densas, compras duplicadas por pánico y peleas entre depósito y gabinete porque ‘el Excel decía otra cosa’. No es mala fe: es falta de movimiento atómico con usuario y motivo.",
         ],
       },
-      { type: "h2", id: "funciones", text: "Qué tiene que hacer el software (sin lista infinita)" },
+      { type: "h2", id: "funciones", text: "Qué tiene que hacer el software (después de la disciplina)" },
       {
         type: "paragraph",
         segments: [
-          "Movimientos automáticos con permisos: al confirmar un consumo o una recepción de compra, que el stock se actualice solo y quede quién lo hizo. Sin eso, cualquier dashboard es maquillaje.",
+          "Movimientos automáticos con permisos: al confirmar un consumo o una recepción de compra, que el stock se actualice solo y quede quién lo hizo. Sin eso, cualquier dashboard es maquillaje. El servicio de ",
+          { href: "/control-stock-clinicas", label: "control de stock para clínicas" },
+          " tiene que apoyarse en ese principio o los números no los va a defender nadie en una auditoría.",
         ],
       },
       { type: "h3", id: "sectores", text: "Control por sectores" },
@@ -195,7 +231,7 @@ export const stockClinicasBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Umbrales por categoría y por sede (un guante no es igual que un reactivo que se usa una vez al mes). Vencimientos con reglas distintas por tipo de ítem y un dueño claro de quién actúa cuando salta la alerta; si no, volvés al ruido de ‘stock bajo’ a las 8:00 que todos ignoran.",
+          "Umbrales por categoría y por sede (un guante no es igual que un reactivo que se usa una vez al mes). Vencimientos con reglas distintas por tipo de ítem y un dueño claro de quién actúa cuando salta la alerta.",
         ],
       },
       { type: "h3", id: "historial", text: "Historial de movimientos" },
@@ -205,40 +241,20 @@ export const stockClinicasBlogArticles: BlogPost[] = [
           "Cada entrada, salida, ajuste o transferencia con usuario, timestamp y motivo. Esa cola es la base para explicar mermas, preparar auditorías y dejar de pelear por ‘quién tocó el Excel’.",
         ],
       },
-      { type: "h3", id: "reportes", text: "Reportes administrativos" },
-      {
-        type: "paragraph",
-        segments: [
-          "Valor por rubro, rotación, consumo por sector o comparación con compras: tienen que salir de los movimientos registrados, no de una pivot que se rompe cuando alguien inserta una fila.",
-        ],
-      },
       { type: "h2", id: "integracion", text: "Integración con el resto de la operación" },
       {
         type: "paragraph",
         segments: [
           "Compras, facturación o solicitudes desde sectores pueden colgar de ",
           { href: "/automatizacion-procesos-clinicas", label: "APIs y automatización" },
-          " cuando hay contrato claro de eventos. Si no hay API, al menos proceso escrito de qué dispara qué; si no, la ‘integración’ es mail reenviado y volvés al caos.",
-        ],
-      },
-      {
-        type: "paragraph",
-        segments: [
-          "El objetivo no es pantalla linda: es que dirección pueda responder en cinco minutos cuánto se gastó por especialidad o sector en un mes, y que depósito sepa qué vence primero sin depender de que alguien ‘pase’ la planilla.",
-        ],
-      },
-      { type: "h2", id: "beneficios", text: "Qué ganás cuando deja de ser humo" },
-      {
-        type: "paragraph",
-        segments: [
-          "Menos horas reconciliando, menos compras de emergencia caras, menos cirugías o agendas frenadas por un ítem que ‘nadie sabía que no estaba’. La trazabilidad no es burocracia extra: es lo que te permite explicar mermas y dormir sin miedo a la auditoría interna.",
+          " cuando hay contrato claro de eventos. Si no hay API, al menos proceso escrito de qué dispara qué.",
         ],
       },
       { type: "h2", id: "conclusion", text: "Conclusión" },
       {
         type: "paragraph",
         segments: [
-          "Automatizar inventario prepara la operación para crecer sin que todo dependa de la memoria de dos personas. Para ver tu caso, usá el contacto del sitio o el WhatsApp de la caja de enlaces útiles más abajo.",
+          "El 80% de los problemas de stock se resuelven con disciplina, no con software. Antes del software: contar. Para ver tu caso, usá el contacto del sitio o el WhatsApp de la caja de enlaces útiles más abajo.",
         ],
       },
       {

@@ -144,7 +144,7 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
     topicTrack: "software-medida",
     title: "Cuándo conviene desarrollar software a medida en lugar de usar sistemas genéricos",
     description:
-      "Historia de ERP sobre-dimensionado, números de horas en cruces manuales, genérico vs a medida sin slogans y cuándo alcanza con automatizar lo que ya tenés.",
+      "La pregunta no es ‘enlatado vs a medida’ en abstracto: ¿qué proceso es tu diferencial? Caso estudio contable Recoleta, ERP USD 32k + USD 12k/año y tres planillas a los 6 meses, TCO a 36 meses y stack mínimo ~USD 30/mes de infra.",
     metaTitle: "¿Cuándo conviene software a medida? | Argentina vs sistemas genéricos",
     metaDescription:
       "Desarrollo de software a medida Argentina: software personalizado para empresas, sistemas internos, señales de que conviene lo personalizado y cuándo el genérico alcanza. Incluye software para clínicas a medida.",
@@ -166,19 +166,19 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Una logística mediana me mostró el presupuesto de un ERP ‘todo en uno’: licencias para veinte usuarios, ocho módulos y tres consultores externos. Cuando les pedí cuántos módulos usaban de verdad, la respuesta fue dos y medio; el resto era aspiración de PowerPoint. El paquete genérico no falló solo: falló la fantasía de que el tamaño del contrato ordena la operación.",
+          "Nadie debería comparar ‘enlatado vs a medida’ en abstracto. La pregunta correcta es: ¿qué proceso de tu negocio es tu diferencial y te hace ganar? Si ese proceso es lo que te diferencia, no podés tercerizarlo a un menú genérico sin pelear — o aceptás el costo de adaptarte al software, o construís la pieza que refleja tus reglas.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Les hice anotar horas-mujer por mes en cruces entre planilla de despacho, facturador y mails a proveedores: ~35 horas solo en ‘arreglar números que no cierran’. Cuatro meses después, un módulo propio de despacho con API al facturador bajó eso a ~12. No fue magia: dejaron de pelear contra el flujo prefabricado del ERP para el 20% del negocio que los diferencia en velocidad de salida.",
+          "Un estudio contable en Recoleta había comprado un ERP de ~USD 4.000 por puesto × 8 puestos ≈ USD 32.000 de setup más ~USD 12.000/año de mantenimiento. A los seis meses tenían tres planillas paralelas porque el ERP no soportaba bien cómo facturaban por especialidad y obra social. Pagaban licencias para no usar el sistema en lo que más importaba. El enlatado es barato hasta que descubrís cómo factura tu obra social; pagar licencias para no usar el sistema es la versión moderna del archivero vacío.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Software a medida no gana por lista de features contra el genérico; gana cuando el proceso raro es el que te deja plata y el SaaS te obliga a torcerte. Si tu mundo es salud, el caso con modelo de datos y Excels paralelos está en ",
+          "El enlatado suele ser barato al firmar el contrato y caro cuando descubrís que no se adapta. A medida es al revés: caro al inicio, más barato a 24–36 meses si tu negocio es complejo y el genérico te obliga a Excel paralelo. Si tu mundo es salud, el caso con modelo de datos y Excels paralelos está en ",
           {
             href: "/blog/software-a-medida-clinicas-consultorios-sistema-personalizado",
             label: "software a medida para clínicas y consultorios",
@@ -186,17 +186,57 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
           ".",
         ],
       },
+      {
+        type: "h2",
+        id: "lo-que-no-te-dicen",
+        text: "Lo que no te dicen del ‘solo configuramos el ERP’",
+      },
+      {
+        type: "ul",
+        items: [
+          "La ‘personalización’ de un enlatado (consultores, campos custom, integraciones) muchas veces termina costando más que un desarrollo a medida acotado desde cero para el 20% del flujo que te diferencia.",
+          "Migrar de un enlatado a otro suele ser tan caro como un proyecto nuevo: no es ‘export CSV y listo’.",
+          "Los módulos que no usás siguen costando licencia; el menú grande es un impuesto.",
+          "Cuando el proveedor se vende o cierra el producto, te quedás colgado: contratos largos no reemplazan roadmap ajeno.",
+        ],
+      },
+      {
+        type: "h2",
+        id: "tco",
+        text: "TCO a 36 meses (orden de magnitud, consultorio 5 profesionales)",
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "No hay tabla universal: depende de cantidad de usuarios, integraciones y si el enlatado ya cubre el 80% de tu operación. Igual sirve armar números explícitos en lugar de fe. Un ejemplo de cómo lo anoto en hoja (valores ilustrativos — reemplazá con tus cotizaciones reales):",
+        ],
+      },
+      {
+        type: "code",
+        code: `| Rubro (36 meses)     | Enlatado “suite” | A medida acotado |
+|----------------------|------------------|------------------|
+| Licencias / SaaS     | USD A            | USD 0 o bajo     |
+| Implementación     | USD B            | USD C (build)    |
+| Personalización      | USD D (suele subir) | USD E (iterativo) |
+| Mantenimiento / mes  | USD F            | USD G (host + soporte) |
+| Horas internas Excel | USD H (!)        | USD I (menor si el flujo calza) |
+
+// Stack mínimo frecuente para un a medida web + API:
+// Next.js + Node + Postgres en Vercel/Render u homólogo
+// → infra fija típica del orden de ~USD 30/mes + dominio y backups
+// (sumar observabilidad, mails transaccionales, etc.).`,
+      },
       { type: "h2", id: "diferencias", text: "Genérico vs a medida (sin marketing)" },
       {
         type: "paragraph",
         segments: [
-          "El genérico optimiza el 80% de empresas parecidas; vos pagás el menú entero. A medida optimiza el 20% que te hace distinto y cobra solo lo que alguien usa todos los días. El error caro es pedir a medida para lo que ya resuelve un SaaS maduro, y comprar suite para tres reglas de negocio que el proveedor jamás va a priorizar en su roadmap.",
+          "El genérico optimiza el 80% de empresas parecidas; vos pagás el menú entero. A medida optimiza el 20% que te hace distinto. El error caro es pedir a medida para lo que ya resuelve un SaaS maduro, y comprar suite para tres reglas que el proveedor jamás va a priorizar.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "En la práctica, a medida es dominio propio (`Pedido`, `Lote`, `ReglaDeBonificación`) y APIs que hablan con lo legacy. El genérico trae tablas prefabricadas; cuando tu realidad no entra, aparece el Excel paralelo y la reunión semanal de conciliación.",
+          "Si tu proceso es tu diferencial, no podés tercerizarlo a un menú genérico sin asumir el costo. En la práctica, a medida es dominio propio y APIs que hablan con lo legacy; el genérico trae tablas prefabricadas y, cuando tu realidad no entra, aparece el Excel paralelo.",
         ],
       },
       { type: "h2", id: "senales", text: "Señales de que el genérico ya no alcanza" },
@@ -211,30 +251,23 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Cuando aparecen juntas, muchas veces conviene ",
+          "Cuando aparecen esas juntas, muchas veces conviene ",
           { href: "/automatizacion-procesos-clinicas", label: "automatizar e integrar lo que ya existe" },
-          " y recién después un pedazo de producto propio donde el genérico choca — no reescribir todo desde cero el día uno.",
-        ],
-      },
-      { type: "h2", id: "ejemplos", text: "Ejemplos que no son ‘portal web’ genérico" },
-      {
-        type: "paragraph",
-        segments: [
-          "Liquidaciones de profesionales cruzando turnos atendidos con aranceles negociados por obra social; control de insumos con trazabilidad por sector; paneles donde dirección ve ocupación y margen sin un archivo de 200 MB. Una app de pacientes conectada a la misma API que recepción evita el ‘¿tenés el turno en el otro grupo?’ cuando el backend es uno solo.",
+          " y recién después un pedazo de producto propio donde el genérico choca.",
         ],
       },
       { type: "h2", id: "cuando-no", text: "Cuándo NO conviene a medida" },
       {
         type: "paragraph",
         segments: [
-          "Si el dolor es solo volumen de mensajes o agenda desordenada, a veces alcanza con ordenar datos y automatizar entre herramientas que ya tenés. A medida tiene sentido cuando el costo de adaptarte al software supera el costo de construir la pieza chica que te falta — eso se ve con horas perdidas, riesgo de error y velocidad de cambio, no con ego de ‘quiero lo mío’.",
+          "Si el dolor es solo volumen de mensajes o agenda desordenada, a veces alcanza con ordenar datos y automatizar entre herramientas que ya tenés. A medida tiene sentido cuando el costo de adaptarte al software supera el costo de construir la pieza chica que te falta — se ve con horas perdidas y riesgo, no con ego de ‘quiero lo mío’.",
         ],
       },
       { type: "h2", id: "conclusion", text: "Conclusión" },
       {
         type: "paragraph",
         segments: [
-          "Elegir entre genérico y propio es matemática, no religión. Si tenés números aproximados de esas tres variables, el alcance deja de ser charla abstracta. Para revisar tu caso, usá el contacto del sitio o el WhatsApp de la caja de enlaces útiles más abajo.",
+          "Elegir entre genérico y propio es matemática de TCO y de riesgo operativo, no religión. Si tenés números aproximados de licencias, horas en Excel y costo de cambios al vendor, el alcance deja de ser charla abstracta. Para revisar tu caso, usá el contacto del sitio o el WhatsApp de la caja de enlaces útiles más abajo.",
         ],
       },
       {
