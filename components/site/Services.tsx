@@ -6,6 +6,7 @@ import { HERO_NAV_CTA_LABEL, PRIMARY_CTA_SUBLINE } from "@/lib/contact";
 import { homeSection } from "@/lib/home-links";
 import { getPublicPriceTeaser, type PricingRegion } from "@/lib/pricing-region";
 import { SERVICE_LANDING_PAGES, splitHomeCardBadge, type ServiceLandingSlug } from "@/lib/service-landings";
+import { motionFadeUpMs } from "@/lib/site-motion";
 
 const CARD_ICON: Record<ServiceLandingSlug, LucideIcon> = {
   "bots-whatsapp": MessageCircle,
@@ -49,9 +50,9 @@ const chipClass =
 export function Services({ pricingRegion }: { pricingRegion: PricingRegion }) {
   const serviceCards = buildServiceCards(pricingRegion);
   return (
-    <section id="servicios" className="relative py-9 md:py-[72px]">
+    <section id="servicios" className="relative py-9 md:py-[72px] motion-section-in-view">
       <div className="max-w-site mx-auto px-6 lg:px-10">
-        <div className="max-w-3xl">
+        <div className={`max-w-3xl ${motionFadeUpMs(20)}`}>
           <span className="text-xs uppercase tracking-[0.2em] text-primary font-medium">Servicios</span>
           <h2 className="mt-3 text-4xl md:text-5xl font-display font-semibold tracking-tight text-pretty">
             Software que resuelve <span className="text-primary">problemas reales</span> en tu negocio
@@ -63,12 +64,12 @@ export function Services({ pricingRegion }: { pricingRegion: PricingRegion }) {
         </div>
 
         <div className="mt-10 md:mt-14 lg:mt-16 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
-          {serviceCards.map((card) => (
+          {serviceCards.map((card, i) => (
             <Link
               key={card.href}
               href={card.href}
               prefetch={false}
-              className="group relative flex h-full min-h-[188px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-border bg-surface/50 p-5 md:p-6 backdrop-blur transition hover:border-primary/40 hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background [&_*]:cursor-pointer"
+              className={`group relative flex h-full min-h-[188px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-border bg-surface/50 p-5 md:p-6 backdrop-blur transition hover:border-primary/40 hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background [&_*]:cursor-pointer ${motionFadeUpMs(36 + i * 40)}`}
               aria-label={`${card.title}. ${card.priceTeaser}. ${card.priceBenefit} — ir al servicio`}
             >
               <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-primary/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />

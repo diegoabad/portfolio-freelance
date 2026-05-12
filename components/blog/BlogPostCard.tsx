@@ -9,15 +9,16 @@ type Props = {
   headingLevel?: "h2" | "h3";
   /** Carrusel/fila flex: usar flex-1 en lugar de h-full (100% no calcula bien si el padre no tiene alto fijo). */
   sameHeightRow?: boolean;
+  className?: string;
 };
 
-export function BlogPostCard({ post, headingLevel = "h2", sameHeightRow = false }: Props) {
+export function BlogPostCard({ post, headingLevel = "h2", sameHeightRow = false, className = "" }: Props) {
   const TitleTag = headingLevel;
   const heightLayout = sameHeightRow ? "flex-1 min-h-0" : "h-full min-h-0";
 
   return (
     <article
-      className={`group relative flex flex-col rounded-2xl border border-border bg-background/60 p-5 md:p-6 backdrop-blur transition hover:border-primary/40 ${heightLayout}`}
+      className={`group relative flex flex-col rounded-2xl border border-border bg-background/60 p-5 md:p-6 backdrop-blur transition hover:border-primary/40 ${heightLayout} ${className}`.trim()}
     >
       <div className="flex shrink-0 flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted-foreground">
         <BlogTopicChip track={post.topicTrack} />

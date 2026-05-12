@@ -270,6 +270,26 @@
   }
 }
 
+/** Scroll (solo `transform`): contenido siempre legible; degradación sin `animation-timeline: view()`. */
+@keyframes motion-section-nudge {
+  from {
+    transform: translate3d(0, 12px, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .motion-section-in-view {
+      animation: motion-section-nudge linear both;
+      animation-timeline: view();
+      animation-range: entry 6% cover 40%;
+    }
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .ambient-orb {
     will-change: transform;

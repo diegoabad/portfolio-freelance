@@ -11,6 +11,7 @@ import {
   landingBodyClass,
   landingH2Class,
 } from "@/components/seo/landing-blocks";
+import { motionFadeUpMs, motionH1Nudge } from "@/lib/site-motion";
 
 export function ServiceLandingView({ page }: { page: ServiceLandingPageData }) {
   const links = mergedInterlinks(page);
@@ -18,13 +19,19 @@ export function ServiceLandingView({ page }: { page: ServiceLandingPageData }) {
   return (
     <LandingReadingMain>
       <header className="border-b border-border pb-8 md:pb-10">
-        <span className="inline-flex rounded-full bg-primary/15 px-3 py-1 text-xs font-medium text-primary">
+        <span
+          className={`inline-flex rounded-full bg-primary/15 px-3 py-1 text-xs font-medium text-primary ${motionFadeUpMs(24)}`}
+        >
           {page.categoryHeading}
         </span>
-        <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight text-pretty text-foreground md:text-4xl lg:text-[2.35rem] lg:leading-tight">
+        <h1
+          className={`mt-4 font-display text-3xl font-semibold tracking-tight text-pretty text-foreground md:text-4xl lg:text-[2.35rem] lg:leading-tight ${motionH1Nudge()}`}
+        >
           {page.title}
         </h1>
-        <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">{page.subtitle}</p>
+        <p className={`mt-4 text-base leading-relaxed text-muted-foreground md:text-lg ${motionFadeUpMs(44)}`}>
+          {page.subtitle}
+        </p>
       </header>
 
       <section className={LANDING_SECTION} aria-labelledby="svc-problem-heading">
@@ -52,7 +59,7 @@ export function ServiceLandingView({ page }: { page: ServiceLandingPageData }) {
         </ul>
       </section>
 
-      <div className="mt-10 md:mt-12">
+      <div className={`mt-10 md:mt-12 ${motionFadeUpMs(96)}`}>
         <Link
           href={homeSection("#contacto")}
           className="inline-flex w-full min-h-12 items-center justify-center gap-2 rounded-[10px] border-2 border-primary bg-primary px-6 py-3.5 text-center text-[15px] font-semibold text-primary-foreground transition-[transform,opacity] hover:opacity-95 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-auto sm:min-h-0 sm:px-8 sm:text-base"

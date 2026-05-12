@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FileText } from "lucide-react";
 import { LinkedInGlyph } from "@/components/site/SimpleIcons";
 import { LINKEDIN_PROFILE_URL } from "@/lib/site";
+import { motionFadeUpMs } from "@/lib/site-motion";
 
 const aboutActionBtn =
   "inline-flex min-w-0 w-full items-center justify-center gap-2 rounded-[10px] border border-primary/45 bg-primary/[0.09] px-4 py-2.5 text-sm font-semibold text-primary backdrop-blur-sm shadow-[inset_0_1px_0_0_rgb(255_255_255_/0.06)] transition hover:border-primary/80 hover:bg-primary/[0.15] hover:shadow-[0_0_26px_-10px_rgb(82_168_255_/0.42)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background";
@@ -24,13 +25,13 @@ const aboutStatCardClass =
 
 export function About() {
   return (
-    <section id="sobre-mi" className="relative py-9 md:py-[72px]">
+    <section id="sobre-mi" className="relative py-9 md:py-[72px] motion-section-in-view">
       <div className="max-w-site mx-auto px-6 lg:px-10">
-        <div className="max-w-3xl">
+        <div className={`max-w-3xl ${motionFadeUpMs(16)}`}>
           <span className="text-xs uppercase tracking-[0.2em] text-primary font-medium">Sobre mí</span>
         </div>
 
-        <div className="relative mt-6 min-h-[300px] overflow-hidden rounded-2xl border border-border md:mt-8 md:min-h-[380px] lg:min-h-[420px]">
+        <div className={`relative mt-6 min-h-[300px] overflow-hidden rounded-2xl border border-border md:mt-8 md:min-h-[380px] lg:min-h-[420px] ${motionFadeUpMs(40)}`}>
           <div className="pointer-events-none absolute inset-y-0 right-0 w-1/2 overflow-hidden">
             <div
               className="absolute inset-0 opacity-[0.05] md:opacity-[0.18] mask-[linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.45)_18%,black_42%,black_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.45)_18%,black_42%,black_100%)] mask-size-[100%_100%]"

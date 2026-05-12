@@ -14,6 +14,9 @@ import {
 } from "@/lib/blog-posts";
 import type { BlogPost } from "@/lib/blog-types";
 import { blogTopicLabel } from "@/lib/blog-topics";
+import { robotsIndexFollowGoogle } from "@/lib/seo-robots";
+import { buildDefaultSocialImageDescriptor } from "@/lib/social-image-meta";
+import { motionFadeUpMs, motionH1Nudge } from "@/lib/site-motion";
 import { getSiteUrl, LINKEDIN_PROFILE_URL } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -92,7 +95,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = post.metaTitle ?? post.title;
   const description = post.metaDescription ?? post.description;
 
-  const defaultOgImage = siteBase ? new URL("/opengraph-image", siteBase).toString() : undefined;
+  const ogDescriptor = buildDefaultSocialImageDescriptor(siteBase, title);
 
   const keywords = post.metaKeywords?.length ? [...post.metaKeywords] : undefined;
 
@@ -111,15 +114,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       locale: "es_AR",
       siteName: "Diego Abad",
       ...(canonical ? { url: canonical } : {}),
-      ...(defaultOgImage ? { images: [{ url: defaultOgImage, alt: title }] } : {}),
+      ...(ogDescriptor ? { images: [ogDescriptor] } : {}),
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      ...(defaultOgImage ? { images: { url: defaultOgImage, alt: title } } : {}),
+      ...(ogDescriptor ? { images: { url: ogDescriptor.url, alt: ogDescriptor.alt } } : {}),
     },
-    robots: { index: true, follow: true },
+    robots: robotsIndexFollowGoogle,
   };
 }
 
@@ -190,22 +193,24 @@ export default async function BlogPostPage({ params }: Props) {
               </ol>
             </nav>
             <header>
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted-foreground">
+              <div className={`flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted-foreground ${motionFadeUpMs(24)}`}>
                 <BlogTopicChip track={post.topicTrack} />
                 <time className="inline-flex items-center gap-1.5 tabular-nums leading-none" dateTime={post.publishedAt}>
                   <Calendar className="h-[1em] w-[1em] shrink-0 text-primary/70" aria-hidden />
                   Publicado el {formatBlogDate(post.publishedAt)}
                 </time>
               </div>
-              <h1 className="mt-5 text-3xl font-display font-semibold tracking-tight text-pretty text-foreground md:text-4xl lg:text-[2.35rem] lg:leading-tight">
+              <h1
+                className={`mt-5 text-3xl font-display font-semibold tracking-tight text-pretty text-foreground md:text-4xl lg:text-[2.35rem] lg:leading-tight ${motionH1Nudge()}`}
+              >
                 {post.title}
               </h1>
-              <p className="mt-4 text-base text-muted-foreground leading-relaxed md:text-lg">
+              <p className={`mt-4 text-base text-muted-foreground leading-relaxed md:text-lg ${motionFadeUpMs(44)}`}>
                 {post.metaDescription ?? post.description}
               </p>
             </header>
 
-            <div className="prose-blog mt-10 border-t border-border pt-10 md:mt-12 md:pt-12">
+            <div className={`prose-blog mt-10 border-t border-border pt-10 md:mt-12 md:pt-12 ${motionFadeUpMs(56)}`}>
               <BlogPostContent blocks={post.content} />
             </div>
 
@@ -214,7 +219,7 @@ export default async function BlogPostPage({ params }: Props) {
 
           {post.resourceLinks && post.resourceLinks.length > 0 ? (
             <section
-              className="mx-auto mt-12 w-full max-w-3xl rounded-2xl border border-border bg-surface/40 p-6 md:p-8"
+              className="mx-auto mt-12 w-full max-w-3xl rounded-2xl border border-border bg-surface/40 p-6 md:p-8 motion-section-in-view"
               aria-labelledby="blog-resources-heading"
             >
               <h2 id="blog-resources-heading" className="font-display text-lg font-semibold text-foreground md:text-xl">

@@ -3,7 +3,8 @@ import { Figtree, Outfit } from "next/font/google";
 import { AmbientOrbs } from "@/components/site/AmbientOrbs";
 import { GoogleTagManager } from "@/components/seo/GoogleTagManager";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { SOCIAL_IMAGE_ALT_DEFAULT, SOCIAL_IMAGE_SIZE } from "@/lib/social-image-meta";
+import { buildDefaultSocialImageDescriptor } from "@/lib/social-image-meta";
+import { robotsIndexFollowGoogle } from "@/lib/seo-robots";
 import { buildSiteVerification } from "@/lib/seo-verification";
 import { getSiteUrl, LINKEDIN_PROFILE_URL } from "@/lib/site";
 import "./globals.css";
@@ -43,7 +44,7 @@ export const viewport: Viewport = {
 
 const siteVerification = buildSiteVerification();
 
-const defaultOgAbsolute = siteUrl ? new URL("/opengraph-image", siteUrl).toString() : undefined;
+const defaultOgDescriptor = buildDefaultSocialImageDescriptor(siteUrl);
 
 export const metadata: Metadata = {
   metadataBase,
@@ -58,14 +59,7 @@ export const metadata: Metadata = {
   publisher: "Diego Abad",
   referrer: "origin-when-cross-origin",
   ...(siteVerification ? { verification: siteVerification } : {}),
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-    },
-  },
+  robots: robotsIndexFollowGoogle,
   ...(siteUrl ? { alternates: { canonical: siteUrl } } : {}),
   openGraph: {
     title: seoTitle,
@@ -74,28 +68,17 @@ export const metadata: Metadata = {
     locale: "es_AR",
     siteName: "Diego Abad",
     ...(siteUrl ? { url: siteUrl } : {}),
-    ...(defaultOgAbsolute
-      ? {
-          images: [
-            {
-              url: defaultOgAbsolute,
-              width: SOCIAL_IMAGE_SIZE.width,
-              height: SOCIAL_IMAGE_SIZE.height,
-              alt: SOCIAL_IMAGE_ALT_DEFAULT,
-            },
-          ],
-        }
-      : {}),
+    ...(defaultOgDescriptor ? { images: [defaultOgDescriptor] } : {}),
   },
   twitter: {
     card: "summary_large_image",
     title: seoTitle,
     description: seoDescription,
-    ...(defaultOgAbsolute
+    ...(defaultOgDescriptor
       ? {
           images: {
-            url: defaultOgAbsolute,
-            alt: SOCIAL_IMAGE_ALT_DEFAULT,
+            url: defaultOgDescriptor.url,
+            alt: defaultOgDescriptor.alt,
           },
         }
       : {}),

@@ -5,7 +5,7 @@ import { homeSection } from "@/lib/home-links";
 
 /** Separación entre bloques (mismo ritmo que blog / casos de éxito). */
 export const LANDING_SECTION =
-  "mt-10 md:mt-12 border-t border-border pt-10 md:pt-12 scroll-mt-28";
+  "mt-10 md:mt-12 border-t border-border pt-10 md:pt-12 scroll-mt-28 motion-section-in-view";
 
 export const landingH2Class =
   "mt-3 font-display text-xl font-semibold tracking-tight text-pretty text-foreground md:text-2xl";
@@ -28,13 +28,15 @@ export function LandingRelatedNav({
   heading = "Explorá más soluciones",
   description = "Otros enfoques que suelen ir de la mano con lo que estás buscando.",
   links,
+  className = "",
 }: {
   heading?: string;
   description?: string;
   links: readonly { href: string; label: string }[];
+  className?: string;
 }) {
   return (
-    <section className={`${LANDING_SECTION}`} aria-labelledby="landing-related-heading">
+    <section className={`${LANDING_SECTION} ${className}`.trim()} aria-labelledby="landing-related-heading">
       <h2 id="landing-related-heading" className={landingH2Class}>
         {heading}
       </h2>

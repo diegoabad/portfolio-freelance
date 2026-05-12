@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CvMobileContactHints } from "@/app/curriculum/CvMobileContactHints";
 import { CONTACT_EMAIL } from "@/lib/contact";
-import { SOCIAL_IMAGE_ALT_DEFAULT, SOCIAL_IMAGE_SIZE } from "@/lib/social-image-meta";
+import { robotsIndexFollowGoogle } from "@/lib/seo-robots";
+import { buildDefaultSocialImageDescriptor } from "@/lib/social-image-meta";
 import { getSiteUrl, LINKEDIN_PROFILE_URL } from "@/lib/site";
 
 const cvDescription =
@@ -12,7 +13,7 @@ const siteBase = getSiteUrl();
 /** Portfolio público (misma lógica que sitemap / canonical). */
 const publicPortfolioUrl = siteBase ?? "https://www.diegoabad.com";
 const cvCanonical = siteBase ? new URL("/curriculum", siteBase).toString() : undefined;
-const cvOgImage = siteBase ? new URL("/opengraph-image", siteBase).toString() : undefined;
+const cvOgDescriptor = buildDefaultSocialImageDescriptor(siteBase);
 
 export const metadata: Metadata = {
   title: {
@@ -28,29 +29,15 @@ export const metadata: Metadata = {
     locale: "es_AR",
     siteName: "Diego Abad",
     ...(cvCanonical ? { url: cvCanonical } : {}),
-    ...(cvOgImage
-      ? {
-          images: [
-            {
-              url: cvOgImage,
-              width: SOCIAL_IMAGE_SIZE.width,
-              height: SOCIAL_IMAGE_SIZE.height,
-              alt: SOCIAL_IMAGE_ALT_DEFAULT,
-            },
-          ],
-        }
-      : {}),
+    ...(cvOgDescriptor ? { images: [cvOgDescriptor] } : {}),
   },
   twitter: {
     card: "summary_large_image",
     title: "CV Diego Abad — Desarrollador fullstack",
     description: cvDescription,
-    ...(cvOgImage ? { images: { url: cvOgImage, alt: SOCIAL_IMAGE_ALT_DEFAULT } } : {}),
+    ...(cvOgDescriptor ? { images: { url: cvOgDescriptor.url, alt: cvOgDescriptor.alt } } : {}),
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: robotsIndexFollowGoogle,
 };
 
 /**

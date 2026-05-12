@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import { caseStudies } from "@/lib/case-studies";
+import { motionFadeUpMs } from "@/lib/site-motion";
 
 /** Misma escala visual que los chips de la sección Servicios. */
 const caseStudyChipClass =
@@ -12,10 +13,10 @@ export function Projects() {
   return (
     <section
       id="proyectos"
-      className="relative bg-surface/30 py-9 md:py-[72px]"
+      className="relative bg-surface/30 py-9 md:py-[72px] motion-section-in-view"
     >
       <div className="max-w-site mx-auto px-6 lg:px-10">
-        <div className="max-w-3xl">
+        <div className={`max-w-3xl ${motionFadeUpMs(20)}`}>
           <span className="text-xs uppercase tracking-[0.2em] text-primary font-medium">Casos de éxito</span>
           <h2 className="mt-3 text-4xl md:text-5xl font-display font-semibold tracking-tight text-pretty">
             Del problema a la <span className="text-primary">solución</span>
@@ -31,7 +32,7 @@ export function Projects() {
               key={p.slug}
               href={`/proyectos/${p.slug}`}
               aria-label={`Ver caso de éxito: ${p.title}`}
-              className="group relative flex min-h-[240px] flex-col overflow-hidden rounded-2xl border-2 border-border bg-linear-to-br from-primary/[0.07] via-background/90 to-background/70 p-6 shadow-[0_12px_40px_-24px_rgba(0,0,0,0.45)] backdrop-blur-md transition duration-300 hover:border-primary/50 hover:shadow-[0_20px_48px_-20px_oklch(0.55_0.14_250/0.22)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:min-h-0 sm:p-7 md:p-8 [&_*]:cursor-pointer"
+              className={`group relative flex min-h-[240px] flex-col overflow-hidden rounded-2xl border-2 border-border bg-linear-to-br from-primary/[0.07] via-background/90 to-background/70 p-6 shadow-[0_12px_40px_-24px_rgba(0,0,0,0.45)] backdrop-blur-md transition duration-300 hover:border-primary/50 hover:shadow-[0_20px_48px_-20px_oklch(0.55_0.14_250/0.22)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:min-h-0 sm:p-7 md:p-8 [&_*]:cursor-pointer ${motionFadeUpMs(32 + i * 48)}`}
             >
               {/* Halo decorativo (misma idea que cards de servicios) */}
               <div

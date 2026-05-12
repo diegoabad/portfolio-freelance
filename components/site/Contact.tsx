@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import { motionFadeUpMs } from "@/lib/site-motion";
 
 const ContactInteractive = dynamic(
   () => import("@/components/site/ContactInteractive").then((m) => ({ default: m.ContactInteractive })),
@@ -25,12 +26,12 @@ export function Contact() {
   return (
     <section
       id="contacto"
-      className="relative overflow-hidden py-9 md:py-[72px]"
+      className="relative overflow-hidden py-9 md:py-[72px] motion-section-in-view"
     >
       <div className="absolute -bottom-40 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-primary/12 blur-[130px]" />
 
       <div className="relative max-w-site mx-auto px-6 lg:px-10">
-        <div className="max-w-3xl">
+        <div className={`max-w-3xl ${motionFadeUpMs(20)}`}>
           <span className="text-xs uppercase tracking-[0.2em] text-primary font-medium">Contacto</span>
           <h2 className="mt-3 text-4xl md:text-6xl font-display font-semibold tracking-tight text-pretty">
             ¿Tenés una <span className="text-primary">idea o problema</span> que querés resolver?
@@ -40,7 +41,9 @@ export function Contact() {
           </p>
         </div>
 
-        <ContactInteractive />
+        <div className={motionFadeUpMs(48)}>
+          <ContactInteractive />
+        </div>
       </div>
     </section>
   );

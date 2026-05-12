@@ -14,6 +14,7 @@ import {
 import { ServiceLandingHeroOffer } from "@/components/seo/ServiceLandingHeroOffer";
 import { EVALUATION_OFFER_FAQ, LANDING_CONSULT_CTA, REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
 import { serviceLandingPriceFaqCallout, type PricingRegion } from "@/lib/pricing-region";
+import { motionFadeUpMs, motionH1Nudge } from "@/lib/site-motion";
 const CATEGORY = "Turnos online";
 
 const HERO = {
@@ -187,16 +188,22 @@ export function SistemaTurnosOnlineLanding({ pricingRegion }: { pricingRegion: P
   return (
     <LandingReadingMain>
       <header className="border-b border-border pb-8 md:pb-10">
-        <div className="inline-flex items-center gap-2 rounded-full bg-primary/15 px-3 py-1 text-xs font-medium text-primary">
+        <div
+          className={`inline-flex items-center gap-2 rounded-full bg-primary/15 px-3 py-1 text-xs font-medium text-primary ${motionFadeUpMs(24)}`}
+        >
           <CalendarDays className="h-3.5 w-3.5 shrink-0" aria-hidden />
           {CATEGORY}
         </div>
-        <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight text-pretty text-foreground md:text-4xl lg:text-[2.35rem] lg:leading-tight">
+        <h1
+          className={`mt-4 font-display text-3xl font-semibold tracking-tight text-pretty text-foreground md:text-4xl lg:text-[2.35rem] lg:leading-tight ${motionH1Nudge()}`}
+        >
           {HERO.title}
         </h1>
-        <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">{HERO.subtitle}</p>
+        <p className={`mt-4 text-base leading-relaxed text-muted-foreground md:text-lg ${motionFadeUpMs(44)}`}>
+          {HERO.subtitle}
+        </p>
         <ServiceLandingHeroOffer slug="sistema-turnos-online" pricingRegion={pricingRegion} />
-        <div className="mt-6 flex flex-wrap gap-4">
+        <div className={`mt-6 flex flex-wrap gap-4 ${motionFadeUpMs(72)}`}>
           <LandingWaCta
             href={waHref(MSG_HERO)}
             rel={REL_WHATSAPP_EXTERNAL}

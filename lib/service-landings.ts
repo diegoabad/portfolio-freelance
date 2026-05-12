@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { PRIMARY_CTA_LABEL } from "@/lib/contact";
+import { robotsIndexFollowGoogle } from "@/lib/seo-robots";
+import { buildDefaultSocialImageDescriptor } from "@/lib/social-image-meta";
 import { getSiteUrl } from "@/lib/site";
 
 export type ServiceInterlink = { href: string; label: string };
@@ -238,7 +240,7 @@ export function buildServicePageMetadata(slug: ServiceLandingSlug): Metadata {
   const p = PAGE_MAP[slug];
   const base = getSiteUrl();
   const canonical = base ? new URL(`/${slug}`, base).toString() : undefined;
-  const defaultOg = base ? new URL("/opengraph-image", base).toString() : undefined;
+  const defaultOg = buildDefaultSocialImageDescriptor(base, p.title);
 
   return {
     title: p.title,
@@ -251,15 +253,15 @@ export function buildServicePageMetadata(slug: ServiceLandingSlug): Metadata {
       locale: "es_AR",
       siteName: "Diego Abad",
       ...(canonical ? { url: canonical } : {}),
-      ...(defaultOg ? { images: [{ url: defaultOg, alt: p.title }] } : {}),
+      ...(defaultOg ? { images: [defaultOg] } : {}),
     },
     twitter: {
       card: "summary_large_image",
       title: p.title,
       description: p.metaDescription,
-      ...(defaultOg ? { images: { url: defaultOg, alt: p.title } } : {}),
+      ...(defaultOg ? { images: { url: defaultOg.url, alt: defaultOg.alt } } : {}),
     },
-    robots: { index: true, follow: true },
+    robots: robotsIndexFollowGoogle,
   };
 }
 

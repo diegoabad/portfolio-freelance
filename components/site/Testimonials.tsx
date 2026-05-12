@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Linkedin, Quote } from "lucide-react";
+import { motionFadeUpMs } from "@/lib/site-motion";
 
 const testimonials = [
   {
@@ -43,9 +44,9 @@ function Avatar({ imageSrc, name }: { imageSrc: string; name: string }) {
 
 export function Testimonials() {
   return (
-    <section id="testimonios" className="relative py-9 md:py-[72px]">
+    <section id="testimonios" className="relative py-9 md:py-[72px] motion-section-in-view">
       <div className="max-w-site mx-auto px-6 lg:px-10">
-        <div className="max-w-3xl">
+        <div className={`max-w-3xl ${motionFadeUpMs(20)}`}>
           <span className="text-xs uppercase tracking-[0.2em] text-primary font-medium">Testimonios</span>
           <h2 className="mt-3 text-4xl md:text-5xl font-display font-semibold tracking-tight text-pretty">
             Lo que dicen quienes <span className="text-primary">trabajaron conmigo</span>
@@ -56,10 +57,10 @@ export function Testimonials() {
         </div>
 
         <div className="mt-10 md:mt-12 grid gap-4 md:gap-5 lg:grid-cols-2">
-          {testimonials.map((t) => (
+          {testimonials.map((t, i) => (
             <article
               key={t.name}
-              className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-background/60 p-5 sm:p-6 md:p-8 backdrop-blur transition hover:border-primary/40"
+              className={`group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-background/60 p-5 sm:p-6 md:p-8 backdrop-blur transition hover:border-primary/40 ${motionFadeUpMs(36 + i * 44)}`}
             >
               {/* Una sola fila flex: foto + nombre pegados (gap mínimo). Rol bajo el nombre en desktop; en móvil rol aparte a ancho completo más abajo. */}
               <div className="w-full min-w-0">

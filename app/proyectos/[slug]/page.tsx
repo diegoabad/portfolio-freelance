@@ -5,6 +5,9 @@ import { ChevronLeft } from "lucide-react";
 import { ForceHomeHashLink } from "@/components/site/ForceHomeHashLink";
 import { PageShell } from "@/components/site/PageShell";
 import { getAllCaseStudySlugs, getCaseStudyBySlug } from "@/lib/case-studies";
+import { robotsIndexFollowGoogle } from "@/lib/seo-robots";
+import { motionFadeUpMs, motionH1Nudge } from "@/lib/site-motion";
+import { buildDefaultSocialImageDescriptor } from "@/lib/social-image-meta";
 import { getSiteUrl } from "@/lib/site";
 
 const CaseStudyGallery = dynamic(
@@ -12,7 +15,7 @@ const CaseStudyGallery = dynamic(
   {
     loading: () => (
       <div
-        className="mt-8 aspect-video sm:aspect-16/10 rounded-xl border border-border bg-muted/20 animate-pulse md:mt-10"
+        className="mt-8 min-h-[220px] w-full rounded-xl border border-border bg-muted/20 animate-pulse md:mt-10 md:min-h-[260px]"
         aria-hidden
       />
     ),
@@ -34,11 +37,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const canonical = siteBase ? new URL(`/proyectos/${slug}`, siteBase).toString() : undefined;
   const title = `${study.title} — caso de éxito`;
   const firstShot = study.images[0];
+  const fallbackOg = buildDefaultSocialImageDescriptor(siteBase, `${title} | Diego Abad`);
   const ogImage =
     siteBase && firstShot
       ? [{ url: new URL(firstShot, siteBase).toString(), alt: study.title }]
-      : siteBase
-        ? [{ url: new URL("/opengraph-image", siteBase).toString(), alt: title }]
+      : fallbackOg
+        ? [fallbackOg]
         : undefined;
 
   return {
@@ -59,10 +63,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `${title} | Diego Abad`,
       description: study.seoDescription,
       ...(ogImage?.[0]
-        ? { images: { url: ogImage[0].url.toString(), alt: ogImage[0].alt ?? title } }
+        ? { images: { url: ogImage[0].url, alt: ogImage[0].alt ?? `${title} | Diego Abad` } }
         : {}),
     },
-    robots: { index: true, follow: true },
+    robots: robotsIndexFollowGoogle,
   };
 }
 
@@ -100,34 +104,40 @@ export default async function CaseStudyPage({ params }: Props) {
         />
       ) : null}
       <main className="flex-1 border-b border-border bg-background">
-        <article className="max-w-site mx-auto px-4 py-12 sm:px-6 md:py-16 lg:px-10 lg:py-20">
+        <article className="max-w-site mx-auto px-4 py-12 sm:px-6 md:py-16 lg:px-10 lg:py-20 motion-section-in-view">
           <div className="mx-auto w-full max-w-3xl">
             <header className="border-b border-border pb-8 md:pb-10">
-              <span className="inline-flex rounded-full bg-primary/15 px-3 py-1 text-xs font-medium text-primary">
+              <span
+                className={`inline-flex rounded-full bg-primary/15 px-3 py-1 text-xs font-medium text-primary ${motionFadeUpMs(24)}`}
+              >
                 {study.tag}
               </span>
-              <h1 className="mt-4 text-3xl font-display font-semibold tracking-tight text-pretty text-foreground md:text-4xl lg:text-[2.35rem] lg:leading-tight">
+              <h1
+                className={`mt-4 text-3xl font-display font-semibold tracking-tight text-pretty text-foreground md:text-4xl lg:text-[2.35rem] lg:leading-tight ${motionH1Nudge()}`}
+              >
                 {study.title}
               </h1>
-              <blockquote className="mt-5 rounded-r-xl border border-primary/15 border-l-[3px] border-l-primary bg-primary/[0.07] px-4 py-3.5 text-base font-medium leading-snug text-pretty text-foreground shadow-[inset_0_1px_0_0_rgb(255_255_255_/0.05)] md:mt-6 md:px-5 md:py-4 md:text-lg md:leading-relaxed">
+              <blockquote
+                className={`mt-5 rounded-r-xl border border-primary/15 border-l-[3px] border-l-primary bg-primary/[0.07] px-4 py-3.5 text-base font-medium leading-snug text-pretty text-foreground shadow-[inset_0_1px_0_0_rgb(255_255_255_/0.05)] md:mt-6 md:px-5 md:py-4 md:text-lg md:leading-relaxed ${motionFadeUpMs(40)}`}
+              >
                 {study.detailHighlight}
               </blockquote>
-              <p className="mt-5 text-base leading-relaxed text-muted-foreground md:mt-6 md:text-lg">
+              <p className={`mt-5 text-base leading-relaxed text-muted-foreground md:mt-6 md:text-lg ${motionFadeUpMs(52)}`}>
                 {study.detailLead ?? study.cardSummary}
               </p>
             </header>
 
             {study.images.length > 0 ? (
-              <div className="mt-8 md:mt-10">
-                <h2 className="font-display text-lg font-semibold text-foreground md:text-xl">Capturas del proyecto</h2>
+              <div className={`mt-8 md:mt-10 ${motionFadeUpMs(64)}`}>
+                <h2 className="font-display text-lg font-semibold text-foreground md:text-xl">Vista del proyecto</h2>
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                  Galería navegable; podés ampliar cada imagen para verla con más detalle.
+                  Referencia visual del caso; hacé clic en la imagen para ampliarla y ver más detalle.
                 </p>
                 <CaseStudyGallery images={[...study.images]} altPrefix={study.title} />
               </div>
             ) : null}
 
-            <dl className="mt-10 space-y-6 border-t border-border pt-10 md:mt-12 md:space-y-8 md:pt-12">
+            <dl className={`mt-10 space-y-6 border-t border-border pt-10 md:mt-12 md:space-y-8 md:pt-12 ${motionFadeUpMs(72)}`}>
               <div>
                 <dt className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Contexto</dt>
                 <dd className="mt-2 text-base leading-relaxed text-foreground/90 md:text-[17px]">{study.problem}</dd>
@@ -142,7 +152,7 @@ export default async function CaseStudyPage({ params }: Props) {
               </div>
             </dl>
 
-            <footer className="mt-12 flex flex-col gap-4 border-t border-border pt-10 sm:flex-row sm:items-center sm:justify-between md:mt-14 md:pt-12">
+            <footer className={`mt-12 flex flex-col gap-4 border-t border-border pt-10 sm:flex-row sm:items-center sm:justify-between md:mt-14 md:pt-12 ${motionFadeUpMs(88)}`}>
               <ForceHomeHashLink
                 hash="#proyectos"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline underline-offset-4"

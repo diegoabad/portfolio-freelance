@@ -15,6 +15,7 @@ import { ServiceLandingHeroOffer } from "@/components/seo/ServiceLandingHeroOffe
 import { EVALUATION_OFFER_FAQ, LANDING_CONSULT_CTA } from "@/lib/contact";
 import { homeSection } from "@/lib/home-links";
 import { serviceLandingPriceFaqCallout, type PricingRegion } from "@/lib/pricing-region";
+import { motionFadeUpMs, motionH1Nudge } from "@/lib/site-motion";
 const CATEGORY = "Automatización de procesos";
 
 const HERO = {
@@ -270,16 +271,22 @@ export function AutomatizacionNegociosLanding({ pricingRegion }: { pricingRegion
   return (
     <LandingReadingMain>
       <header className="border-b border-border pb-8 md:pb-10">
-        <div className="inline-flex items-center gap-2 rounded-full bg-primary/15 px-3 py-1 text-xs font-medium text-primary">
+        <div
+          className={`inline-flex items-center gap-2 rounded-full bg-primary/15 px-3 py-1 text-xs font-medium text-primary ${motionFadeUpMs(24)}`}
+        >
           <Zap className="h-3.5 w-3.5 shrink-0" aria-hidden />
           {CATEGORY}
         </div>
-        <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight text-pretty text-foreground md:text-4xl lg:text-[2.35rem] lg:leading-tight">
+        <h1
+          className={`mt-4 font-display text-3xl font-semibold tracking-tight text-pretty text-foreground md:text-4xl lg:text-[2.35rem] lg:leading-tight ${motionH1Nudge()}`}
+        >
           {HERO.title}
         </h1>
-        <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">{HERO.subtitle}</p>
+        <p className={`mt-4 text-base leading-relaxed text-muted-foreground md:text-lg ${motionFadeUpMs(44)}`}>
+          {HERO.subtitle}
+        </p>
         <ServiceLandingHeroOffer slug="automatizacion-procesos-clinicas" pricingRegion={pricingRegion} />
-        <div className="mt-6 flex flex-wrap gap-4">
+        <div className={`mt-6 flex flex-wrap gap-4 ${motionFadeUpMs(72)}`}>
           <LandingWaCta href={homeSection("#contacto")} main={LANDING_CONSULT_CTA} hideWhatsAppIconMobile />
         </div>
       </header>

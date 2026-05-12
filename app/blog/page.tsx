@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { BlogIndexListing } from "@/components/blog/BlogIndexListing";
 import { PageShell } from "@/components/site/PageShell";
 import { blogPostsSorted } from "@/lib/blog-posts";
+import { robotsIndexFollowGoogle } from "@/lib/seo-robots";
+import { buildDefaultSocialImageDescriptor } from "@/lib/social-image-meta";
+import { motionFadeUpMs, motionH1Nudge } from "@/lib/site-motion";
 import { getSiteUrl } from "@/lib/site";
 
 const title = "Blog — software, WhatsApp, turnos y automatización";
@@ -11,7 +14,8 @@ const description =
 
 const siteBase = getSiteUrl();
 const canonical = siteBase ? new URL("/blog", siteBase).toString() : undefined;
-const blogOgImage = siteBase ? new URL("/opengraph-image", siteBase).toString() : undefined;
+const blogOgTitle = `${title} | Diego Abad`;
+const blogOgDescriptor = buildDefaultSocialImageDescriptor(siteBase, blogOgTitle);
 
 function buildBlogIndexJsonLd(listUrl: string, posts: { url: string; title: string; datePublished: string }[]) {
   return {
@@ -46,15 +50,15 @@ export const metadata: Metadata = {
     locale: "es_AR",
     siteName: "Diego Abad",
     ...(canonical ? { url: canonical } : {}),
-    ...(blogOgImage ? { images: [{ url: blogOgImage, alt: title }] } : {}),
+    ...(blogOgDescriptor ? { images: [blogOgDescriptor] } : {}),
   },
   twitter: {
     card: "summary_large_image",
     title: `${title} | Diego Abad`,
     description,
-    ...(blogOgImage ? { images: { url: blogOgImage, alt: `${title} | Diego Abad` } } : {}),
+    ...(blogOgDescriptor ? { images: { url: blogOgDescriptor.url, alt: blogOgDescriptor.alt } } : {}),
   },
-  robots: { index: true, follow: true },
+  robots: robotsIndexFollowGoogle,
 };
 
 export default function BlogIndexPage() {
@@ -78,17 +82,19 @@ export default function BlogIndexPage() {
       <main className="flex-1 border-b border-border bg-background">
         <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-10 py-12 md:py-16 lg:py-20">
           <header className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-pretty">
+            <h1 className={`text-4xl md:text-5xl font-display font-semibold tracking-tight text-pretty ${motionH1Nudge()}`}>
               Blog
             </h1>
-            <p className="mt-3 text-lg md:text-xl text-muted-foreground leading-relaxed text-pretty">
+            <p className={`mt-3 text-lg md:text-xl text-muted-foreground leading-relaxed text-pretty ${motionFadeUpMs(40)}`}>
               En este apartado voy sumando artículos que me hubiera gustado leer antes: temas que aparecen seguido en
               proyectos reales — turnos, WhatsApp, clínicas, stock, apps o desarrollo a medida — explicados de forma
               simple, para ubicarte sin rodeos.
             </p>
           </header>
 
-          <BlogIndexListing posts={blogPostsSorted} />
+          <div className={motionFadeUpMs(56)}>
+            <BlogIndexListing posts={blogPostsSorted} />
+          </div>
         </div>
       </main>
     </PageShell>

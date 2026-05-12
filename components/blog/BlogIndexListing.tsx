@@ -10,6 +10,7 @@ import {
   blogTopicLabel,
   blogTopicMenuOptionClassName,
 } from "@/lib/blog-topics";
+import { motionFadeUpMs } from "@/lib/site-motion";
 
 const PAGE_SIZE = 12;
 
@@ -199,8 +200,8 @@ export function BlogIndexListing({ posts }: Props) {
 
       {pageSlice.length > 0 ? (
         <div className="grid gap-4 md:gap-5 lg:grid-cols-2" aria-label="Entradas del blog">
-          {pageSlice.map((post) => (
-            <BlogPostCard key={post.slug} post={post} headingLevel="h2" />
+          {pageSlice.map((post, i) => (
+            <BlogPostCard key={post.slug} post={post} headingLevel="h2" className={motionFadeUpMs(24 + i * 36)} />
           ))}
         </div>
       ) : null}
