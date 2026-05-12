@@ -293,3 +293,20 @@
     animation: grain-shift 18s ease-in-out infinite;
   }
 }
+
+/**
+ * Móvil (≤767px): desactiva cualquier `@keyframes` (hero, orbes, ruido, `animate-pulse`, etc.).
+ * No toca `transition` (hovers, focus, lightbox) para no romper la interacción.
+ */
+@media (max-width: 767px) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    animation-duration: 0s !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

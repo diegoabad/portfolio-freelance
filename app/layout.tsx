@@ -14,7 +14,6 @@ const figtree = Figtree({
   variable: "--font-figtree",
   subsets: ["latin"],
   display: "swap",
-  adjustFontFallback: true,
   /** No compite en red con Outfit (hero / títulos); el cuerpo puede hacer FOUT breve. */
   preload: false,
 });
@@ -23,7 +22,6 @@ const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
   display: "swap",
-  adjustFontFallback: true,
   /** Preload: el LCP en home es el h1 del hero (font-display / Outfit). */
   preload: true,
 });
@@ -103,12 +101,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es-AR" className={`${figtree.variable} ${outfit.variable} h-full antialiased`}>
-      <head>
-        {/** Resolución DNS temprana para tags que GTM carga después (Pixel, etc.). No descarga JS. */}
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://connect.facebook.net" />
-        <link rel="dns-prefetch" href="https://www.facebook.com" />
-      </head>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <GoogleTagManager />
         <JsonLd />

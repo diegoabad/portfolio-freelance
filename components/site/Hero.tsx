@@ -50,10 +50,9 @@ export function Hero() {
             fill
             priority
             fetchPriority="high"
-            /** q=65: equilibrio Lighthouse (~6 KiB menos) vs nitidez; decorativo con opacidad baja. */
-            quality={65}
+            quality={68}
             className="object-cover object-[52%_44%] sm:object-[48%_48%] md:object-[6%_56%] lg:object-[4%_55%]"
-            sizes="(max-width:767px) 68vw, (max-width:1536px) 40vw, 640px"
+            sizes="(max-width:767px) 72vw, (max-width:1536px) 42vw, 680px"
           />
         </div>
         <div
