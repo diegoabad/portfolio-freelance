@@ -4,6 +4,7 @@ const GTM_ID = "GTM-MD2MFRLQ";
 
 /**
  * Google Tag Manager — snippet oficial en root layout (todas las páginas).
+ * `lazyOnload`: carga tras el load de página para no competir con LCP/FCP ni inflar TBT en 4G (tags que dependan de “antes del paint” pueden retrasarse).
  * @see https://developers.google.com/tag-manager/quickstart
  */
 export function GoogleTagManager() {
@@ -18,7 +19,7 @@ export function GoogleTagManager() {
           style={{ display: "none", visibility: "hidden" }}
         />
       </noscript>
-      <Script id="google-tag-manager" strategy="afterInteractive">
+      <Script id="google-tag-manager" strategy="lazyOnload">
         {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
