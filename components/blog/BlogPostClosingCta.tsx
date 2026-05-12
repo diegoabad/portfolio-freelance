@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 import { getBlogClosingCta } from "@/lib/blog-closing-cta";
 import type { BlogTopicTrack } from "@/lib/blog-types";
@@ -28,24 +27,20 @@ export function BlogPostClosingCta({ track, closingCta }: Props) {
         {headline}
       </h2>
       <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-[15px]">{supporting}</p>
-      <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-        <Link
-          href="/#contacto"
-          className="inline-flex min-h-11 w-full items-center justify-center rounded-[10px] border-2 border-primary bg-primary px-5 py-3 text-center text-sm font-semibold text-primary-foreground transition hover:opacity-95 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-auto sm:min-h-0 sm:px-6"
-        >
-          {HERO_NAV_CTA_LABEL}
-        </Link>
-        <a
-          href={wa}
-          target="_blank"
-          rel={REL_WHATSAPP_EXTERNAL}
-          className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-[10px] border-2 border-primary/45 bg-background/80 px-5 py-3 text-sm font-semibold text-primary backdrop-blur-sm transition hover:border-primary/75 hover:bg-primary/8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-auto sm:min-h-0 sm:px-6"
-        >
-          <WhatsAppIcon size={18} className="shrink-0" aria-hidden />
-          WhatsApp
-        </a>
+      <div className="mt-6 flex justify-center">
+        <div className="inline-flex w-full max-w-md flex-col items-center gap-3 sm:w-auto">
+          <a
+            href={wa}
+            target="_blank"
+            rel={REL_WHATSAPP_EXTERNAL}
+            className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-[10px] border-2 border-primary bg-primary px-5 py-3 text-center text-sm font-semibold text-primary-foreground transition hover:opacity-95 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-auto sm:min-h-0 sm:px-6"
+          >
+            <WhatsAppIcon size={20} className="shrink-0" aria-hidden />
+            {HERO_NAV_CTA_LABEL}
+          </a>
+          <p className="w-full text-center text-xs text-muted-foreground">{PRIMARY_CTA_SUBLINE}</p>
+        </div>
       </div>
-      <p className="mt-3 text-center text-xs text-muted-foreground sm:text-left">{PRIMARY_CTA_SUBLINE}</p>
     </aside>
   );
 }

@@ -4,55 +4,85 @@ import { appsMovilesBlogArticles } from "@/lib/blog-posts-apps-moviles-articles"
 import { stockClinicasBlogArticles } from "@/lib/blog-posts-stock-clinicas-articles";
 import { softwareMedidaBlogArticles } from "@/lib/blog-posts-software-medida-articles";
 import { turnosBlogArticles } from "@/lib/blog-posts-turnos-articles";
-import { whatsAppHref } from "@/lib/contact";
 
 export type { BlogPost } from "@/lib/blog-types";
-
-const WA_BLOG = whatsAppHref(
-  "Hola Diego, te escribo desde el blog. Quiero consultarte por un bot de WhatsApp / automatización.",
-);
 
 const posts: BlogPost[] = [
   {
     slug: "bot-whatsapp-negocios-argentina",
     topicTrack: "bots-whatsapp",
-    title: "Bot de WhatsApp para negocios en Argentina: cómo automatizar consultas, ventas y turnos en 2026",
+    title: "Bot de WhatsApp para negocios: cuándo ayuda de verdad y cuándo termina siendo humo",
     description:
-      "Qué vi en la práctica al armar bots en Argentina: volumen real de mensajes, cuándo alcanza un menú simple vs IA, números de ROI y errores que nadie te lista en el PDF comercial.",
-    metaTitle: "Bot de WhatsApp para negocios en Argentina | Automatización y atención 2026",
+      "Casos reales en Argentina: qué pasa cuando mirás el historial del número, cuándo alcanza ordenar respuestas y automatizar lo repetitivo, cuándo suma IA y errores típicos que no figuran en la propuesta comercial.",
+    metaTitle: "Bot WhatsApp para negocios en Argentina | Automatización y atención 2026",
     metaDescription:
-      "Bot de WhatsApp para empresas en Argentina: automatización real de consultas, turnos y ventas; cuándo conviene IA y errores típicos al implementar en pymes y clínicas.",
+      "Muchos negocios en Argentina buscan automatizar WhatsApp para responder más rápido, ordenar turnos o bajar carga manual. Acá: cuándo conviene un bot, cuándo no, y qué vi en la práctica con números reales.",
+    metaKeywords: [
+      "bot WhatsApp",
+      "automatización WhatsApp",
+      "WhatsApp Business Argentina",
+      "atención al cliente WhatsApp",
+      "chatbot pymes",
+      "reservas por WhatsApp",
+    ],
     publishedAt: "2026-04-26",
     category: "WhatsApp y automatización",
     relatedPost: {
       slug: "como-crear-bot-whatsapp-empresas-argentina",
       title: "Cómo crear un bot de WhatsApp para empresas en Argentina y Latinoamérica paso a paso",
       description:
-        "Enfoque informacional: requisitos, API oficial, diferencias entre bot simple e IA, integraciones y errores comunes.",
+        "Enfoque informacional: requisitos, WhatsApp Business, diferencias entre bot simple e IA, integraciones y errores comunes.",
     },
     resourceLinks: [
       { href: "/bots-whatsapp", label: "Bots de WhatsApp" },
       { href: "/sistema-turnos-online", label: "Sistema de turnos online" },
-      { href: "/#contacto", label: "Contacto" },
-      { href: WA_BLOG, label: "WhatsApp", external: true },
+      { href: "/blog/como-crear-bot-whatsapp-empresas-argentina", label: "Cómo crear un bot paso a paso" },
+      { href: "/proyectos/bot-whatsapp-odontologia-soler", label: "Caso: bot en odontología" },
     ],
+    closingCta: {
+      headline: "Si tu negocio ya vive del WhatsApp y el equipo no da abasto",
+      supporting:
+        "Muchas veces se puede ordenar el canal y automatizar lo repetitivo sin volver más compleja la operación ni prometer magia con IA. Si querés revisar tu caso con conversaciones reales, escribime y lo vemos.",
+    },
     content: [
       {
         type: "paragraph",
         segments: [
-          "Hace unas semanas me escribió el dueño de un local de electrodomésticos en zona norte: querían ‘un bot con IA que entienda todo’. Cuando exportamos el historial del número, más del 60% eran tres preguntas: horario, si hay stock de tal modelo y cómo pagan. No hacía falta modelo de lenguaje para eso; hacía falta orden.",
+          "Cada vez más negocios quieren automatizar WhatsApp. Tiene sentido: hoy una parte grande de las consultas pasa por ahí — horarios, precios, stock, turnos, ubicación, formas de pago. Entonces aparece rápido la idea de ‘necesitamos un bot con inteligencia artificial’. En muchos casos el problema no es la falta de IA: es que el negocio sigue respondiendo siempre las mismas preguntas a mano.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "En ese tipo de casos mido volumen antes de presupuestar: cuántos chats entrantes por día y cuántos son repetición. En uno parecido (salón + venta minorista), después de un menú fijo con respuestas cortas, la persona que atendía el mismo número pasó de ~140 respuestas manuales semanales a ~45 en las dos primeras semanas. El resto quedó cubierto por el flujo o derivado con etiqueta.",
+          "Hace un tiempo hablé con el dueño de un local de electrodomésticos en zona norte que quería un ‘bot inteligente’. Cuando miramos el historial del número, apareció algo muy simple: más de la mitad de los mensajes eran las mismas consultas — horario, si había stock de tal modelo, cómo pagar. No hacía falta un sistema complejo. No hacía falta modelo de lenguaje para eso; hacía falta orden: respuestas claras, automatizar lo repetitivo y que el equipo deje de perder tiempo con lo mismo todo el día.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Opinión que no vende demos: el bot con IA está de moda, pero en pymes argentinas el mejor primer paso suele ser un flujo con pocas opciones bien redactadas y un handoff claro a humano. La IA suma cuando ya sabés qué preguntas son ‘sucias’ y tenés datos para acotar el comportamiento; si no, solo acelerás respuestas incorrectas.",
+          "En ese tipo de casos mido volumen antes de presupuestar: cuántos chats entran por día y cuántos son repetición. En uno parecido (salón + venta minorista), después de un menú fijo con respuestas cortas, quien atendía el mismo número pasó de ~140 respuestas manuales semanales a ~45 en las dos primeras semanas. El resto lo cubrió el flujo automático o quedó derivado con el contexto ya marcado para cuando intervenía una persona.",
+        ],
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "Opinión que no vende demos: el bot con IA está de moda, pero en pymes argentinas el mejor primer paso suele ser un flujo con pocas opciones bien redactadas y una forma clara de derivar la conversación a alguien del equipo. La IA suma cuando ya sabés qué preguntas son difíciles de encasillar y tenés datos para acotar el comportamiento; si no, solo acelerás respuestas incorrectas.",
+        ],
+      },
+      {
+        type: "h2",
+        id: "problemas-comunes",
+        text: "Problemas comunes que suelen aparecer",
+      },
+      {
+        type: "ul",
+        items: [
+          "Clientes que esperan horas una respuesta.",
+          "Dos personas contestando distinto desde el mismo número.",
+          "Mensajes que se pierden fuera de horario.",
+          "Consultas repetidas todo el día.",
+          "Recepción o ventas respondiendo siempre lo mismo.",
+          "Turnos tomados a mano por WhatsApp sin registro claro en la agenda.",
         ],
       },
       {
@@ -64,22 +94,22 @@ const posts: BlogPost[] = [
         type: "ul",
         items: [
           "Si no definís qué pasa cuando el bot no entiende, el cliente se queda colgado y culpa al negocio, no al proveedor.",
-          "Las plantillas de Meta y los límites de conversación importan: un ‘bot infinito’ en papel choca con la API real.",
+          "Las plantillas de Meta y los límites de conversación importan: un ‘bot infinito’ en el PDF choca con las reglas reales de uso y envío de la plataforma.",
           "Duplicar número personal y Business sin reglas = dos verdades distintas; el caos se llama ‘ya lo arreglamos en el grupo’.",
-          "Medir solo ‘mensajes enviados’ es humo: necesitás tiempo hasta primera respuesta útil y cuántos chats llegan a humano con contexto.",
+          "Medir solo ‘mensajes enviados’ es humo: necesitás tiempo hasta la primera respuesta útil y cuántos chats llegan a una persona con el contexto ya ordenado.",
         ],
       },
       {
         type: "h2",
-        id: "ejemplo-tecnico",
-        text: "Qué hace el webhook en una frase larga",
+        id: "como-funciona-automatizacion",
+        text: "Cómo funciona normalmente una automatización de WhatsApp",
       },
       {
         type: "paragraph",
         segments: [
-          "La API de WhatsApp Business te pega un POST cuando entra un mensaje: teléfono, tipo (texto, botón, lista) y payload. Con eso alcanza para ‘1 → horarios, 2 → ubicación’ sin modelo generativo. Si el negocio vende tiempo (turnos), el mismo handler puede consultar ",
-          { href: "/sistema-turnos-online", label: "slots reales en la agenda" },
-          " y responder solo si hay disponibilidad — si no, inventás huecos en el chat.",
+          "Cuando alguien escribe, el sistema puede identificar qué tipo de consulta está haciendo, si necesita hablar con una persona, si quiere sacar un turno o si solo busca información básica. Con eso se automatizan muchas tareas simples: horarios, ubicación, preguntas frecuentes, disponibilidad, confirmaciones y derivaciones. Si el negocio vende tiempo (turnos), puede conectarse con ",
+          { href: "/sistema-turnos-online", label: "una agenda de turnos" },
+          " y revisar horarios disponibles reales antes de prometer un hueco: si no hay lugar, inventarlo en el chat solo genera bronca. Cuando hace falta, la conversación pasa a una persona con el contexto ya organizado.",
         ],
       },
       {
@@ -90,13 +120,13 @@ const posts: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "El canal sirve para tres cosas que se pueden medir: contestar lo repetible fuera de horario, etiquetar intención antes de que entre un humano, y evitar que dos personas contesten distinto el mismo número. Todo lo demás —‘más conversiones’, ‘24/7’ en PowerPoint— depende de que esas tres estén resueltas. En salud sumá límites claros de qué no automatizás y cómo queda registrado el handoff.",
+          "El canal sirve para tres cosas que se pueden medir: contestar lo repetible fuera de horario, dejar marcada la intención antes de que entre alguien del equipo, y evitar que dos personas contesten distinto el mismo número. Todo lo demás —‘más conversiones’, ‘24/7’ en PowerPoint— depende de que esas tres estén resueltas. En salud sumá límites claros de qué no automatizás y cómo queda registrada la derivación cuando tiene que intervenir una persona.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Menú fijo vs IA no es religión: el primero gana cuando el historial muestra pocas intenciones con mucha repetición; la segunda cuando el texto varía pero el dominio es acotable y hay revisión cuando el modelo duda. La guía técnica paso a paso está en ",
+          "Menú fijo vs IA no es religión: el primero gana cuando el historial muestra pocas consultas distintas con mucha repetición; la segunda cuando el texto varía pero el tema es acotable y hay alguien que revisa cuando el sistema duda. Qué mirar antes de armar el canal está en ",
           { href: "/blog/como-crear-bot-whatsapp-empresas-argentina", label: "cómo crear un bot de WhatsApp paso a paso" },
           ".",
         ],
@@ -115,7 +145,7 @@ const posts: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Precio: depende de integraciones, volumen y si metés modelo generativo; siempre hay implementación, mantenimiento y costo de plataforma. Para un desglose sobre tu caso usá el contacto del sitio o el WhatsApp de la caja de enlaces útiles abajo.",
+          "Precio: depende de integraciones, volumen y si sumás IA que responde mensajes con texto libre; siempre hay implementación, mantenimiento y costo de plataforma. Para un desglose sobre tu caso usá el contacto del sitio o el WhatsApp al pie de la página.",
         ],
       },
       { type: "h2", id: "conclusion", text: "Conclusión" },
@@ -131,12 +161,12 @@ const posts: BlogPost[] = [
           {
             question: "¿Se puede automatizar WhatsApp Business?",
             answer:
-              "Sí, con API oficial y reglas explícitas. Lo que no existe es ‘contestar todo sin límites’: plantillas y políticas de Meta mandan.",
+              "Sí, con la plataforma oficial de WhatsApp y reglas explícitas. Lo que no existe es ‘contestar todo sin límites’: plantillas y políticas de Meta mandan.",
           },
           {
             question: "¿Cuánto cuesta un bot de WhatsApp en Argentina?",
             answer:
-              "Depende de si es menú + plantillas, integraciones con stock o agenda, y si sumás IA. Pedí desglose: implementación, mensual y costo de mensajes/API.",
+              "Depende de si es menú + plantillas, integraciones con stock o agenda, y si sumás IA. Pedí desglose: implementación, mensual y costo de mensajes en la plataforma.",
           },
           {
             question: "¿Los bots de WhatsApp usan inteligencia artificial?",
@@ -157,175 +187,184 @@ const posts: BlogPost[] = [
     topicTrack: "bots-whatsapp",
     title: "Cómo crear un bot de WhatsApp para empresas en Argentina y Latinoamérica paso a paso",
     description:
-      "No empieces por plataforma: clasificá cientos de mensajes reales. Caso ARS ~200k/mes en ‘IA’ sin datos (70% mal), costos de plantillas Meta, webhooks text/interactive/button y handoff a humano.",
+      "Consultas repetidas y WhatsApp explotado no se arreglan solos con ‘más IA’. Caso real, orden de trabajo antes de automatizar, errores que vi en clientes y cuándo conviene WhatsApp Business sin romper la atención.",
     metaTitle: "Cómo crear un bot de WhatsApp | Empresas Argentina y LATAM",
     metaDescription:
-      "API de Meta, plantillas y webhooks, menú vs IA, integración con agenda real y errores típicos antes del primer deploy. Enlaces a servicios y contacto.",
+      "Bot de WhatsApp para negocios y clínicas, atención automática por WhatsApp, chatbot para turnos y consultas frecuentes: errores reales y qué ordenar antes de pagar un proveedor.",
+    metaKeywords: [
+      "crear bot WhatsApp",
+      "WhatsApp Business empresas",
+      "bot WhatsApp Argentina",
+      "chatbot turnos",
+      "automatización atención cliente",
+      "LATAM WhatsApp",
+    ],
     publishedAt: "2026-05-07",
     category: "WhatsApp y automatización",
     relatedPost: {
       slug: "bot-whatsapp-negocios-argentina",
-      title: "Bot de WhatsApp para negocios en Argentina: cómo automatizar consultas, ventas y turnos en 2026",
+      title: "Bot de WhatsApp para negocios: cuándo ayuda de verdad y cuándo termina siendo humo",
       description: "Enfoque comercial: qué es un bot, tipos, rubros, costos y FAQs.",
     },
     resourceLinks: [
       { href: "/bots-whatsapp", label: "Bots de WhatsApp (servicio)" },
       { href: "/sistema-turnos-online", label: "Sistema de turnos online" },
-      { href: "/#contacto", label: "Contacto" },
-      { href: WA_BLOG, label: "WhatsApp", external: true },
+      { href: "/blog/bot-whatsapp-negocios-argentina", label: "Bot WhatsApp: cuándo sirve y cuándo no" },
+      { href: "/proyectos/bot-whatsapp-odontologia-soler", label: "Caso: bot en odontología" },
     ],
+    closingCta: {
+      headline: "¿Te llegan muchas consultas repetidas por WhatsApp?",
+      supporting:
+        "Si ya pasa seguido y querés ver qué se puede automatizar sin que el cliente sienta que habló con algo que inventa o se contradice con recepción, escribime y lo revisamos con ejemplos reales de tu número.",
+    },
     content: [
       {
         type: "paragraph",
         segments: [
-          "No empieces por elegir plataforma. Empezá clasificando al menos trescientos o quinientos mensajes reales de tu número. Si no podés categorizarlos a mano (intención, resultado, si hizo falta humano), no podés automatizar con criterio: solo vas a comprar humo con API.",
+          "Cada vez más negocios quieren automatizar WhatsApp. Tiene sentido: consultas que se repiten, mensajes fuera de horario, turnos, precios, ubicación, seguimiento de clientes… El canal ya está ahí; lo que falta suele ser orden.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Un cliente llegó con un proveedor que le vendía ‘el mejor bot con IA’ por ~ARS 200.000 al mes. Cuando pedí los logs de un mes, el bot respondía mal alrededor del 70% de las consultas porque nunca lo entrenaron con datos del negocio: precios viejos, políticas inventadas, derivaciones al número equivocado. Estaba pagando varios millones de pesos al año para un loro caro; el tiempo real ahorrado en recepción fue cero. El bot con IA sin datos de tu negocio es un asistente genérico: si lo único que ‘sabe’ es lo que suena en Internet, muchas veces vas a tener mejores resultados con un menú fijo de cinco opciones.",
+          "El problema es que muchos arrancan al revés: primero contratan ‘un bot con IA’, recién después miran cómo contesta hoy el equipo y qué respuestas son las correctas. Eso suele terminar igual: clientes frustrados, información vieja y recepcionistas corrigiendo lo que el sistema dijo.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "La métrica importante no es ‘mensajes enviados’: es casos resueltos sin humano, con trazabilidad y sin inventar. Si querés el enfoque comercial con rubros y costos, está el post sobre el ",
+          "Hace poco vi un caso muy claro. Un negocio pagaba un servicio carísimo de bot ‘inteligente’ que contestaba automáticamente por WhatsApp. En teoría resolvía todo solo. En la práctica, fallaba en precios, mandaba gente al número equivocado y mezclaba políticas que ya no aplicaban. Cuando revisamos un mes de conversaciones, casi siete de cada diez respuestas había que retocarlas o desmentirlas. El problema no era la inteligencia artificial en abstracto: era que nadie había trabajado los procesos reales del negocio —ni un historial de conversaciones reales para ver qué preguntan de verdad— antes de automatizar. Eso pasa muchísimo más de lo que parece.",
+        ],
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "La métrica que a mí me importa no es cuántos mensajes mandó el bot: es cuántas consultas quedaron resueltas bien, sin que una persona tenga que entrar a arreglar el desorden. Si querés números, rubros y enfoque más comercial, está el otro post del blog sobre el ",
           { href: "/blog/bot-whatsapp-negocios-argentina", label: "bot de WhatsApp para negocios en Argentina" },
-          ". Acá queda lo técnico-operativo para no fundirte antes del primer deploy.",
+          ". Acá me concentro en lo que haría cualquier asesor que ya vio estos proyectos pinchar en la vida real.",
         ],
       },
       {
         type: "h2",
-        id: "lo-que-no-te-dicen",
-        text: "Lo que no te dicen del canal oficial",
+        id: "error-comun",
+        text: "El error que se repite: comprar ‘inteligencia’ antes de ordenar el negocio",
       },
-      {
-        type: "ul",
-        items: [
-          "Las plantillas de WhatsApp Business API tienen costo por conversación/mensaje que depende del país y categoría (órdenes de USD 0,005 a ~0,08 por unidad según tipo y región — revisá la grilla vigente de Meta).",
-          "WhatsApp puede limitar o suspender el número si te marcan spam o si violás políticas de opt-in; no siempre hay ‘segundo aviso’ negociable.",
-          "La verificación de negocio en Meta suele tardar semanas (típico 2–4): sin eso, muchas plantillas y límites quedan trabados.",
-          "‘API oficial’ no es gratis: sumás costo de BSP/plataforma + conversaciones + lo que cobre quien implementa. El sticker ‘oficial’ no borra la matemática.",
-        ],
-      },
-      { type: "h2", id: "paso-1", text: "1. Inventario de intents (antes del código)" },
       {
         type: "paragraph",
         segments: [
-          "Exportá conversaciones, etiquetá intención y resultado. Si el 60% cae en cinco buckets (precio, turno, ubicación, obra social, hablar con persona), tu roadmap ya está escrito. Si no sale eso, el problema no es el modelo de lenguaje: es que el negocio no tiene respuestas canónicas.",
-        ],
-      },
-      { type: "h2", id: "paso-2", text: "2. API oficial y cumplimiento" },
-      {
-        type: "paragraph",
-        segments: [
-          "En producción casi siempre es WhatsApp Business Platform: número de negocio, token, verificación de empresa y plantillas para hablar fuera de la ventana de 24 h. Eso define si el recordatorio sale o queda en cola; no es un trámite de más.",
+          "Si no podés anotar a mano, en una tarde, qué tipo de consultas entran una y otra vez, no tenés material para automatizar con criterio: tenés ganas de tecnología. La tecnología después acompaña; primero va claridad: qué contestamos siempre igual, qué nunca puede decir una máquina sola, y cuál es el lugar donde el equipo realmente anota turnos y precios (si eso vive en tres lugares distintos, el bot solo va a elegir mal el lugar).",
         ],
       },
       {
         type: "h2",
-        id: "webhook-tipos",
-        text: "3. Webhook entrante: text, interactive, botones",
+        id: "que-funciona",
+        text: "Lo que en la práctica sí mejora la atención",
       },
-      {
-        type: "paragraph",
-        segments: [
-          "Tu servidor recibe un POST con `entry[].changes[].value.messages[]`. El campo `type` te dice cómo parsear: `text` trae `text.body`; `interactive` trae `button_reply` o `list_reply` con `id` estable (mejor que parsear texto libre). Las respuestas a botones de plantillas suelen llegar como `interactive`. Unificar todo a ‘acción interna’ antes de contestar reduce sorpresas.",
-        ],
-      },
-      {
-        type: "code",
-        code: `// Payload simplificado (Meta Cloud API): tres formas típicas de entrada
-{
-  "entry": [{
-    "changes": [{
-      "value": {
-        "messages": [
-          {
-            "from": "54911XXXXXXXX",
-            "type": "text",
-            "text": { "body": "quiero reprogramar el martes" }
-          },
-          {
-            "from": "54911XXXXXXXX",
-            "type": "interactive",
-            "interactive": {
-              "type": "button_reply",
-              "button_reply": { "id": "intent_turnos", "title": "Turnos" }
-            }
-          },
-          {
-            "from": "54911XXXXXXXX",
-            "type": "interactive",
-            "interactive": {
-              "type": "list_reply",
-              "list_reply": { "id": "svc_cardio", "title": "Cardiología" }
-            }
-          }
-        ]
-      }
-    }]
-  }]
-}
-
-// Handoff a humano: si confidence < umbral OR intent === "humano"
-// → crear ticket en CRM con transcript + dejar de autoresponder.`,
-      },
-      { type: "h2", id: "paso-3", text: "4. Menú fijo vs modelo generativo" },
-      {
-        type: "paragraph",
-        segments: [
-          "Menús interactivos y respuestas atadas a tu base = menos tokens y menos ‘el bot inventó un precio’. La IA suma cuando ya medís qué no entra en menú y tenés dataset y revisiones humanas. Si no podés clasificar mensajes a mano, no hay magia: solo riesgo.",
-        ],
-      },
-      { type: "h2", id: "paso-4", text: "5. Integraciones que valen la pena" },
-      {
-        type: "paragraph",
-        segments: [
-          "El bot es tubería: tiene que leer y escribir donde mira recepción — ",
-          { href: "/sistema-turnos-online", label: "agenda con locks reales" },
-          ", CRM o tickets. Si el calendario vive en Excel paralelo al chat, primero unificá fuente de verdad.",
-        ],
-      },
-      { type: "h2", id: "paso-5", text: "6. Errores que veo una y otra vez" },
       {
         type: "ul",
         items: [
-          "Dos humanos y el bot contestando el mismo número sin protocolo: respuestas contradictorias.",
-          "Flujo de error indefinido: loop de ‘¿podés reformular?’ sin oferta clara de hablar con persona.",
-          "Dashboard de vanidad: ‘mensajes enviados’ no paga sueldos; importan casos resueltos sin humano y tiempo hasta primera respuesta útil.",
+          "Responder lo repetible con textos cortos y opciones claras, conectados a los mismos datos que usa recepción (no a un PDF del 2023).",
+          "Definir desde el día uno cuándo la conversación pasa a una persona —sin vueltas ni ‘escribí reformulando tu pregunta’ infinito.",
+          "Si hay turnos, que lo que vea el cliente sea el mismo calendario que mira el equipo: si no, el bot promete huecos que no existen.",
         ],
       },
-      { type: "h2", id: "siguiente", text: "Siguiente paso" },
       {
         type: "paragraph",
         segments: [
-          "Si ya tenés muestra de mensajes, intents y número en Business API, se puede armar alcance en una llamada corta. Escribime con esos datos desde el contacto del sitio o por WhatsApp usando el enlace de la caja de abajo.",
+          "En muchos casos eso pasa por integrar el chat con un ",
+          { href: "/sistema-turnos-online", label: "sistema de turnos online" },
+          " que sea el mismo que usa el equipo; también está entre los enlaces útiles al final de esta nota.",
+        ],
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "Un menú de pocas opciones bien redactado suele ganarle a un modelo grande mal alimentado. Más IA no siempre es mejor atención: muchas veces es más superficie para equivocarse.",
+        ],
+      },
+      {
+        type: "h2",
+        id: "donde-rinde",
+        text: "Dónde más vi que rinda (sin prometer rubro mágico)",
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "En negocios que ya reciben volumen en el mismo número y pierden ventas o turnos por demora encaja bien un bot de WhatsApp para empresas que filtre lo repetible y deje listo el contexto antes de que entre un humano. En salud —bot de WhatsApp para clínicas, centros médicos, consultorios— suele funcionar automatizar consultas frecuentes (horarios, preparación, ubicación) y la atención automática por WhatsApp para confirmar o reprogramar, siempre con límites claros de lo que no puede decir solo una respuesta automática. Un chatbot para turnos solo suma si el calendario es único; si no, multiplicás broncas.",
+        ],
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "Si casi nadie escribe al número, el cuello de botella no es el bot: es difusión u oferta. WhatsApp Business para empresas en Argentina tiene reglas y costos; conviene entrar con los ojos abiertos, no con el folleto del vendedor.",
+        ],
+      },
+      {
+        type: "h2",
+        id: "antes-de-firmar",
+        text: "Cosas que casi nadie te cuenta antes de firmar",
+      },
+      {
+        type: "ul",
+        items: [
+          "Los mensajes tipo aviso o recordatorio por la vía oficial tienen costo según país y tipo de conversación: no es ‘gratis porque es WhatsApp’.",
+          "La verificación del negocio en Meta puede tardar semanas; sin eso, muchas cosas quedan trabadas.",
+          "Si te marcan spam o no respetás cómo la gente dio permiso para que le escribas, el número puede limitarse o cortarse: no siempre hay ‘segundo aviso’ negociable.",
+          "Además del proveedor, casi siempre hay costo de plataforma y de conversación: el sticker ‘oficial’ no borra la cuenta corriente.",
+        ],
+      },
+      {
+        type: "h2",
+        id: "errores-reales",
+        text: "Errores reales que veo al implementar",
+      },
+      {
+        type: "ul",
+        items: [
+          "Dos o tres personas y el bot contestando el mismo número sin reglas: el cliente recibe tres versiones distintas del mismo tema.",
+          "Cuando algo falla, el flujo no ofrece salida humana clara: queda el loop de ‘reformulá tu pregunta’ y la gente se va enojada.",
+          "Medir solo ‘mensajes enviados’: es humo. Sirve medir si la persona tuvo respuesta útil rápido y si el equipo dejó de repetir lo mismo cien veces por semana.",
+        ],
+      },
+      {
+        type: "h2",
+        id: "detalle-tecnico",
+        text: "¿Y lo técnico (mensajes, botones, servidor)?",
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "Se puede explicar con calma en otro texto o en documentación para quien vaya a implementar: cómo llega cada mensaje al servidor, qué pasa cuando alguien toca un botón de lista, etc. Para el dueño del negocio o quien decide presupuesto, lo urgente no es el JSON: es el orden de trabajo y las reglas de atención. Mezclar consultoría, tutorial de backend y folleto comercial en la misma nota confunde y aburre; por eso acá no metí payloads: si tu equipo necesita ese detalle, lo vemos aparte con capturas y ejemplos de tu propio número.",
+        ],
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "Si ya estás recibiendo muchas consultas repetidas por WhatsApp y querés ver qué se puede automatizar sin romper la confianza del cliente, podés usar el contacto del sitio o el WhatsApp al pie de la página.",
         ],
       },
       {
         type: "faq",
         items: [
           {
-            question: "¿Se puede automatizar WhatsApp Business sin IA?",
+            question: "¿Se puede automatizar WhatsApp Business sin inteligencia artificial?",
             answer:
-              "Sí, y muchas veces es lo recomendable al inicio: menús, plantillas aprobadas y reglas claras suelen resolver más que un modelo grande mal acotado.",
+              "Sí, y muchas veces es el mejor primer paso: respuestas claras, opciones fijas y reglas explícitas suelen resolver más que un modelo grande sin datos del negocio.",
           },
           {
-            question: "¿Cuánto tarda en estar un bot mínimo?",
+            question: "¿Cuánto tarda en estar algo usable?",
             answer:
-              "Con número verificado y plantillas aprobadas, un flujo básico puede estar en días; lo que suele demorar es definición de negocio y pruebas con el equipo que atiende.",
+              "Cuando el número y los textos de aviso ya están aprobados, un flujo básico puede salir en pocos días. Lo que suele demorar es que el equipo pruebe de verdad y diga ‘esto sí’ y ‘esto no’ con ejemplos reales.",
           },
           {
-            question: "¿Los bots usan inteligencia artificial?",
+            question: "¿Los bots de WhatsApp usan IA?",
             answer:
-              "Pueden usarla o no. La IA suma cuando ya hay volumen y mensajes que no entran en menús; no es requisito para el primer release útil.",
+              "Pueden usarla o no. La IA suma cuando ya sabés qué preguntas no entran en menús y tenés forma de corregir cuando se equivoca; no es obligatoria para el primer paso útil.",
           },
           {
-            question: "¿Qué negocios conviene que empiecen por bot?",
+            question: "¿Qué negocios conviene que empiecen por un bot?",
             answer:
-              "Los que ya reciben consultas repetidas por el mismo canal y pierden ventas por demora — no quien todavía no tiene tráfico en WhatsApp.",
+              "Los que ya reciben consultas repetidas por el mismo canal y pierden ventas o turnos por demora — no quien todavía no tiene tráfico en WhatsApp.",
           },
         ],
       },

@@ -40,6 +40,8 @@ export type BlogPost = {
   metaTitle?: string;
   /** Meta description SEO (opcional) */
   metaDescription?: string;
+  /** Palabras clave para `<meta name="keywords">` y schema (opcional; Google ignora keywords meta, útil para otros usos y consistencia). */
+  metaKeywords?: readonly string[];
   publishedAt: string;
   /** Chip temático (p. ej. Automatizaciones, Software a medida). */
   topicTrack: BlogTopicTrack;

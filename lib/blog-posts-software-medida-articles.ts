@@ -1,9 +1,4 @@
 import type { BlogPost } from "@/lib/blog-types";
-import { whatsAppHref } from "@/lib/contact";
-
-const WA_MEDIDA = whatsAppHref(
-  "Hola Diego, leí el blog sobre software a medida. Quiero consultar por un sistema personalizado.",
-);
 
 /** Artículos blog: software a medida (clínicas y enfoque comercial). */
 export const softwareMedidaBlogArticles: BlogPost[] = [
@@ -13,23 +8,36 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
     title:
       "Software a medida para clínicas y consultorios: ventajas de desarrollar un sistema personalizado",
     description:
-      "Historia de consultorio con tres Excels ‘oficiales’, un número sobre tiempo perdido en cruces de datos, por qué a veces conviene NO comprar el ERP más grande y qué desarrollar primero cuando encarás software a medida en salud.",
-    metaTitle: "Software a medida para clínicas y consultorios | Sistema personalizado Argentina",
+      "Tres planillas con la misma agenda y nadie sabe la verdad; ~12 horas en cruces turnos vs cobros; por qué diez módulos no arreglan Excel paralelo; y qué ordenar antes de hablar de pantallas o desarrollo a medida en salud.",
+    metaTitle: "Software a medida para clínicas y consultorios | Argentina",
     metaDescription:
-      "Software a medida para clínicas en Argentina: sistema personalizado para consultorios, errores típicos vs paquetes genéricos, integraciones con agenda y WhatsApp y cuándo tiene sentido desarrollar propio.",
+      "Muchas clínicas evalúan desarrollar software a medida cuando los sistemas genéricos ya no acompañan turnos, cobros y administración. Acá: caos real, tiempo perdido y qué definir antes de invertir en un sistema personalizado.",
+    metaKeywords: [
+      "software a medida clínicas",
+      "sistema personalizado consultorio",
+      "desarrollo software salud",
+      "facturación turnos",
+      "Argentina",
+    ],
     publishedAt: "2026-04-23",
     category: "Software a medida y salud",
     relatedPost: {
       slug: "cuando-conviene-software-a-medida-vs-sistemas-genericos",
       title: "Cuándo conviene desarrollar software a medida en lugar de usar sistemas genéricos",
       description:
-        "Señales comerciales y operativas: Excel, integraciones, escalabilidad y cuándo tiene sentido un sistema propio.",
+        "Cuándo el paquete genérico deja de acompañar: Excel paralelo, licencias que no usás y señales cotidianas antes de hablar de desarrollo a medida.",
     },
     resourceLinks: [
       { href: "/desarrollo-software-medida", label: "Desarrollo a medida" },
-      { href: "/#contacto", label: "Contacto" },
-      { href: WA_MEDIDA, label: "WhatsApp", external: true },
+      { href: "/software-para-clinicas", label: "Software para clínicas" },
+      { href: "/sistema-turnos-online", label: "Sistema de turnos online" },
+      { href: "/blog/cuando-conviene-software-a-medida-vs-sistemas-genericos", label: "Software a medida vs. sistema genérico" },
     ],
+    closingCta: {
+      headline: "Si la clínica ya vive mitad en el sistema y mitad en planillas",
+      supporting:
+        "Cuando el sistema refleja de verdad cómo trabajan las áreas, baja mucho el trabajo manual y el vaivén de correcciones. Si tenés números de horas perdidas o errores que se repiten, escribime y armamos un alcance acotado, sin fantasía de PowerPoint.",
+    },
     content: [
       {
         type: "paragraph",
@@ -40,18 +48,34 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Les pedí una métrica simple antes de hablar de código: cuántas horas por semana iban a cruces manuales. Salió ~12 entre dos personas solo en conciliar turnos vs cobros. Después de centralizar en un módulo propio mínimo (agenda + estados + export contable), bajaron a ~4 horas en el primer mes — no porque el software sea mágico, sino porque dejaron de mantener tres fuentes.",
+          "Les pedí una métrica simple antes de proponer cambios de sistema: cuántas horas por semana iban a cruces manuales. Salió ~12 entre dos personas solo en conciliar turnos vs cobros. Después de centralizar en un módulo propio mínimo (agenda + estados + export contable), bajaron a ~4 horas en el primer mes — no porque el software sea mágico, sino porque dejaron de mantener tres fuentes.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Sentido común del rubro: ‘compramos el sistema más completo y listo’. Yo invierto la frase: en consultorios medianos el riesgo es pagar diez módulos que nadie usa y seguir con Excel para lo que importa. A medida tiene sentido cuando el proceso es el diferencial, no el logo del proveedor. El marco genérico vs propio está en ",
+          "Sentido común del rubro: ‘compramos el sistema más completo y listo’. Yo invierto la frase: en consultorios medianos el riesgo es pagar diez módulos que nadie usa y seguir con Excel para lo que importa. A medida tiene sentido cuando el proceso es el diferencial, no el logo del proveedor. Cuándo el paquete deja de acompañar y qué mirar antes de invertir está en ",
           {
             href: "/blog/cuando-conviene-software-a-medida-vs-sistemas-genericos",
             label: "cuándo conviene software a medida vs sistema genérico",
           },
           ".",
+        ],
+      },
+      {
+        type: "h2",
+        id: "situaciones-comunes",
+        text: "Situaciones comunes que suelen aparecer",
+      },
+      {
+        type: "ul",
+        items: [
+          "Recepción confirma un turno que administración no ve.",
+          "WhatsApp dice una cosa y la agenda otra.",
+          "Profesionales manejando horarios ‘por afuera’ del sistema.",
+          "Facturación corrigiendo a mano prestaciones o cruces con la agenda.",
+          "Planillas distintas para cada área.",
+          "Nadie sabe con seguridad qué dato está actualizado.",
         ],
       },
       {
@@ -64,21 +88,33 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
         items: [
           "Pedir pantalla para todo el día uno: termina en proyecto eterno y equipo cansado.",
           "Ignorar permisos y auditoría: en salud eso no es ‘detalle legal’, es diseño.",
-          "Integrar WhatsApp sin modelo de datos: solo movés el caos al chat.",
+          "Integrar WhatsApp sin acordar cuál es el dato correcto del turno: solo movés el caos al chat.",
           "Confundir ‘personalizado’ con ‘sin especificación’: a medida necesita reglas escritas, no solo buenas intenciones.",
         ],
       },
       {
         type: "h2",
-        id: "ejemplo-modelo",
-        text: "Modelo mínimo: entidades antes que pantallas",
+        id: "circula-informacion",
+        text: "Lo importante no es la pantalla: es cómo circula la información",
       },
       {
         type: "paragraph",
         segments: [
-          "Pensá `Paciente`, `Profesional`, `Turno` con estados (solicitado / confirmado / atendido / facturado), `Prestación`, movimientos contables. Una API expone `GET /turnos?fecha=&profesional_id=` y `PATCH /turnos/:id`; ",
-          { href: "/sistema-turnos-online", label: "la agenda online" },
-          " y los canales de mensajería consumen esos mismos endpoints. Si no existe esa capa común, cada canal inventa su versión y volvés al Excel con pasos extra.",
+          "Muchos sistemas muestran muchísimas funciones y menús. El verdadero problema suele aparecer cuando recepción trabaja distinto que administración, WhatsApp no refleja la agenda real, facturación usa otra información o cada área maneja datos distintos.",
+        ],
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "Antes de pensar en pantallas o módulos, hace falta definir qué información existe, quién la modifica y cuál es el dato correcto en cada proceso (solicitud de turno, confirmación, atención, facturación). Cuando eso no está claro, aparecen planillas paralelas y trabajo manual aunque el sistema en el papel sea ‘completo’.",
+        ],
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "Recién ahí tiene sentido que turnos, mensajes y paneles muestren lo mismo: una sola base de información que alimente ",
+          { href: "/sistema-turnos-online", label: "la agenda que ve el paciente" },
+          " y lo que ve recepción. Si cada canal arma su versión, volvés al Excel con pasos extra.",
         ],
       },
       {
@@ -89,13 +125,13 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Software a medida acá no es un listado de features: es alcance cerrado por etapas sobre lo que el equipo usa todos los días — turnos y excepciones, liquidación real (honorarios, copagos, obras sociales), historias con plantillas y permisos fuertes, paneles que dirección entienda. Los paquetes genéricos suelen inflar menús que recepción ignora; a medida podés mostrar tres botones al administrativo y veinte al médico, no al revés.",
+          "Software a medida acá no es un catálogo interminable de funciones: es alcance cerrado por etapas sobre lo que el equipo usa todos los días — turnos y excepciones, liquidación real (honorarios, copagos, obras sociales), historias con plantillas y permisos fuertes, paneles que dirección entienda. Los paquetes genéricos suelen inflar menús que recepción ignora; a medida podés mostrar tres botones al administrativo y veinte al médico, no al revés.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Cuando conviven laboratorios, WhatsApp y legados, el valor está en una API común y en jobs entre sistemas, no en reescribir todo el día uno. El primer ROI suele estar en facturación y cruces con agenda, no en el décimo tablero decorativo.",
+          "Cuando conviven laboratorio externo, WhatsApp y sistemas viejos, el valor suele estar en una misma base de información y en procesos automáticos entre herramientas, no en reescribir todo el día uno. El primer retorno suele estar en facturación y cruces con agenda, no en el décimo tablero decorativo.",
         ],
       },
       { type: "h2", id: "conviene-2026", text: "¿Conviene en 2026?" },
@@ -109,7 +145,7 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Alinear proceso y sistema es negociar menos con la realidad. Si tenés números de horas perdidas o errores recurrentes, mandalos por el contacto del sitio o por el WhatsApp de la caja de enlaces útiles más abajo y armamos un alcance que no sea fantasía de PowerPoint.",
+          "Alinear proceso y sistema es negociar menos con la realidad. Cuando el sistema refleja de verdad cómo trabaja la clínica, baja muchísimo el trabajo manual, las correcciones y el caos entre áreas. Si tenés números de horas perdidas o errores recurrentes, mandalos por el contacto del sitio o por WhatsApp al pie de la página y armamos un alcance que no sea fantasía de PowerPoint.",
         ],
       },
       {
@@ -118,12 +154,12 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
           {
             question: "¿Qué es un software a medida en una clínica?",
             answer:
-              "Algo construido alrededor de roles, turnos y cobros con entregas por etapas. Sin procesos escritos, primero hay que ordenarlos.",
+              "Algo construido alrededor de turnos, cobros y permisos por rol, con entregas por etapas. Sin procesos escritos, primero hay que ordenarlos.",
           },
           {
             question: "¿Qué ventajas tiene frente a un sistema genérico?",
             answer:
-              "Menos menú que nadie usa y reglas que reflejan cómo cobrás de verdad — a cambio de ownership y mantenimiento del producto.",
+              "Menos menú que nadie usa y reglas que reflejan cómo cobrás de verdad — a cambio de control y mantenimiento propio del producto.",
           },
           {
             question: "¿Conviene desarrollar software propio?",
@@ -133,7 +169,7 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
           {
             question: "¿Qué empresas suelen necesitar software a medida?",
             answer:
-              "Consultorios y clínicas con reglas propias de liquidación o integraciones que el paquete no prioriza en su roadmap.",
+              "Consultorios y clínicas con reglas propias de liquidación o integraciones que el paquete no prioriza a la velocidad que vos necesitás.",
           },
         ],
       },
@@ -144,10 +180,17 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
     topicTrack: "software-medida",
     title: "Cuándo conviene desarrollar software a medida en lugar de usar sistemas genéricos",
     description:
-      "La pregunta no es ‘enlatado vs a medida’ en abstracto: ¿qué proceso es tu diferencial? Caso estudio contable Recoleta, ERP USD 32k + USD 12k/año y tres planillas a los 6 meses, TCO a 36 meses y stack mínimo ~USD 30/mes de infra.",
+      "Cuándo el sistema ‘de caja’ deja de acompañar: planillas paralelas, licencias que pagás y no usás, caso real en estudio contable y costos escondidos que casi nadie suma al presupuesto inicial.",
     metaTitle: "¿Cuándo conviene software a medida? | Argentina vs sistemas genéricos",
     metaDescription:
-      "Desarrollo de software a medida Argentina: software personalizado para empresas, sistemas internos, señales de que conviene lo personalizado y cuándo el genérico alcanza. Incluye software para clínicas a medida.",
+      "Software a medida para empresas y clínicas en Argentina: señales de que el paquete genérico ya no alcanza, Excel paralelo, desarrollo personalizado vs licencias y cuándo conviene cada camino.",
+    metaKeywords: [
+      "software a medida vs genérico",
+      "sistemas enlatados",
+      "desarrollo personalizado Argentina",
+      "licencias software",
+      "Excel paralelo empresa",
+    ],
     publishedAt: "2026-05-04",
     category: "Software a medida",
     relatedPost: {
@@ -159,26 +202,37 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
     resourceLinks: [
       { href: "/desarrollo-software-medida", label: "Desarrollo a medida" },
       { href: "/software-para-clinicas", label: "Software para clínicas" },
-      { href: "/#contacto", label: "Contacto" },
-      { href: WA_MEDIDA, label: "WhatsApp", external: true },
+      { href: "/blog/software-a-medida-clinicas-consultorios-sistema-personalizado", label: "Software a medida en clínicas" },
+      { href: "/proyectos/cotilink-saas-cotizaciones", label: "Caso: plataforma SaaS Cotilink" },
     ],
+    closingCta: {
+      headline: "¿Tu operación ya vive mitad en el sistema y mitad en Excel?",
+      supporting:
+        "No todas las empresas necesitan software propio el día uno. Pero cuando lo importante del negocio depende de procesos paralelos, planillas y trabajo manual para ‘completar’ al sistema, suele ser señal de que el paquete actual ya no acompaña el crecimiento real. Si querés ordenar el diagnóstico antes de invertir, escribime.",
+    },
     content: [
       {
         type: "paragraph",
         segments: [
-          "Nadie debería comparar ‘enlatado vs a medida’ en abstracto. La pregunta correcta es: ¿qué proceso de tu negocio es tu diferencial y te hace ganar? Si ese proceso es lo que te diferencia, no podés tercerizarlo a un menú genérico sin pelear — o aceptás el costo de adaptarte al software, o construís la pieza que refleja tus reglas.",
+          "Muchas empresas arrancan con herramientas genéricas. Tiene sentido: al principio suelen alcanzar, son más rápidas de poner en marcha y cuestan menos que armar algo desde cero. El problema aparece cuando el negocio crece o empieza a trabajar de una forma más específica. Ahí salen a la luz las planillas paralelas, los datos duplicados, los ‘parches’ y las tareas administrativas que el sistema no contempla. Y pasa algo muy común: la empresa termina adaptándose al sistema, en vez de que el sistema acompañe al negocio.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Un estudio contable en Recoleta había comprado un ERP de ~USD 4.000 por puesto × 8 puestos ≈ USD 32.000 de setup más ~USD 12.000/año de mantenimiento. A los seis meses tenían tres planillas paralelas porque el ERP no soportaba bien cómo facturaban por especialidad y obra social. Pagaban licencias para no usar el sistema en lo que más importaba. El enlatado es barato hasta que descubrís cómo factura tu obra social; pagar licencias para no usar el sistema es la versión moderna del archivero vacío.",
+          "Muchas empresas empiezan buscando un software a medida cuando sienten que las herramientas genéricas ya no acompañan la operación real: obras sociales distintas, reglas de facturación raras, circuitos que el paquete no prevé. En clínicas y consultorios con procesos muy específicos pasa lo mismo: termina apareciendo la necesidad de algo más ajustado o de automatizaciones que no entran en el menú estándar. La pregunta útil no es ‘¿enlatado o a medida?’ en abstracto: es si el proceso que te deja plata puede vivir cómodo dentro de lo que el proveedor te ofrece hoy y mañana.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "El enlatado suele ser barato al firmar el contrato y caro cuando descubrís que no se adapta. A medida es al revés: caro al inicio, más barato a 24–36 meses si tu negocio es complejo y el genérico te obliga a Excel paralelo. Si tu mundo es salud, el caso con modelo de datos y Excels paralelos está en ",
+          "Hace un tiempo vi un caso en un estudio contable de Recoleta: habían invertido fuerte en un ERP grande — del orden de decenas de miles de dólares de puesta en marcha y un mantenimiento anual importante. En teoría ‘lo resolvía todo’. En la práctica, a los seis meses seguían con varias planillas de Excel porque el sistema no encajaba bien con cómo facturaban por especialidad y obra social. Pagaban licencias todos los meses, pero lo más importante seguía afuera del sistema. El paquete te puede salir barato el día que firmás y caro cuando descubrís que tu operación real no entra en la caja. Pagar licencias para no usar el sistema en lo que más importa es la versión moderna del archivero vacío.",
+        ],
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "Si tu mundo es salud y querés ver el enfoque con turnos, cobros y caos típico de consultorio, el otro post del blog va por acá: ",
           {
             href: "/blog/software-a-medida-clinicas-consultorios-sistema-personalizado",
             label: "software a medida para clínicas y consultorios",
@@ -188,86 +242,101 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
       },
       {
         type: "h2",
-        id: "lo-que-no-te-dicen",
-        text: "Lo que no te dicen del ‘solo configuramos el ERP’",
+        id: "lo-que-no-cuentan",
+        text: "Lo que muchas veces no te contaron al firmar el paquete grande",
       },
       {
         type: "ul",
         items: [
-          "La ‘personalización’ de un enlatado (consultores, campos custom, integraciones) muchas veces termina costando más que un desarrollo a medida acotado desde cero para el 20% del flujo que te diferencia.",
-          "Migrar de un enlatado a otro suele ser tan caro como un proyecto nuevo: no es ‘export CSV y listo’.",
-          "Los módulos que no usás siguen costando licencia; el menú grande es un impuesto.",
-          "Cuando el proveedor se vende o cierra el producto, te quedás colgado: contratos largos no reemplazan roadmap ajeno.",
+          "La ‘personalización’ con consultores y campos extra muchas veces termina costando más que construir una pieza chica a medida solo para el flujo que te diferencia.",
+          "Cambiar de un sistema grande a otro suele salir casi como empezar de cero: no es magia de exportar y listo.",
+          "Los módulos que nadie usa siguen sumando a la factura: pagás un menú entero aunque comas dos platos.",
+          "Si el proveedor vende el producto o lo deja de priorizar, vos quedás atado a decisiones que no controlás.",
         ],
       },
       {
         type: "h2",
-        id: "tco",
-        text: "TCO a 36 meses (orden de magnitud, consultorio 5 profesionales)",
+        id: "costo-real",
+        text: "Lo que muchas empresas no calculan",
       },
       {
         type: "paragraph",
         segments: [
-          "No hay tabla universal: depende de cantidad de usuarios, integraciones y si el enlatado ya cubre el 80% de tu operación. Igual sirve armar números explícitos en lugar de fe. Un ejemplo de cómo lo anoto en hoja (valores ilustrativos — reemplazá con tus cotizaciones reales):",
+          "Cuando evalúan un sistema, muchas veces miran solo el precio de la licencia y la implementación inicial. El costo real suele aparecer después: horas perdidas en Excel, doble carga de datos, errores entre áreas, procesos paralelos ‘porque el sistema no permite ese caso’, tiempo esperando un cambio del proveedor, reuniones fijas para conciliar números que no cierran. A veces, pasados unos años, el sistema ‘barato’ termina siendo más caro que desarrollar algo específico para lo que realmente te mueve el negocio — sobre todo si sumás el riesgo de decidir mal con datos viejos.",
         ],
       },
       {
-        type: "code",
-        code: `| Rubro (36 meses)     | Enlatado “suite” | A medida acotado |
-|----------------------|------------------|------------------|
-| Licencias / SaaS     | USD A            | USD 0 o bajo     |
-| Implementación     | USD B            | USD C (build)    |
-| Personalización      | USD D (suele subir) | USD E (iterativo) |
-| Mantenimiento / mes  | USD F            | USD G (host + soporte) |
-| Horas internas Excel | USD H (!)        | USD I (menor si el flujo calza) |
-
-// Stack mínimo frecuente para un a medida web + API:
-// Next.js + Node + Postgres en Vercel/Render u homólogo
-// → infra fija típica del orden de ~USD 30/mes + dominio y backups
-// (sumar observabilidad, mails transaccionales, etc.).`,
+        type: "h2",
+        id: "diferencias",
+        text: "Por qué el ‘paquete para todos’ se encorseta",
       },
-      { type: "h2", id: "diferencias", text: "Genérico vs a medida (sin marketing)" },
       {
         type: "paragraph",
         segments: [
-          "El genérico optimiza el 80% de empresas parecidas; vos pagás el menú entero. A medida optimiza el 20% que te hace distinto. El error caro es pedir a medida para lo que ya resuelve un SaaS maduro, y comprar suite para tres reglas que el proveedor jamás va a priorizar.",
+          "Los sistemas genéricos están pensados para cubrir la mayoría de los casos parecidos, y muchas veces funcionan bien… hasta que tu negocio necesita reglas más específicas. Ahí aparecen las limitaciones: cosas que no se pueden tocar, procesos que obligan a trabajar distinto al que te conviene, pedidos de cambio que tardan meses, módulos que pagás y nunca usás. Un error caro es comprar suite para tres reglas que el proveedor jamás va a priorizar; otro es pedir desarrollo a medida para algo que ya resuelve bien un SaaS maduro y barato.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Si tu proceso es tu diferencial, no podés tercerizarlo a un menú genérico sin asumir el costo. En la práctica, a medida es dominio propio y APIs que hablan con lo legacy; el genérico trae tablas prefabricadas y, cuando tu realidad no entra, aparece el Excel paralelo.",
+          "Si tu proceso es lo que te diferencia en el mercado, no podés resignarlo a un menú que no refleja cómo cobrás, cómo liquidás o cómo atendés de verdad — o lo aceptás consciente o buscás una pieza propia que calce. En la práctica eso se ve en horas perdidas y en bronca semanal, no en debates de arquitectura.",
         ],
       },
-      { type: "h2", id: "senales", text: "Señales de que el genérico ya no alcanza" },
+      {
+        type: "h2",
+        id: "senales",
+        text: "Señales cotidianas de que el sistema ya no alcanza",
+      },
       {
         type: "ul",
         items: [
-          "Más de una ‘fuente de verdad’ para el mismo dato y juntas fijas para conciliarlas.",
-          "Cada pedido de cambio al vendor entra en backlog de trimestres mientras el negocio ya cambió.",
-          "Onboarding del nuevo empleado = ‘te paso el Excel que usaba María’.",
+          "“Eso hacelo por Excel.”",
+          "“El sistema no permite ese caso.”",
+          "“Después lo corregimos a mano.”",
+          "“Esa parte la manejamos aparte.”",
+          "“Hay que pedirle al proveedor y ver cuándo entra.”",
+          "“María sabe cómo hacerlo” (y si María se va, se lleva el conocimiento).",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Cuando aparecen esas juntas, muchas veces conviene ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatizar e integrar lo que ya existe" },
-          " y recién después un pedazo de producto propio donde el genérico choca.",
+          "Cuando esas frases se vuelven habituales, muchas veces conviene ",
+          { href: "/automatizacion-procesos-clinicas", label: "ordenar e integrar lo que ya hay" },
+          " antes de escribir una línea de producto propio — y recién después construir la parte que el paquete no va a abrazar nunca.",
         ],
       },
-      { type: "h2", id: "cuando-no", text: "Cuándo NO conviene a medida" },
+      {
+        type: "h2",
+        id: "nota-tecnica",
+        text: "Nota para quien después quiera el detalle de implementación",
+      },
       {
         type: "paragraph",
         segments: [
-          "Si el dolor es solo volumen de mensajes o agenda desordenada, a veces alcanza con ordenar datos y automatizar entre herramientas que ya tenés. A medida tiene sentido cuando el costo de adaptarte al software supera el costo de construir la pieza chica que te falta — se ve con horas perdidas y riesgo, no con ego de ‘quiero lo mío’.",
+          "Presupuestar infraestructura, tecnologías concretas o tablas de costo a 36 meses es trabajo de proyecto con números reales de tu cotización; meter eso acá mezcla la charla con quien decide en el día a día con la documentación para el equipo técnico. Si llegaste con licencias, horas en planilla y plazos del proveedor, ya tenés material para una conversación seria sin abrir un manual de arquitectura.",
         ],
       },
-      { type: "h2", id: "conclusion", text: "Conclusión" },
+      {
+        type: "h2",
+        id: "cuando-no",
+        text: "Cuándo NO conviene ir a medida (al menos todavía)",
+      },
       {
         type: "paragraph",
         segments: [
-          "Elegir entre genérico y propio es matemática de TCO y de riesgo operativo, no religión. Si tenés números aproximados de licencias, horas en Excel y costo de cambios al vendor, el alcance deja de ser charla abstracta. Para revisar tu caso, usá el contacto del sitio o el WhatsApp de la caja de enlaces útiles más abajo.",
+          "Si el dolor es solo ordenar datos o conectar dos herramientas que ya tenés, a veces alcanza con automatización y reglas claras. A medida tiene más sentido cuando el costo de seguir adaptándote al sistema —tiempo, errores, oportunidades perdidas— ya supera el costo de construir la parte chica que falta.",
+        ],
+      },
+      {
+        type: "h2",
+        id: "conclusion",
+        text: "Conclusión",
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "No todas las empresas necesitan desarrollar software propio. Pero cuando el negocio empieza a depender de procesos paralelos, Excel y trabajo manual para poder operar, suele ser señal de que el sistema actual ya no acompaña el crecimiento real. Si tenés aproximado cuánto cuestan esas horas y esos errores, deja de ser charla abstracta. Para revisar tu caso, usá el contacto del sitio o escribime por WhatsApp al pie de la página.",
         ],
       },
       {
@@ -276,22 +345,22 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
           {
             question: "¿Qué es un software a medida en la práctica?",
             answer:
-              "Un sistema construido alrededor de tus reglas y datos, con entregas por etapas y una API que puedas evolucionar sin depender del roadmap de un tercero.",
+              "Algo construido alrededor de tus reglas y de cómo trabajás, con entregas por etapas y la posibilidad de hacerlo evolucionar sin depender solo del calendario de un proveedor externo.",
           },
           {
             question: "¿Qué ventaja tiene frente al genérico?",
             answer:
-              "Menos compromiso con módulos que no vas a usar y más control sobre el flujo que te diferencia — a cambio de ownership del producto y del mantenimiento.",
+              "Menos peso de módulos que no vas a usar y más control sobre el flujo que te diferencia — a cambio de hacerse cargo del producto y del mantenimiento.",
           },
           {
             question: "¿Conviene desarrollar software propio siendo chico?",
             answer:
-              "A veces sí, cuando el genérico te obliga a operar mal; a veces no, cuando el problema es solo integración o disciplina de datos. Se decide con números, no con ego.",
+              "A veces sí, cuando el genérico te obliga a operar mal; a veces no, cuando el problema es solo ordenar datos o conectar lo que ya existe. Se decide mirando tiempo y riesgo, no el ego de ‘quiero lo mío’.",
           },
           {
             question: "¿Qué empresas suelen ir a medida?",
             answer:
-              "Operaciones con reglas propias (salud, logística, industria), muchas integraciones o límites claros del SaaS que ya probaste.",
+              "Operaciones con reglas propias (salud, estudios contables, logística), muchas excepciones o límites claros del sistema que ya probaste.",
           },
         ],
       },

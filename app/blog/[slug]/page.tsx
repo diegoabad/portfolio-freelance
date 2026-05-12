@@ -30,6 +30,7 @@ function buildArticleJsonLd(post: BlogPost, url: string, imageUrls?: string[]) {
     headline: post.title,
     description: desc,
     datePublished: post.publishedAt,
+    url,
     author: {
       "@type": "Person",
       name: "Diego Abad",
@@ -44,10 +45,25 @@ function buildArticleJsonLd(post: BlogPost, url: string, imageUrls?: string[]) {
     articleSection: blogTopicLabel(post.topicTrack),
     inLanguage: "es-AR",
   };
+  if (post.metaKeywords?.length) {
+    base.keywords = post.metaKeywords.join(", ");
+  }
   if (imageUrls?.length) {
     base.image = imageUrls;
   }
   return base;
+}
+
+function buildBreadcrumbJsonLd(homeUrl: string, blogUrl: string, articleUrl: string, articleTitle: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inicio", item: homeUrl },
+      { "@type": "ListItem", position: 2, name: "Blog", item: blogUrl },
+      { "@type": "ListItem", position: 3, name: articleTitle, item: articleUrl },
+    ],
+  };
 }
 
 function buildFaqPageJsonLd(items: { question: string; answer: string }[]) {
@@ -78,9 +94,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const defaultOgImage = siteBase ? new URL("/opengraph-image", siteBase).toString() : undefined;
 
+  const keywords = post.metaKeywords?.length ? [...post.metaKeywords] : undefined;
+
   return {
     title,
     description,
+    ...(keywords?.length ? { keywords } : {}),
     alternates: canonical ? { canonical } : undefined,
     openGraph: {
       title,
@@ -114,6 +133,10 @@ export default async function BlogPostPage({ params }: Props) {
   const faqItems = getFaqItemsFromPost(post);
   const faqJsonLd = faqItems.length > 0 ? buildFaqPageJsonLd(faqItems) : null;
   const articleOgImage = siteBase ? new URL("/opengraph-image", siteBase).toString() : undefined;
+  const homeUrl = siteBase ? new URL("/", siteBase).toString() : "";
+  const blogUrl = siteBase ? new URL("/blog", siteBase).toString() : "";
+  const breadcrumbJsonLd =
+    canonical && homeUrl && blogUrl ? buildBreadcrumbJsonLd(homeUrl, blogUrl, canonical, post.title) : null;
 
   return (
     <PageShell>
@@ -125,6 +148,9 @@ export default async function BlogPostPage({ params }: Props) {
           }}
         />
       ) : null}
+      {breadcrumbJsonLd ? (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      ) : null}
       {faqJsonLd ? (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       ) : null}
@@ -132,16 +158,36 @@ export default async function BlogPostPage({ params }: Props) {
         <article className="max-w-site mx-auto px-4 sm:px-6 lg:px-10 py-12 md:py-16 lg:py-20">
           <div className="mx-auto w-full max-w-3xl">
             <nav
-              className="mb-4 text-[13px] font-mono leading-snug text-muted-foreground wrap-break-word md:mb-5 md:text-sm"
-              aria-label="Ruta del artículo"
+              className="mb-4 text-[13px] leading-snug text-muted-foreground md:mb-5 md:text-sm"
+              aria-label="Migas de pan"
             >
-              <Link href="/blog" className="text-muted-foreground underline-offset-2 transition-colors hover:text-primary hover:underline">
-                blog
-              </Link>
-              <span className="text-muted-foreground/65" aria-hidden>
-                /
-              </span>
-              <span className="text-muted-foreground/90">{slug}</span>
+              <ol className="flex flex-wrap items-center gap-x-1.5 gap-y-1">
+                <li>
+                  <Link
+                    href="/"
+                    className="text-muted-foreground underline-offset-2 transition-colors hover:text-primary hover:underline"
+                  >
+                    Inicio
+                  </Link>
+                </li>
+                <li aria-hidden className="text-muted-foreground/50">
+                  /
+                </li>
+                <li>
+                  <Link
+                    href="/blog"
+                    className="text-muted-foreground underline-offset-2 transition-colors hover:text-primary hover:underline"
+                  >
+                    Blog
+                  </Link>
+                </li>
+                <li aria-hidden className="text-muted-foreground/50">
+                  /
+                </li>
+                <li className="min-w-0 max-w-full text-foreground/85">
+                  <span className="line-clamp-2 text-pretty">{post.title}</span>
+                </li>
+              </ol>
             </nav>
             <header>
               <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted-foreground">

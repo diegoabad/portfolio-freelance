@@ -274,7 +274,7 @@ export function Nav({ pricingRegion }: { pricingRegion: PricingRegion }) {
     <header
       className={`fixed top-0 inset-x-0 z-50 w-full ${headerBorderClass} transition-[background-color,backdrop-filter,border-color] duration-300 ease-out max-[1199px]:flex max-[1199px]:max-h-dvh max-[1199px]:flex-col max-[1199px]:overflow-hidden min-[1200px]:overflow-visible ${headerSurfaceClass}`}
     >
-      <div className="relative max-w-site mx-auto w-full shrink-0 px-4 sm:px-6 lg:px-10 flex min-h-21 min-[1200px]:min-h-24 items-center justify-between gap-3 py-3 min-[1200px]:py-[7px]">
+      <div className="relative max-w-site mx-auto w-full shrink-0 px-4 sm:px-6 lg:px-10 flex items-center gap-3 max-[1199px]:justify-between min-[1200px]:justify-start min-h-21 min-[1200px]:min-h-24 py-3 min-[1200px]:py-[7px]">
         <a
           href={homeSection("#top")}
           onClick={() => isHome && bumpActiveFromUrlHash()}
@@ -297,9 +297,8 @@ export function Nav({ pricingRegion }: { pricingRegion: PricingRegion }) {
           </span>
         </a>
 
-        <div className="flex min-w-0 flex-1 items-center justify-end gap-2 sm:gap-3">
         <nav
-          className="hidden min-[1200px]:flex items-center justify-end gap-2 lg:gap-5 xl:gap-7 text-sm min-[1200px]:text-base pointer-events-auto flex-wrap font-medium"
+          className="hidden min-[1200px]:flex min-[1200px]:flex-1 min-[1200px]:min-w-0 items-center justify-center gap-2 lg:gap-5 xl:gap-7 text-sm min-[1200px]:text-base pointer-events-auto flex-wrap font-medium"
           aria-label="Principal"
         >
           {navLinks.map((l) =>
@@ -428,6 +427,7 @@ export function Nav({ pricingRegion }: { pricingRegion: PricingRegion }) {
           )}
         </nav>
 
+        <div className="flex shrink-0 items-center justify-end gap-2 sm:gap-3 z-20">
           <div className="hidden min-[1200px]:flex shrink-0 items-center pl-1">
             <PricingRegionSwitcher initialRegion={pricingRegion} />
           </div>
