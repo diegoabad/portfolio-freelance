@@ -238,7 +238,7 @@ export const turnosBlogArticles: BlogPost[] = [
     topicTrack: "agendas-online",
     title: "Turnos online por WhatsApp: cómo automatizar reservas y recordatorios en tu negocio",
     description:
-      "Cómo funcionan los turnos online por WhatsApp, ventajas para estética, gimnasios y profesionales, y qué mirar antes de implementar agenda digital con reservas automáticas.",
+      "Caso de estética con doble agenda, por qué el bot sin calendario real empeora el no-show, flujo mínimo de reserva y qué medir antes de pagar integraciones.",
     metaTitle: "Turnos online por WhatsApp | Reservas y recordatorios Argentina",
     metaDescription:
       "Agenda online con WhatsApp: sistema de reservas online en Argentina, automatizar turnos por WhatsApp, chatbot para reservas y recordatorios automáticos por WhatsApp.",
@@ -259,77 +259,86 @@ export const turnosBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Este artículo apunta a negocios de servicios —estética, gimnasios, peluquerías y profesionales independientes— que quieren ",
-          { href: "/sistema-turnos-online", label: "turnos online por WhatsApp" },
-          " sin caos en la agenda.",
+          "Un centro de estética en Córdoba me mostró tres capturas del mismo día: la agenda del software, un grupo de WhatsApp con la dueña pidiendo ‘quién puede a las 17’ y un papel en recepción tachado a mano. Cuando sumamos cuántos turnos se pisaban por mes, no eran ‘unos pocos’: eran ~14% de los slots con doble asignación o huecos fantasmas.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Si tu caso es más clínico, el post ",
-          { href: "/blog/turnos-whatsapp-ausentismo-clinicas-argentina-2026", label: "sobre ausentismo en clínicas y consultorios" },
-          " va directo a recordatorios, confirmación y agenda médica.",
+          "Ahí el problema no era ‘falta de bot’: era falta de ",
+          { href: "/sistema-turnos-online", label: "una sola agenda fuente de verdad" },
+          ". Un bot que lee slots de una API y escribe reservas en la misma base baja el caos; un bot que solo manda texto bonito sin bloquear el horario multiplica el desorden.",
         ],
       },
-      { type: "h2", id: "como-funcionan", text: "Cómo funcionan los turnos online por WhatsApp" },
       {
         type: "paragraph",
         segments: [
-          "Un sistema de citas conecta tu agenda con WhatsApp: el cliente ve disponibilidad, reserva y recibe recordatorios automáticos. El staff opera desde un solo lugar con reglas claras.",
+          "Si tu dolor es clínico (recordatorios, ausentismo, reglas médicas), leé ",
+          { href: "/blog/turnos-whatsapp-ausentismo-clinicas-argentina-2026", label: "turnos y ausentismo en consultorios" },
+          ". Acá el foco es negocio de servicios: estética, gimnasio, peluquería, profesional independiente — donde el cliente quiere reservar a las 22 hs sin llamar.",
         ],
       },
-      { type: "h2", id: "ventajas-reservas", text: "Ventajas de automatizar reservas y citas" },
-      {
-        type: "ul",
-        items: [
-          "Menos ida y vuelta manual: reservas automáticas vía WhatsApp dentro de reglas",
-          "Mejor ocupación: cancelaciones con tiempo para reasignar",
-          "Agenda digital para negocios: histórico y menos errores que planillas sueltas",
-        ],
-      },
-      { type: "h2", id: "reducir-cancelaciones", text: "Cómo reducir cancelaciones y ausencias" },
+      { type: "h2", id: "como-funcionan", text: "Cómo funcionan los turnos por WhatsApp sin mentirte" },
       {
         type: "paragraph",
         segments: [
-          "La clave es combinar software de turnos con chatbot o mensajes programados: el cliente confirma y el hueco se libera si no.",
+          "Flujo mínimo que funciona: el cliente pide disponibilidad → el sistema consulta slots reales → elige → recibe confirmación con política de cancelación en dos líneas → 24 h antes un mensaje corto con SI/NO. Todo eso es máquina de estados + plantillas; no hace falta modelo de lenguaje para el 80% de los casos.",
+        ],
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "Si querés ofertas o upsell en el mismo canal, sumalo después de que la reserva sea estable. Primero que no se caiga el calendario; después marketing.",
         ],
       },
       {
         type: "h2",
         id: "bot-agenda",
-        text: "Bot de WhatsApp + agenda online: la combinación más usada en 2026",
+        text: "Bot + agenda: la única combinación que cuenta",
       },
       {
         type: "paragraph",
         segments: [
-          "Para automatizar turnos por WhatsApp, lo habitual es un ",
+          "Un ",
           { href: "/bots-whatsapp", label: "bot de WhatsApp" },
-          " que habla con la misma agenda que usa recepción. Así evitás doble libro y podés sumar ofertas o promos en el mismo canal.",
+          " que no escribe en la misma base que recepción es un altavoz suelto. La integración real es: mismo `appointment_id`, mismos estados, mismos bloqueos de recurso (sillón, cabina, profesional). Si no tenés eso, no automatizás: solo acelerás el quilombo.",
+        ],
+      },
+      { type: "h2", id: "reducir-cancelaciones", text: "No-shows: qué sí baja números" },
+      {
+        type: "paragraph",
+        segments: [
+          "Mensaje largo con cinco párrafos = nadie lo lee en el ascensor. Aviso corto + confirmación en un toque + política visible antes de reservar suele bajar ausencias más que ‘recordatorio inteligente’ sin métrica. Medí: % confirmados y huecos liberados con más de 12 h de anticipación.",
         ],
       },
       {
         type: "h2",
         id: "antes-implementar",
-        text: "Qué tener en cuenta antes de implementar un sistema de turnos",
+        text: "Antes de firmar con nadie",
       },
       {
         type: "ul",
         items: [
-          "Reglas de cancelación y reprogramación (anticipación mínima, penalidades si aplica)",
-          "Quién puede ver qué (roles: recepción, profesional, admin)",
-          "Integración real con WhatsApp (oficial) y volumen de mensajes esperado",
+          "¿Quién es dueño del calendario cuando hay conflicto: WhatsApp, recepción o el profesional?",
+          "¿Qué pasa si el cliente escribe ‘me cancelo’ fuera de horario? ¿El sistema libera el slot solo o pasa a humano?",
+          "¿Cuántos mensajes por día estimás? Ahí definís plantillas vs conversación libre.",
         ],
       },
       {
         type: "h2",
         id: "costo-argentina",
-        text: "Cuánto cuesta implementar una agenda online en Argentina",
+        text: "Sobre precio (sin tablas mágicas)",
       },
       {
         type: "paragraph",
         segments: [
-          "Depende de módulos, integraciones y si incluís bot con IA. Un sistema de reservas chico no es lo mismo que multi-sede con automatización profunda. Pedí presupuesto en ",
+          "Una sola sede con una cabina y reglas simples no paga lo mismo que multi-sede con comisiones por profesional. Lo que sí puedo decir sin ver tu caso: si el presupuesto no incluye prueba de carga humana (recepción usando el sistema dos semanas), vas a pagar dos veces.",
+        ],
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "Para presupuesto o revisión de flujo: ",
           { href: "/#contacto", label: "contacto" },
           " o ",
           { href: WA_TURNOS, label: "WhatsApp", external: true },
@@ -337,40 +346,27 @@ export const turnosBlogArticles: BlogPost[] = [
         ],
       },
       {
-        type: "h2",
-        id: "estetica",
-        text: "Turnos online para centros de estética y rubros similares",
-      },
-      {
-        type: "paragraph",
-        segments: [
-          "En ",
-          { href: "/sistema-turnos-online", label: "turnos online para centros de estética" },
-          ", los recordatorios y las reservas automáticas por WhatsApp suelen ser el primer paso para recuperar tiempo del equipo y bajar no-shows.",
-        ],
-      },
-      {
         type: "faq",
         items: [
           {
-            question: "¿Se pueden sacar turnos directamente por WhatsApp?",
+            question: "¿Se pueden sacar turnos por WhatsApp?",
             answer:
-              "Sí: con un flujo conectado a tu agenda, el cliente puede reservar, confirmar o cancelar desde WhatsApp y el sistema actualiza disponibilidad al instante.",
+              "Sí, si el bot consulta y escribe en la misma agenda que usa el negocio. Si no, solo movés el caos de voz a chat.",
           },
           {
-            question: "¿Cómo reducir el ausentismo en consultorios?",
+            question: "¿Sirve para peluquería o gimnasio?",
             answer:
-              "Recordatorios automáticos por WhatsApp y confirmación explícita suelen bajar inasistencias; conviene definir políticas claras de reprogramación.",
+              "Sí: donde hay cupos, recursos y cancelaciones frecuentes, la automatización bien acotada recupera tiempo y huecos.",
           },
           {
-            question: "¿Qué ventajas tiene una agenda online?",
+            question: "¿Necesito IA?",
             answer:
-              "Organiza turnos, automatiza recordatorios y mejora la atención sin depender solo de llamadas o mensajes sueltos.",
+              "Casi nunca para el primer release. Menús y estados resuelven la mayoría; la IA entra cuando ya medís qué preguntas no entran en caja.",
           },
           {
-            question: "¿Los turnos online sirven para pequeños negocios?",
+            question: "¿Qué ventaja tiene una agenda online?",
             answer:
-              "Sí: profesionales independientes y pymes usan agenda digital integrada con WhatsApp para no perder reservas.",
+              "Historial, reglas aplicadas igual para todos y menos ‘¿me guardaste el lugar por privado?’.",
           },
         ],
       },

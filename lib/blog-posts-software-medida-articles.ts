@@ -213,7 +213,7 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
     topicTrack: "software-medida",
     title: "Cuándo conviene desarrollar software a medida en lugar de usar sistemas genéricos",
     description:
-      "Señales claras de que tu empresa necesita un sistema personalizado, diferencias entre software genérico y a medida, ejemplos por rubro y una sección sobre clínicas y centros médicos.",
+      "Historia de ERP sobre-dimensionado, números de horas en cruces manuales, genérico vs a medida sin slogans y cuándo alcanza con automatizar lo que ya tenés.",
     metaTitle: "¿Cuándo conviene software a medida? | Argentina vs sistemas genéricos",
     metaDescription:
       "Desarrollo de software a medida Argentina: software personalizado para empresas, sistemas internos, señales de que conviene lo personalizado y cuándo el genérico alcanza. Incluye software para clínicas a medida.",
@@ -229,7 +229,6 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
       { href: "/desarrollo-software-medida", label: "Desarrollo a medida" },
       { href: "/software-para-clinicas", label: "Aplicaciones móviles" },
       { href: "/automatizacion-procesos-clinicas", label: "Automatización de procesos" },
-      { href: "/sistema-turnos-online", label: "Turnos online" },
       { href: "/blog/software-a-medida-clinicas-consultorios-sistema-personalizado", label: "Blog: software a medida en clínicas" },
       { href: "/#contacto", label: "Contacto" },
       { href: WA_MEDIDA, label: "WhatsApp", external: true },
@@ -238,117 +237,94 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Muchos negocios arrancan con herramientas estándar y eso está bien. El tema es cuando el crecimiento deja en evidencia ",
-          { href: "/automatizacion-procesos-clinicas", label: "tareas repetitivas" },
-          ", falta de integraciones entre sistemas y rigidez para adaptar reglas: ahí el ",
-          { href: "/desarrollo-software-medida", label: "desarrollo de software a medida en Argentina" },
-          " suele ser más barato que seguir pagando horas humanas para sostener parches.",
+          "Una logística mediana me mostró el presupuesto de un ERP ‘todo en uno’: licencias para veinte usuarios, ocho módulos y tres consultores externos. Cuando les pedí cuántos módulos usaban de verdad, la respuesta fue dos y medio; el resto era aspiración de PowerPoint. Ahí no falló el software genérico: falló la fantasía de que un paquete grande ordena solo.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Acá vas a encontrar diferencias entre lo genérico y lo personalizado, señales de alerta y ejemplos. Si tu caso es ",
-          { href: "/software-para-clinicas", label: "salud" },
-          ", el artículo ",
+          "Les propuse una cuenta simple: horas-mujer por mes en cruces entre planilla de despacho, sistema de facturación y correos a proveedores. Salieron ~35 horas solo en ‘arreglar números que no cierran’. Cuatro meses después, un módulo propio de despacho + API al facturador bajó eso a ~12 — no porque el código sea magia, sino porque dejaron de pelear contra el flujo del ERP.",
+        ],
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "Opinión impopular: el ",
+          { href: "/desarrollo-software-medida", label: "software a medida" },
+          " no compite con el genérico en lista de features; compite en encajar en el proceso que te diferencia. Si tu diferencial es velocidad de despacho o reglas de liquidación raras, el genérico te va a pedir que cambies el proceso; a medida es al revés.",
+        ],
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "Si tu mundo es salud, el caso detallado está en ",
           {
             href: "/blog/software-a-medida-clinicas-consultorios-sistema-personalizado",
             label: "software a medida para clínicas y consultorios",
           },
-          " va al detalle.",
+          ": modelo de datos, Excels paralelos y qué construir primero.",
         ],
       },
-      { type: "h2", id: "diferencias", text: "Diferencias entre software genérico y software a medida" },
-      { type: "h3", id: "generico", text: "Software genérico" },
+      { type: "h2", id: "diferencias", text: "Genérico vs a medida (sin marketing)" },
       {
         type: "paragraph",
         segments: [
-          "Está pensado para cubrir muchas industrias a la vez. Sirve para empezar, pero choca cuando tu ",
-          { href: "/desarrollo-software-medida", label: "flujo operativo" },
-          " tiene excepciones que el proveedor no va a priorizar.",
-        ],
-      },
-      { type: "h3", id: "medida", text: "Software a medida" },
-      {
-        type: "ul",
-        items: [
-          "Se diseña según procesos, objetivos y responsables reales",
-          "Permite entregar por etapas y medir impacto",
-          "Integra con lo que ya tenés (CRM, stock, mensajería, etc.)",
-        ],
-      },
-      { type: "h2", id: "senales", text: "Señales de que tu empresa necesita un sistema personalizado" },
-      {
-        type: "ul",
-        items: [
-          "Demasiadas planillas Excel que son “sistema paralelo”",
-          "Procesos manuales repetitivos que escalan mal",
-          "Sistemas que no hablan entre sí y terminás cargando datos dos veces",
-          "La operación depende de tareas humanas que podrían ser reglas o integraciones",
+          "El genérico optimiza el 80% de empresas parecidas; vos pagás el 100% del menú. A medida optimiza el 20% que te hace distinto; pagás solo lo que alguien va a usar todos los días. El error es pedir a medida para cosas que ya resuelve un SaaS maduro (email transaccional, facturación estándar) y comprar ERP para reglas que son tres líneas de negocio.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Si varias de esas señales aparecen juntas, conviene charlar con alguien que haga ",
-          { href: "/desarrollo-software-medida", label: "desarrollo de sistemas internos" },
-          " y ",
+          "Técnicamente, a medida suele ser un producto con dominio propio (`Pedido`, `Lote`, `ReglaDeBonificación`) y APIs que hablan con lo legacy. El genérico te da tablas prefabricadas; cuando tu realidad no entra, aparece el Excel paralelo.",
+        ],
+      },
+      { type: "h2", id: "senales", text: "Señales de que el genérico ya no alcanza" },
+      {
+        type: "ul",
+        items: [
+          "Tenés más de una ‘fuente de verdad’ para el mismo dato y reuniones semanales para conciliarlas.",
+          "Cada pedido de cambio al proveedor entra en backlog de trimestres mientras el negocio ya cambió.",
+          "Contrataste gente nueva y el onboarding es ‘te paso el Excel que usaba María’.",
+        ],
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "Cuando aparecen juntas, suele tener sentido combinar ",
           { href: "/automatizacion-procesos-clinicas", label: "automatización" },
-          " con criterio, no solo vender licencias.",
+          " (integrar lo que ya existe) con un pedazo de producto propio solo donde el genérico choca — no reescribir todo desde cero el día uno.",
         ],
       },
-      { type: "h2", id: "ejemplos", text: "Ejemplos de software a medida" },
-      {
-        type: "ul",
-        items: [
-          "Sistemas para clínicas y gestión de pacientes",
-          "Gestión de stock e inventario acorde a tu depósito",
-          "CRMs o paneles administrativos internos",
-          "Dashboards operativos y reportes a medida",
-          "Sistemas de turnos con reglas propias",
-          "Portales para clientes o proveedores",
-        ],
-      },
-      { type: "h2", id: "ventajas", text: "Ventajas del desarrollo personalizado" },
-      {
-        type: "ul",
-        items: [
-          "Mayor productividad al quitar fricción operativa",
-          "Automatización de procesos donde hay reglas claras",
-          "Escalabilidad sin multiplicar planillas",
-          "Integración con otras herramientas (APIs, mensajería, contabilidad)",
-          "Adaptación total al negocio",
-        ],
-      },
-      { type: "h2", id: "salud", text: "Software a medida para clínicas y centros médicos" },
+      { type: "h2", id: "ejemplos", text: "Ejemplos que no son ‘portal web’ genérico" },
       {
         type: "paragraph",
         segments: [
-          "El sector salud suele combinar validaciones complejas, ",
-          { href: "/software-para-clinicas", label: "manejo de pacientes" },
-          ", historias clínicas e integraciones médicas. Por eso muchas instituciones terminan necesitando ",
-          { href: "/desarrollo-software-medida", label: "software para clínicas a medida" },
-          " o híbridos: producto base + desarrollo y ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatización" },
-          " alrededor.",
+          "Liquidaciones de profesionales cruzando turnos atendidos con aranceles negociados por obra social; control de insumos con trazabilidad por sector; paneles donde dirección ve ocupación y márgenes sin pedirle a Excel que aguante 200MB. En mobile, una ",
+          { href: "/software-para-clinicas", label: "app para pacientes" },
+          " conectada a la misma API que recepción evita el ‘¿tenés el turno en el otro grupo?’.",
+        ],
+      },
+      { type: "h2", id: "cuando-no", text: "Cuándo NO conviene a medida" },
+      {
+        type: "paragraph",
+        segments: [
+          "Si el dolor es solo de volumen de mensajes o de agenda desordenada, a veces alcanza con ",
+          { href: "/automatizacion-procesos-clinicas", label: "automatizar" },
+          " flujos entre herramientas que ya tenés. A medida tiene sentido cuando el costo de adaptarte al software supera el costo de construir la pieza chica que te falta.",
         ],
       },
       { type: "h2", id: "conclusion", text: "Conclusión" },
       {
         type: "paragraph",
         segments: [
-          "El ",
-          { href: "/desarrollo-software-medida", label: "software personalizado para empresas" },
-          " alinea herramientas con necesidades reales y evita topes del genérico. A medida que crece la operación, esa alineación se traduce en tiempo, control y menos errores.",
+          "Elegir entre genérico y propio no es religión: es matemática de horas perdidas + riesgo de error + velocidad de cambio. Si tenés números aproximados de esas tres, el alcance deja de ser charla abstracta.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Si querés revisar tu caso, ",
-          { href: "/desarrollo-software-medida", label: "mirá la landing de desarrollo a medida" },
-          " y ",
-          { href: "/#contacto", label: "escribime" },
+          "Para ver tu caso concreto: ",
+          { href: "/#contacto", label: "contacto" },
           " o ",
           { href: WA_MEDIDA, label: "WhatsApp", external: true },
           ".",
@@ -358,24 +334,24 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
         type: "faq",
         items: [
           {
-            question: "¿Qué es un software a medida?",
+            question: "¿Qué es un software a medida en la práctica?",
             answer:
-              "Un sistema desarrollado según las necesidades de una empresa o institución, con alcance, roles e integraciones definidos en conjunto.",
+              "Un sistema construido alrededor de tus reglas y datos, con entregas por etapas y una API que puedas evolucionar sin depender del roadmap de un tercero.",
           },
           {
-            question: "¿Qué ventajas tiene frente a un sistema genérico?",
+            question: "¿Qué ventaja tiene frente al genérico?",
             answer:
-              "Mayor personalización, integraciones acordes a tu stack, escalabilidad y menos compromisos con módulos que no vas a usar.",
+              "Menos compromiso con módulos que no vas a usar y más control sobre el flujo que te diferencia — a cambio de ownership del producto y del mantenimiento.",
           },
           {
-            question: "¿Conviene desarrollar software propio?",
+            question: "¿Conviene desarrollar software propio siendo chico?",
             answer:
-              "Depende del tamaño y la complejidad de la operación. Suele convenir cuando el costo del trabajo manual y los errores supera el costo de construir y mantener un producto propio.",
+              "A veces sí, cuando el genérico te obliga a operar mal; a veces no, cuando el problema es solo integración o disciplina de datos. Se decide con números, no con ego.",
           },
           {
-            question: "¿Qué empresas suelen necesitar software a medida?",
+            question: "¿Qué empresas suelen ir a medida?",
             answer:
-              "Clínicas, centros médicos, logística, industria, ecommerce y negocios con procesos específicos que no encajan en plantillas estándar.",
+              "Operaciones con reglas propias (salud, logística, industria), muchas integraciones o límites claros del SaaS que ya probaste.",
           },
         ],
       },

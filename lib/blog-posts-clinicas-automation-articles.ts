@@ -13,7 +13,7 @@ export const clinicasAutomationBlogArticles: BlogPost[] = [
     title:
       "Cómo automatizar tareas administrativas en clínicas: facturación, historias clínicas y procesos internos",
     description:
-      "Guía práctica para clínicas y consultorios: automatización administrativa, facturación de profesionales, historias clínicas, reportes e integraciones — sin magia, con software y procesos claros.",
+      "Recepción que pasó 11 horas semanales cruzando prestaciones con facturación; qué automatizar primero sin tocar juicio clínico; y por qué la IA entra después de la fuente de verdad.",
     metaTitle:
       "Automatizar tareas administrativas en clínicas | Facturación e historias clínicas Argentina",
     metaDescription:
@@ -41,176 +41,99 @@ export const clinicasAutomationBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Muchas ",
-          { href: "/software-para-clinicas", label: "clínicas y consultorios" },
-          " en Argentina siguen apoyándose en procesos manuales para el día a día: alta de pacientes, ",
-          { href: "/automatizacion-procesos-clinicas", label: "facturación de profesionales" },
-          ", actualización de historias clínicas, autorizaciones, reportes para dirección y coordinación entre recepción, administración y equipos médicos.",
+          "En un centro de tres médicos en Mendoza, recepción me pasó un Excel con 14 pestañas para ‘cerrar el mes’: prestaciones por profesional, copagos, obras sociales que cambian arancel y un mail diario al contador con adjuntos distintos. Cuando cronometramos, solo el cruce agenda → prestación → liquidación consumía ~11 horas semanales de una sola persona — antes de contar errores que después hay que corregir con el paciente en el medio.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "El problema no es “falta de gente”, sino que esas tareas son repetitivas, propensas a error y crecen más rápido que el tiempo disponible. La ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatización de procesos" },
-          " y una buena ",
-          { href: "/software-para-clinicas", label: "digitalización de clínicas" },
-          " permiten ordenar la operación sin reemplazar el criterio clínico: lo que se automatiza es lo administrativo y lo duplicado entre sistemas.",
+          "Ahí la automatización no es ‘comprar IA’: es definir una fuente de verdad (¿el turno atendido manda? ¿la prestación cargada por el médico?) y hacer que el resto sea derivación de datos con reglas. Lo que no automatizás es el juicio clínico; automatizás el copy-paste entre ",
+          { href: "/sistema-turnos-online", label: "agenda" },
+          ", módulo administrativo y facturación.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "En este artículo repaso qué significa ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatizar una clínica" },
-          " en la práctica, qué procesos suelen entrar primero y cómo se relaciona con ",
-          { href: "/sistema-turnos-online", label: "agenda y turnos" },
-          ". Si buscás un encuadre más “transformación digital”, tenés el complemento: ",
+          "Si querés el marco más amplio de modernización, leé ",
           {
             href: "/blog/transformacion-digital-clinicas-automatizacion-gestion-medica",
             label: "transformación digital en clínicas",
           },
+          ". Acá me quedo en lo que duele todos los lunes.",
+        ],
+      },
+      { type: "h2", id: "que-significa", text: "Qué significa automatizar (y qué no)" },
+      {
+        type: "paragraph",
+        segments: [
+          "Automatizar es que un evento dispare acciones repetibles con auditoría: ‘prestación confirmada’ → genera línea de liquidación; ‘autorización aprobada’ → actualiza estado visible en recepción. No es reemplazar a la persona que entiende el caso borde; es sacarle el trabajo mecánico que hace a las 19:00 cuando ya nadie piensa bien.",
+        ],
+      },
+      { type: "h2", id: "procesos", text: "Tres frentes donde suele estar el ROI" },
+      {
+        type: "h3",
+        id: "facturacion",
+        text: "Facturación y liquidaciones",
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "Catálogo de prestaciones limpio, reglas de quién factura qué y exportación controlada al contador. Si el catálogo es un desastre, automatizar solo acelera el desastre: primero datos, después ",
+          { href: "/automatizacion-procesos-clinicas", label: "flujos" },
           ".",
         ],
       },
-      { type: "h2", id: "que-significa", text: "¿Qué significa automatizar una clínica?" },
+      { type: "h3", id: "historias", text: "Historia y documentación (sin fantasía)" },
       {
         type: "paragraph",
         segments: [
-          "Automatizar una clínica es usar ",
-          { href: "/software-para-clinicas", label: "software administrativo para clínicas" },
-          ", integraciones y reglas claras para que tareas repetitivas corran solas o semi solas: cruces de datos, avisos, reportes, exportaciones y validaciones que hoy dependen de copiar y pegar.",
+          "Centralizar plantillas, adjuntos y permisos reduce papel y idas y vueltas. IA para resumir notas administrativas o clasificar PDFs puede entrar después, con revisión humana y trazabilidad — nunca como ‘diagnóstico por chat’.",
         ],
       },
+      { type: "h3", id: "formularios", text: "Formularios y autorizaciones" },
       {
         type: "paragraph",
         segments: [
-          "La idea no es eliminar roles, sino bajar la ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatización de carga administrativa" },
-          " sobre recepción y médicos, y dejar el tiempo humano para lo que realmente requiere juicio clínico o atención personal.",
+          "Un solo lugar donde el paciente carga datos y esos datos alimentan agenda y administración, en lugar de tres formularios que nadie unifica.",
         ],
       },
-      { type: "h2", id: "procesos", text: "Procesos administrativos que se pueden automatizar" },
-      { type: "h3", id: "facturacion", text: "Facturación de profesionales y liquidaciones" },
+      { type: "h2", id: "integracion", text: "Integración real" },
       {
         type: "paragraph",
         segments: [
-          "Uno de los focos más repetitivos en ",
-          { href: "/software-para-clinicas", label: "centros médicos" },
-          " es la ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatizar facturación médica" },
-          ": cruzar prestaciones, códigos, aranceles y producción por profesional. Con buen diseño de datos, se pueden armar flujos que calculen prestaciones, generen reportes de producción y reduzcan errores manuales al pasar información al contador o al sistema de facturación.",
-        ],
-      },
-      {
-        type: "ul",
-        items: [
-          "Reglas de negocio acordadas (quién factura qué, copagos, descuentos)",
-          "Reportes periódicos automáticos para administración",
-          "Menos retrabajo entre agenda, prestación y facturación",
-        ],
-      },
-      { type: "h3", id: "historias", text: "Gestión e historias clínicas" },
-      {
-        type: "paragraph",
-        segments: [
-          "La ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatización de historias clínicas" },
-          " no implica “que la IA diagnostique”: en general hablamos de centralizar información, plantillas, adjuntos y accesos, y de ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatización de documentación clínica" },
-          " en el sentido operativo (versionado, firma, trazabilidad, menos papel). Cuando suma y la normativa lo permite, hay espacio para herramientas de IA para resumir notas o ordenar texto, siempre con revisión humana y políticas de privacidad muy estrictas.",
-        ],
-      },
-      { type: "h3", id: "formularios", text: "Carga de formularios, autorizaciones y validaciones" },
-      {
-        type: "paragraph",
-        segments: [
-          "Muchas instituciones todavía cargan pacientes, autorizaciones y datos administrativos en planillas sueltas. Ahí la ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatización de tareas repetitivas en salud" },
-          " se traduce en formularios conectados, validaciones en origen y una sola fuente de verdad, en lugar de duplicar la misma información en tres lugares.",
-        ],
-      },
-      { type: "h3", id: "reportes", text: "Reportes y métricas internas" },
-      {
-        type: "ul",
-        items: [
-          "Reportes administrativos y tableros para dirección",
-          "Productividad por profesional o por servicio (según definición del negocio)",
-          "Indicadores de agenda, tiempos de espera o ausentismo",
-        ],
-      },
-      {
-        type: "paragraph",
-        segments: [
-          "Eso suele conectarse con un ",
-          { href: "/sistema-turnos-online", label: "sistema de turnos online" },
-          " y recordatorios; ver también ",
-          { href: "/blog/turnos-whatsapp-ausentismo-clinicas-argentina-2026", label: "turnos y WhatsApp para bajar ausentismo" },
-          ".",
-        ],
-      },
-      { type: "h2", id: "ventajas", text: "Ventajas de automatizar procesos internos en salud" },
-      {
-        type: "ul",
-        items: [
-          "Menos errores administrativos por copia manual entre sistemas",
-          "Mayor velocidad operativa en recepción y facturación",
-          "Mejor organización de la información y menos “¿dónde quedó esto?”",
-          "Reducción de tareas repetitivas para médicos y administrativos",
-          "Mayor trazabilidad: quién hizo qué y cuándo",
-        ],
-      },
-      { type: "h2", id: "integracion", text: "Integración entre sistemas médicos" },
-      {
-        type: "paragraph",
-        segments: [
-          "Uno de los mayores beneficios de la ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatización para consultorios médicos" },
-          " es conectar agenda, historia o módulo administrativo, facturación, laboratorio y herramientas internas vía APIs o flujos (por ejemplo n8n), evitando cargar lo mismo varias veces. Eso es ",
-          { href: "/automatizacion-procesos-clinicas", label: "gestión médica automatizada" },
-          " en sentido realista: integración + reglas, no solo marketing.",
-        ],
-      },
-      { type: "h2", id: "ia", text: "Inteligencia artificial aplicada a clínicas" },
-      {
-        type: "paragraph",
-        segments: [
-          "En 2026 muchas instituciones exploran IA para resumir información administrativa, clasificar documentación o asistir tareas de back-office. En proyectos serios, la IA va acotada: permisos, auditoría y límites claros. Si tu necesidad es producto propio o reglas muy específicas, suele convivir con ",
+          "APIs, webhooks o herramientas tipo n8n sirven cuando hay sistemas heterogéneos y un equipo que puede operar alertas. Si el stack es tan raro que ningún conector existe, ahí aparece ",
           { href: "/desarrollo-software-medida", label: "desarrollo a medida" },
-          " y con la landing de ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatización de procesos" },
-          ".",
+          " en la capa de integración, no necesariamente reescribir todo.",
         ],
       },
-      { type: "h2", id: "quienes", text: "¿Qué tipo de clínicas pueden automatizar procesos?" },
       {
-        type: "ul",
-        items: [
-          "Clínicas privadas y centros médicos",
-          "Odontologías y consultorios especializados",
-          "Laboratorios y centros de diagnóstico",
-          "Instituciones que empiezan chicas pero ya sienten el techo operativo del Excel",
+        type: "paragraph",
+        segments: [
+          "Para turnos y confirmación por canal, el post ",
+          { href: "/blog/turnos-whatsapp-ausentismo-clinicas-argentina-2026", label: "turnos y ausentismo" },
+          " complementa esto con foco en paciente.",
         ],
       },
       { type: "h2", id: "conclusion", text: "Conclusión" },
       {
         type: "paragraph",
         segments: [
-          "La ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatización administrativa en clínicas" },
-          " reduce tiempos muertos, mejora la organización interna y baja errores en procesos críticos como facturación y documentación. Digitalizar ya no es solo “ventaja competitiva”: en muchos casos es condición para crecer sin explotar al equipo.",
+          "Medí horas antes de pedir features: si no podés cuantificar el retrabajo, vas a comprar software por ansiedad. Cuando tenés número, el alcance se escribe solo.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Si querés encarar ",
-          { href: "/software-para-clinicas", label: "software para clínicas en Argentina" },
-          ", integraciones o un primer diagnóstico de procesos, ",
-          { href: "/#contacto", label: "escribime desde el sitio" },
+          "Para charlar tu caso: ",
+          { href: "/#contacto", label: "contacto" },
           " o ",
-          { href: WA_CLINICAS, label: "por WhatsApp", external: true },
-          ".",
+          { href: WA_CLINICAS, label: "WhatsApp", external: true },
+          ". Las landings de ",
+          { href: "/software-para-clinicas", label: "apps para clínicas" },
+          " y ",
+          { href: "/automatizacion-procesos-clinicas", label: "automatización" },
+          " están en los enlaces del lateral.",
         ],
       },
       {
@@ -245,7 +168,7 @@ export const clinicasAutomationBlogArticles: BlogPost[] = [
     topicTrack: "automatizaciones",
     title: "Transformación digital en clínicas: automatización de procesos administrativos y gestión médica",
     description:
-      "Marco para modernizar clínicas en Argentina: problemas de procesos manuales, facturación médica, digitalización de historias, integración de sistemas de salud e IA con criterio técnico.",
+      "Director médico sin tablero confiable; por qué ‘comprar el suite’ no sustituye mapa de datos; fases de integración y dónde encaja la IA sin romper compliance.",
     metaTitle: "Transformación digital en clínicas | Automatización médica Argentina",
     metaDescription:
       "Transformación digital en clínicas: automatización médica Argentina, digitalización de procesos médicos, software para gestión médica e integración de sistemas. Relacionado con software para clínicas y automatización.",
@@ -272,128 +195,82 @@ export const clinicasAutomationBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "La ",
-          { href: "/software-para-clinicas", label: "transformación digital en clínicas" },
-          " no es solo comprar un sistema nuevo: es rediseñar cómo entra y circula la información entre agenda, prestación, ",
-          { href: "/automatizacion-procesos-clinicas", label: "facturación médica" },
-          " y dirección. En Argentina, muchos equipos avanzan por etapas: primero ordenan datos y flujos, después integran, y recién entonces suman capas más avanzadas.",
+          "Un director médico me dijo: ‘Quiero ver ocupación y facturación en un solo lugar’. Cuando miramos de dónde salían los datos, eran cuatro sistemas que nadie había mapeado: la agenda no era la misma que usaba administración para liquidar. Sin ese mapa, cualquier dashboard es maquillaje. Transformación digital en clínicas empieza por admitir que el problema es de datos, no de ‘falta de suite’.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Este artículo resume un enfoque técnico y de gestión para ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatización médica" },
-          " y ",
-          { href: "/software-para-clinicas", label: "optimización administrativa en salud" },
-          ". Si preferís una guía más centrada en el día a día administrativo, está ",
+          "La guía operativa con horas concretas y cruces facturación/agenda está en ",
           {
             href: "/blog/como-automatizar-tareas-administrativas-clinicas",
             label: "cómo automatizar tareas administrativas en clínicas",
           },
+          ". Acá te dejo fases que uso cuando entro a una institución que ya tiene software… pero sigue viviendo en Excel.",
+        ],
+      },
+      { type: "h2", id: "problemas", text: "Síntomas de mapa roto" },
+      {
+        type: "ul",
+        items: [
+          "Dos números distintos de ‘pacientes activos’ según quién conteste el mail.",
+          "Reportes que ‘salen el viernes’ porque alguien arma pivots a mano.",
+          "Cada nueva sede duplica el caos en lugar de escalar el proceso.",
+        ],
+      },
+      { type: "h2", id: "fases", text: "Tres fases (orden importa)" },
+      {
+        type: "paragraph",
+        segments: [
+          "1) Inventario de sistemas y dueños de dato. 2) Una integración que duela poco y se note (ej. turno confirmado → estado visible en administración). 3) Recién ahí capas de ",
+          { href: "/bots-whatsapp", label: "WhatsApp" },
+          ", ",
+          { href: "/sistema-turnos-online", label: "agenda online" },
+          " más ambiciosa o IA administrativa. Saltarse la 1 es tirar plata.",
+        ],
+      },
+      { type: "h2", id: "facturacion-medica", text: "Facturación y prestaciones" },
+      {
+        type: "paragraph",
+        segments: [
+          "El cuello suele ser catálogo y reglas de liquidación, no ‘falta de botón’. Automatizar facturación médica sin limpiar códigos y responsables es como automatizar un incendio. Cuando el catálogo respira, ",
+          { href: "/automatizacion-procesos-clinicas", label: "flujos de automatización" },
+          " entre módulos bajan retrabajo real.",
+        ],
+      },
+      { type: "h2", id: "digitalizacion-hc", text: "Historia clínica y compliance" },
+      {
+        type: "paragraph",
+        segments: [
+          "Digitalizar no es PDF escaneado suelto: es permisos, auditoría, versionado y respaldo. La IA puede ayudar en back-office (clasificar documentación administrativa, borradores revisados); no reemplaza gobernanza clínica.",
+        ],
+      },
+      { type: "h2", id: "integracion", text: "Integración y cuando hace falta a medida" },
+      {
+        type: "paragraph",
+        segments: [
+          "Cuando el stack es heterogéneo, las APIs y webhooks pagan el almuerzo. Si dos vendors no se hablan y el negocio no puede esperar años de roadmap, una capa de integración o ",
+          { href: "/desarrollo-software-medida", label: "desarrollo a medida" },
+          " acotado suele ser más barato que pelear con ambos proveedores.",
+        ],
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "Paciente: si el dolor es ausentismo y recordatorios, mirá ",
+          { href: "/blog/turnos-whatsapp-ausentismo-clinicas-argentina-2026", label: "turnos y WhatsApp" },
           ".",
         ],
       },
-      { type: "h2", id: "problemas", text: "Problemas comunes en clínicas con procesos manuales" },
-      {
-        type: "ul",
-        items: [
-          "La misma información vive en la agenda, en un Excel y en el sistema contable",
-          "Cuellos de botella en recepción por consultas y cargas duplicadas",
-          "Poca visibilidad para dirección: los reportes “cuestan” horas armarlos",
-          "Dificultad para escalar sin multiplicar errores",
-        ],
-      },
+      { type: "h2", id: "software-gestion", text: "Próximo paso" },
       {
         type: "paragraph",
         segments: [
-          "La ",
-          { href: "/automatizacion-procesos-clinicas", label: "digitalización de procesos médicos" },
-          " empieza por mapear esos cuellos y definir qué debe ser sistema de registro vs qué puede ser flujo automatizado entre APIs.",
-        ],
-      },
-      { type: "h2", id: "facturacion-medica", text: "Cómo automatizar la facturación médica" },
-      {
-        type: "paragraph",
-        segments: [
-          "La ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatización de facturación médica" },
-          " suele combinar: catálogo de prestaciones, reglas de liquidación, vínculo con turnos/atención y exportación controlada. En ",
-          { href: "/software-para-clinicas", label: "automatización de clínicas privadas" },
-          ", el éxito depende menos del “software famoso” y más de datos limpios y responsables claros por etapa del proceso.",
-        ],
-      },
-      { type: "h2", id: "digitalizacion-hc", text: "Digitalización de historias clínicas" },
-      {
-        type: "paragraph",
-        segments: [
-          "Para ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatizar historias clínicas" },
-          " en el sentido correcto, lo central es gobernanza: permisos, auditoría, respaldo y flujo de firmas. La tecnología ayuda a estandarizar plantillas y búsqueda; la decisión de qué automatizar (y qué no) es médica y legal, no solo IT.",
-        ],
-      },
-      { type: "h2", id: "integracion", text: "Integración entre sistemas de salud" },
-      {
-        type: "paragraph",
-        segments: [
-          "La ",
-          { href: "/automatizacion-procesos-clinicas", label: "integración de sistemas médicos" },
-          " es donde muchas ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatizaciones de centros de salud" },
-          " aportan ROI: webhooks, APIs, sincronización de pacientes o resultados y menos reingreso manual. Si tu stack es heterogéneo, a veces hace falta ",
-          { href: "/desarrollo-software-medida", label: "desarrollo a medida" },
-          " o capas de integración dedicadas.",
-        ],
-      },
-      { type: "h2", id: "ia-salud", text: "Automatización administrativa con inteligencia artificial" },
-      {
-        type: "paragraph",
-        segments: [
-          "La ",
-          { href: "/automatizacion-procesos-clinicas", label: "inteligencia artificial para clínicas" },
-          " tiene sentido en tareas acotadas: clasificación de documentación administrativa, borradores de resúmenes revisados por humanos, extracción de campos desde formularios, etc. Para canales con pacientes, muchos proyectos combinan IA con ",
-          { href: "/bots-whatsapp", label: "bots de WhatsApp" },
-          " y políticas estrictas de datos.",
-        ],
-      },
-      { type: "h2", id: "beneficios", text: "Beneficios de modernizar procesos internos en clínicas" },
-      {
-        type: "ul",
-        items: [
-          "Menos fricción entre áreas y menos dependencia de “alguien que sabe dónde está el archivo”",
-          "Mejor soporte para auditorías y controles internos",
-          "Base para crecer en sucursales o nuevos servicios sin que el administrativo crezca en la misma proporción",
-        ],
-      },
-      {
-        type: "paragraph",
-        segments: [
-          "También mejora la experiencia del paciente cuando la agenda y los avisos funcionan: ",
-          { href: "/sistema-turnos-online", label: "sistema de turnos online" },
+          "Las landings de ",
+          { href: "/software-para-clinicas", label: "apps para clínicas" },
           " y ",
-          { href: "/blog/turnos-whatsapp-ausentismo-clinicas-argentina-2026", label: "recordatorios por WhatsApp" },
-          " para reducir ausentismo.",
-        ],
-      },
-      { type: "h2", id: "software-gestion", text: "Software para gestión médica y próximos pasos" },
-      {
-        type: "paragraph",
-        segments: [
-          "Elegir ",
-          { href: "/software-para-clinicas", label: "software para gestión médica" },
-          " o encarar ",
           { href: "/automatizacion-procesos-clinicas", label: "automatización de procesos" },
-          " es una decisión por etapas: inventario de sistemas, datos críticos, riesgos y una primera integración que demuestre valor. En el sitio tenés la landing de ",
-          { href: "/software-para-clinicas", label: "software para clínicas" },
-          " y la de ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatización para empresas" },
-          " aplicada también a salud.",
-        ],
-      },
-      {
-        type: "paragraph",
-        segments: [
-          "Para una charla concreta sobre tu institución, ",
+          " están enlazadas al costado. Si querés que mire tu mapa de datos antes de vender humo, ",
           { href: "/#contacto", label: "contacto" },
           " o ",
           { href: WA_CLINICAS, label: "WhatsApp", external: true },

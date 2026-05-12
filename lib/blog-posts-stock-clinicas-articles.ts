@@ -12,7 +12,7 @@ export const stockClinicasBlogArticles: BlogPost[] = [
     topicTrack: "stock-inventario",
     title: "Sistema de control de stock para clínicas: cómo organizar insumos médicos y reducir pérdidas",
     description:
-      "Por qué planillas y anotaciones generan faltantes, vencimientos y compras duplicadas en clínicas; qué debe hacer un software de inventario médico y cómo encaja con automatización y desarrollo a medida.",
+      "Depósito que no sabía cuántos guantes quedaban por talle; número de mermas ‘sin explicación’; por qué el Excel explota antes que el software y qué modelo mínimo de movimientos alcanza.",
     metaTitle: "Control de stock para clínicas | Insumos médicos y software Argentina",
     metaDescription:
       "Control de stock para clínicas, software de inventario para clínicas y gestión de insumos médicos en Argentina: vencimientos, sectores, alertas y sistema de inventario para centros médicos.",
@@ -26,9 +26,8 @@ export const stockClinicasBlogArticles: BlogPost[] = [
     resourceLinks: [
       { href: "/control-stock-clinicas", label: "Control de stock para clínicas" },
       { href: "/automatizacion-procesos-clinicas", label: "Automatización de procesos" },
-      { href: "/software-para-clinicas", label: "Software para clínicas" },
       { href: "/desarrollo-software-medida", label: "Software a medida" },
-      { href: "/blog/automatizar-control-stock-clinicas-consultorios-medicos", label: "Blog: automatizar stock en clínicas" },
+      { href: "/blog/automatizar-control-stock-clinicas-consultorios-medicos", label: "Blog: automatizar stock" },
       { href: "/#contacto", label: "Contacto" },
       { href: WA_STOCK, label: "WhatsApp", external: true },
     ],
@@ -36,166 +35,92 @@ export const stockClinicasBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Muchas clínicas y consultorios siguen con ",
-          { href: "/control-stock-clinicas", label: "stock en planillas" },
-          ", anotaciones o herramientas poco integradas. El resultado suele ser ",
-          { href: "/control-stock-clinicas", label: "faltantes de insumos" },
-          ", pérdidas, vencimientos no detectados, compras duplicadas y desorden interno que impacta en la atención.",
+          "En un consultorio odontológico de Rosario el depósito tenía tres cajas de guantes ‘M’ con etiquetas distintas y tres hojas de Excel que no coincidían. Cuando cerramos inventario físico vs planilla, faltaban ~180 cajas equivalentes en valor de un mes de alquiler del local. Nadie las había ‘robado’ de golpe: se habían ido en consumos sin registro y compras duplicadas por pánico.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Un ",
-          { href: "/control-stock-clinicas", label: "sistema de control de stock para clínicas" },
-          " ordena medicamentos, descartables y materiales con reglas, alertas y trazabilidad. Si además querés flujos entre sistemas, mirá ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatización de stock médico" },
-          " e integraciones.",
+          "Ese es el patrón que veo antes de hablar de software: el stock no es un número, es un flujo de movimientos con responsable. Un ",
+          { href: "/control-stock-clinicas", label: "sistema de control de stock" },
+          " serio empieza por definir `Item`, `Ubicación`, `Movimiento` (entrada, salida, transferencia, ajuste) y quién puede confirmar cada uno — no por elegir el color del dashboard.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Complemento: ",
+          "Si querés el enfoque en automatizar alertas e integraciones, seguí en ",
           {
             href: "/blog/automatizar-control-stock-clinicas-consultorios-medicos",
-            label: "cómo automatizar el control de stock en clínicas y consultorios",
+            label: "cómo automatizar stock en clínicas",
           },
           ".",
         ],
       },
-      { type: "h2", id: "importancia", text: "¿Por qué es importante controlar el stock en una clínica?" },
+      { type: "h2", id: "importancia", text: "Por qué en salud el stock no es ‘administración’" },
       {
         type: "paragraph",
         segments: [
-          "En salud, el ",
-          { href: "/control-stock-clinicas", label: "control de insumos médicos" },
-          " no es solo “administración”: incide en continuidad asistencial, esterilidad donde corresponde y costos. Ejemplos típicos de lo que se controla:",
+          "Un faltante no es solo un gasto: puede frenar una cirugía o forzar un reemplazo de último minuto con proveedor caro. Los vencimientos mal llevados son riesgo directo. Por eso el inventario va ligado a trazabilidad y permisos, no a ‘cantidad aproximada en la heladera’.",
         ],
       },
       {
         type: "ul",
         items: [
-          "Materiales descartables y kits",
-          "Medicamentos y fraccionamiento según política interna",
-          "Insumos odontológicos o de laboratorio",
-          "Equipamiento y accesorios",
-          "Materiales administrativos de uso interno",
+          "Descartables y kits con lote cuando corresponde",
+          "Medicamentos según política interna (no doy consejo clínico; hablo de registro)",
+          "Insumos por sector (quirófano vs gabinete vs recepción)",
         ],
       },
-      { type: "h2", id: "problemas", text: "Problemas frecuentes en clínicas sin control de inventario" },
-      { type: "h3", id: "faltantes", text: "Faltantes inesperados" },
-      {
-        type: "paragraph",
-        segments: [
-          "Sin ",
-          { href: "/control-stock-clinicas", label: "sistema de inventario para centros médicos" },
-          ", los insumos se agotan sin alerta y el equipo improvisa o retrasa prestaciones.",
-        ],
-      },
-      { type: "h3", id: "vencimiento", text: "Vencimiento de productos" },
+      { type: "h2", id: "problemas", text: "Señales de que el Excel ya no alcanza" },
       {
         type: "ul",
         items: [
-          "Medicamentos con fecha crítica",
-          "Materiales estériles o lotes",
-          "Productos médicos con trazabilidad",
+          "Dos personas actualizan la misma hoja y ‘el que guardó último gana’.",
+          "Comprás urgente porque ‘no hay’ y al mes aparecen tres cajas detrás de un estante.",
+          "No podés responder en cinco minutos cuánto gastaste por especialidad en insumos.",
         ],
       },
-      { type: "h3", id: "compras", text: "Compras duplicadas o innecesarias" },
+      { type: "h2", id: "que-hace", text: "Qué debe hacer el sistema (mínimo viable)" },
       {
         type: "paragraph",
         segments: [
-          "Sin visibilidad de ",
-          { href: "/control-stock-clinicas", label: "control de materiales médicos" },
-          ", comprás de más o en el momento equivocado.",
+          "Movimientos con auditoría, stock por ubicación, alertas de mínimo y alertas de vencimiento con reglas distintas por rubro. Reportes que dirección entienda sin pedirle a alguien que ‘arregle la pivot’. Si compras o facturación viven en otro sistema, ahí entra ",
+          { href: "/automatizacion-procesos-clinicas", label: "automatización" },
+          " para que un movimiento aprobado dispare lo que corresponda sin reescribir a mano.",
         ],
       },
-      { type: "h3", id: "excel", text: "Dependencia de planillas manuales" },
       {
-        type: "paragraph",
-        segments: [
-          "Excel sirve al inicio; cuando crece la ",
-          { href: "/control-stock-clinicas", label: "gestión de inventario en salud" },
-          ", se rompe la consistencia entre recepción, depósito y sectores.",
-        ],
-      },
-      { type: "h2", id: "que-hace", text: "Qué puede hacer un sistema de control de stock para clínicas" },
-      { type: "h3", id: "ingresos", text: "Control de ingresos y egresos" },
-      {
-        type: "ul",
-        items: [
-          "Compras y recepción de mercadería",
-          "Consumo interno por sector o prestación",
-          "Movimientos y transferencias entre ubicaciones",
-        ],
-      },
-      { type: "h3", id: "alertas", text: "Alertas de stock bajo" },
-      { type: "h3", id: "vencimientos-sistema", text: "Control de vencimientos" },
-      { type: "h3", id: "sectores", text: "Gestión por categorías y sectores" },
-      {
-        type: "ul",
-        items: [
-          "Consultorios, odontología, laboratorio, quirófano, farmacia interna",
-          "Reglas distintas por tipo de insumo",
-        ],
-      },
-      { type: "h3", id: "reportes", text: "Reportes y métricas" },
-      {
-        type: "paragraph",
-        segments: [
-          "Consumo mensual, materiales más usados, costos y ",
-          { href: "/automatizacion-procesos-clinicas", label: "reportes administrativos" },
-          " para dirección y compras.",
-        ],
-      },
-      { type: "h2", id: "automatizacion", text: "Automatización del inventario en clínicas" },
-      {
-        type: "ul",
-        items: [
-          "Actualización automática de stock ante movimientos aprobados",
-          "Alertas y recordatorios",
-          "Integración con compras o proveedores",
-          "Movimientos internos con auditoría",
-        ],
+        type: "h2",
+        id: "modelo-datos",
+        text: "Modelo de datos mínimo (sin vender humo)",
       },
       {
         type: "paragraph",
         segments: [
-          "Para encadenar sistemas, suele usarse ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatización de procesos" },
-          " además del módulo de inventario.",
+          "Pensá tablas, no pantallas: `Producto` con unidad de medida, `StockUbicacion` con cantidad disponible y reservada, `Movimiento` con tipo y usuario. Desde ahí las pantallas son consecuencia. Si saltás este paso, terminás con un front lindo y números que nadie confía.",
         ],
       },
-      { type: "h2", id: "ventajas", text: "Ventajas de digitalizar el control de insumos médicos" },
-      {
-        type: "ul",
-        items: [
-          "Menos pérdidas y menos vencimientos “sorpresa”",
-          "Mayor organización entre depósito y sectores",
-          "Reducción de errores manuales",
-          "Mayor control operativo y trazabilidad",
-          "Optimización de costos de compra",
-        ],
-      },
-      { type: "h2", id: "a-medida", text: "¿Conviene desarrollar un sistema a medida?" },
+      { type: "h2", id: "a-medida", text: "¿Todo a medida?" },
       {
         type: "paragraph",
         segments: [
-          "Cada institución tiene circuitos distintos: por eso a veces conviene ",
-          { href: "/desarrollo-software-medida", label: "software personalizado" },
-          " o un núcleo estándar con desarrollo y ",
-          { href: "/automatizacion-procesos-clinicas", label: "integraciones" },
-          " a medida.",
+          "No siempre: a veces un núcleo estándar + ",
+          { href: "/desarrollo-software-medida", label: "reglas propias" },
+          " en la capa de integración alcanza. A medida tiene sentido cuando tus circuitos de consumo interno, kits o multi-sede no entran en plantillas.",
         ],
       },
       { type: "h2", id: "conclusion", text: "Conclusión" },
       {
         type: "paragraph",
         segments: [
-          "Un ",
-          { href: "/control-stock-clinicas", label: "sistema para controlar insumos médicos" },
-          " reduce pérdidas y ordena la operación diaria. Para charlar alcance, ",
+          "Ordenar stock es ordenar responsabilidades. El software acelera lo que ya decidiste en papel; no reemplaza la conversación con depósito y gabinete.",
+        ],
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "Para alcance: ",
           { href: "/#contacto", label: "contacto" },
           " o ",
           { href: WA_STOCK, label: "WhatsApp", external: true },
@@ -229,7 +154,7 @@ export const stockClinicasBlogArticles: BlogPost[] = [
     topicTrack: "stock-inventario",
     title: "Cómo automatizar el control de stock en clínicas y consultorios médicos",
     description:
-      "Problemas del stock manual en centros médicos, funciones de un software de inventario médico, integración con compras y sistemas clínicos, y beneficios de automatizar inventario en salud.",
+      "Regla de tres umbrales que sí disparan alerta, por qué la automatización sin movimientos auditables es humo, y cómo conectar compras sin duplicar el Excel.",
     metaTitle: "Automatizar stock en clínicas | Inventario médico Argentina",
     metaDescription:
       "Automatización de stock para clínicas, software de inventario médico y control de insumos en consultorios: alertas, sectores, integración y menos carga operativa.",
@@ -253,22 +178,24 @@ export const stockClinicasBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "El ",
-          { href: "/control-stock-clinicas", label: "control de stock" },
-          " en ",
-          { href: "/control-stock-clinicas", label: "clínicas y centros médicos" },
-          " se complica con muchos insumos, rotaciones y sectores. La ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatización" },
-          " aporta datos en tiempo real y reduce errores típicos de la carga manual.",
+          "Una farmacia interna me mostró alertas de ‘stock bajo’ que saltaban todos los días a las 8:00 y las ignoraban porque el 70% eran falsos positivos: el umbral era el mismo para insumos de alto rotación y para ítems que se usaban una vez por mes. Cuando redefinimos mínimos por categoría y por sede, las alertas volvieron a significar algo y dejaron de ser ruido.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Si buscás el encuadre de organización y pérdidas, leé ",
+          "Automatizar inventario no es ‘mandar un mail’: es que un movimiento confirmado (consumo, compra recibida, transferencia) actualice stock y deje rastro. Si eso no pasa, seguís con Excel con extra steps. El servicio de ",
+          { href: "/control-stock-clinicas", label: "control de stock para clínicas" },
+          " tiene que vivir sobre ese principio.",
+        ],
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "El artículo hermano sobre pérdidas y modelo mínimo está en ",
           {
             href: "/blog/sistema-control-stock-clinicas-insumos-medicos-perdidas",
-            label: "sistema de control de stock para clínicas e insumos médicos",
+            label: "stock en clínicas e insumos médicos",
           },
           ".",
         ],
@@ -289,26 +216,44 @@ export const stockClinicasBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Reglas que descuentan o transfieren stock cuando se confirma un consumo, una compra o un ",
-          { href: "/control-stock-clinicas", label: "movimiento interno" },
-          " —siempre con permisos y auditoría.",
+          "Reglas que descuentan o transfieren stock cuando se confirma un consumo, una compra o un movimiento interno —siempre con permisos y auditoría.",
         ],
       },
       { type: "h3", id: "sectores", text: "Control por sectores" },
+      {
+        type: "paragraph",
+        segments: [
+          "En un centro médico el mismo insumo puede estar en depósito, quirófano, gabinete o recepción. Un buen inventario asigna ubicaciones o sectores, permite transferencias con responsable y evita que ‘el stock’ sea un número global que nadie puede auditar cuando falta algo en un piso y sobra en otro.",
+        ],
+      },
       { type: "h3", id: "alertas", text: "Alertas inteligentes" },
+      {
+        type: "paragraph",
+        segments: [
+          "Reglas por mínimo de seguridad, vencimientos próximos o consumo inusual disparan avisos al depósito o a quien corresponda —sin depender de que alguien revise la planilla cada mañana. La clave es definir umbrales realistas y quién actúa cuando salta la alerta.",
+        ],
+      },
       { type: "h3", id: "historial", text: "Historial de movimientos" },
+      {
+        type: "paragraph",
+        segments: [
+          "Cada entrada, salida, ajuste o transferencia debería dejar registro (quién, cuándo, motivo). Eso no es burocracia: es la base para explicar mermas, preparar auditorías y dejar de pelear por ‘quién tocó el Excel’.",
+        ],
+      },
       { type: "h3", id: "reportes", text: "Reportes administrativos" },
+      {
+        type: "paragraph",
+        segments: [
+          "Valor de stock por rubro, rotación, consumo por sector o comparación con compras ayudan a dirección y administración a decidir con números. Muchos equipos exportan a lo que ya usan para contabilidad; otros miran tableros en el mismo sistema.",
+        ],
+      },
       { type: "h2", id: "integracion", text: "Integración con otros sistemas de la clínica" },
       {
         type: "paragraph",
         segments: [
-          "Un ",
-          { href: "/control-stock-clinicas", label: "sistema de insumos médicos" },
-          " puede conectarse con compras, facturación, proveedores o dashboards vía ",
+          "Un sistema de insumos médicos puede conectarse con compras, facturación, proveedores o dashboards vía ",
           { href: "/automatizacion-procesos-clinicas", label: "APIs y automatización" },
-          ", y convivir con ",
-          { href: "/software-para-clinicas", label: "apps" },
-          " para solicitudes o avisos.",
+          ", y convivir con apps para solicitudes o avisos cuando el paciente o el sector pide reposición con trazabilidad.",
         ],
       },
       {
@@ -335,9 +280,7 @@ export const stockClinicasBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Automatizar el ",
-          { href: "/control-stock-clinicas", label: "inventario para centros de salud" },
-          " prepara la operación para crecer sin depender solo de procesos manuales. Para ver tu caso, ",
+          "Automatizar el inventario para centros de salud prepara la operación para crecer sin depender solo de procesos manuales. Para ver tu caso, ",
           { href: "/#contacto", label: "escribime" },
           " o ",
           { href: WA_STOCK, label: "WhatsApp", external: true },

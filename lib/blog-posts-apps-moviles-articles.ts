@@ -13,7 +13,7 @@ export const appsMovilesBlogArticles: BlogPost[] = [
     title:
       "Aplicaciones móviles para clínicas y consultorios: cómo mejorar la experiencia del paciente en 2026",
     description:
-      "Por qué los pacientes esperan resolver turnos, estudios y avisos desde el celular; funciones típicas de una app para clínicas, ventajas operativas e integración con automatización y turnos online.",
+      "Consultorio donde el 60% de los pacientes no descargaba el PDF del portal; por qué la app falla si el backend sigue en Excel; qué función conviene en MVP y qué dejar para v2.",
     metaTitle: "Apps para clínicas y consultorios | Experiencia del paciente 2026 Argentina",
     metaDescription:
       "Aplicación móvil para clínicas, app para consultorios médicos y desarrollo de apps para clínicas en Argentina: turnos, pacientes, notificaciones e integración con agenda y WhatsApp.",
@@ -29,9 +29,8 @@ export const appsMovilesBlogArticles: BlogPost[] = [
       { href: "/software-para-clinicas", label: "Aplicaciones móviles (servicio)" },
       { href: "/sistema-turnos-online", label: "Sistema de turnos online" },
       { href: "/bots-whatsapp", label: "Bots de WhatsApp" },
-      { href: "/automatizacion-procesos-clinicas", label: "Automatización de procesos" },
       { href: "/desarrollo-software-medida", label: "Software a medida" },
-      { href: "/blog/transformacion-digital-clinicas-automatizacion-gestion-medica", label: "Blog: transformación digital en clínicas" },
+      { href: "/blog/desarrollo-aplicaciones-moviles-clinicas-beneficios-ejemplos", label: "Blog: desarrollo y stack" },
       { href: "/#contacto", label: "Contacto" },
       { href: WA_APPS, label: "WhatsApp", external: true },
     ],
@@ -39,132 +38,81 @@ export const appsMovilesBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Cada vez más pacientes esperan poder resolver desde el celular: ",
-          { href: "/sistema-turnos-online", label: "sacar o reprogramar turnos" },
-          ", consultar estudios, recibir ",
-          { href: "/software-para-clinicas", label: "notificaciones" },
-          ", acceder a información útil y comunicarse con la institución sin depender solo de llamadas.",
+          "Una clínica me pasó analytics del ‘portal del paciente’: sesiones cortas, 60% abandonaba en la pantalla del PDF de indicaciones. No era diseño feo: era fricción real — nadie quiere hacer zoom a un A4 en el bondi. Ahí una ",
+          { href: "/software-para-clinicas", label: "app nativa o multiplataforma" },
+          " con la misma info en pantallas chicas y notificación push dejó de ser capricho y pasó a ser accesibilidad operativa.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Por eso muchas instituciones suman una ",
-          { href: "/software-para-clinicas", label: "aplicación móvil para clínicas" },
-          " o ",
-          { href: "/software-para-clinicas", label: "app para consultorios médicos" },
-          ": no es “moda”, es bajar fricción para el paciente y para recepción. Si tu foco es automatizar back-office, complementá con ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatización de procesos" },
+          "Lo que no te venden en el pitch: si el backend sigue siendo Excel + mail, la app solo empaqueta el caos. La app brilla cuando turnos, estudios permitidos y avisos leen de la misma API que ya usa recepción — no de un archivo que ‘sube Mariana los viernes’.",
+        ],
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "Para decisiones de stack y roadmap comercial, está el post hermano ",
+          {
+            href: "/blog/desarrollo-aplicaciones-moviles-clinicas-beneficios-ejemplos",
+            label: "desarrollo de apps para clínicas: beneficios y ejemplos",
+          },
           ".",
         ],
       },
+      { type: "h2", id: "por-que-app", text: "¿Para qué sirve una app en salud hoy?" },
       {
         type: "paragraph",
         segments: [
-          "El artículo ",
-          {
-            href: "/blog/desarrollo-aplicaciones-moviles-clinicas-beneficios-ejemplos",
-            label: "desarrollo de aplicaciones móviles para clínicas: beneficios y ejemplos",
-          },
-          " va más al lado comercial y técnico (portal de pacientes, IA, nativa vs multiplataforma).",
+          "No es reemplazar al médico por chat: es sacar del teléfono fijo y del ‘te paso el link por WhatsApp’ las cosas repetibles — ",
+          { href: "/sistema-turnos-online", label: "reprogramar un turno" },
+          ", ver estado de un estudio si la política lo permite, leer indicaciones en texto legible, recibir aviso de que el profesional se retrasó 20 minutos. Cada función tiene que justificar menos llamadas a recepción; si no, es brochure digital.",
         ],
       },
-      { type: "h2", id: "por-que-app", text: "¿Por qué una clínica necesita una aplicación móvil?" },
-      {
-        type: "paragraph",
-        segments: [
-          "Hoy buena parte de la interacción ocurre en móvil. Una ",
-          { href: "/software-para-clinicas", label: "app para gestión de pacientes" },
-          " y de agenda concentra funciones en un solo lugar, con login, permisos y trazabilidad acordes a tu operación.",
-        ],
-      },
-      { type: "h2", id: "funciones", text: "Funciones que puede tener una app para clínicas" },
-      { type: "h3", id: "turnos", text: "Gestión de turnos" },
+      { type: "h2", id: "mvp", text: "MVP que sí se usa (y no es lista infinita)" },
       {
         type: "ul",
         items: [
-          "Sacar y reprogramar turnos con reglas claras",
-          "Recordatorios y disponibilidad visible",
-          "Integración con agenda para evitar doble carga manual",
+          "Login + perfil mínimo y política de datos visible.",
+          "Turnos contra la misma base que el calendario interno.",
+          "Notificaciones transaccionales (confirmación, cambio, recordatorio) — no spam de marketing.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Conviene enlazar la app con un ",
-          { href: "/sistema-turnos-online", label: "sistema de turnos online" },
-          " real: así la reserva impacta en el mismo calendario que usa el equipo.",
+          "Segundo release: lo que pida tu compliance (documentos firmados, adjuntos, etc.). Primero que el paciente no tenga que llamarte para lo obvio.",
         ],
       },
-      { type: "h3", id: "estudios", text: "Acceso a estudios y documentación" },
+      { type: "h2", id: "comunicacion", text: "Convivencia con WhatsApp" },
       {
         type: "paragraph",
         segments: [
-          "Según normativa y consentimientos, la ",
-          { href: "/software-para-clinicas", label: "aplicación para pacientes" },
-          " puede ofrecer descargas, órdenes o resúmenes: siempre con criterio médico y legal sobre qué se expone en el teléfono.",
-        ],
-      },
-      { type: "h3", id: "notificaciones", text: "Notificaciones automáticas" },
-      {
-        type: "ul",
-        items: [
-          "Recordatorios de turno y cambios de horario",
-          "Avisos de preparación o resultados listos",
-          "Indicaciones generales (sin reemplazar consulta ni diagnóstico por chat)",
-        ],
-      },
-      { type: "h3", id: "comunicacion", text: "Comunicación con pacientes" },
-      {
-        type: "paragraph",
-        segments: [
-          "Muchas apps conviven con ",
+          "El paciente va a seguir escribiendo al número conocido. La app y ",
           { href: "/bots-whatsapp", label: "WhatsApp" },
-          " (deep links, handoff a humano) o con formularios y ",
-          { href: "/automatizacion-procesos-clinicas", label: "asistencia automatizada" },
-          " acotada por políticas.",
+          " tienen que convivir: deep links, mismo paciente_id, handoff cuando el bot no alcanza. Si compiten sin integración, duplicás conversaciones y nadie sabe qué quedó vigente.",
         ],
       },
-      { type: "h2", id: "ventajas", text: "Ventajas de una aplicación móvil para clínicas" },
-      {
-        type: "ul",
-        items: [
-          "Mejor experiencia del paciente",
-          "Menos carga administrativa en recepción",
-          "Mayor organización y menos ida y vuelta por teléfono",
-          "Acceso rápido a lo permitido desde el celular",
-          "Señal de modernización para la institución",
-        ],
-      },
-      { type: "h2", id: "mas-automatizacion", text: "Aplicaciones móviles y automatización" },
+      { type: "h2", id: "a-medida", text: "¿A medida desde el día uno?" },
       {
         type: "paragraph",
         segments: [
-          "Las apps se potencian cuando se integran con ",
-          { href: "/automatizacion-procesos-clinicas", label: "sistemas de gestión" },
-          ", historias, ",
-          { href: "/bots-whatsapp", label: "bots de WhatsApp" },
-          " y ",
-          { href: "/sistema-turnos-online", label: "agendas" },
-          ": menos carga manual y datos que entran una sola vez.",
-        ],
-      },
-      { type: "h2", id: "a-medida", text: "¿Conviene desarrollar una app a medida?" },
-      {
-        type: "paragraph",
-        segments: [
-          "Suele convenir cuando hay ",
-          { href: "/desarrollo-software-medida", label: "procesos específicos" },
-          ", integraciones particulares o marcas que no encajan en plantillas genéricas. La decisión es por etapas: MVP útil primero, después escalar.",
+          "Solo si ya tenés claros roles, datos sensibles y una API mínima. Si no, antes conviene ",
+          { href: "/desarrollo-software-medida", label: "ordenar dominio y endpoints" },
+          " que lanzar binarios a las tiendas. Una app mal alimentada es peor que un buen flujo web responsive conectado bien.",
         ],
       },
       { type: "h2", id: "conclusion", text: "Conclusión" },
       {
         type: "paragraph",
         segments: [
-          "Las ",
-          { href: "/software-para-clinicas", label: "aplicaciones móviles para salud" },
-          " son parte de la transformación digital: una experiencia ordenada desde el celular marca diferencia para pacientes y para el equipo. Para presupuesto o alcance, ",
+          "La experiencia del paciente en 2026 es celular + expectativa de respuesta rápida. Si la institución no puede sostener datos detrás, no arregla una app; si puede, el canal móvil destraba recepción de verdad.",
+        ],
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "Para alcance: ",
           { href: "/#contacto", label: "contacto" },
           " o ",
           { href: WA_APPS, label: "WhatsApp", external: true },
@@ -175,19 +123,19 @@ export const appsMovilesBlogArticles: BlogPost[] = [
         type: "faq",
         items: [
           {
-            question: "¿Qué funciones puede tener una app para clínicas?",
+            question: "¿Qué va primero en una app de clínica?",
             answer:
-              "Entre otras: turnos, estudios o documentación permitida, recordatorios, comunicación con la institución e integración con sistemas internos, según normativa y alcance acordado.",
+              "Lo que más llame genera: turnos y avisos transaccionales conectados a la agenda real. El resto se prioriza con métricas de soporte (cuántas llamadas caen por semana por tema X).",
           },
           {
-            question: "¿Conviene una aplicación médica a medida?",
+            question: "¿Hace falta publicar en App Store el día uno?",
             answer:
-              "Sí cuando hay reglas propias, integraciones o marca que no resuelve una app genérica. En casos simples a veces alcanza un buen módulo sobre sistema existente más integraciones.",
+              "Depende del público; a veces un PWA bien hecho alcanza para validar. Si necesitás push iOS o integraciones nativas, el store entra al plan.",
           },
           {
-            question: "¿Las apps ayudan a bajar tareas administrativas?",
+            question: "¿Las apps reemplazan la historia clínica?",
             answer:
-              "Sí: autogestión y notificaciones bien diseñadas reducen llamadas repetitivas y errores de coordinación, especialmente si están conectadas a la agenda real.",
+              "No por defecto: exponen lo que normativa y consentimiento permitan; lo sensible sigue en el sistema de registro clínico con permisos fuertes.",
           },
         ],
       },
@@ -198,7 +146,7 @@ export const appsMovilesBlogArticles: BlogPost[] = [
     topicTrack: "apps-moviles",
     title: "Desarrollo de aplicaciones móviles para clínicas: beneficios, funciones y ejemplos reales",
     description:
-      "Qué puede hacer una app en una clínica (portal de pacientes, turnos, estudios, notificaciones), beneficios operativos, IA con criterio, rubros que más la usan y nativa vs multiplataforma.",
+      "Qué entra en un portal de pacientes serio, cuándo Flutter vs nativo, IA solo para back-office acotado y checklist de integraciones antes de pedir presupuesto.",
     metaTitle: "Desarrollo de apps para clínicas | Beneficios y ejemplos Argentina",
     metaDescription:
       "Desarrollo de apps para clínicas, aplicaciones móviles para salud y app para pacientes en Argentina: funciones, beneficios, IA, multiplataforma y enlaces a servicios del sitio.",
@@ -215,7 +163,6 @@ export const appsMovilesBlogArticles: BlogPost[] = [
       { href: "/sistema-turnos-online", label: "Turnos online" },
       { href: "/bots-whatsapp", label: "Bots de WhatsApp" },
       { href: "/automatizacion-procesos-clinicas", label: "Automatización" },
-      { href: "/desarrollo-software-medida", label: "Software a medida" },
       { href: "/blog/aplicaciones-moviles-clinicas-consultorios-experiencia-paciente-2026", label: "Blog: experiencia del paciente" },
       { href: "/#contacto", label: "Contacto" },
       { href: WA_APPS, label: "WhatsApp", external: true },
@@ -224,126 +171,82 @@ export const appsMovilesBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "La digitalización en salud acelera y las ",
-          { href: "/software-para-clinicas", label: "aplicaciones móviles para salud" },
-          " pasan a ser canal principal para pacientes: desde ",
-          { href: "/software-para-clinicas", label: "gestión médica" },
-          " hasta comunicación y avisos, con menos fricción que el solo WhatsApp.",
+          "En un laboratorio chico el ‘portal’ era un sitio responsive que nadie del equipo actualizaba: los resultados ‘llegaban cuando llegaban’ por mail. Cuando definimos qué iba en la ",
+          { href: "/software-para-clinicas", label: "app de pacientes" },
+          " (solo estados + PDF cuando el LIS ya cerró el caso), el soporte telefónico bajó porque la gente dejó de llamar para ‘ver si ya está’.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Si buscás el enfoque en experiencia del paciente y 2026, está la guía ",
+          "El otro post del blog va a ",
           {
             href: "/blog/aplicaciones-moviles-clinicas-consultorios-experiencia-paciente-2026",
-            label: "aplicaciones móviles para clínicas y consultorios",
+            label: "experiencia del paciente y MVP",
           },
-          ". Acá el foco es ",
-          { href: "/software-para-clinicas", label: "desarrollo de apps para clínicas" },
-          " con beneficios concretos y ejemplos de rubro.",
+          ". Acá meto mano a stack, integraciones y dónde meto IA sin meterme en quilombos legales.",
         ],
       },
-      { type: "h2", id: "que-puede", text: "Qué puede hacer una aplicación móvil para una clínica" },
-      { type: "h3", id: "portal", text: "Portal de pacientes" },
+      { type: "h2", id: "que-puede", text: "Qué puede hacer la app sin ser un mini-EMR" },
       {
         type: "paragraph",
         segments: [
-          "Identidad, datos de contacto, turnos y trámites en un solo lugar: base para una ",
-          { href: "/software-para-clinicas", label: "app para pacientes en Argentina" },
-          " seria.",
+          "Portal serio = identidad + permisos + catálogo de acciones permitidas (turnos, pagos si aplica, descargas). La historia clínica completa suele quedarse en el sistema de registro; la app muestra vistas acotadas que vienen de la API, no copia pegada de PDFs.",
         ],
       },
-      { type: "h3", id: "turnos-app", text: "Gestión de turnos" },
       {
         type: "paragraph",
         segments: [
-          "Encaja con ",
-          { href: "/sistema-turnos-online", label: "turnos online" },
-          " y reglas de agenda para evitar doble reserva o mensajes sueltos.",
+          "Turnos: siempre contra ",
+          { href: "/sistema-turnos-online", label: "agenda online" },
+          " con locks reales. Notificaciones: push transaccional, no newsletter disfrazado. Complemento: ",
+          { href: "/bots-whatsapp", label: "WhatsApp" },
+          " para primer contacto y deep link a la app cuando hace falta contexto persistente.",
         ],
       },
-      { type: "h3", id: "estudios", text: "Visualización de estudios" },
+      { type: "h2", id: "integracion", text: "Integración: checklist antes de pedir presupuesto" },
+      {
+        type: "ul",
+        items: [
+          "¿Tenés API del sistema actual o solo exportaciones CSV los viernes?",
+          "¿Quién es dueño del paciente_id entre laboratorio, clínica y facturador?",
+          "¿Qué pasa offline? (hint: no mentir; mostrar último estado cacheado con timestamp).",
+        ],
+      },
       {
         type: "paragraph",
         segments: [
-          "Descargas o visualización de resultados y órdenes según lo que permita tu modelo de datos y la normativa aplicable.",
-        ],
-      },
-      { type: "h3", id: "notif", text: "Notificaciones y recordatorios" },
-      {
-        type: "paragraph",
-        segments: [
-          "Push para turnos, cambios de horario o avisos operativos: menos llamadas de cortesía y más información en el momento adecuado.",
-        ],
-      },
-      { type: "h3", id: "integracion", text: "Integración con sistemas internos" },
-      {
-        type: "paragraph",
-        segments: [
-          "APIs y webhooks hacia tu CRM, laboratorio o ",
+          "Si el cruce es feo pero repetible, a veces entra ",
           { href: "/automatizacion-procesos-clinicas", label: "automatización" },
-          ": la app como frente, el sistema de registro donde corresponda.",
+          " entre legacy y bus de eventos antes de tocar UI móvil.",
         ],
       },
-      { type: "h3", id: "com-auto", text: "Comunicación automatizada" },
+      { type: "h2", id: "ia", text: "IA en apps de salud (sin humo)" },
       {
         type: "paragraph",
         segments: [
-          "Complemento natural: ",
-          { href: "/bots-whatsapp", label: "bots de WhatsApp" },
-          " para primer contacto y la app para acciones estructuradas (turnos, formularios, avisos).",
+          "Uso que sí vi: resumir texto administrativo ya humano-validado, clasificar tickets de soporte, extraer campos de formularios. Uso que no prometo: diagnóstico por chat libre. Si tu vendor te vende lo segundo sin gobernanza, corrés.",
         ],
       },
-      { type: "h2", id: "beneficios", text: "Beneficios de desarrollar una app médica" },
-      {
-        type: "ul",
-        items: [
-          "Mayor comodidad para pacientes",
-          "Menos tareas manuales en recepción",
-          "Digitalización de procesos repetibles",
-          "Mejor acceso a información permitida",
-          "Mayor eficiencia operativa",
-        ],
-      },
-      { type: "h2", id: "ia", text: "Aplicaciones móviles e inteligencia artificial" },
+      { type: "h2", id: "nativa-multi", text: "Flutter / multiplataforma vs nativo" },
       {
         type: "paragraph",
         segments: [
-          "Hoy muchas ",
-          { href: "/software-para-clinicas", label: "apps" },
-          " pueden integrar IA para asistencia administrativa, clasificación de consultas o búsqueda en documentación, siempre con límites y revisión donde haga falta. No confundir asistencia con diagnóstico automatizado sin control profesional.",
-        ],
-      },
-      { type: "h2", id: "casos", text: "Casos donde una app médica puede marcar diferencia" },
-      {
-        type: "ul",
-        items: [
-          "Clínicas privadas y centros de salud",
-          "Odontologías y consultorios especializados",
-          "Centros de estética con agenda densa",
-          "Laboratorios y centros de diagnóstico",
-        ],
-      },
-      { type: "h2", id: "nativa-multi", text: "¿App nativa o desarrollo multiplataforma?" },
-      {
-        type: "paragraph",
-        segments: [
-          "Muchas clínicas eligen desarrollo multiplataforma para llegar a Android e iPhone con una base de código, acelerar entregas y controlar costos; la elección depende de performance, integraciones nativas y roadmap. Lo charlamos en ",
-          { href: "/software-para-clinicas", label: "desarrollo de aplicaciones móviles" },
-          " según tu caso.",
+          "Multiplataforma gana cuando el 80% es formularios, listas y notificaciones y no necesitás BLE raro ni cámara clínica custom. Nativo gana cuando el performance o SDK del fabricante es crítico. La decisión sale de medir pantallas críticas, no del logo del framework.",
         ],
       },
       { type: "h2", id: "conclusion", text: "Conclusión" },
       {
         type: "paragraph",
         segments: [
-          "Las ",
-          { href: "/software-para-clinicas", label: "aplicaciones móviles para pacientes" },
-          " y equipos internos modernizan la atención y ordenan procesos. Si querés encarar ",
-          { href: "/software-para-clinicas", label: "desarrollo mobile para consultorios" },
-          ", ",
-          { href: "/#contacto", label: "escribime" },
+          "Una app de clínica es frente fino sobre datos feos si no invertís en modelo y API. Arreglá primero el flujo de datos; después peleá por sombras y animaciones.",
+        ],
+      },
+      {
+        type: "paragraph",
+        segments: [
+          "Para presupuesto: ",
+          { href: "/#contacto", label: "contacto" },
           " o ",
           { href: WA_APPS, label: "WhatsApp", external: true },
           ".",
@@ -355,22 +258,22 @@ export const appsMovilesBlogArticles: BlogPost[] = [
           {
             question: "¿Qué funciones puede tener una app para clínicas?",
             answer:
-              "Turnos, estudios o documentación según permisos, recordatorios, historial o resúmenes permitidos, notificaciones y canales de comunicación con la institución.",
+              "Las que tu API pueda sostener con permisos claros: turnos, estados de estudios, documentación permitida y avisos operativos suelen ir primero.",
           },
           {
             question: "¿Conviene desarrollar una aplicación médica a medida?",
             answer:
-              "Sí cuando hay procesos específicos, integraciones particulares o requisitos de marca y seguridad que una solución genérica no cubre bien.",
+              "Cuando el genérico no cubre integraciones o reglas; si el dolor es solo de notificaciones, a veces alcanza mejorar backend + web responsive.",
           },
           {
-            question: "¿Las aplicaciones móviles ayudan a reducir tareas administrativas?",
+            question: "¿Las apps reducen carga administrativa?",
             answer:
-              "Sí: autogestión, notificaciones e integraciones reducen llamadas repetitivas y retrabajo, especialmente si la app está conectada a la agenda y sistemas reales.",
+              "Sí si autogestión reemplaza llamadas repetidas; no si solo duplicás lo que ya está en el sitio mal conectado.",
           },
           {
-            question: "¿Qué clínicas suelen desarrollar aplicaciones móviles?",
+            question: "¿Qué clínicas suelen publicar app?",
             answer:
-              "Centros médicos, odontologías, laboratorios, clínicas privadas y consultorios especializados, entre otros.",
+              "Las que ya tienen volumen de pacientes recurrentes y datos digitalizados — no como primer paso de digitalización.",
           },
         ],
       },
