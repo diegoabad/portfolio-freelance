@@ -5,7 +5,7 @@ import { homeSection } from "@/lib/home-links";
 
 /** Separación entre bloques (mismo ritmo que blog / casos de éxito). */
 export const LANDING_SECTION =
-  "mt-10 md:mt-12 border-t border-border pt-10 md:pt-12 scroll-mt-28 motion-section-in-view";
+  "mt-10 md:mt-12 border-t border-border pt-10 md:pt-12 scroll-mt-28";
 
 export const landingH2Class =
   "mt-3 font-display text-xl font-semibold tracking-tight text-pretty text-foreground md:text-2xl";

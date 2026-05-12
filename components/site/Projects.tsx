@@ -13,7 +13,7 @@ export function Projects() {
   return (
     <section
       id="proyectos"
-      className="relative bg-surface/30 py-9 md:py-[72px] motion-section-in-view"
+      className="relative bg-surface/30 py-9 md:py-[72px]"
     >
       <div className="max-w-site mx-auto px-6 lg:px-10">
         <div className={`max-w-3xl ${motionFadeUpMs(20)}`}>

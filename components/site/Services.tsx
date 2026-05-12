@@ -50,7 +50,7 @@ const chipClass =
 export function Services({ pricingRegion }: { pricingRegion: PricingRegion }) {
   const serviceCards = buildServiceCards(pricingRegion);
   return (
-    <section id="servicios" className="relative py-9 md:py-[72px] motion-section-in-view">
+    <section id="servicios" className="relative py-9 md:py-[72px]">
       <div className="max-w-site mx-auto px-6 lg:px-10">
         <div className={`max-w-3xl ${motionFadeUpMs(20)}`}>
           <span className="text-xs uppercase tracking-[0.2em] text-primary font-medium">Servicios</span>

@@ -1,5 +1,4 @@
 import { getPublicPriceTeaser, type PricingRegion } from "@/lib/pricing-region";
-import { motionFadeUpMs } from "@/lib/site-motion";
 import { getServiceLanding, splitHomeCardBadge, type ServiceLandingSlug } from "@/lib/service-landings";
 
 const chipClass =
@@ -17,7 +16,7 @@ export function ServiceLandingHeroOffer({
   const chips = splitHomeCardBadge(page.homeCardBadge);
   const teaser = getPublicPriceTeaser(slug, pricingRegion);
   return (
-    <div className={motionFadeUpMs(52)}>
+    <>
       <div className="mt-5 flex flex-wrap gap-1.5" aria-label="Enfoque del servicio">
         {chips.map((kw, i) => (
           <span key={`${slug}-${i}-${kw}`} className={chipClass}>
@@ -29,6 +28,6 @@ export function ServiceLandingHeroOffer({
         <p className="text-sm font-semibold tabular-nums text-primary md:text-[15px]">{teaser}</p>
         <p className="mt-1 text-[11px] leading-snug text-muted-foreground md:text-[12px]">{page.homeCardPriceBenefit}</p>
       </div>
-    </div>
+    </>
   );
 }

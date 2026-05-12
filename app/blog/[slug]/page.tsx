@@ -219,7 +219,7 @@ export default async function BlogPostPage({ params }: Props) {
 
           {post.resourceLinks && post.resourceLinks.length > 0 ? (
             <section
-              className="mx-auto mt-12 w-full max-w-3xl rounded-2xl border border-border bg-surface/40 p-6 md:p-8 motion-section-in-view"
+              className="mx-auto mt-12 w-full max-w-3xl rounded-2xl border border-border bg-surface/40 p-6 md:p-8"
               aria-labelledby="blog-resources-heading"
             >
               <h2 id="blog-resources-heading" className="font-display text-lg font-semibold text-foreground md:text-xl">

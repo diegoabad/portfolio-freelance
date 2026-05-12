@@ -104,7 +104,7 @@ export default async function CaseStudyPage({ params }: Props) {
         />
       ) : null}
       <main className="flex-1 border-b border-border bg-background">
-        <article className="max-w-site mx-auto px-4 py-12 sm:px-6 md:py-16 lg:px-10 lg:py-20 motion-section-in-view">
+        <article className="max-w-site mx-auto px-4 py-12 sm:px-6 md:py-16 lg:px-10 lg:py-20">
           <div className="mx-auto w-full max-w-3xl">
             <header className="border-b border-border pb-8 md:pb-10">
               <span
