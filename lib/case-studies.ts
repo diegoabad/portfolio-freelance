@@ -52,12 +52,7 @@ export const caseStudies: readonly CaseStudy[] = [
       "Se diseñó una aplicación móvil centrada en el paciente: autogestión de turnos con el profesional de referencia, flujo de pedidos de recetas digitales vinculado a ese vínculo de confianza y un cronograma de actividades e indicaciones para que la persona sepa qué hacer entre visitas. El foco está en fidelización, claridad y continuidad del cuidado, no solo en “tramitar”.",
     result:
       "Un canal directo que refuerza vínculo con el equipo tratante, menos fricción para gestionar turnos y recetas, y más orden en demandas repetitivas para la operación — con el paciente más acompañado en su día a día.",
-    images: [
-      "/projects/ineco/04-nuevo-turno.png",
-      "/projects/ineco/01-inicio.png",
-      "/projects/ineco/02-elegir-profesional.png",
-      "/projects/ineco/03-mis-recetas.png",
-    ],
+    images: ["/projects/ineco/01-ineco-app-pacientes-flujo.png"],
   },
   {
     slug: "cotilink-saas-cotizaciones",
@@ -78,13 +73,7 @@ export const caseStudies: readonly CaseStudy[] = [
       "Plataforma web donde se crea y versiona el presupuesto, se envía un enlace con experiencia de lectura clara para el cliente y se centraliza el ciclo de vida: visto, aceptado o rechazado, con historial y notas livianas alrededor de cada trato (un mini CRM alrededor del presupuesto). Se incorporan flujos y recordatorios orientados a recuperar presupuestos sin respuesta y a ordenar el seguimiento del equipo comercial.",
     result:
       "Embudo más transparente, menos operación a ciegas y mejor disciplina de seguimiento: se gana velocidad en cierres y se vuelve explícito qué oportunidades merecen un empujón antes de perderse.",
-    images: [
-      "/projects/cotilink/01-login.png",
-      "/projects/cotilink/02-dashboard.png",
-      "/projects/cotilink/03-editor.png",
-      "/projects/cotilink/04-detalle-linea.png",
-      "/projects/cotilink/05-confirmar-proyecto.png",
-    ],
+    images: ["/projects/cotilink/01-presupuesto-cotilink.png"],
   },
   {
     slug: "bot-whatsapp-odontologia-soler",
@@ -105,7 +94,7 @@ export const caseStudies: readonly CaseStudy[] = [
       "Bot de WhatsApp configurable, con o sin IA según la política de la clínica: base sólida de respuestas frecuentes y módulo de intenciones (por ejemplo facturas, turnos, quejas) que deriva cada conversación a vistas y colas en una plataforma web, guardando contexto y estado por tipo de pedido. Se centralizan teléfonos y consultas para tableros de seguimiento y para extraer tendencias — volumen por tema, cuellos de botella, oportunidades de mensajes más claros en redes o campañas — sin reemplazar el criterio humano donde hace falta.",
     result:
       "Menos ruido en la línea de WhatsApp, respuestas más homogéneas en lo repetitivo y un tablero que ordena lo operativo; además, visibilidad sobre qué preguntan los pacientes para afinar comunicación y prioridades del consultorio.",
-    images: ["/projects/chatbot/01-simulacion-conversacion.png", "/projects/chatbot/02-panel-intenciones.png"],
+    images: ["/projects/chatbot/01-panel-gestion-chatbot.png"],
   },
   {
     slug: "ineco-informes-ia",
@@ -127,11 +116,7 @@ export const caseStudies: readonly CaseStudy[] = [
       "Aplicación web con captura organizada de la consulta en texto y voz, y plantillas que ordenan qué registrar en cada parte de la visita. Al cerrar la carga, el sistema envía el paquete de notas a la IA bajo dos capas de control: lineamientos generales acordados institucionalmente y un prompt editable por el profesional (o por el servicio) que fija reglas del informe — estructura de secciones, extensión aproximada, tono y matices. El resultado es un borrador alineado a esa “receta” antes de la firma o el ajuste fino.",
     result:
       "Menos tiempo entre la consulta y el documento listo para revisar, más homogeneidad entre informes del mismo tipo y mayor control del equipo sobre cómo “suena” y se organiza cada pieza, sin renunciar a la validación humana.",
-    images: [
-      "/projects/informes/01-login.png",
-      "/projects/informes/02-landing.png",
-      "/projects/informes/03-creador-informes.png",
-    ],
+    images: ["/projects/informes/01-informespro-crear-informe-ia.png"],
   },
   {
     slug: "hablan-plataforma-fonoaudiologia",
@@ -152,12 +137,7 @@ export const caseStudies: readonly CaseStudy[] = [
       "Plataforma web donde cada profesional arma actividades para sus pacientes combinando módulos ya pensados (memoria, identificación de palabras, ejercicios con imágenes y otros formatos cognitivos). El flujo separa la creación de la asignación y el seguimiento: el paciente practica en su entorno con interacciones acotadas y el equipo revisa avances sin depender solo de la consulta presencial.",
     result:
       "Más práctica estructurada entre visitas, menos fricción para el profesional al armar tareas variadas y un canal claro para que el paciente entrene con ejercicios alineados al plan — con mejor adherencia que el “pdf o foto suelta”.",
-    images: [
-      "/projects/hablan/01-mis-actividades.png",
-      "/projects/hablan/02-mi-progreso.png",
-      "/projects/hablan/03-palabra-imagen-intro.png",
-      "/projects/hablan/04-ejercicio-palabra-imagen.png",
-    ],
+    images: ["/projects/hablan/01-hablan-dashboard-ejercicio.png"],
   },
   {
     slug: "cogniare-gestion-clinicas",
@@ -178,12 +158,7 @@ export const caseStudies: readonly CaseStudy[] = [
       "Plataforma web que concentra la operación del consultorio: turnos y disponibilidad en una agenda digital, historia del paciente con acceso controlado a lo relevante, módulo de publicaciones tipo blog para uso profesional interno, almacenamiento de documentos vinculados al expediente y herramientas para registrar diagnósticos y seguimiento en el mismo contexto de la visita.",
     result:
       "Menos ida y vuelta entre herramientas, expediente más completo y trazable, y un canal liviano de comunicación entre profesionales sin mezclarlo con redes personales.",
-    images: [
-      "/projects/cogniare/01-login.png",
-      "/projects/cogniare/02-gestion-turnos.png",
-      "/projects/cogniare/03-pacientes.png",
-      "/projects/cogniare/04-ficha-paciente.png",
-    ],
+    images: ["/projects/cogniare/01-cogniare-plataforma-collage.png"],
   },
 ];
 

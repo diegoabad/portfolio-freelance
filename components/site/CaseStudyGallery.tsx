@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
@@ -9,6 +8,9 @@ type CaseStudyGalleryProps = {
   images: string[];
   altPrefix: string;
 };
+
+/** Capturas UI: capa de composición estable en Chromium/Safari al escalar. */
+const SHARP_IMG = "[backface-visibility:hidden] [transform:translateZ(0)]";
 
 export function CaseStudyGallery({ images, altPrefix }: CaseStudyGalleryProps) {
   const [index, setIndex] = useState(0);
@@ -59,16 +61,16 @@ export function CaseStudyGallery({ images, altPrefix }: CaseStudyGalleryProps) {
           aria-label="Vista ampliada"
           onClick={closeLightbox}
         >
-          {/* Ancho máximo para no escalar capturas por encima de su resolución (evita pixelado) */}
-          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[calc(100dvh-8px)] w-full max-w-site max-h-[calc(100dvh-8px)] -translate-x-1/2 -translate-y-1/2 px-3 sm:px-4 relative">
-            <Image
+          <div className="pointer-events-none absolute inset-0 box-border flex min-h-0 min-w-0 items-center justify-center p-3 sm:p-4">
+            {/* eslint-disable-next-line @next/next/no-img-element -- PNG en public/; flex + max-* evita escalado borroso vs fill */}
+            <img
+              key={src}
               src={src}
               alt={alt}
-              fill
-              className="object-contain object-center select-none"
-              sizes="(max-width: 1280px) 100vw, 1280px"
-              quality={78}
               draggable={false}
+              fetchPriority="high"
+              decoding="async"
+              className={`max-h-full max-w-full object-contain object-center select-none ${SHARP_IMG}`}
             />
           </div>
 
@@ -130,17 +132,15 @@ export function CaseStudyGallery({ images, altPrefix }: CaseStudyGalleryProps) {
 
   return (
     <div className="mt-5 md:mt-6 space-y-3">
-      <div className="relative overflow-hidden rounded-xl border border-border bg-[oklch(0.06_0.01_260)] aspect-video sm:aspect-16/10">
-        <Image
+      <div className="relative box-border flex aspect-video min-h-0 min-w-0 items-center justify-center overflow-hidden rounded-xl border border-border bg-[oklch(0.06_0.01_260)] sm:aspect-16/10">
+        {/* eslint-disable-next-line @next/next/no-img-element -- miniatura: flex centra el bitmap sin forzar 100%×100% antes de object-contain */}
+        <img
           src={src}
           alt={alt}
-          fill
-          className="object-contain object-center pointer-events-none select-none"
-          sizes="(max-width: 640px) min(100vw - 3rem, 360px), (max-width: 1024px) min(100vw - 4rem, 520px), 560px"
-          quality={60}
           loading="lazy"
-          fetchPriority="low"
           decoding="async"
+          draggable={false}
+          className={`max-h-full max-w-full object-contain object-center pointer-events-none select-none ${SHARP_IMG}`}
         />
 
         <button
