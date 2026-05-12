@@ -14,6 +14,7 @@ const figtree = Figtree({
   variable: "--font-figtree",
   subsets: ["latin"],
   display: "swap",
+  adjustFontFallback: true,
   /** No compite en red con Outfit (hero / títulos); el cuerpo puede hacer FOUT breve. */
   preload: false,
 });
@@ -22,6 +23,7 @@ const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
   display: "swap",
+  adjustFontFallback: true,
   /** Preload: el LCP en home es el h1 del hero (font-display / Outfit). */
   preload: true,
 });
@@ -38,6 +40,7 @@ const seoDescription =
 
 export const viewport: Viewport = {
   themeColor: "#52a8ff",
+  colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
 };
@@ -58,6 +61,9 @@ export const metadata: Metadata = {
   creator: "Diego Abad",
   publisher: "Diego Abad",
   referrer: "origin-when-cross-origin",
+  formatDetection: {
+    telephone: false,
+  },
   ...(siteVerification ? { verification: siteVerification } : {}),
   robots: robotsIndexFollowGoogle,
   ...(siteUrl ? { alternates: { canonical: siteUrl } } : {}),

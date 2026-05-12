@@ -24,6 +24,7 @@ export function BrandLogoMark({ size, priority, className }: BrandLogoMarkProps)
         height={pixelSize * 2}
         priority={priority}
         quality={85}
+        decoding="async"
         className="size-full object-contain object-center"
         sizes={`${pixelSize}px`}
       />

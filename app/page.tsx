@@ -1,10 +1,9 @@
 import dynamic from "next/dynamic";
 import { Contact } from "@/components/site/Contact";
-import { FloatingWhatsAppDynamic } from "@/components/site/FloatingWhatsAppDynamic";
+import { FloatingWhatsAppAfterIdle } from "@/components/site/FloatingWhatsAppAfterIdle";
 import { Footer } from "@/components/site/Footer";
 import { Hero } from "@/components/site/Hero";
 import { Nav } from "@/components/site/Nav";
-import { Process } from "@/components/site/Process";
 import { Services } from "@/components/site/Services";
 import { getPricingRegion } from "@/lib/pricing-region";
 
@@ -97,12 +96,33 @@ const Testimonials = dynamic(() => import("@/components/site/Testimonials").then
   ),
 });
 
+const Process = dynamic(() => import("@/components/site/Process").then((m) => ({ default: m.Process })), {
+  loading: () => (
+    <section
+      id="proceso"
+      className="relative bg-surface/30 py-9 md:py-[72px]"
+      aria-busy="true"
+      aria-label="Cargando proceso"
+    >
+      <div className="max-w-site mx-auto px-6 lg:px-10">
+        <div className="h-4 w-24 rounded bg-muted/35 animate-pulse" />
+        <div className="mt-3 h-10 max-w-md rounded-lg bg-muted/30 animate-pulse" />
+        <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3 md:gap-5">
+          {[0, 1, 2, 3, 4, 5].map((k) => (
+            <div key={k} className="min-h-[120px] rounded-2xl border border-border bg-background/40 animate-pulse" />
+          ))}
+        </div>
+      </div>
+    </section>
+  ),
+});
+
 export default async function Home() {
   const pricingRegion = await getPricingRegion();
   return (
     <>
       <main className="relative z-10 min-h-screen flex-1 text-foreground">
-      <FloatingWhatsAppDynamic />
+      <FloatingWhatsAppAfterIdle />
       <Nav pricingRegion={pricingRegion} />
       <Hero />
       <Services pricingRegion={pricingRegion} />
