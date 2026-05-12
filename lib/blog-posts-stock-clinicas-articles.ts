@@ -166,11 +166,8 @@ export const stockClinicasBlogArticles: BlogPost[] = [
       description: "Enfoque en organización, vencimientos, sectores y pérdidas.",
     },
     resourceLinks: [
-      { href: "/control-stock-clinicas", label: "Control de stock" },
+      { href: "/control-stock-clinicas", label: "Control de stock para clínicas" },
       { href: "/automatizacion-procesos-clinicas", label: "Automatización de procesos" },
-      { href: "/software-para-clinicas", label: "Software para clínicas" },
-      { href: "/desarrollo-software-medida", label: "Software a medida" },
-      { href: "/blog/sistema-control-stock-clinicas-insumos-medicos-perdidas", label: "Blog: stock en clínicas" },
       { href: "/#contacto", label: "Contacto" },
       { href: WA_STOCK, label: "WhatsApp", external: true },
     ],
@@ -178,21 +175,21 @@ export const stockClinicasBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Una farmacia interna me mostró alertas de ‘stock bajo’ que saltaban todos los días a las 8:00 y las ignoraban porque el 70% eran falsos positivos: el umbral era el mismo para insumos de alto rotación y para ítems que se usaban una vez por mes. Cuando redefinimos mínimos por categoría y por sede, las alertas volvieron a significar algo y dejaron de ser ruido.",
+          "Una farmacia interna tenía alertas de ‘stock bajo’ todos los días a las 8:00 y las ignoraban: el 70% eran falsos positivos porque el umbral era el mismo para insumos de alto rotación y para ítems que se usaban una vez al mes. Al bajar mínimos por categoría y por sede, las alertas volvieron a significar algo y dejaron de ser ruido de fondo.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Automatizar inventario no es ‘mandar un mail’: es que un movimiento confirmado (consumo, compra recibida, transferencia) actualice stock y deje rastro. Si eso no pasa, seguís con Excel con extra steps. El servicio de ",
+          "Automatizar inventario no es ‘mandar un mail’: es que un movimiento confirmado (consumo, compra recibida, transferencia) actualice stock y deje rastro auditable. Si eso no pasa, seguís con Excel con pasos extra. El servicio de ",
           { href: "/control-stock-clinicas", label: "control de stock para clínicas" },
-          " tiene que vivir sobre ese principio.",
+          " tiene que apoyarse en ese principio o los números no los va a defender nadie en una auditoría.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "El artículo hermano sobre pérdidas y modelo mínimo está en ",
+          "El artículo hermano sobre pérdidas, vencimientos y modelo mínimo de tablas está en ",
           {
             href: "/blog/sistema-control-stock-clinicas-insumos-medicos-perdidas",
             label: "stock en clínicas e insumos médicos",
@@ -200,91 +197,53 @@ export const stockClinicasBlogArticles: BlogPost[] = [
           ".",
         ],
       },
-      { type: "h2", id: "problemas", text: "Qué problemas genera un mal control de stock" },
-      {
-        type: "ul",
-        items: [
-          "Pérdida de insumos y mermas no explicadas",
-          "Faltantes críticos antes de cirugías o agendas densas",
-          "Compras innecesarias por falta de visibilidad",
-          "Desorganización entre depósito y sectores",
-          "Errores administrativos y retrabajo",
-        ],
-      },
-      { type: "h2", id: "funciones", text: "Funciones clave de un software de inventario médico" },
-      { type: "h3", id: "mov-auto", text: "Movimientos automáticos de stock" },
+      { type: "h2", id: "problemas", text: "Qué pasa cuando el control es solo ‘la planilla’" },
       {
         type: "paragraph",
         segments: [
-          "Reglas que descuentan o transfieren stock cuando se confirma un consumo, una compra o un movimiento interno —siempre con permisos y auditoría.",
+          "Aparecen mermas sin explicación que en realidad son consumos sin registro, faltantes críticos antes de agendas densas, compras duplicadas por pánico y peleas entre depósito y gabinete porque ‘el Excel decía otra cosa’. No es mala fe: es falta de movimiento atómico con usuario y motivo.",
         ],
       },
-      { type: "h3", id: "sectores", text: "Control por sectores" },
+      { type: "h2", id: "funciones", text: "Qué tiene que hacer el software (sin lista infinita)" },
       {
         type: "paragraph",
         segments: [
-          "En un centro médico el mismo insumo puede estar en depósito, quirófano, gabinete o recepción. Un buen inventario asigna ubicaciones o sectores, permite transferencias con responsable y evita que ‘el stock’ sea un número global que nadie puede auditar cuando falta algo en un piso y sobra en otro.",
+          "Movimientos automáticos con permisos: al confirmar un consumo o una recepción de compra, que el stock se actualice solo y quede quién lo hizo. Control por ubicación o sector (depósito vs piso vs gabinete) con transferencias trazables, no un número global que nadie puede auditar cuando falta algo en un lugar y sobra en otro.",
         ],
       },
-      { type: "h3", id: "alertas", text: "Alertas inteligentes" },
       {
         type: "paragraph",
         segments: [
-          "Reglas por mínimo de seguridad, vencimientos próximos o consumo inusual disparan avisos al depósito o a quien corresponda —sin depender de que alguien revise la planilla cada mañana. La clave es definir umbrales realistas y quién actúa cuando salta la alerta.",
+          "Alertas con umbrales realistas por categoría y sede, vencimientos con reglas distintas por tipo de ítem, e historial de entradas, salidas y ajustes con motivo. Los reportes para dirección tienen que salir de esos movimientos, no de una pivot que se rompe cada vez que alguien inserta una fila.",
         ],
       },
-      { type: "h3", id: "historial", text: "Historial de movimientos" },
+      { type: "h2", id: "integracion", text: "Integración con el resto de la operación" },
       {
         type: "paragraph",
         segments: [
-          "Cada entrada, salida, ajuste o transferencia debería dejar registro (quién, cuándo, motivo). Eso no es burocracia: es la base para explicar mermas, preparar auditorías y dejar de pelear por ‘quién tocó el Excel’.",
-        ],
-      },
-      { type: "h3", id: "reportes", text: "Reportes administrativos" },
-      {
-        type: "paragraph",
-        segments: [
-          "Valor de stock por rubro, rotación, consumo por sector o comparación con compras ayudan a dirección y administración a decidir con números. Muchos equipos exportan a lo que ya usan para contabilidad; otros miran tableros en el mismo sistema.",
-        ],
-      },
-      { type: "h2", id: "integracion", text: "Integración con otros sistemas de la clínica" },
-      {
-        type: "paragraph",
-        segments: [
-          "Un sistema de insumos médicos puede conectarse con compras, facturación, proveedores o dashboards vía ",
+          "Compras, facturación o solicitudes desde sectores pueden colgar de ",
           { href: "/automatizacion-procesos-clinicas", label: "APIs y automatización" },
-          ", y convivir con apps para solicitudes o avisos cuando el paciente o el sector pide reposición con trazabilidad.",
+          " cuando hay contrato claro de eventos. Si no hay API, al menos proceso escrito de qué dispara qué; si no, la ‘integración’ es mail reenviado y volvés al caos.",
         ],
       },
       {
-        type: "ul",
-        items: [
-          "Compras y órdenes de pedido",
-          "Facturación o consumo interno",
-          "Sistemas médicos o de agenda cuando hay integración",
-          "Proveedores y catálogos",
-          "Paneles para administración",
+        type: "paragraph",
+        segments: [
+          "El objetivo no es pantalla linda: es que dirección pueda responder en cinco minutos cuánto se gastó por especialidad o sector en un mes, y que depósito sepa qué vence primero sin depender de que alguien ‘pase’ la planilla.",
         ],
       },
-      { type: "h2", id: "beneficios", text: "Beneficios de automatizar inventario en salud" },
+      { type: "h2", id: "beneficios", text: "Qué ganás cuando deja de ser humo" },
       {
-        type: "ul",
-        items: [
-          "Menor carga operativa en depósito y recepción",
-          "Mayor control y trazabilidad",
-          "Optimización de costos",
-          "Mejor organización interna entre sectores",
+        type: "paragraph",
+        segments: [
+          "Menos horas reconciliando, menos compras de emergencia caras, menos cirugías o agendas frenadas por un ítem que ‘nadie sabía que no estaba’. La trazabilidad no es burocracia extra: es lo que te permite explicar mermas y dormir sin miedo a la auditoría interna.",
         ],
       },
       { type: "h2", id: "conclusion", text: "Conclusión" },
       {
         type: "paragraph",
         segments: [
-          "Automatizar el inventario para centros de salud prepara la operación para crecer sin depender solo de procesos manuales. Para ver tu caso, ",
-          { href: "/#contacto", label: "escribime" },
-          " o ",
-          { href: WA_STOCK, label: "WhatsApp", external: true },
-          ".",
+          "Automatizar inventario prepara la operación para crecer sin que todo dependa de la memoria de dos personas. Para ver tu caso, usá el contacto del sitio o el WhatsApp de la caja de enlaces útiles más abajo.",
         ],
       },
       {

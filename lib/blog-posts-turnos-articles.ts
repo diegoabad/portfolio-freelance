@@ -33,23 +33,23 @@ export const turnosBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "La semana pasada me escribió una persona que administra un consultorio por Belgrano: tenían la agenda “ordenada” en papel y WhatsApp, pero seguían con huecos vacíos y pacientes que juraban no haber visto el recordatorio. No era mala fe; era fricción pura.",
+          "Me escribió quien administra un consultorio por Belgrano: agenda en papel alineada con el grupo de WhatsApp, y aun así huecos vacíos y pacientes que juraban no haber visto el aviso. El patrón no es mala fe: es doble registro, mensajes largos que nadie termina de leer y cero confirmación explícita.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "En ese tipo de proyectos suelo pedir un número antes de tocar código: cuántos turnos caen por mes y cuántos no aparecen. En un caso reciente, después de meter ",
-          { href: "/sistema-turnos-online", label: "agenda única con confirmación por WhatsApp" },
-          " y avisos a las 24 h, el ausentismo pasó de ~22% a ~11% en seis semanas. No fue magia: fue confirmación explícita + reglas de cancelación visibles.",
+          "Antes de tocar código pido cuántos turnos caen por mes y cuántos no aparecen. En un caso parecido, al pasar a ",
+          { href: "/sistema-turnos-online", label: "una sola agenda con confirmación por WhatsApp" },
+          " (avisos 24 h, texto corto, SI/NO), el ausentismo bajó de ~22% a ~11% en seis semanas. No hubo modelo de lenguaje: hubo una fila de verdad en la base y reglas de cancelación visibles antes del turno.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Mi opinión impopular: mucha gente cree que con un bot “inteligente” alcanza. En consultorios chicos el problema real suele ser la ",
-          { href: "/blog/turnos-online-whatsapp-reservas-negocio", label: "agenda desincronizada" },
-          " y los recordatorios genéricos que nadie lee. El bot ayuda cuando ya hay políticas claras; si no, solo automatiza el caos.",
+          "Cuando el dolor es estética, gimnasio o peluquería —donde el cliente reserva a las 22 hs sin llamar— el espejo útil es el post sobre ",
+          { href: "/blog/turnos-online-whatsapp-reservas-negocio", label: "turnos por WhatsApp en negocios de servicios" },
+          ". En consultorios el drama suele ser agenda desincronizada; un bot sin políticas solo acelera el quilombo.",
         ],
       },
       {
@@ -60,150 +60,74 @@ export const turnosBlogArticles: BlogPost[] = [
       {
         type: "ul",
         items: [
-          "Si recepción sigue cargando turnos a mano y el paciente también reserva por WhatsApp, vas a tener doble libro tarde o temprano.",
-          "Un recordatorio sin botón o palabra clara de confirmación es casi decoración: la gente ignora el mensaje.",
-          "Plantillas demasiado largas peor que ninguna: en mobile nadie lee cinco párrafos.",
-          "Política de cancelación escondida en PDF = bronca del paciente y más no-shows de último momento.",
+          "Recepción carga a mano y el paciente también reserva por chat: doble libro, discusiones internas y números que no cierran.",
+          "Recordatorio sin acción clara (responder una palabra o tocar un botón) es casi decoración: se ignora en el ascensor.",
+          "Párrafos largos en plantilla: en mobile no se leen; peor que nada porque generás la sensación de spam.",
+          "Política de cancelación enterrada en un PDF: bronca de último minuto y más no-shows.",
         ],
       },
       {
         type: "h2",
         id: "ejemplo-flujo",
-        text: "Ejemplo concreto de flujo (sin humo)",
+        text: "Flujo mínimo que sí baja no-shows",
       },
       {
         type: "paragraph",
         segments: [
-          "Imaginá un mensaje 24 h antes: hora, profesional, dirección, y dos opciones: responder SI o NO. En sistema, eso se traduce en un estado `confirmado` o `liberado` en la base y una ventana para reasignar el hueco. No hace falta IA para eso; hace falta que la agenda sea la fuente de verdad y que WhatsApp solo sea el canal.",
+          "24 h antes: hora, profesional, dirección, y dos salidas (SI / NO). En base eso es un estado confirmado o un slot liberado con tiempo para reasignar. No hace falta IA: hace falta que WhatsApp sea solo el tubo y la agenda la única fuente de verdad.",
         ],
       },
-      { type: "h2", id: "por-que-ausentismo", text: "¿Por qué ocurre tanto ausentismo en los turnos?" },
       {
-        type: "paragraph",
-        segments: ["En turnos online para consultorios y clínicas, las causas suelen repetirse:"],
+        type: "h2",
+        id: "por-que-ausentismo",
+        text: "Por qué falla aunque “mandemos recordatorio”",
       },
       {
-        type: "ul",
-        items: [
-          "El paciente olvida el turno o no recibe recordatorios a tiempo",
-          "Cambios de horario mal comunicados",
-          "Dificultad para cancelar o reprogramar sin fricción",
-          "Mala organización administrativa y exceso de mensajes manuales",
+        type: "paragraph",
+        segments: [
+          "Olvido existe, pero en consultorios lo que más veo es fricción: cambio de horario que quedó en un hilo distinto, cancelar que requiere llamar en horario de recepción, o tres versiones de la agenda según quién contestó el teléfono. El paciente no ‘no quiere’: no puede coordinar sin esfuerzo.",
         ],
       },
       {
         type: "h2",
         id: "como-ayuda",
-        text: "Cómo un sistema de turnos online ayuda a reducir inasistencias",
-      },
-      {
-        type: "h3",
-        id: "recordatorios-wa",
-        text: "Recordatorios automáticos y recordatorio de turnos por WhatsApp",
+        text: "Qué cambia con turnos online bien armados",
       },
       {
         type: "paragraph",
         segments: [
-          "Una gestión de turnos online seria programa avisos: por ejemplo 24 hs antes, con datos del turno y ubicación. Eso es automatización de turnos médicos en la práctica: menos “me olvidé” sin sumar trabajo a recepción.",
+          "Avisos programados con datos concretos del turno y ubicación, sin sumar trabajo manual a recepción. Confirmación y cancelación desde el mismo número que el paciente ya usa, siempre dentro de reglas que definís en el sistema — no ‘a criterio del mensaje libre’.",
         ],
       },
-      {
-        type: "ul",
-        items: [
-          "Recordatorios automáticos de turnos (texto claro y personalizable)",
-          "Confirmación de turnos por WhatsApp cuando el paciente responde sí/no",
-          "Mensajes con hora, profesional y dirección",
-        ],
-      },
-      { type: "h3", id: "confirmacion-cancelacion", text: "Confirmación y cancelación automática" },
       {
         type: "paragraph",
         segments: [
-          "El paciente puede confirmar asistencia, cancelar o pedir reprogramación desde ",
-          { href: "/bots-whatsapp", label: "WhatsApp" },
-          ", siempre dentro de reglas que definís en la agenda. Así mejorás la tasa de asistencia y recuperás huecos con anticipación.",
-        ],
-      },
-      { type: "h3", id: "menos-carga", text: "Menos carga administrativa" },
-      {
-        type: "paragraph",
-        segments: [
-          "Recepción deja de contestar cientos de mensajes repetitivos: el canal queda para excepciones. Un sistema de agenda para consultorios centralizado evita doble reserva y “versiones” de la agenda en planillas.",
+          "Recepción deja de ser contestador de lo repetible: el canal queda para excepciones y para casos que necesitan criterio humano. El software centralizado evita la planilla paralela que nadie actualiza los viernes.",
         ],
       },
       {
         type: "h2",
         id: "integracion-agenda-bot",
-        text: "Integración entre agenda online y bot de WhatsApp",
+        text: "Agenda, bot e IA (en ese orden)",
       },
       {
         type: "paragraph",
         segments: [
-          "En 2026 lo que más suma es unir agenda médica online con bots de WhatsApp e IA cuando hace falta: por ejemplo un chatbot para confirmar turnos o derivar a humano, siempre con límites claros.",
-        ],
-      },
-      {
-        type: "ul",
-        items: [
-          "El paciente escribe por WhatsApp",
-          "El bot muestra horarios disponibles (turnos online con WhatsApp)",
-          "El usuario elige día y hora y el sistema agenda",
-          "Luego siguen recordatorios automáticos de turnos",
-        ],
-      },
-      { type: "h2", id: "ventajas-wa", text: "Ventajas de automatizar turnos con WhatsApp" },
-      {
-        type: "h3",
-        id: "experiencia",
-        text: "Mejor experiencia para el paciente",
-      },
-      {
-        type: "paragraph",
-        segments: [
-          "WhatsApp es el canal donde ya está la gente; combinarlo con turnos online por ese medio suele subir la tasa de lectura de avisos frente a solo mail.",
-        ],
-      },
-      { type: "h3", id: "confirmacion", text: "Mayor tasa de confirmación" },
-      {
-        type: "paragraph",
-        segments: [
-          "La confirmación de turnos por WhatsApp y los recordatorios suelen bajar inasistencias de último momento.",
-        ],
-      },
-      { type: "h3", id: "huecos", text: "Menos turnos perdidos y organización centralizada" },
-      {
-        type: "paragraph",
-        segments: [
-          "Las cancelaciones anticipadas liberan huecos. Toda la información queda en el mismo software para centros médicos que usás para turnos de profesionales.",
-        ],
-      },
-      { type: "h2", id: "rubros", text: "¿Qué negocios pueden usar turnos online?" },
-      {
-        type: "ul",
-        items: [
-          "Clínicas y consultorios médicos · odontologías · psicólogos",
-          "Centros de estética, peluquerías, spas, gimnasios",
-          "Nutricionistas, veterinarias y otros servicios por cita",
+          "Primero movimientos de estado claros y lectura/escritura en la misma base. Después, si el volumen lo justifica, un bot que liste slots reales o confirme con plantillas. La IA entra cuando ya medís qué preguntas no entran en menú; si el equipo no puede escribir en una hoja qué debe responder el canal, un modelo grande solo encarece el desorden.",
         ],
       },
       { type: "h2", id: "ia", text: "¿Conviene integrar inteligencia artificial?" },
       {
         type: "paragraph",
         segments: [
-          "Yo lo uso cuando ya hay volumen y mensajes que no entran en menús fijos. Para confirmar un turno o reprogramar dentro de reglas, muchas veces alcanza con flujos simples. La IA suma cuando hay variaciones de lenguaje real; si la clínica ni sabe qué debe responder el bot, meter modelo grande primero es tirar plata.",
+          "Sí cuando hay variación real de lenguaje y gobernanza de respuestas. No como parche el día uno si todavía hay dos agendas vivas. En ese escenario, ‘IA’ es marketing; lo que falta es disciplina de datos.",
         ],
       },
       { type: "h2", id: "conclusion-clinicas", text: "Conclusión" },
       {
         type: "paragraph",
         segments: [
-          "Si llegaste hasta acá: un ",
-          { href: "/sistema-turnos-online", label: "sistema de turnos online" },
-          " con WhatsApp bien acotado suele dar más resultado que la última feature de moda. Si querés que mire tu caso con números en la mano, ",
-          { href: "/#contacto", label: "mandame por la web" },
-          " o ",
-          { href: WA_TURNOS, label: "por WhatsApp", external: true },
-          " y vemos si tiene sentido.",
+          "Un canal de WhatsApp acotado sobre agenda única suele rendir más que la feature de moda. Si querés revisar números concretos de tu consultorio, usá el contacto del sitio o el enlace de WhatsApp en la caja de enlaces útiles más abajo.",
         ],
       },
       {
@@ -267,15 +191,15 @@ export const turnosBlogArticles: BlogPost[] = [
         segments: [
           "Ahí el problema no era ‘falta de bot’: era falta de ",
           { href: "/sistema-turnos-online", label: "una sola agenda fuente de verdad" },
-          ". Un bot que lee slots de una API y escribe reservas en la misma base baja el caos; un bot que solo manda texto bonito sin bloquear el horario multiplica el desorden.",
+          ". Un flujo que lee slots reales y escribe en la misma base baja el caos; un chat que solo manda texto bonito sin bloquear el recurso multiplica el desorden.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Si tu dolor es clínico (recordatorios, ausentismo, reglas médicas), leé ",
-          { href: "/blog/turnos-whatsapp-ausentismo-clinicas-argentina-2026", label: "turnos y ausentismo en consultorios" },
-          ". Acá el foco es negocio de servicios: estética, gimnasio, peluquería, profesional independiente — donde el cliente quiere reservar a las 22 hs sin llamar.",
+          "Si tu dolor es clínico (recordatorios, ausentismo, reglas médicas), el artículo sobre ",
+          { href: "/blog/turnos-whatsapp-ausentismo-clinicas-argentina-2026", label: "ausentismo en consultorios y agenda única" },
+          " va al hueso. Acá el foco es negocio de servicios: estética, gimnasio, peluquería, profesional independiente — donde el cliente quiere reservar a las 22 hs sin llamar.",
         ],
       },
       { type: "h2", id: "como-funcionan", text: "Cómo funcionan los turnos por WhatsApp sin mentirte" },
@@ -299,9 +223,7 @@ export const turnosBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Un ",
-          { href: "/bots-whatsapp", label: "bot de WhatsApp" },
-          " que no escribe en la misma base que recepción es un altavoz suelto. La integración real es: mismo `appointment_id`, mismos estados, mismos bloqueos de recurso (sillón, cabina, profesional). Si no tenés eso, no automatizás: solo acelerás el quilombo.",
+          "Un bot de WhatsApp que no escribe en la misma base que recepción es un altavoz suelto. La integración real es: mismo `appointment_id`, mismos estados, mismos bloqueos de recurso (sillón, cabina, profesional). Si no tenés eso, no automatizás: solo acelerás el quilombo.",
         ],
       },
       { type: "h2", id: "reducir-cancelaciones", text: "No-shows: qué sí baja números" },
@@ -338,11 +260,7 @@ export const turnosBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Para presupuesto o revisión de flujo: ",
-          { href: "/#contacto", label: "contacto" },
-          " o ",
-          { href: WA_TURNOS, label: "WhatsApp", external: true },
-          ".",
+          "Para presupuesto o revisión de flujo usá el contacto del sitio o el WhatsApp de la caja de enlaces útiles abajo.",
         ],
       },
       {

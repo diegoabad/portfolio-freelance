@@ -159,11 +159,8 @@ export const appsMovilesBlogArticles: BlogPost[] = [
       description: "Enfoque en experiencia del paciente, funciones típicas y automatización.",
     },
     resourceLinks: [
-      { href: "/software-para-clinicas", label: "Desarrollo de aplicaciones móviles" },
-      { href: "/sistema-turnos-online", label: "Turnos online" },
-      { href: "/bots-whatsapp", label: "Bots de WhatsApp" },
-      { href: "/automatizacion-procesos-clinicas", label: "Automatización" },
-      { href: "/blog/aplicaciones-moviles-clinicas-consultorios-experiencia-paciente-2026", label: "Blog: experiencia del paciente" },
+      { href: "/software-para-clinicas", label: "Software para clínicas" },
+      { href: "/sistema-turnos-online", label: "Sistema de turnos online" },
       { href: "/#contacto", label: "Contacto" },
       { href: WA_APPS, label: "WhatsApp", external: true },
     ],
@@ -171,85 +168,71 @@ export const appsMovilesBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "En un laboratorio chico el ‘portal’ era un sitio responsive que nadie del equipo actualizaba: los resultados ‘llegaban cuando llegaban’ por mail. Cuando definimos qué iba en la ",
+          "En un laboratorio chico el ‘portal’ era un sitio responsive que el equipo actualizaba cuando podía: los resultados ‘llegaban cuando llegaban’ por mail. Definimos qué iba en la ",
           { href: "/software-para-clinicas", label: "app de pacientes" },
-          " (solo estados + PDF cuando el LIS ya cerró el caso), el soporte telefónico bajó porque la gente dejó de llamar para ‘ver si ya está’.",
+          " (solo estados y PDF cuando el LIS cerró el caso) y el teléfono dejó de explotar con ‘¿ya está?’ porque el estado venía de la misma cola que usa el técnico, no de un texto copiado a mano.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "El otro post del blog va a ",
+          "El otro post del blog cubre ",
           {
             href: "/blog/aplicaciones-moviles-clinicas-consultorios-experiencia-paciente-2026",
-            label: "experiencia del paciente y MVP",
+            label: "experiencia del paciente y qué entra en un MVP",
           },
-          ". Acá meto mano a stack, integraciones y dónde meto IA sin meterme en quilombos legales.",
+          ". Acá meto integraciones, stack y dónde tiene sentido IA sin prometer diagnóstico por chat.",
         ],
       },
       { type: "h2", id: "que-puede", text: "Qué puede hacer la app sin ser un mini-EMR" },
       {
         type: "paragraph",
         segments: [
-          "Portal serio = identidad + permisos + catálogo de acciones permitidas (turnos, pagos si aplica, descargas). La historia clínica completa suele quedarse en el sistema de registro; la app muestra vistas acotadas que vienen de la API, no copia pegada de PDFs.",
+          "Portal serio = identidad + permisos + catálogo de acciones permitidas (turnos, pagos si aplica, descargas). La historia clínica completa suele quedarse en el sistema de registro; la app muestra vistas acotadas desde la API, no un zócalo de PDFs sin versión.",
         ],
       },
       {
         type: "paragraph",
         segments: [
           "Turnos: siempre contra ",
-          { href: "/sistema-turnos-online", label: "agenda online" },
-          " con locks reales. Notificaciones: push transaccional, no newsletter disfrazado. Complemento: ",
-          { href: "/bots-whatsapp", label: "WhatsApp" },
-          " para primer contacto y deep link a la app cuando hace falta contexto persistente.",
+          { href: "/sistema-turnos-online", label: "agenda con locks reales" },
+          ". Notificaciones: transaccionales, no newsletter disfrazado. WhatsApp puede ser primer contacto y deep link a la app cuando hace falta contexto persistente, pero mismo paciente_id y mismas reglas — si no, duplicás conversaciones y nadie sabe qué quedó vigente.",
         ],
       },
       { type: "h2", id: "integracion", text: "Integración: checklist antes de pedir presupuesto" },
       {
         type: "ul",
         items: [
-          "¿Tenés API del sistema actual o solo exportaciones CSV los viernes?",
+          "¿Tenés API del sistema actual o solo CSV los viernes?",
           "¿Quién es dueño del paciente_id entre laboratorio, clínica y facturador?",
-          "¿Qué pasa offline? (hint: no mentir; mostrar último estado cacheado con timestamp).",
+          "¿Qué mostrás offline? (hint: último estado cacheado con timestamp, sin inventar datos nuevos).",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Si el cruce es feo pero repetible, a veces entra ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatización" },
-          " entre legacy y bus de eventos antes de tocar UI móvil.",
+          "Si el cruce es feo pero repetible, a veces conviene primero ordenar bus de eventos o jobs entre legacy y base nueva antes de invertir en sombras y animaciones en la tienda de apps.",
         ],
       },
       { type: "h2", id: "ia", text: "IA en apps de salud (sin humo)" },
       {
         type: "paragraph",
         segments: [
-          "Uso que sí vi: resumir texto administrativo ya humano-validado, clasificar tickets de soporte, extraer campos de formularios. Uso que no prometo: diagnóstico por chat libre. Si tu vendor te vende lo segundo sin gobernanza, corrés.",
+          "Casos que sí vi: resumir texto administrativo ya validado por humano, clasificar tickets de soporte, extraer campos de formularios. Lo que no prometo: diagnóstico libre. Si un vendor te vende lo segundo sin gobernanza, corrés riesgo legal y de reputación.",
         ],
       },
       { type: "h2", id: "nativa-multi", text: "Flutter / multiplataforma vs nativo" },
       {
         type: "paragraph",
         segments: [
-          "Multiplataforma gana cuando el 80% es formularios, listas y notificaciones y no necesitás BLE raro ni cámara clínica custom. Nativo gana cuando el performance o SDK del fabricante es crítico. La decisión sale de medir pantallas críticas, no del logo del framework.",
+          "Multiplataforma gana cuando el grueso es formularios, listas y push y no necesitás hardware raro ni SDK del fabricante en sangre. Nativo gana cuando el performance o integración con dispositivo es crítico. La decisión sale de medir las tres pantallas que más queman soporte, no del logo del framework.",
         ],
       },
       { type: "h2", id: "conclusion", text: "Conclusión" },
       {
         type: "paragraph",
         segments: [
-          "Una app de clínica es frente fino sobre datos feos si no invertís en modelo y API. Arreglá primero el flujo de datos; después peleá por sombras y animaciones.",
-        ],
-      },
-      {
-        type: "paragraph",
-        segments: [
-          "Para presupuesto: ",
-          { href: "/#contacto", label: "contacto" },
-          " o ",
-          { href: WA_APPS, label: "WhatsApp", external: true },
-          ".",
+          "Una app de clínica es frente fino sobre datos ordenados. Si el modelo y los endpoints no están, publicar en las tiendas solo empaqueta el caos. Para presupuesto usá el contacto del sitio o el WhatsApp de la caja de enlaces útiles abajo.",
         ],
       },
       {

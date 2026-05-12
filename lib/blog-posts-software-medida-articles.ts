@@ -227,9 +227,7 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
     },
     resourceLinks: [
       { href: "/desarrollo-software-medida", label: "Desarrollo a medida" },
-      { href: "/software-para-clinicas", label: "Aplicaciones móviles" },
-      { href: "/automatizacion-procesos-clinicas", label: "Automatización de procesos" },
-      { href: "/blog/software-a-medida-clinicas-consultorios-sistema-personalizado", label: "Blog: software a medida en clínicas" },
+      { href: "/software-para-clinicas", label: "Software para clínicas" },
       { href: "/#contacto", label: "Contacto" },
       { href: WA_MEDIDA, label: "WhatsApp", external: true },
     ],
@@ -237,97 +235,75 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Una logística mediana me mostró el presupuesto de un ERP ‘todo en uno’: licencias para veinte usuarios, ocho módulos y tres consultores externos. Cuando les pedí cuántos módulos usaban de verdad, la respuesta fue dos y medio; el resto era aspiración de PowerPoint. Ahí no falló el software genérico: falló la fantasía de que un paquete grande ordena solo.",
+          "Una logística mediana me mostró el presupuesto de un ERP ‘todo en uno’: licencias para veinte usuarios, ocho módulos y tres consultores externos. Cuando les pedí cuántos módulos usaban de verdad, la respuesta fue dos y medio; el resto era aspiración de PowerPoint. El paquete genérico no falló solo: falló la fantasía de que el tamaño del contrato ordena la operación.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Les propuse una cuenta simple: horas-mujer por mes en cruces entre planilla de despacho, sistema de facturación y correos a proveedores. Salieron ~35 horas solo en ‘arreglar números que no cierran’. Cuatro meses después, un módulo propio de despacho + API al facturador bajó eso a ~12 — no porque el código sea magia, sino porque dejaron de pelear contra el flujo del ERP.",
+          "Les hice anotar horas-mujer por mes en cruces entre planilla de despacho, facturador y mails a proveedores: ~35 horas solo en ‘arreglar números que no cierran’. Cuatro meses después, un módulo propio de despacho con API al facturador bajó eso a ~12. No fue magia: dejaron de pelear contra el flujo prefabricado del ERP para el 20% del negocio que los diferencia en velocidad de salida.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Opinión impopular: el ",
-          { href: "/desarrollo-software-medida", label: "software a medida" },
-          " no compite con el genérico en lista de features; compite en encajar en el proceso que te diferencia. Si tu diferencial es velocidad de despacho o reglas de liquidación raras, el genérico te va a pedir que cambies el proceso; a medida es al revés.",
-        ],
-      },
-      {
-        type: "paragraph",
-        segments: [
-          "Si tu mundo es salud, el caso detallado está en ",
+          "Software a medida no gana por lista de features contra el genérico; gana cuando el proceso raro es el que te deja plata y el SaaS te obliga a torcerte. Si tu mundo es salud, el caso con modelo de datos y Excels paralelos está en ",
           {
             href: "/blog/software-a-medida-clinicas-consultorios-sistema-personalizado",
             label: "software a medida para clínicas y consultorios",
           },
-          ": modelo de datos, Excels paralelos y qué construir primero.",
+          ".",
         ],
       },
       { type: "h2", id: "diferencias", text: "Genérico vs a medida (sin marketing)" },
       {
         type: "paragraph",
         segments: [
-          "El genérico optimiza el 80% de empresas parecidas; vos pagás el 100% del menú. A medida optimiza el 20% que te hace distinto; pagás solo lo que alguien va a usar todos los días. El error es pedir a medida para cosas que ya resuelve un SaaS maduro (email transaccional, facturación estándar) y comprar ERP para reglas que son tres líneas de negocio.",
+          "El genérico optimiza el 80% de empresas parecidas; vos pagás el menú entero. A medida optimiza el 20% que te hace distinto y cobra solo lo que alguien usa todos los días. El error caro es pedir a medida para lo que ya resuelve un SaaS maduro, y comprar suite para tres reglas de negocio que el proveedor jamás va a priorizar en su roadmap.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Técnicamente, a medida suele ser un producto con dominio propio (`Pedido`, `Lote`, `ReglaDeBonificación`) y APIs que hablan con lo legacy. El genérico te da tablas prefabricadas; cuando tu realidad no entra, aparece el Excel paralelo.",
+          "En la práctica, a medida es dominio propio (`Pedido`, `Lote`, `ReglaDeBonificación`) y APIs que hablan con lo legacy. El genérico trae tablas prefabricadas; cuando tu realidad no entra, aparece el Excel paralelo y la reunión semanal de conciliación.",
         ],
       },
       { type: "h2", id: "senales", text: "Señales de que el genérico ya no alcanza" },
       {
         type: "ul",
         items: [
-          "Tenés más de una ‘fuente de verdad’ para el mismo dato y reuniones semanales para conciliarlas.",
-          "Cada pedido de cambio al proveedor entra en backlog de trimestres mientras el negocio ya cambió.",
-          "Contrataste gente nueva y el onboarding es ‘te paso el Excel que usaba María’.",
+          "Más de una ‘fuente de verdad’ para el mismo dato y juntas fijas para conciliarlas.",
+          "Cada pedido de cambio al vendor entra en backlog de trimestres mientras el negocio ya cambió.",
+          "Onboarding del nuevo empleado = ‘te paso el Excel que usaba María’.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Cuando aparecen juntas, suele tener sentido combinar ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatización" },
-          " (integrar lo que ya existe) con un pedazo de producto propio solo donde el genérico choca — no reescribir todo desde cero el día uno.",
+          "Cuando aparecen juntas, muchas veces conviene ",
+          { href: "/automatizacion-procesos-clinicas", label: "automatizar e integrar lo que ya existe" },
+          " y recién después un pedazo de producto propio donde el genérico choca — no reescribir todo desde cero el día uno.",
         ],
       },
       { type: "h2", id: "ejemplos", text: "Ejemplos que no son ‘portal web’ genérico" },
       {
         type: "paragraph",
         segments: [
-          "Liquidaciones de profesionales cruzando turnos atendidos con aranceles negociados por obra social; control de insumos con trazabilidad por sector; paneles donde dirección ve ocupación y márgenes sin pedirle a Excel que aguante 200MB. En mobile, una ",
-          { href: "/software-para-clinicas", label: "app para pacientes" },
-          " conectada a la misma API que recepción evita el ‘¿tenés el turno en el otro grupo?’.",
+          "Liquidaciones de profesionales cruzando turnos atendidos con aranceles negociados por obra social; control de insumos con trazabilidad por sector; paneles donde dirección ve ocupación y margen sin un archivo de 200 MB. Una app de pacientes conectada a la misma API que recepción evita el ‘¿tenés el turno en el otro grupo?’ cuando el backend es uno solo.",
         ],
       },
       { type: "h2", id: "cuando-no", text: "Cuándo NO conviene a medida" },
       {
         type: "paragraph",
         segments: [
-          "Si el dolor es solo de volumen de mensajes o de agenda desordenada, a veces alcanza con ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatizar" },
-          " flujos entre herramientas que ya tenés. A medida tiene sentido cuando el costo de adaptarte al software supera el costo de construir la pieza chica que te falta.",
+          "Si el dolor es solo volumen de mensajes o agenda desordenada, a veces alcanza con ordenar datos y automatizar entre herramientas que ya tenés. A medida tiene sentido cuando el costo de adaptarte al software supera el costo de construir la pieza chica que te falta — eso se ve con horas perdidas, riesgo de error y velocidad de cambio, no con ego de ‘quiero lo mío’.",
         ],
       },
       { type: "h2", id: "conclusion", text: "Conclusión" },
       {
         type: "paragraph",
         segments: [
-          "Elegir entre genérico y propio no es religión: es matemática de horas perdidas + riesgo de error + velocidad de cambio. Si tenés números aproximados de esas tres, el alcance deja de ser charla abstracta.",
-        ],
-      },
-      {
-        type: "paragraph",
-        segments: [
-          "Para ver tu caso concreto: ",
-          { href: "/#contacto", label: "contacto" },
-          " o ",
-          { href: WA_MEDIDA, label: "WhatsApp", external: true },
-          ".",
+          "Elegir entre genérico y propio es matemática, no religión. Si tenés números aproximados de esas tres variables, el alcance deja de ser charla abstracta. Para revisar tu caso, usá el contacto del sitio o el WhatsApp de la caja de enlaces útiles más abajo.",
         ],
       },
       {

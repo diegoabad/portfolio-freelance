@@ -241,8 +241,6 @@ const posts: BlogPost[] = [
     resourceLinks: [
       { href: "/bots-whatsapp", label: "Bots de WhatsApp (servicio)" },
       { href: "/sistema-turnos-online", label: "Sistema de turnos online" },
-      { href: "/automatizacion-procesos-clinicas", label: "Automatización de procesos" },
-      { href: "/desarrollo-software-medida", label: "Software a medida" },
       { href: "/#contacto", label: "Contacto" },
       { href: WA_BLOG, label: "WhatsApp", external: true },
     ],
@@ -250,89 +248,79 @@ const posts: BlogPost[] = [
       {
         type: "paragraph",
         segments: [
-          "Hace un tiempo una pyme de servicios me pidió ‘el bot con IA ya’ antes de tener número verificado en la API de Meta. Cuando les expliqué que el primer cuello de botella no era el modelo de lenguaje sino plantillas, ventana de 24 h y quién atiende cuando el flujo se rompe, el proyecto se atrasó dos semanas solo por trámites — no por código.",
+          "Una pyme de servicios en CABA me pidió ‘el bot con IA ya’ con el número todavía en modo personal. El cuello de botella no era el modelo: era verificación de empresa, plantillas aprobadas y definir quién atiende cuando el flujo se rompe. Dos semanas se fueron solo en trámites y pruebas con Meta, cero líneas de ‘inteligencia’.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "La guía con enfoque comercial y números reales está en ",
+          "Si querés el enfoque comercial con números y rubros, está el otro post del blog sobre el ",
           { href: "/blog/bot-whatsapp-negocios-argentina", label: "bot de WhatsApp para negocios en Argentina" },
-          ". Acá vas paso a paso por lo técnico-operativo: cómo encarar un ",
-          { href: "/bots-whatsapp", label: "bot de WhatsApp" },
-          " sin que explote en la segunda semana.",
+          ". Acá queda lo técnico-operativo: cómo llegar a producción sin que el canal se te venga abajo a la segunda semana.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Regla que uso en cada kickoff: si no podés escribir en una hoja cinco intents concretos (horario, precio, ubicación, turno, hablar con humano), no tenés bot: tenés ansiedad por IA. El 70% de los chats que veo en retail y servicios entra en menos de diez respuestas templadas.",
+          "En el kickoff les pido una hoja con cinco intents concretos (horario, precio, ubicación, turno, hablar con humano). Si no salen, no hay bot que salve: hay ganas de meter IA antes de saber qué contestar. En la práctica, la mayoría de lo que entra por WhatsApp en retail y servicios cae en menos de diez respuestas templadas bien escritas.",
         ],
       },
       { type: "h2", id: "paso-1", text: "1. Objetivo y alcance (sin humo)" },
       {
         type: "paragraph",
         segments: [
-          "Listá qué debe resolver el canal: FAQs, derivación, ",
-          { href: "/sistema-turnos-online", label: "consulta de turnos contra una agenda real" },
-          ", o handoff con resumen. Si la agenda todavía es un Excel paralelo al WhatsApp, integrar primero el calendario y después el bot; si no, el bot va a mentir con disponibilidad o va a duplicar reservas.",
+          "Definí si el canal resuelve FAQs, deriva con contexto o consulta ",
+          { href: "/sistema-turnos-online", label: "turnos contra la misma agenda que usa recepción" },
+          ". Si el calendario vive en un Excel paralelo al chat, primero unificá fuente de verdad y recién después automatizá respuestas; si no, el bot va a ofrecer huecos que no existen o a pisar reservas hechas a mano.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Medí volumen: mensajes entrantes por día laborable y cuántos son la misma pregunta con distinta redacción. Por debajo de ~30 conversaciones útiles por día, muchas veces conviene atajar con plantillas y horario humano antes de invertir en flujos complejos.",
+          "Medí mensajes entrantes por día hábil y cuántos son la misma pregunta con distinta redacción. Por debajo de unas treinta conversaciones útiles por día, muchas veces conviene plantillas + ventana humana antes de invertir en flujos complejos o en modelo generativo.",
         ],
       },
       { type: "h2", id: "paso-2", text: "2. API oficial y qué implica en la práctica" },
       {
         type: "paragraph",
         segments: [
-          "Para producción en Argentina casi siempre trabajás sobre la WhatsApp Business Platform (Cloud API o proveedor BSP): número de negocio, token, verificación de empresa y plantillas para mensajes fuera de la ventana de atención. Eso no es burocracia extra: define si tu recordatorio de turno llega o queda en cola.",
+          "En producción casi siempre es WhatsApp Business Platform (Cloud API o BSP): número de negocio, token, verificación de empresa y plantillas para hablar fuera de la ventana de 24 h. Eso define si el recordatorio de turno sale o queda en cola; no es un trámite de más.",
         ],
       },
       {
         type: "paragraph",
         segments: [
-          "Un webhook típico recibe un JSON con `entry[0].changes[0].value.messages[0]` (texto, botón o lista) y respondés con otro POST a la API. Con eso alcanza para un menú ‘1/2/3’ que ya filtra el 50% del ruido. La IA entra cuando ese esquema ya está estable y sabés qué hace el modelo cuando falla.",
+          "El webhook recibe un JSON (texto, lista o botón) y respondés con otro POST a la API. Con un menú 1/2/3 ya filtrás buena parte del ruido. La IA entra cuando ese esquema está estable y tenés plan para cuando el modelo alucina o se va de tema.",
         ],
       },
       { type: "h2", id: "paso-3", text: "3. Menú fijo vs modelo generativo" },
       {
         type: "paragraph",
         segments: [
-          "Los menús interactivos y las respuestas cortas cuestan menos tokens, menos sorpresas legales y menos ‘el bot inventó un precio’. Cuando el lenguaje del usuario es muy variable pero el dominio es acotado (ej. tipos de estudio o planes), ahí suma clasificación con modelo — siempre con límites y, si hace falta, ",
-          { href: "/automatizacion-procesos-clinicas", label: "automatización detrás" },
-          " que consulte tu base de datos en lugar de inventar.",
+          "Menús interactivos y respuestas cortas = menos tokens, menos ‘el bot inventó un precio’ y menos sorpresas con políticas de Meta. Si el usuario escribe muy libre pero el dominio es acotado (tipos de estudio, planes), puede sumar un clasificador — siempre atado a tu base o a jobs propios que lean datos reales, no a texto suelto que suene convincente.",
         ],
       },
       { type: "h2", id: "paso-4", text: "4. Integraciones que valen la pena" },
       {
         type: "paragraph",
         segments: [
-          "El bot es un micrófono pegado al oído del cliente: si no escribe en el mismo lugar que recepción, es ruido. CRM, tickets o ",
-          { href: "/sistema-turnos-online", label: "agenda online" },
-          " tienen que ser la fuente de verdad; el WhatsApp solo dispara lecturas y escrituras controladas. Si el flujo es tan particular que no entra en ningún SaaS, ahí entra ",
-          { href: "/desarrollo-software-medida", label: "desarrollo a medida" },
-          " para reglas o paneles propios — pero eso es etapa dos, no día uno.",
+          "El bot es un altavoz: si no escribe donde mira recepción, sumás ruido. CRM, tickets y agenda tienen que ser la fuente de verdad; WhatsApp solo dispara lecturas y escrituras acotadas. Si las reglas son tan particulares que ningún SaaS las banca, la etapa dos puede ser un módulo propio — nunca el día uno sin volumen y sin intents claros.",
         ],
       },
       { type: "h2", id: "paso-5", text: "5. Errores que veo una y otra vez" },
       {
         type: "ul",
         items: [
-          "Dos personas contestando el mismo número sin reglas: el cliente recibe respuestas contradictorias y el bot queda como excusa.",
-          "No definir el mensaje cuando el bot no entiende: peor que silencio es un loop infinito de ‘¿podés reformular?’.",
-          "Medir solo ‘mensajes enviados’: lo único que importa para negocio es tiempo hasta primera respuesta útil y cuántos casos llegan a humano con contexto.",
+          "Dos humanos y el bot contestando el mismo número sin protocolo: respuestas contradictorias y el cliente cree que el negocio no tiene cabeza.",
+          "Flujo de error indefinido: el peor caso no es el silencio, es el loop de ‘¿podés reformular?’ sin oferta de hablar con persona.",
+          "Dashboard de vanidad: ‘mensajes enviados’ no paga sueldos; importan tiempo hasta primera respuesta útil y cuántos chats llegan a humano con resumen útil.",
         ],
       },
       { type: "h2", id: "siguiente", text: "Siguiente paso" },
       {
         type: "paragraph",
         segments: [
-          "Si tenés intents + volumen + un número ya en Business API, se puede armar alcance en una llamada corta. Escribime por la web o ",
-          { href: WA_BLOG, label: "WhatsApp", external: true },
-          " con esos tres datos y te digo si arranco por flujo simple o por integración primero.",
+          "Si ya tenés intents, volumen y número en Business API, se puede armar alcance en una llamada corta. Escribime con esos tres datos desde el contacto del sitio o por WhatsApp usando el enlace de la caja de abajo.",
         ],
       },
       {
