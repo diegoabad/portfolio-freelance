@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ChevronLeft, ChevronRight, RotateCcw, X, ZoomIn, ZoomOut } from "lucide-react";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
@@ -14,6 +15,13 @@ const SHARP_IMG = "[backface-visibility:hidden] [transform:translateZ(0)]";
 
 /** Vista ampliada: % del viewport + tope en px (evita tamaños desmesurados en 4K/ultrawide). */
 const LIGHTBOX_MAX_BOX = "max-h-[min(94dvh,1680px)] max-w-[min(96vw,1920px)]";
+
+/** Ratio típico de capturas UI para `next/image` (solo guía de aspecto + variantes; el `object-contain` respeta la imagen real). */
+const CASE_IMG_WIDTH = 1920;
+const CASE_IMG_HEIGHT = 1080;
+/** Columna de detalle / móvil: ancho útil para `sizes` y menos bytes en viewport chico. */
+const CASE_IMG_SIZES_INLINE = "(max-width: 768px) 100vw, min(900px, 78vw)";
+const CASE_IMG_SIZES_LIGHTBOX = "min(96vw, 1920px)";
 
 const ZOOM_MIN = 1;
 const ZOOM_MAX = 4;
@@ -57,10 +65,11 @@ export function CaseStudyGallery({ images, altPrefix }: CaseStudyGalleryProps) {
 
   const [isPanning, setIsPanning] = useState(false);
 
+  /** Solo al abrir el lightbox: si también dependiera de `index`, cada cambio de foto resetearía zoom y pan. */
   useEffect(() => {
     if (!lightboxOpen) return;
     resetLightboxView();
-  }, [lightboxOpen, index, resetLightboxView]);
+  }, [lightboxOpen, resetLightboxView]);
 
   useEffect(() => {
     if (!lightboxOpen) return;
@@ -118,7 +127,7 @@ export function CaseStudyGallery({ images, altPrefix }: CaseStudyGalleryProps) {
     };
     el.addEventListener("wheel", onWheel, { passive: false });
     return () => el.removeEventListener("wheel", onWheel);
-  }, [lightboxOpen, index]);
+  }, [lightboxOpen]);
 
   const zoomIn = useCallback(() => {
     setZoom((z) => clampZoom(z + ZOOM_STEP_BTN));
@@ -211,11 +220,14 @@ export function CaseStudyGallery({ images, altPrefix }: CaseStudyGalleryProps) {
                   transition: isPanning ? undefined : "transform 100ms ease-out",
                 }}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   key={src}
                   src={src}
                   alt={alt}
+                  width={CASE_IMG_WIDTH}
+                  height={CASE_IMG_HEIGHT}
+                  sizes={CASE_IMG_SIZES_LIGHTBOX}
+                  quality={78}
                   draggable={false}
                   fetchPriority="high"
                   decoding="async"
@@ -325,10 +337,13 @@ export function CaseStudyGallery({ images, altPrefix }: CaseStudyGalleryProps) {
     <div className="mt-5 md:mt-6 space-y-3">
       {/* Sin aspect-ratio fijo: el marco sigue la proporción natural de la captura y usa todo el ancho del texto */}
       <div className="relative w-full overflow-hidden rounded-xl border border-border bg-[oklch(0.06_0.01_260)]">
-        {/* eslint-disable-next-line @next/next/no-img-element -- PNG en public/: ancho columna, alto intrínseco */}
-        <img
+        <Image
           src={src}
           alt={alt}
+          width={CASE_IMG_WIDTH}
+          height={CASE_IMG_HEIGHT}
+          sizes={CASE_IMG_SIZES_INLINE}
+          quality={72}
           loading="lazy"
           decoding="async"
           draggable={false}

@@ -9,8 +9,6 @@ export type Testimonial = TestimonialProject & {
   imageSrc: string;
   linkedInUrl?: string;
   quote: string;
-  /** Min-height = altura máxima medida de las demás tarjetas (sin valores fijos en rem). */
-  syncMinHeightFromPeers?: boolean;
 };
 
 export const testimonials: Testimonial[] = [
@@ -29,7 +27,6 @@ export const testimonials: Testimonial[] = [
     imageSrc: "/testimonials/testimonial-matias-papasso.png",
     linkedInUrl: "https://www.linkedin.com/in/matias-papasso-37108b15/",
     projectName: "Cogniare",
-    syncMinHeightFromPeers: true,
     quote:
       "Diego es un excelente profesional; realizó un proyecto desde cero tal como se le fue pidiendo: estética, funcionalidad y practicidad. Sin dudas alguien a quien recomendar: de confianza y comprometido.",
   },

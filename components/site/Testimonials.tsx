@@ -4,14 +4,14 @@ import { TestimonialsCarousel } from "@/components/site/TestimonialsCarousel";
 
 export function Testimonials() {
   return (
-    <section id="testimonios" className="relative py-9 md:py-[72px]">
+    <section id="testimonios" className="relative py-7 md:py-12 lg:py-14">
       <div className="max-w-site mx-auto px-6 lg:px-10">
         <div className={`max-w-3xl ${motionFadeUpMs(20)}`}>
           <span className="text-xs uppercase tracking-[0.2em] text-primary font-medium">Testimonios</span>
-          <h2 className="mt-3 text-4xl md:text-5xl font-display font-semibold tracking-tight text-pretty">
+          <h2 className="mt-2.5 text-4xl md:text-5xl font-display font-semibold tracking-tight text-pretty md:mt-3">
             Lo que dicen quienes <span className="text-primary">trabajaron conmigo</span>
           </h2>
-          <p className="mt-3 md:mt-4 text-muted-foreground leading-relaxed">
+          <p className="mt-2.5 text-muted-foreground leading-relaxed md:mt-3">
             Referencias reales de clientes sobre proyectos entregados: calidad, comunicación y resultado en producción.
           </p>
         </div>

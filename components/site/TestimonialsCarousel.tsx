@@ -9,9 +9,12 @@ import { TestimonialQuoteExpandable } from "@/components/site/TestimonialQuoteEx
 const btnClass =
   "inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-[10px] border-2 border-primary/45 bg-primary/[0.09] text-primary transition hover:border-primary/80 hover:bg-primary/[0.15] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-35";
 
+/** Desktop: altura unificada de tarjetas colapsadas = altura natural de esta tarjeta (cita sin ampliar). */
+const DESKTOP_CARD_HEIGHT_REFERENCE_NAME = "José Contreras Márquez";
+
 function Avatar({ imageSrc, name }: { imageSrc: string; name: string }) {
   return (
-    <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border border-primary/35 bg-muted/40 ring-2 ring-background">
+    <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border-2 border-primary/40 bg-muted/40 ring-2 ring-primary/20 ring-offset-2 ring-offset-background transition duration-300 group-hover:border-primary/60 group-hover:ring-primary/35">
       <Image
         src={imageSrc}
         alt={`Foto de perfil de ${name}`}
@@ -19,6 +22,7 @@ function Avatar({ imageSrc, name }: { imageSrc: string; name: string }) {
         height={48}
         className="h-full w-full object-cover"
         sizes="48px"
+        quality={70}
         loading="lazy"
         fetchPriority="low"
         decoding="async"
@@ -27,21 +31,21 @@ function Avatar({ imageSrc, name }: { imageSrc: string; name: string }) {
   );
 }
 
-function ProjectChips({ t }: { t: Testimonial }) {
+function ProjectChips({ t, className = "" }: { t: Testimonial; className?: string }) {
   return (
     <div
-      className="flex shrink-0 flex-wrap justify-end gap-1.5 sm:gap-2"
+      className={`flex shrink-0 flex-wrap gap-1.5 sm:gap-2 ${className}`.trim()}
       aria-label="Proyectos relacionados con este testimonio"
     >
       {"projectName" in t ? (
-        <span className="inline-flex rounded-full border border-primary/25 bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary sm:px-3 sm:py-1">
+        <span className="inline-flex rounded-full border border-primary/35 bg-primary/15 px-2.5 py-0.5 text-xs font-semibold text-primary shadow-[inset_0_1px_0_0_rgb(255_255_255_/0.06)] sm:px-3 sm:py-1">
           {t.projectName}
         </span>
       ) : (
         t.projectNames.map((name) => (
           <span
             key={name}
-            className="inline-flex rounded-full border border-primary/25 bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary sm:px-3 sm:py-1"
+            className="inline-flex rounded-full border border-primary/35 bg-primary/15 px-2.5 py-0.5 text-xs font-semibold text-primary shadow-[inset_0_1px_0_0_rgb(255_255_255_/0.06)] sm:px-3 sm:py-1"
           >
             {name}
           </span>
@@ -54,25 +58,77 @@ function ProjectChips({ t }: { t: Testimonial }) {
 function TestimonialCard({
   t,
   registerArticle,
+  reportQuoteExpanded,
 }: {
   t: Testimonial;
-  registerArticle: (name: string, syncTarget: boolean, el: HTMLDivElement | null) => void;
+  registerArticle: (name: string, el: HTMLDivElement | null) => void;
+  reportQuoteExpanded: (name: string, expanded: boolean) => void;
 }) {
-  const articleRef = useCallback(
+  const [quoteExpanded, setQuoteExpanded] = useState(false);
+
+  const setArticleRef = useCallback(
     (el: HTMLDivElement | null) => {
-      registerArticle(t.name, Boolean(t.syncMinHeightFromPeers), el);
+      registerArticle(t.name, el);
     },
-    [t.name, t.syncMinHeightFromPeers, registerArticle],
+    [t.name, registerArticle],
   );
+
+  useEffect(() => {
+    reportQuoteExpanded(t.name, quoteExpanded);
+  }, [quoteExpanded, t.name, reportQuoteExpanded]);
 
   return (
     <article
-      ref={articleRef}
-      className="group relative flex w-full flex-col rounded-2xl border border-border bg-background/60 p-4 md:p-5 backdrop-blur transition hover:border-primary/40"
+      ref={setArticleRef}
+      className={`group relative flex min-h-0 w-full shrink-0 flex-col overflow-hidden rounded-2xl border-2 border-border/90 bg-linear-to-br from-primary/[0.08] via-background/88 to-background/72 px-5 py-5 shadow-[0_10px_36px_-22px_rgba(0,0,0,0.42)] backdrop-blur-md transition duration-300 hover:border-primary/50 hover:shadow-[0_18px_48px_-18px_oklch(0.55_0.14_250/0.2)] md:box-border md:flex md:flex-col md:overflow-hidden md:px-5 md:py-5 ${
+        quoteExpanded
+          ? "max-md:h-auto max-md:min-h-[22rem] max-md:overflow-visible md:!h-auto md:!max-h-none md:!min-h-0 md:overflow-visible"
+          : "max-md:h-[21rem] max-md:overflow-hidden"
+      }`}
     >
-      <div className="w-full min-w-0 shrink-0">
-        <div className="flex items-start justify-between gap-2 sm:gap-3">
-          <div className="flex min-w-0 flex-1 items-start gap-1.5 sm:gap-2">
+      <div
+        className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-primary/22 blur-3xl opacity-35 transition-opacity duration-500 group-hover:opacity-80"
+        aria-hidden
+      />
+      <div className="relative z-[1] w-full min-w-0 shrink-0">
+        {/* Móvil: chips → fila foto + nombre con cargo debajo → (cita abajo) */}
+        <div className="flex flex-col gap-4 md:hidden">
+          <ProjectChips t={t} className="justify-start" />
+          <div className="flex min-w-0 items-start gap-2.5">
+            <Avatar imageSrc={t.imageSrc} name={t.name} />
+            <div className="min-w-0 flex-1 text-left">
+              {t.linkedInUrl ? (
+                <a
+                  href={t.linkedInUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex max-w-full items-center gap-[7px] font-display text-base font-semibold leading-snug text-foreground underline-offset-4 hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
+                >
+                  <span className="min-w-0 wrap-break-word">{t.name}</span>
+                  <Linkedin className="h-4 w-4 shrink-0 text-primary/80 group-hover:text-primary" aria-hidden />
+                  <span className="sr-only">(abre perfil de LinkedIn en una pestaña nueva)</span>
+                </a>
+              ) : (
+                <span className="inline-flex max-w-full items-center gap-[7px] font-display text-base font-semibold leading-snug text-foreground">
+                  <span className="min-w-0 wrap-break-word">{t.name}</span>
+                </span>
+              )}
+              <p className="mt-1.5 text-sm leading-snug text-muted-foreground">
+                {t.role}
+                {"roleLine2" in t ? (
+                  <>
+                    <br />
+                    {t.roleLine2}
+                  </>
+                ) : null}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop: foto+nombre+cargo | chips */}
+        <div className="hidden items-start justify-between gap-3 md:flex">
+          <div className="flex min-w-0 flex-1 items-start gap-2">
             <Avatar imageSrc={t.imageSrc} name={t.name} />
             <div className="min-w-0 flex-1 text-left">
               {t.linkedInUrl ? (
@@ -91,7 +147,7 @@ function TestimonialCard({
                   <span className="min-w-0 wrap-break-word">{t.name}</span>
                 </span>
               )}
-              <p className="mt-1 hidden text-sm leading-snug text-muted-foreground md:block">
+              <p className="mt-1 text-sm leading-snug text-muted-foreground">
                 {t.role}
                 {"roleLine2" in t ? (
                   <>
@@ -102,21 +158,12 @@ function TestimonialCard({
               </p>
             </div>
           </div>
-          <ProjectChips t={t} />
+          <ProjectChips t={t} className="justify-end" />
         </div>
-        <p className="mt-3 text-left text-sm leading-snug text-muted-foreground md:hidden">
-          {t.role}
-          {"roleLine2" in t ? (
-            <>
-              <br />
-              {t.roleLine2}
-            </>
-          ) : null}
-        </p>
       </div>
 
-      <div className="mt-3 flex flex-col md:mt-4">
-        <TestimonialQuoteExpandable quote={t.quote} />
+      <div className="relative z-[1] mt-3.5 flex min-h-0 flex-col max-md:min-h-0 max-md:flex-1 md:mt-4 md:flex-1 md:overflow-hidden">
+        <TestimonialQuoteExpandable quote={t.quote} onExpandedChange={setQuoteExpanded} />
       </div>
     </article>
   );
@@ -131,68 +178,102 @@ export function TestimonialsCarousel({ testimonials: items }: Props) {
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(false);
 
-  const syncStore = useRef({
-    peers: new Map<string, HTMLDivElement | null>(),
-    target: null as HTMLDivElement | null,
-    items: items,
-  });
-  syncStore.current.items = items;
+  const articlesRef = useRef(new Map<string, HTMLDivElement>());
+  const joseCollapsedHeightPx = useRef<number | null>(null);
+  const expandedQuoteRef = useRef(new Set<string>());
 
-  const applyMatiasMinHeight = useCallback(() => {
-    const s = syncStore.current;
-    let maxPx = 0;
-    for (const it of s.items) {
-      if (it.syncMinHeightFromPeers) continue;
-      const el = s.peers.get(it.name);
-      if (el) maxPx = Math.max(maxPx, el.getBoundingClientRect().height);
+  const applyDesktopUniformCardHeight = useCallback(() => {
+    const desktop =
+      typeof window !== "undefined" && window.matchMedia("(min-width: 768px)").matches;
+    const map = articlesRef.current;
+    const expanded = expandedQuoteRef.current;
+
+    const clearSizing = (el: HTMLDivElement) => {
+      el.style.removeProperty("min-height");
+      el.style.removeProperty("height");
+      el.style.removeProperty("max-height");
+      el.style.removeProperty("overflow");
+    };
+
+    if (!desktop) {
+      for (const el of map.values()) clearSizing(el);
+      return;
     }
-    const target = s.target;
-    if (!target) return;
-    if (maxPx > 0) target.style.minHeight = `${Math.ceil(maxPx)}px`;
-    else target.style.removeProperty("min-height");
+
+    const joseEl = map.get(DESKTOP_CARD_HEIGHT_REFERENCE_NAME);
+    if (!joseEl) return;
+
+    let H = joseCollapsedHeightPx.current ?? 0;
+    if (!expanded.has(DESKTOP_CARD_HEIGHT_REFERENCE_NAME)) {
+      clearSizing(joseEl);
+      H = Math.ceil(joseEl.getBoundingClientRect().height);
+      if (H > 0) joseCollapsedHeightPx.current = H;
+    }
+
+    if (H <= 0) return;
+
+    for (const [name, el] of map) {
+      if (expanded.has(name)) {
+        clearSizing(el);
+      } else {
+        el.style.boxSizing = "border-box";
+        el.style.minHeight = `${H}px`;
+        el.style.height = `${H}px`;
+        el.style.maxHeight = `${H}px`;
+        el.style.overflow = "hidden";
+      }
+    }
   }, []);
 
-  const registerArticle = useCallback(
-    (name: string, syncTarget: boolean, el: HTMLDivElement | null) => {
-      const s = syncStore.current;
-      if (syncTarget) {
-        s.target = el;
-        applyMatiasMinHeight();
-        return;
-      }
-      if (el) s.peers.set(name, el);
-      else s.peers.delete(name);
-      applyMatiasMinHeight();
+  const reportQuoteExpanded = useCallback(
+    (name: string, expanded: boolean) => {
+      const r = expandedQuoteRef.current;
+      if (expanded) r.add(name);
+      else r.delete(name);
+      applyDesktopUniformCardHeight();
     },
-    [applyMatiasMinHeight],
+    [applyDesktopUniformCardHeight],
+  );
+
+  const registerArticle = useCallback(
+    (name: string, el: HTMLDivElement | null) => {
+      if (el) articlesRef.current.set(name, el);
+      else articlesRef.current.delete(name);
+      applyDesktopUniformCardHeight();
+    },
+    [applyDesktopUniformCardHeight],
   );
 
   useLayoutEffect(() => {
     const id = requestAnimationFrame(() => {
-      requestAnimationFrame(() => applyMatiasMinHeight());
+      requestAnimationFrame(() => applyDesktopUniformCardHeight());
     });
     return () => cancelAnimationFrame(id);
-  }, [items.length, applyMatiasMinHeight]);
+  }, [items.length, applyDesktopUniformCardHeight]);
 
   useEffect(() => {
     function onResize() {
-      applyMatiasMinHeight();
+      joseCollapsedHeightPx.current = null;
+      applyDesktopUniformCardHeight();
     }
     window.addEventListener("resize", onResize, { passive: true });
     return () => window.removeEventListener("resize", onResize);
-  }, [applyMatiasMinHeight]);
+  }, [applyDesktopUniformCardHeight]);
 
   useEffect(() => {
     let cancelled = false;
     if (typeof document !== "undefined" && document.fonts?.ready) {
       void document.fonts.ready.then(() => {
-        if (!cancelled) applyMatiasMinHeight();
+        if (!cancelled) {
+          joseCollapsedHeightPx.current = null;
+          applyDesktopUniformCardHeight();
+        }
       });
     }
     return () => {
       cancelled = true;
     };
-  }, [applyMatiasMinHeight]);
+  }, [applyDesktopUniformCardHeight]);
 
   const updateEdges = useCallback(() => {
     const el = scrollerRef.current;
@@ -234,8 +315,8 @@ export function TestimonialsCarousel({ testimonials: items }: Props) {
   if (items.length === 0) return null;
 
   return (
-    <div className="mt-10 md:mt-12 space-y-3">
-      <div className="flex flex-wrap items-center justify-end gap-3">
+    <div className="mt-6 space-y-2 md:mt-8">
+      <div className="flex flex-wrap items-center justify-end gap-2">
         <div className="flex shrink-0 gap-2">
           <button
             type="button"
@@ -274,7 +355,7 @@ export function TestimonialsCarousel({ testimonials: items }: Props) {
             scrollDir(1);
           }
         }}
-        className="flex snap-x snap-mandatory items-start gap-5 overflow-x-auto overscroll-x-contain pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="flex snap-x snap-mandatory items-start gap-5 overflow-x-auto overscroll-x-contain pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {items.map((t) => (
           <div
@@ -282,7 +363,11 @@ export function TestimonialsCarousel({ testimonials: items }: Props) {
             data-testimonial-card
             className="flex w-full min-w-full shrink-0 snap-start flex-col self-start md:w-[calc((100%-1.25rem)/2)] md:min-w-[calc((100%-1.25rem)/2)]"
           >
-            <TestimonialCard t={t} registerArticle={registerArticle} />
+            <TestimonialCard
+              t={t}
+              registerArticle={registerArticle}
+              reportQuoteExpanded={reportQuoteExpanded}
+            />
           </div>
         ))}
       </div>

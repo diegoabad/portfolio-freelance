@@ -11,6 +11,8 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
     qualities: [60, 65, 68, 72, 75, 85, 90],
+    /** Variantes para `sizes` pequeños (avatar, logo en nav). */
+    imageSizes: [16, 24, 32, 48, 64, 96, 128, 256],
     /** Permite variantes más chicas para miniaturas (galería casos) sin subir el mínimo global de `fill` demasiado. */
     deviceSizes: [384, 640, 750, 828, 1080, 1200, 1920, 2048],
     /**
