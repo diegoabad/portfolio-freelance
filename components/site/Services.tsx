@@ -62,7 +62,7 @@ export function Services({ pricingRegion }: { pricingRegion: PricingRegion }) {
           </p>
         </div>
 
-        <div className="mt-10 md:mt-14 lg:mt-16 grid md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-5">
+        <div className="mt-10 md:mt-14 lg:mt-16 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
           {serviceCards.map((card) => (
             <Link
               key={card.href}
