@@ -1,5 +1,11 @@
 import Image from "next/image";
-import { BarChart3, Code2, Play, Share2, Zap } from "lucide-react";
+import {
+  HeroIconBarChart,
+  HeroIconCode,
+  HeroIconPlay,
+  HeroIconShare,
+  HeroIconZap,
+} from "@/components/site/HeroInlineIcons";
 import { HERO_NAV_CTA_LABEL, REL_WHATSAPP_EXTERNAL, whatsAppHref } from "@/lib/contact";
 import { homeSection } from "@/lib/home-links";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
@@ -9,22 +15,22 @@ const HERO_DECOR_SRC = "/hero-decor.png";
 
 const heroFeatures = [
   {
-    icon: Code2,
+    icon: HeroIconCode,
     title: "Software a medida",
     description: "Soluciones adaptadas a tu negocio",
   },
   {
-    icon: Zap,
+    icon: HeroIconZap,
     title: "Automatización",
     description: "Procesos más eficientes, menos tareas manuales",
   },
   {
-    icon: Share2,
+    icon: HeroIconShare,
     title: "Integraciones",
     description: "Conectá tus herramientas y sistemas",
   },
   {
-    icon: BarChart3,
+    icon: HeroIconBarChart,
     title: "Resultados reales",
     description: "Tecnología que impacta tu negocio",
   },
@@ -113,7 +119,7 @@ export function Hero() {
                 className="inline-flex w-full min-h-12 items-center justify-center gap-2 rounded-[10px] border-2 border-foreground/35 bg-transparent px-6 py-3.5 text-[15px] font-semibold text-foreground transition hover:border-foreground/55 hover:bg-foreground/5 active:scale-[0.98] sm:col-start-2 sm:row-start-1 sm:w-auto sm:text-base"
                 aria-label="Ver casos de éxito — ir a proyectos"
               >
-                <Play className="size-4 shrink-0 opacity-90" strokeWidth={2} aria-hidden />
+                <HeroIconPlay className="size-4 shrink-0 opacity-90" />
                 Ver casos de éxito
               </a>
               <div className="flex w-full flex-col items-stretch gap-0 sm:col-start-1 sm:row-start-1 sm:w-fit sm:items-start">
@@ -144,11 +150,7 @@ export function Hero() {
                 style={{ animationDelay: `${260 + i * 60}ms` }}
               >
                 <div className="flex gap-3.5 sm:block sm:gap-0">
-                  <Icon
-                    className="size-5 shrink-0 text-primary sm:mb-3 sm:size-[22px]"
-                    strokeWidth={2}
-                    aria-hidden
-                  />
+                  <Icon className="size-5 shrink-0 text-primary sm:mb-3 sm:size-[22px]" />
                   <div>
                     <p className="font-display text-base font-semibold tracking-tight text-foreground sm:text-lg">
                       {item.title}
