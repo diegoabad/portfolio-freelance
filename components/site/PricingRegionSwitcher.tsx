@@ -27,7 +27,7 @@ export function PricingRegionSwitcher({ initialRegion }: Props) {
 
   return (
     <div
-      className={`inline-flex items-center rounded-full border border-border/45 bg-muted/35 p-[5px] backdrop-blur-sm min-[1200px]:p-[3px] ${pending ? "cursor-wait opacity-90 [&_button]:cursor-wait" : ""}`}
+      className={`inline-flex items-center rounded-full border border-border/45 bg-muted/35 p-[5px] backdrop-blur-sm max-md:backdrop-blur-none min-[1200px]:p-[3px] ${pending ? "cursor-wait opacity-90 [&_button]:cursor-wait" : ""}`}
       role="group"
       aria-busy={pending}
       aria-label="Moneda de referencia para precios orientativos"

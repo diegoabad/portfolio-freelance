@@ -80,7 +80,7 @@ function TestimonialCard({
   return (
     <article
       ref={setArticleRef}
-      className={`group relative flex min-h-0 w-full shrink-0 flex-col overflow-hidden rounded-2xl border-2 border-border/90 bg-linear-to-br from-primary/[0.08] via-background/88 to-background/72 px-5 py-5 shadow-[0_10px_36px_-22px_rgba(0,0,0,0.42)] backdrop-blur-md transition duration-300 hover:border-primary/50 hover:shadow-[0_18px_48px_-18px_oklch(0.55_0.14_250/0.2)] md:box-border md:flex md:flex-col md:overflow-hidden md:px-5 md:py-5 ${
+      className={`group relative flex min-h-0 w-full shrink-0 flex-col overflow-hidden rounded-2xl border-2 border-border/90 bg-linear-to-br from-primary/[0.08] via-background/88 to-background/72 px-5 py-5 shadow-[0_10px_36px_-22px_rgba(0,0,0,0.42)] backdrop-blur-md max-md:backdrop-blur-none transition duration-300 hover:border-primary/50 hover:shadow-[0_18px_48px_-18px_oklch(0.55_0.14_250/0.2)] md:box-border md:flex md:flex-col md:overflow-hidden md:px-5 md:py-5 ${
         quoteExpanded
           ? "max-md:h-auto max-md:min-h-[22rem] max-md:overflow-visible md:!h-auto md:!max-h-none md:!min-h-0 md:overflow-visible"
           : "max-md:h-[21rem] max-md:overflow-hidden"

@@ -69,10 +69,10 @@ export function Services({ pricingRegion }: { pricingRegion: PricingRegion }) {
               key={card.href}
               href={card.href}
               prefetch={false}
-              className={`group relative flex h-full min-h-[188px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-border bg-surface/50 p-5 md:p-6 backdrop-blur transition hover:border-primary/40 hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background [&_*]:cursor-pointer ${motionFadeUpMs(36 + i * 40)}`}
+              className={`group relative flex h-full min-h-[188px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-border bg-surface/50 p-5 md:p-6 backdrop-blur max-md:backdrop-blur-none transition hover:border-primary/40 hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background [&_*]:cursor-pointer ${motionFadeUpMs(36 + i * 40)}`}
               aria-label={`${card.title}. ${card.priceTeaser}. ${card.priceBenefit} — ir al servicio`}
             >
-              <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-primary/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+              <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-primary/10 blur-3xl max-md:blur-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
               <div className="relative flex min-h-0 flex-1 flex-col">
                 <div className="flex items-start gap-3">
                   <ServiceIcon slug={card.slug} />
@@ -103,7 +103,7 @@ export function Services({ pricingRegion }: { pricingRegion: PricingRegion }) {
       </div>
 
       <div className="w-full mt-12 md:mt-16 lg:mt-20">
-        <div className="w-full border-y border-border bg-surface/50 backdrop-blur px-6 py-7 md:px-10 md:py-9 lg:py-10">
+        <div className="w-full border-y border-border bg-surface/50 backdrop-blur max-md:backdrop-blur-none px-6 py-7 md:px-10 md:py-9 lg:py-10">
           <div className="mx-auto flex max-w-site flex-col items-center gap-8 lg:flex-row lg:items-center lg:justify-center lg:gap-8 xl:gap-10">
             <div className="max-w-2xl text-center lg:self-center">
               <h3 className="text-2xl font-display font-semibold tracking-tight text-pretty text-foreground md:text-3xl lg:text-4xl">

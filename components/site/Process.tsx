@@ -24,7 +24,7 @@ export function Process() {
           {steps.map((s, i) => (
             <li
               key={s.n}
-              className={`relative rounded-2xl border border-border bg-background/60 p-5 md:p-7 backdrop-blur ${motionFadeUpMs(28 + i * 32)}`}
+              className={`relative rounded-2xl border border-border bg-background/60 p-5 md:p-7 backdrop-blur max-md:backdrop-blur-none ${motionFadeUpMs(28 + i * 32)}`}
             >
               <span className="font-display text-5xl font-semibold text-primary">{s.n}</span>
               <h3 className="mt-3 md:mt-4 text-lg md:text-xl font-display font-semibold">{s.t}</h3>

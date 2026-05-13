@@ -6,7 +6,7 @@ import { LINKEDIN_PROFILE_URL } from "@/lib/site";
 import { motionFadeUpMs } from "@/lib/site-motion";
 
 const aboutActionBtn =
-  "inline-flex min-w-0 w-full items-center justify-center gap-2 rounded-[10px] border border-primary/45 bg-primary/[0.09] px-4 py-2.5 text-sm font-semibold text-primary backdrop-blur-sm shadow-[inset_0_1px_0_0_rgb(255_255_255_/0.06)] transition hover:border-primary/80 hover:bg-primary/[0.15] hover:shadow-[0_0_26px_-10px_rgb(82_168_255_/0.42)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+  "inline-flex min-w-0 w-full items-center justify-center gap-2 rounded-[10px] border border-primary/45 bg-primary/[0.09] px-4 py-2.5 text-sm font-semibold text-primary backdrop-blur-sm max-md:backdrop-blur-none shadow-[inset_0_1px_0_0_rgb(255_255_255_/0.06)] transition hover:border-primary/80 hover:bg-primary/[0.15] hover:shadow-[0_0_26px_-10px_rgb(82_168_255_/0.42)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
 /** Dos métricas arriba; bloque de foco en salud a todo el ancho debajo. */
 const ABOUT_STATS_NUMERIC = [

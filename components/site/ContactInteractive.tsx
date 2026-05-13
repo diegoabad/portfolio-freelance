@@ -47,7 +47,7 @@ export function ContactInteractive() {
           href={`https://wa.me/${WHATSAPP_NUMBER}`}
           target="_blank"
           rel={REL_WHATSAPP_EXTERNAL}
-          className="group flex cursor-pointer items-center gap-3 rounded-xl border border-border bg-surface/60 p-3 transition hover:bg-surface md:gap-4 md:rounded-2xl md:p-6 backdrop-blur [&_p]:cursor-pointer"
+          className="group flex cursor-pointer items-center gap-3 rounded-xl border border-border bg-surface/60 p-3 transition hover:bg-surface md:gap-4 md:rounded-2xl md:p-6 backdrop-blur max-md:backdrop-blur-none [&_p]:cursor-pointer"
         >
           <div className="h-9 w-9 shrink-0 grid place-items-center rounded-lg bg-primary/15 text-primary md:h-12 md:w-12 md:rounded-xl">
             <WhatsAppIcon size={18} className="md:hidden" />
@@ -63,7 +63,7 @@ export function ContactInteractive() {
           href={LINKEDIN_PROFILE_URL}
           target="_blank"
           rel="noreferrer"
-          className="group flex cursor-pointer items-center gap-3 rounded-xl border border-border bg-surface/60 p-3 transition hover:bg-surface md:gap-4 md:rounded-2xl md:p-6 backdrop-blur [&_p]:cursor-pointer"
+          className="group flex cursor-pointer items-center gap-3 rounded-xl border border-border bg-surface/60 p-3 transition hover:bg-surface md:gap-4 md:rounded-2xl md:p-6 backdrop-blur max-md:backdrop-blur-none [&_p]:cursor-pointer"
         >
           <div className="h-9 w-9 shrink-0 grid place-items-center rounded-lg bg-primary/15 text-primary md:h-12 md:w-12 md:rounded-xl">
             <LinkedInGlyph size={18} className="md:hidden" />
@@ -78,7 +78,7 @@ export function ContactInteractive() {
         <EmailCopySurface variant="card" />
 
         <div
-          className="flex items-center gap-3 rounded-xl border border-border bg-surface/60 p-3 backdrop-blur md:gap-4 md:rounded-2xl md:p-6"
+          className="flex items-center gap-3 rounded-xl border border-border bg-surface/60 p-3 backdrop-blur max-md:backdrop-blur-none md:gap-4 md:rounded-2xl md:p-6"
           role="group"
           aria-label="Ubicación: Buenos Aires, Argentina"
         >
@@ -96,7 +96,7 @@ export function ContactInteractive() {
 
       <form
         onSubmit={handleSubmit}
-        className="md:col-span-3 flex min-h-0 flex-col gap-4 rounded-2xl border border-border bg-surface/60 p-5 backdrop-blur sm:p-6 md:h-full md:gap-5 md:p-8"
+        className="md:col-span-3 flex min-h-0 flex-col gap-4 rounded-2xl border border-border bg-surface/60 p-5 backdrop-blur max-md:backdrop-blur-none sm:p-6 md:h-full md:gap-5 md:p-8"
         noValidate
       >
         <div className="shrink-0">

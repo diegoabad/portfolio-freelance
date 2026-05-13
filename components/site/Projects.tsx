@@ -31,7 +31,7 @@ export function Projects() {
                 key={p.slug}
                 href={`/proyectos/${p.slug}`}
                 aria-label={`Ver caso de éxito: ${p.title}`}
-                className={`group relative flex min-w-0 w-full flex-col overflow-hidden rounded-2xl border-2 border-border bg-linear-to-br from-primary/[0.06] via-background to-background/95 shadow-[0_12px_40px_-24px_rgba(0,0,0,0.45)] backdrop-blur-md transition duration-300 hover:border-primary/50 hover:shadow-[0_20px_48px_-20px_oklch(0.55_0.14_250/0.22)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background [&_*]:cursor-pointer ${motionFadeUpMs(32 + i * 48)}`}
+                className={`group relative flex min-w-0 w-full flex-col overflow-hidden rounded-2xl border-2 border-border bg-linear-to-br from-primary/[0.06] via-background to-background/95 shadow-[0_12px_40px_-24px_rgba(0,0,0,0.45)] backdrop-blur-md max-md:backdrop-blur-none transition duration-300 hover:border-primary/50 hover:shadow-[0_20px_48px_-20px_oklch(0.55_0.14_250/0.22)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background [&_*]:cursor-pointer ${motionFadeUpMs(32 + i * 48)}`}
               >
                 <div
                   className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-primary/18 blur-3xl opacity-50 transition-opacity duration-500 group-hover:opacity-90"

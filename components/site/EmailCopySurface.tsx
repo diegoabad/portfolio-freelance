@@ -35,7 +35,7 @@ export function EmailCopySurface({ variant }: { variant: Variant }) {
       <button
         type="button"
         onClick={handleCopy}
-        className="inline-flex min-w-0 w-full cursor-pointer items-center justify-center gap-2 rounded-[10px] border-2 border-primary bg-background/70 px-4 py-2.5 text-sm font-medium text-primary backdrop-blur-sm transition hover:bg-primary/10 [&_*]:cursor-pointer"
+        className="inline-flex min-w-0 w-full cursor-pointer items-center justify-center gap-2 rounded-[10px] border-2 border-primary bg-background/70 px-4 py-2.5 text-sm font-medium text-primary backdrop-blur-sm max-md:backdrop-blur-none transition hover:bg-primary/10 [&_*]:cursor-pointer"
         aria-label={copied ? "Correo copiado al portapapeles" : `Copiar correo electrónico (${CONTACT_EMAIL})`}
         title={CONTACT_EMAIL}
       >
@@ -49,7 +49,7 @@ export function EmailCopySurface({ variant }: { variant: Variant }) {
     <button
       type="button"
       onClick={handleCopy}
-      className="group flex w-full cursor-pointer items-center gap-3 rounded-xl border border-border bg-surface/60 p-3 text-left transition hover:bg-surface md:gap-4 md:rounded-2xl md:p-6 backdrop-blur [&_*]:cursor-pointer"
+      className="group flex w-full cursor-pointer items-center gap-3 rounded-xl border border-border bg-surface/60 p-3 text-left transition hover:bg-surface md:gap-4 md:rounded-2xl md:p-6 backdrop-blur max-md:backdrop-blur-none [&_*]:cursor-pointer"
       aria-label={copied ? "Correo copiado al portapapeles" : "Copiar correo electrónico"}
     >
       <div className="h-9 w-9 shrink-0 grid place-items-center rounded-lg bg-primary/15 text-primary md:h-12 md:w-12 md:rounded-xl">

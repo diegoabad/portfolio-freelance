@@ -43,6 +43,8 @@ export const viewport: Viewport = {
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
+  /** Móvil: el viewport se ajusta al teclado sin recortar inputs (mejor UX en contacto). Escritorio no cambia. */
+  interactiveWidget: "resizes-content",
 };
 
 const siteVerification = buildSiteVerification();

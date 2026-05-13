@@ -309,4 +309,21 @@
   html {
     scroll-behavior: auto;
   }
+
+  /* Menos capas compuestas con las animaciones ya desactivadas. */
+  .ambient-orb {
+    will-change: auto !important;
+  }
+
+  /* Textura hero: menos trabajo de mezcla en pantallas chicas. */
+  .noise::before {
+    opacity: 0.12;
+  }
+
+  /* Evita doble tap en enlaces/botones donde el navegador aún lo aplicaría. */
+  button,
+  [role="button"],
+  a[href] {
+    touch-action: manipulation;
+  }
 }

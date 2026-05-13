@@ -21,11 +21,17 @@ export function FloatingWhatsAppAfterIdle() {
       setShow(true);
     };
 
+    const narrow =
+      typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches;
+    /** Móvil: más tarde para no competir con LCP, hidratación y chunks del home. Escritorio sin cambios. */
+    const idleTimeout = narrow ? 4200 : 2800;
+    const fallbackMs = narrow ? 6200 : 4200;
+
     let idleId: number | undefined;
     if (typeof window.requestIdleCallback === "function") {
-      idleId = window.requestIdleCallback(go, { timeout: 2800 });
+      idleId = window.requestIdleCallback(go, { timeout: idleTimeout });
     }
-    const t = window.setTimeout(go, 4200);
+    const t = window.setTimeout(go, fallbackMs);
 
     return () => {
       if (idleId !== undefined) window.cancelIdleCallback(idleId);
