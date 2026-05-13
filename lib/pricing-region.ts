@@ -8,14 +8,17 @@ export const PRICING_REGION_COOKIE = "pricing-region";
 
 export type PricingRegion = "ar" | "intl";
 
-/** Pisos USD públicos (visitantes fuera de Argentina). */
+/**
+ * Pisos USD públicos (visitantes fuera de Argentina).
+ * Valores indicativos en la misma magnitud que los ARS “desde” (~orden 1.000 ARS ≈ 1 USD; la cotización real varía).
+ */
 export const SERVICE_USD_FLOOR: Record<ServiceLandingSlug, number> = {
   "bots-whatsapp": 600,
-  "sistema-turnos-online": 1200,
-  "automatizacion-procesos": 500,
-  "desarrollo-software-medida": 2500,
-  "aplicaciones-moviles": 3000,
-  "control-de-stock": 1500,
+  "sistema-turnos-online": 700,
+  "automatizacion-procesos": 400,
+  "desarrollo-software-medida": 1200,
+  "aplicaciones-moviles": 2000,
+  "control-de-stock": 800,
 };
 
 function formatUsdLatinInteger(n: number): string {

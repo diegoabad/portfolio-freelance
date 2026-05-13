@@ -70,7 +70,7 @@ export const SERVICE_LANDING_PAGES = [
     homeCardSubtitle:
       "Sistema de turnos online y agenda digital con autogestión, recordatorios automáticos e integración con WhatsApp: reservas y coordinación en un solo lugar (clínicas, consultorios y negocios).",
     homeCardBadge: HIGHLIGHT_CHIP_TURNOS,
-    homeCardPriceTeaser: "Desde ARS 900.000",
+    homeCardPriceTeaser: "Desde ARS 700.000",
     homeCardPriceBenefit: "Menos cancelaciones y agenda ordenada en un solo lugar.",
     homeCardCta: "Coordinemos tu agenda",
     title: "Sistema de turnos online",
@@ -99,7 +99,7 @@ export const SERVICE_LANDING_PAGES = [
     homeCardSubtitle:
       "Automatización de procesos y workflows en Argentina: integración de sistemas, n8n cuando encaja, IA acotada y menos tareas administrativas repetitivas (clínicas, recepción, CRM, reportes).",
     homeCardBadge: HIGHLIGHT_CHIP_AUTOMATIZACION,
-    homeCardPriceTeaser: "Desde ARS 300.000",
+    homeCardPriceTeaser: "Desde ARS 400.000",
     homeCardPriceBenefit: "Ahorrá horas de trabajo manual cada semana.",
     homeCardCta: "Revisamos tu caso",
     title: "Automatización de procesos para empresas",
@@ -127,7 +127,7 @@ export const SERVICE_LANDING_PAGES = [
     homeCardSubtitle:
       "Desarrollo de software a medida en Argentina: sistemas personalizados con integraciones y entregas por etapas, para pymes, empresas y operación en salud cuando el genérico no alcanza.",
     homeCardBadge: HIGHLIGHT_CHIP_SOFTWARE_MEDIDA,
-    homeCardPriceTeaser: "Proyectos desde ARS 1.500.000",
+    homeCardPriceTeaser: "Proyectos desde ARS 1.200.000",
     homeCardPriceBenefit: "Un sistema que encaja en tu operación; el alcance define el resto.",
     homeCardCta: "Definamos el alcance",
     title: "Software a medida",
