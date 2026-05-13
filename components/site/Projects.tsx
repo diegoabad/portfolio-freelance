@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Sparkles } from "lucide-react";
+import { stripRichMarkers } from "@/components/site/CaseStudyRichInline";
 import { caseStudies } from "@/lib/case-studies";
 import { motionFadeUpMs } from "@/lib/site-motion";
 
@@ -23,7 +24,7 @@ export function Projects() {
           </p>
         </div>
 
-        <div className="mt-8 md:mt-10 lg:mt-12 grid lg:grid-cols-2 gap-5 md:gap-6">
+        <div className="mt-8 md:mt-10 lg:mt-12 grid grid-cols-1 gap-5 md:gap-6 lg:grid-cols-2">
           {caseStudies.map((p, i) => {
             const coverSrc = p.images[0] ?? "";
             return (
@@ -31,7 +32,7 @@ export function Projects() {
                 key={p.slug}
                 href={`/proyectos/${p.slug}`}
                 aria-label={`Ver caso de éxito: ${p.title}`}
-                className={`group relative flex min-w-0 w-full flex-col overflow-hidden rounded-2xl border-2 border-border bg-linear-to-br from-primary/[0.06] via-background to-background/95 shadow-[0_12px_40px_-24px_rgba(0,0,0,0.45)] backdrop-blur-md max-md:backdrop-blur-none transition duration-300 hover:border-primary/50 hover:shadow-[0_20px_48px_-20px_oklch(0.55_0.14_250/0.22)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background [&_*]:cursor-pointer ${motionFadeUpMs(32 + i * 48)}`}
+                className={`group relative flex h-full min-h-0 min-w-0 w-full flex-col overflow-hidden rounded-2xl border-2 border-border bg-linear-to-br from-primary/[0.06] via-background to-background/95 shadow-[0_12px_40px_-24px_rgba(0,0,0,0.45)] backdrop-blur-md max-md:backdrop-blur-none transition duration-300 hover:border-primary/50 hover:shadow-[0_20px_48px_-20px_oklch(0.55_0.14_250/0.22)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background [&_*]:cursor-pointer ${motionFadeUpMs(32 + i * 48)}`}
               >
                 <div
                   className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-primary/18 blur-3xl opacity-50 transition-opacity duration-500 group-hover:opacity-90"
@@ -65,15 +66,17 @@ export function Projects() {
                   </span>
                 </div>
 
-                <div className="relative flex w-full min-w-0 flex-1 flex-col border-t border-border/60 px-5 pb-5 pt-4 sm:px-6 sm:pb-6 sm:pt-5 md:px-7 md:pb-7">
+                <div className="relative flex min-h-0 w-full min-w-0 flex-1 flex-col border-t border-border/60 px-5 pb-5 pt-4 sm:px-6 sm:pb-6 sm:pt-5 md:px-7 md:pb-7">
                   <h3 className="w-full min-w-0 max-w-full font-display text-lg font-semibold leading-snug tracking-tight text-wrap text-foreground transition-colors duration-200 group-hover:text-primary sm:text-xl md:text-balance md:text-2xl">
                     {p.title}
                   </h3>
                   <p className="mt-2.5 w-full min-w-0 max-w-full text-sm leading-relaxed text-muted-foreground sm:mt-3 md:text-[15px] md:leading-relaxed">
-                    {p.cardSummary}
+                    {stripRichMarkers(p.cardSummary)}
                   </p>
 
-                  <span className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-[10px] border-2 border-primary/50 bg-primary/12 px-4 py-3 text-sm font-bold text-primary transition duration-200 group-hover:border-primary group-hover:bg-primary/18 group-hover:gap-2.5 sm:mt-6 sm:w-fit sm:justify-start sm:px-6">
+                  <div className="mt-5 min-h-0 flex-1 sm:mt-6" aria-hidden />
+
+                  <span className="inline-flex w-full items-center justify-center gap-2 rounded-[10px] border-2 border-primary/50 bg-primary/12 px-4 py-3 text-sm font-bold text-primary transition duration-200 group-hover:border-primary group-hover:bg-primary/18 group-hover:gap-2.5 sm:w-fit sm:justify-start sm:px-6">
                     Ver caso completo
                     <ArrowUpRight
                       className="h-4 w-4 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"

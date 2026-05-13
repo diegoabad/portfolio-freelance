@@ -31,5 +31,10 @@ export function getSiteUrl(): string | undefined {
 
 export const LINKEDIN_PROFILE_URL = "https://www.linkedin.com/in/diegoabad-fullstack/";
 
+export const FACEBOOK_PAGE_URL = "https://www.facebook.com/diegoabadsoftware/";
+
+/** Enlace compartido (p. ej. perfil o ficha en Google). */
+export const GOOGLE_SHARE_URL = "https://share.google/O8Uq56eKGbQspHtWe";
+
 /** Subtítulo bajo el nombre en footer y barra de navegación. */
 export const BRAND_TAGLINE = "Software y automatizaciones";

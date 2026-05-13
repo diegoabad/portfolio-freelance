@@ -474,10 +474,10 @@ export function Nav({ pricingRegion }: { pricingRegion: PricingRegion }) {
                         bumpActiveFromUrlHash();
                         if (pathname === "/") scrollToServiciosSection();
                       }}
-                      className={`block rounded-md py-2 text-base transition-colors ${
+                      className={`block rounded-md py-2 text-base transition-colors px-2 -mx-1 ${
                         isHome && active === "servicios" && !isServiceRoute
-                          ? "font-semibold text-primary bg-primary/10 px-2 -mx-1"
-                          : "text-white/90 hover:text-primary px-2 -mx-1"
+                          ? "font-semibold text-primary bg-primary/10"
+                          : "text-white/90 hover:text-primary"
                       }`}
                     >
                       Todos los servicios
@@ -491,7 +491,11 @@ export function Nav({ pricingRegion }: { pricingRegion: PricingRegion }) {
                           prefetch={false}
                           onClick={() => setOpen(false)}
                           aria-current={here ? "page" : undefined}
-                          className={`py-2 text-base transition-colors ${here ? "font-semibold text-primary" : "text-white/90 hover:text-primary"}`}
+                          className={`block rounded-md py-2 px-2 -mx-1 text-base leading-snug transition-colors ${
+                            here
+                              ? "font-semibold text-primary bg-primary/10"
+                              : "text-white/90 hover:text-primary"
+                          }`}
                         >
                           {p.categoryHeading}
                         </Link>

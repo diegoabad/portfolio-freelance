@@ -21,13 +21,28 @@ export type CaseStudy = {
   cardChips: readonly string[];
   /** Párrafo bajo el título en `/proyectos/[slug]`; si no hay, se usa `cardSummary`. */
   detailLead?: string;
-  /** Frase de valor destacada en el detalle del caso (entre título y párrafo largo). */
-  detailHighlight: string;
+  /** Frase destacada entre título y lead; si no hay, no se muestra el bloque. */
+  detailHighlight?: string;
   /** Meta description / OG. */
   seoDescription: string;
   problem: string;
+  /** Si existe, se muestra como lista con viñetas bajo `problem` (Contexto). */
+  problemList?: readonly string[];
+  /** Párrafo opcional tras la primera lista (p. ej. “Con el crecimiento… esto generaba:”). */
+  problemSecondaryIntro?: string;
+  /** Lista opcional bajo `problemSecondaryIntro`. */
+  problemSecondaryList?: readonly string[];
   solution: string;
+  solutionList?: readonly string[];
+  /** Párrafo opcional tras `solutionList` (p. ej. segunda categoría de ítems). */
+  solutionSecondaryIntro?: string;
+  solutionSecondaryList?: readonly string[];
+  solutionClosing?: string;
   result: string;
+  resultList?: readonly string[];
+  resultClosing?: string;
+  /** Cierre antes del pie; usá **texto** para resaltar en primary. */
+  detailFooterCallout?: string;
   images: readonly string[];
 };
 
@@ -36,22 +51,41 @@ export const caseStudies: readonly CaseStudy[] = [
     slug: "ineco-app-pacientes",
     tag: "App móvil — INECO",
     title: "Aplicación móvil para pacientes INECO",
-    navShortLabel: "INECO · app pacientes",
+    navShortLabel: "INECO · App pacientes",
     cardSummary:
-      "Fidelizar al paciente y darle autonomía: turnos en autogestión, pedidos de recetas digitales con su profesional de confianza y un cronograma de actividades entre consultas.",
+      "Turnos, recetas y seguimiento desde el celular. Una app pensada para reducir tareas administrativas y darle más autonomía al paciente: autogestión de turnos, pedidos de recetas digitales y actividades indicadas por profesionales entre consultas.",
     cardChips: ["Menos carga en recepción", "Turnos en autogestión", "Pacientes más autónomos"],
     detailLead:
-      "La app acompaña al paciente fuera del consultorio: concentra reservas y reprogramaciones, canaliza los pedidos de receta hacia el profesional que ya lo atiende y ordena qué hacer día a día con un cronograma de actividades alineado al plan de cuidado — menos idas y vueltas y una experiencia más continua con la institución.",
-    detailHighlight:
-      "Más autonomía para pacientes y menos tareas manuales para el equipo.",
+      "La aplicación acompaña al paciente fuera del consultorio: permite gestionar turnos, solicitar recetas digitales y acceder a actividades indicadas por profesionales desde un solo lugar.\n\nEl objetivo fue reducir fricción en tareas cotidianas y mejorar la continuidad del seguimiento entre consultas.",
     seoDescription:
-      "Caso INECO: aplicación móvil para pacientes — autogestión de turnos, recetas digitales con el profesional de confianza y cronograma de actividades para mejorar adherencia y vínculo.",
+      "Caso INECO: app móvil para pacientes — turnos, recetas digitales y actividades entre consultas; menos tareas administrativas y más autonomía desde el celular.",
     problem:
-      "Muchas personas vivían la institución a saltos: sacar o cambiar un turno, pedir una receta o saber qué hacer entre una consulta y la otra dependía de canales distintos, sin una experiencia unificada ni una vista clara del plan de cuidado. Eso desgasta la confianza, suma fricción administrativa y dificulta la adherencia.",
+      "Muchas acciones dependían de distintos canales: llamadas, WhatsApp o gestiones manuales para reservar turnos, pedir recetas o entender qué debía hacer el paciente entre consultas. Esto generaba:",
+    problemList: [
+      "Más carga administrativa",
+      "Experiencias fragmentadas",
+      "Menor continuidad en el seguimiento del tratamiento",
+    ],
     solution:
-      "Se diseñó una aplicación móvil centrada en el paciente: autogestión de turnos con el profesional de referencia, flujo de pedidos de recetas digitales vinculado a ese vínculo de confianza y un cronograma de actividades e indicaciones para que la persona sepa qué hacer entre visitas. El foco está en fidelización, claridad y continuidad del cuidado, no solo en “tramitar”.",
+      "Se desarrolló una aplicación móvil centrada en la experiencia del paciente, con funcionalidades como:",
+    solutionList: [
+      "Autogestión de turnos",
+      "Reprogramación de consultas",
+      "Solicitud de recetas digitales",
+      "Actividades y seguimiento entre consultas",
+      "Acceso desde el celular en un entorno unificado",
+    ],
+    solutionClosing:
+      "La solución prioriza claridad, autonomía y continuidad del cuidado, no solo la digitalización de trámites.",
     result:
-      "Un canal directo que refuerza vínculo con el equipo tratante, menos fricción para gestionar turnos y recetas, y más orden en demandas repetitivas para la operación — con el paciente más acompañado en su día a día.",
+      "La app permitió centralizar interacciones frecuentes en un único canal digital, reduciendo fricción operativa y mejorando la experiencia de pacientes y profesionales. Además:",
+    resultList: [
+      "Simplificó tareas repetitivas",
+      "Mejoró el acceso a información",
+      "Fortaleció el vínculo entre paciente e institución",
+    ],
+    detailFooterCallout:
+      "Más que una app, el objetivo fue construir una **experiencia más simple y continua** para pacientes y profesionales en el día a día.",
     images: ["/projects/ineco/01-ineco-app-pacientes-flujo.png"],
   },
   {
@@ -60,104 +94,232 @@ export const caseStudies: readonly CaseStudy[] = [
     title: "Plataforma de presupuestos digitales",
     navShortLabel: "Cotilink · SaaS cotizaciones",
     cardSummary:
-      "Del armado del presupuesto al seguimiento comercial: visto, aceptado o rechazado, con un mini CRM por oportunidad y acciones para recuperar presupuestos que se enfriaron.",
+      "Una plataforma SaaS para crear presupuestos interactivos y dar seguimiento a cada oportunidad comercial desde un solo lugar: visto, aceptado, rechazado o pendiente.",
     cardChips: ["Seguimiento comercial", "Presupuestos centralizados", "Menos seguimiento manual"],
     detailLead:
-      "La propuesta nace y vive en la web: el equipo arma líneas, versiones y envíos; el cliente ve el presupuesto en contexto y el sistema registra cada paso. Estados claros (visto, aceptado, rechazado), un tablero liviano tipo mini CRM para priorizar seguimiento y disparadores pensados para volver a contactar cuando el trato queda colgado — sin depender de PDFs sueltos ni del “a ver si me contesta”.",
-    detailHighlight: "Menos seguimiento manual y más control sobre cada presupuesto enviado.",
+      "Desarrollo de una plataforma web orientada a digitalizar presupuestos y dar seguimiento a oportunidades comerciales desde un único lugar.\n\nLa solución permite crear propuestas interactivas, visualizar estados comerciales y mantener más ordenado el proceso posterior al envío.",
     seoDescription:
-      "Caso Cotilink: presupuestos digitales con seguimiento (visto, aceptado, rechazado), mini CRM comercial y foco en recuperar oportunidades estancadas.",
+      "Caso Cotilink: plataforma web y MVP para presupuestos digitales interactivos, estados comerciales y seguimiento de oportunidades desde un solo lugar.",
     problem:
-      "Los presupuestos en PDF no dejaban trazabilidad: no sabías si el cliente lo abrió, lo compartió internamente o se frenó por precio o timing. El seguimiento vivía en mensajes sueltos, sin una vista única de oportunidades ni un criterio claro para insistir o recuperar propuestas que se enfriaban.",
+      "Muchas veces los presupuestos se envían por PDF o WhatsApp y el seguimiento termina dependiendo de mensajes, recordatorios manuales o archivos dispersos. Con el tiempo, eso genera:",
+    problemList: [
+      "Oportunidades perdidas",
+      "Poca visibilidad sobre el estado comercial",
+      "Dificultad para organizar el proceso de venta",
+    ],
     solution:
-      "Plataforma web donde se crea y versiona el presupuesto, se envía un enlace con experiencia de lectura clara para el cliente y se centraliza el ciclo de vida: visto, aceptado o rechazado, con historial y notas livianas alrededor de cada trato (un mini CRM alrededor del presupuesto). Se incorporan flujos y recordatorios orientados a recuperar presupuestos sin respuesta y a ordenar el seguimiento del equipo comercial.",
+      "Se desarrolló un MVP funcional enfocado en transformar una idea inicial en una herramienta utilizable en el día a día comercial. La plataforma incluye:",
+    solutionList: [
+      "Presupuestos digitales interactivos",
+      "Seguimiento de propuestas",
+      "Estados comerciales",
+      "Organización por clientes",
+      "Historial de actividad",
+      "Confirmación o rechazo de presupuestos",
+    ],
+    solutionClosing:
+      "El foco estuvo en construir una experiencia simple y clara, priorizando usabilidad y seguimiento comercial más allá del simple envío de cotizaciones.",
     result:
-      "Embudo más transparente, menos operación a ciegas y mejor disciplina de seguimiento: se gana velocidad en cierres y se vuelve explícito qué oportunidades merecen un empujón antes de perderse.",
+      "El proyecto permitió centralizar información comercial y ordenar el seguimiento de oportunidades desde un único entorno. Además:",
+    resultList: [
+      "Redujo la dependencia de archivos sueltos",
+      "Mejoró la visibilidad del proceso comercial",
+      "Convirtió una idea inicial en un producto funcional listo para evolucionar",
+    ],
+    detailFooterCallout:
+      "El proyecto **nació como una idea** y **lo convertimos en una plataforma** funcional para el seguimiento de propuestas comerciales, pensada para freelancers y equipos pequeños que necesitan orden más allá del PDF y del chat suelto.",
     images: ["/projects/cotilink/01-presupuesto-cotilink.png"],
   },
   {
     slug: "bot-whatsapp-odontologia-soler",
-    tag: "WhatsApp — clínicas",
-    title: "Bot de WhatsApp para clínicas",
-    navShortLabel: "Bot WhatsApp · Soler",
+    tag: "Odontología Soler",
+    title: "Bot de WhatsApp con IA y agenda online",
+    navShortLabel: "Soler · Bot WhatsApp y agenda",
     cardSummary:
-      "Bot con o sin IA que responde FAQs de la clínica y enruta intenciones (facturas, turnos, reclamos) a un panel que guarda todo por tipo de consulta — con historial útil para mejorar mensajes y campañas según lo que más preguntan.",
-    cardChips: ["Respuestas automáticas", "Menos consultas repetitivas", "Integración con agendas"],
+      "**Automatización de atención por WhatsApp** para responder **consultas frecuentes**, **detectar intenciones** en conversaciones y **gestionar turnos** de forma integrada con una agenda online.",
+    cardChips: ["IA conversacional", "Agenda integrada", "Menos carga manual"],
     detailLead:
-      "Se arma un asistente en WhatsApp alineado al protocolo de la institución: puede operar con reglas fijas o con IA según el caso, contesta preguntas frecuentes con criterio y detecta intenciones configurables — pedir facturas, sacar turnos, canal de quejas u otras — que aterrizan en una plataforma donde queda organizada la información por intención. Además se registran interacciones y motivos de consulta para ver patrones (qué se pregunta, en qué horarios, qué se corta) y alimentar comunicación institucional o piezas de difusión con datos reales, siempre con foco en buenas prácticas y consentimiento donde aplique.",
-    detailHighlight: "Menos consultas repetitivas y respuestas más rápidas para los pacientes.",
+      "Desarrollo de una solución conversacional para clínicas orientada a **mejorar la atención inicial de pacientes** y **reducir tareas manuales** del equipo administrativo.\n\nEl proyecto combinó un **bot de WhatsApp con IA** y una **agenda online integrada** para permitir la gestión automatizada de consultas y turnos desde un único canal.",
     seoDescription:
-      "Caso bot WhatsApp para clínicas: FAQs, intenciones (facturas, turnos, quejas), panel por tipo de consulta y métricas para orientar comunicación y campañas.",
+      "Caso Odontología Soler: bot de WhatsApp con IA, detección de intenciones, agenda online integrada y panel para ordenar consultas y turnos desde un solo canal.",
     problem:
-      "Recepción y call center suelen recibir las mismas preguntas por WhatsApp (horarios, coberturas, turnos, facturación) mezcladas con reclamos urgentes, sin un registro ordenado ni una forma simple de escalar lo sensible. Perder el hilo cuesta tiempo y además se pierde la señal de qué temas concentran la demanda del paciente.",
+      "**Gran parte de las consultas** llegaban por WhatsApp y requerían intervención manual incluso para tareas repetitivas:",
+    problemList: [
+      "Preguntas frecuentes",
+      "Horarios",
+      "Obras sociales",
+      "Confirmaciones",
+      "Solicitud de turnos",
+    ],
+    problemSecondaryIntro: "Con el crecimiento de mensajes, esto generaba:",
+    problemSecondaryList: [
+      "Demoras en respuestas",
+      "Conversaciones desordenadas",
+      "Mayor carga operativa para recepción y administración",
+    ],
     solution:
-      "Bot de WhatsApp configurable, con o sin IA según la política de la clínica: base sólida de respuestas frecuentes y módulo de intenciones (por ejemplo facturas, turnos, quejas) que deriva cada conversación a vistas y colas en una plataforma web, guardando contexto y estado por tipo de pedido. Se centralizan teléfonos y consultas para tableros de seguimiento y para extraer tendencias — volumen por tema, cuellos de botella, oportunidades de mensajes más claros en redes o campañas — sin reemplazar el criterio humano donde hace falta.",
+      "Se desarrolló un sistema de atención automatizada por WhatsApp con capacidad de **interpretar intenciones** dentro de las conversaciones y actuar según el contexto del paciente.\n\nLa solución incluye:",
+    solutionList: [
+      "Bot conversacional con IA",
+      "Respuestas automáticas a preguntas frecuentes",
+      "Detección de intenciones",
+      "Enrutamiento de consultas",
+      "Agenda online integrada",
+      "Gestión automática de turnos",
+      "Panel de administración y seguimiento",
+    ],
+    solutionClosing:
+      "Además, toda la información de interacción queda **centralizada** para facilitar análisis, seguimiento y mejora continua de mensajes y flujos de atención.",
     result:
-      "Menos ruido en la línea de WhatsApp, respuestas más homogéneas en lo repetitivo y un tablero que ordena lo operativo; además, visibilidad sobre qué preguntan los pacientes para afinar comunicación y prioridades del consultorio.",
-    images: ["/projects/chatbot/01-panel-gestion-chatbot.png"],
+      "La solución permitió **automatizar gran parte de las consultas repetitivas** y centralizar la gestión de conversaciones y turnos desde WhatsApp.\n\nAdemás:",
+    resultList: [
+      "Redujo tiempos de respuesta",
+      "Mejoró la organización de mensajes",
+      "Ayudó a escalar la atención sin depender por completo de gestión manual",
+    ],
+    detailFooterCallout:
+      "El objetivo no fue reemplazar la atención humana, sino **automatizar tareas repetitivas** para que el equipo pueda enfocarse en consultas que realmente requieren atención personalizada.",
+    images: ["/projects/chatbot/01-odontologia-soler-panel-dashboard.png"],
   },
   {
     slug: "ineco-informes-ia",
     tag: "Informes con IA — INECO",
     title: "Plataforma de informes clínicos con IA",
-    navShortLabel: "INECO · informes IA",
+    navShortLabel: "INECO · Informes IA",
     cardSummary:
-      "Notas ordenadas por voz o texto con plantillas de consulta; la IA arma el informe respetando lineamientos generales y un prompt definido por el profesional (secciones, extensión y tono).",
-    cardChips: ["Menos tiempo administrativo", "Informes asistidos por IA", "Voz a texto"],
+      "Desarrollo de una plataforma para **registrar notas clínicas por voz o texto** y **generar informes automáticamente con IA** según **criterios definidos por cada profesional**.",
+    cardChips: ["Voz y texto", "Plantillas configurables", "IA alineada al criterio profesional"],
     detailLead:
-      "Desarrollada para INECO, la plataforma guía al equipo a capturar la consulta con método: el tomador de notas admite dictado y texto, y ofrece distintas plantillas para estructurar la entrevista según el tipo de encuentro. Toda esa información se vuelca a un motor de IA que combina políticas institucionales generales con un prompt parametrizable por los propios profesionales — así el borrador respeta el esquema deseado (secciones, largo, tono clínico-administrativo o más breve) y queda listo para revisión humana antes de salir.",
-    detailHighlight:
-      "Reducción del tiempo administrativo en la generación de informes clínicos.",
+      "Desarrollo de una plataforma orientada a **asistir a profesionales de salud** en la toma de notas y creación de informes clínicos mediante **inteligencia artificial**.\n\nLa solución permite **transformar la información registrada durante la consulta** en informes estructurados **adaptados al criterio de cada profesional**.",
     seoDescription:
-      "Caso INECO: informes clínicos con IA — notas por voz y texto, plantillas de consulta, lineamientos generales y prompt profesional para controlar secciones, extensión y tono del informe.",
+      "Caso INECO: plataforma de informes clínicos con IA — notas por voz o texto, plantillas, estructura y tono configurables, generación asistida y control del criterio profesional.",
     problem:
-      "Redactar informes a partir de notas sueltas o dictados largos consumía horas y el formato final dependía mucho de la memoria y el estilo de cada profesional, con riesgo de inconsistencia entre prestadores y servicios.",
+      "La generación de informes clínicos suele requerir **tiempo adicional fuera de la consulta** y muchas veces implica **reorganizar notas dispersas** o **redactar contenido repetitivo** manualmente.",
+    problemSecondaryIntro: "Esto puede generar:",
+    problemSecondaryList: [
+      "Más carga administrativa",
+      "Pérdida de tiempo operativo",
+      "Dificultad para mantener formatos consistentes entre informes",
+    ],
     solution:
-      "Aplicación web con captura organizada de la consulta en texto y voz, y plantillas que ordenan qué registrar en cada parte de la visita. Al cerrar la carga, el sistema envía el paquete de notas a la IA bajo dos capas de control: lineamientos generales acordados institucionalmente y un prompt editable por el profesional (o por el servicio) que fija reglas del informe — estructura de secciones, extensión aproximada, tono y matices. El resultado es un borrador alineado a esa “receta” antes de la firma o el ajuste fino.",
+      "Se desarrolló una **plataforma web** para centralizar notas clínicas y automatizar la generación de informes utilizando IA.\n\nLa solución permite:",
+    solutionList: [
+      "Registrar notas por voz o texto",
+      "Organizar información clínica",
+      "Utilizar plantillas configurables",
+      "Definir estructura y tono del informe",
+      "Generar informes automáticamente con IA",
+      "Adaptar resultados según criterios del profesional",
+    ],
+    solutionClosing:
+      "El objetivo fue crear una herramienta flexible que acompañe el flujo de trabajo clínico **sin reemplazar el criterio profesional**.",
     result:
-      "Menos tiempo entre la consulta y el documento listo para revisar, más homogeneidad entre informes del mismo tipo y mayor control del equipo sobre cómo “suena” y se organiza cada pieza, sin renunciar a la validación humana.",
+      "La plataforma permitió **simplificar el proceso de documentación clínica** y reducir tiempo dedicado a **tareas repetitivas de redacción**.\n\nAdemás:",
+    resultList: [
+      "Ayudó a mantener mayor consistencia en informes",
+      "Mejoró la organización de notas clínicas",
+      "Agilizó la preparación de documentación profesional",
+    ],
+    detailFooterCallout:
+      "La solución fue pensada para **reducir tiempos administrativos** al generar informes, sin perder control sobre el contenido y criterio clínico.",
     images: ["/projects/informes/01-informespro-crear-informe-ia.png"],
   },
   {
     slug: "hablan-plataforma-fonoaudiologia",
     tag: "Hablán",
     title: "Plataforma de ejercicios cognitivos",
-    navShortLabel: "Hablán · fonoaudiología",
+    navShortLabel: "Hablán · Ejercicios cognitivos",
     cardSummary:
-      "Actividades para que el paciente practique en casa: cada profesional arma su plan eligiendo tipos de ejercicio (memoria, palabra–imagen, identificación, etc.) sin rediseñar todo desde cero cada vez.",
-    cardChips: ["Reutilización de actividades", "Seguimiento del paciente", "Menos trabajo repetitivo"],
+      "Desarrollo de una plataforma web para que profesionales puedan crear actividades cognitivas personalizadas y acompañar el seguimiento de pacientes fuera del consultorio.",
+    cardChips: ["Práctica en el hogar", "Seguimiento de avance", "Experiencia interactiva"],
     detailLead:
-      "Hablán apunta a la práctica entre sesiones: el profesional crea y asigna actividades pensadas para el hogar, a partir de un catálogo de formatos interactivos — por ejemplo tareas de memoria, asociación palabra–imagen, reconocimiento de términos u otros esquemas que el equipo elige según el objetivo terapéutico. Así el paciente entrena con ejercicios guiados fuera del consultorio y el especialista conserva control sobre qué se envía y con qué intensidad.",
-    detailHighlight: "Menos tiempo preparando actividades y más continuidad para el paciente.",
+      "Desarrollo de una plataforma web orientada a profesionales que necesitan crear actividades cognitivas personalizadas para que pacientes puedan practicar desde sus hogares.\n\nLa solución fue diseñada para combinar seguimiento, ejercicios interactivos y una experiencia amigable tanto para profesionales como para pacientes.",
     seoDescription:
-      "Caso Hablán: plataforma de actividades cognitivas para el hogar — el profesional crea tareas y elige tipos de ejercicio (memoria, palabra–imagen, identificación).",
+      "Caso Hablán: plataforma de ejercicios cognitivos — niveles, tipos de ejercicios, actividades interactivas, seguimiento y uso desde el hogar para fonoaudiología y afines.",
     problem:
-      "Enviar “tarea para el hogar” suele quedar en indicaciones genéricas o material improvisado: cuesta estandarizar la dificultad, medir si hubo práctica y ofrecer variedad sin pasar horas diseñando cada recurso a mano.",
+      "Muchas actividades cognitivas suelen depender de ejercicios manuales, documentos aislados o preparación individual para cada paciente.\n\nEsto dificulta:",
+    problemList: [
+      "Reutilizar ejercicios",
+      "Organizar actividades",
+      "Medir avances",
+      "Sostener continuidad entre sesiones",
+    ],
+    problemSecondaryIntro:
+      "Además, crear contenido desde cero para cada caso implica tiempo operativo adicional para el profesional.",
     solution:
-      "Plataforma web donde cada profesional arma actividades para sus pacientes combinando módulos ya pensados (memoria, identificación de palabras, ejercicios con imágenes y otros formatos cognitivos). El flujo separa la creación de la asignación y el seguimiento: el paciente practica en su entorno con interacciones acotadas y el equipo revisa avances sin depender solo de la consulta presencial.",
+      "Se desarrolló una plataforma web donde los profesionales pueden crear niveles, organizar actividades y adaptar ejercicios según las necesidades de cada paciente.\n\nLa solución incluye:",
+    solutionList: [
+      "Creación de niveles y progresión",
+      "Distintos tipos de ejercicios cognitivos",
+      "Actividades interactivas",
+      "Seguimiento de avance",
+      "Experiencia gamificada",
+      "Uso desde el hogar",
+    ],
+    solutionSecondaryIntro: "Entre los ejercicios disponibles se incluyen:",
+    solutionSecondaryList: [
+      "Memoria",
+      "Sí o no",
+      "Asociación palabra-imagen",
+      "Identificación visual",
+      "Reconocimiento",
+      "Actividades de práctica cognitiva",
+    ],
+    solutionClosing:
+      "El foco estuvo en construir una herramienta flexible y amigable que facilite tanto la creación de actividades como la experiencia diaria de uso.",
     result:
-      "Más práctica estructurada entre visitas, menos fricción para el profesional al armar tareas variadas y un canal claro para que el paciente entrene con ejercicios alineados al plan — con mejor adherencia que el “pdf o foto suelta”.",
+      "La plataforma permitió centralizar ejercicios y simplificar la preparación de actividades cognitivas para distintos pacientes.\n\nAdemás:",
+    resultList: [
+      "Ayudó a dar continuidad al trabajo terapéutico fuera de la consulta",
+      "Mejoró la organización de actividades",
+      "Creó una experiencia más interactiva y accesible para los pacientes",
+    ],
+    detailFooterCallout:
+      "Lo que se buscó fue desarrollar una **plataforma que ayude a los pacientes a practicar** desde sus hogares y permita a los profesionales acompañar el proceso de forma más simple y organizada.",
     images: ["/projects/hablan/01-hablan-dashboard-ejercicio.png"],
   },
   {
     slug: "cogniare-gestion-clinicas",
     tag: "Cogniare",
     title: "Plataforma para profesionales de la salud",
-    navShortLabel: "Cogniare · gestión clínicas",
+    navShortLabel: "Cogniare · Historia clínica y agenda",
     cardSummary:
-      "Agenda digital, historia clínica del paciente, espacio de intercambio tipo blog entre colegas, adjuntos y registro de diagnósticos — todo integrado para el consultorio.",
-    cardChips: ["Historia clínica centralizada", "Agenda integrada", "Menos información dispersa"],
+      "Desarrollo de una plataforma SaaS creada a partir de una idea orientada a psicopedagogas y profesionales de la salud para centralizar pacientes, agenda, historia clínica y comunicación entre colegas.",
+    cardChips: ["Agenda y pacientes", "Historia clínica", "Colaboración entre colegas"],
     detailLead:
-      "Cogniare apunta a quienes atienden en salud mental y afines: ofrece agenda online, seguimiento del paciente en una historia unificada, un canal tipo blog para que los profesionales compartan contenido o novedades entre pares, guardado ordenado de archivos (estudios, consentimientos, informes) y flujos para documentar diagnósticos y evolución sin saltar entre cuatro aplicaciones distintas.",
-    detailHighlight: "Menos información dispersa y más organización para el equipo.",
+      "Desarrollo de una plataforma SaaS creada a partir de una necesidad concreta: ayudar a psicopedagogas y profesionales de la salud a organizar pacientes, consultas e información clínica desde un único entorno digital.\n\nLa solución buscó simplificar tareas administrativas y mejorar la organización diaria del consultorio.",
     seoDescription:
-      "Caso Cogniare: plataforma para profesionales de la salud — agenda digital, historia del paciente, blog entre profesionales, archivos y diagnósticos.",
+      "Caso Cogniare: plataforma SaaS para profesionales de la salud — agenda digital, pacientes, historia clínica, recordatorios, diagnósticos, adjuntos y espacio de intercambio entre colegas.",
     problem:
-      "Muchos equipos conviven con agenda en un lugar, notas en otro, archivos en el correo y poca continuidad entre lo que se ve en consulta y lo que queda registrado para la próxima sesión — sin un espacio simple para publicar o leer aportes entre colegas del mismo entorno.",
+      "Muchos profesionales gestionan información entre agendas, documentos, mensajes y herramientas separadas, lo que dificulta mantener una visión clara del seguimiento de cada paciente.",
+    problemSecondaryIntro: "Además:",
+    problemSecondaryList: [
+      "Los recordatorios suelen hacerse manualmente",
+      "Las historias clínicas quedan dispersas",
+      "El intercambio entre colegas no siempre tiene un espacio organizado",
+    ],
     solution:
-      "Plataforma web que concentra la operación del consultorio: turnos y disponibilidad en una agenda digital, historia del paciente con acceso controlado a lo relevante, módulo de publicaciones tipo blog para uso profesional interno, almacenamiento de documentos vinculados al expediente y herramientas para registrar diagnósticos y seguimiento en el mismo contexto de la visita.",
+      "Se desarrolló una plataforma SaaS orientada al uso diario de profesionales de la salud, integrando herramientas de gestión, seguimiento y colaboración.\n\nLa solución incluye:",
+    solutionList: [
+      "Agenda digital",
+      "Gestión de pacientes",
+      "Historia clínica online",
+      "Recordatorios automáticos por mail y WhatsApp",
+      "Registro de diagnósticos",
+      "Adjuntos y documentación",
+      "Espacio interno tipo blog para intercambio entre colegas",
+    ],
+    solutionClosing:
+      "El foco estuvo en construir una herramienta práctica y simple de usar, adaptada a dinámicas reales de consultorio.",
     result:
-      "Menos ida y vuelta entre herramientas, expediente más completo y trazable, y un canal liviano de comunicación entre profesionales sin mezclarlo con redes personales.",
+      "La plataforma permitió centralizar información clínica y administrativa en un único entorno, ayudando a ordenar el trabajo diario y reducir tareas manuales.\n\nAdemás:",
+    resultList: [
+      "Mejoró la organización de pacientes y consultas",
+      "Facilitó el acceso a información clínica",
+      "Generó un espacio más colaborativo entre profesionales",
+    ],
+    detailFooterCallout:
+      "La plataforma fue diseñada para combinar **organización, seguimiento y colaboración** en una experiencia más **práctica para el día a día** del consultorio.",
     images: ["/projects/cogniare/01-cogniare-plataforma-collage.png"],
   },
 ];

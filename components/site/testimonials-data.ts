@@ -17,9 +17,17 @@ export const testimonials: Testimonial[] = [
     role: "Director de TI en Grupo INECO",
     imageSrc: "/testimonials/testimonial-marcelo-solovey.png",
     linkedInUrl: "https://www.linkedin.com/in/msolovey",
-    projectNames: ["App pacientes", "Informes con IA"],
+    projectNames: ["App móvil INECO", "Informes con IA"],
     quote:
       "Tengo el placer de conocer a Diego por distintos proyectos en conjunto y, después de más de un año trabajando juntos, puedo decir que es una persona súper comprometida con los resultados. Se involucra de verdad en entender la dinámica y las necesidades del cliente para poder aportar soluciones creativas y bien ajustadas a lo que se busca.\n\nAdemás de cumplir con lo que se le pide, siempre suma ideas y propuestas que mejoran el resultado final. Da gusto trabajar con alguien así, porque se nota el compromiso y las ganas de que las cosas queden bien. La verdad, quedamos más que satisfechos con su trabajo!",
+  },
+  {
+    name: "Monica Soler",
+    role: "Dueña de Odontologia Soler",
+    imageSrc: "/testimonials/testimonial-monica-soler.png",
+    projectNames: ["Bot de WhatsApp", "Agenda digital"],
+    quote:
+      "Hemos trabajado con Diego durante más de 2 años y la experiencia siempre fue muy buena. Nos ayudó a ordenar y automatizar varios procesos del consultorio que antes manejábamos de forma manual, sobre todo en la gestión de pacientes y turnos.",
   },
   {
     name: "Matias Papasso",

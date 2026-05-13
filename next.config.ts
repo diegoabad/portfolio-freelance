@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
     /** Variantes para `sizes` pequeños (avatar, logo en nav). */
     imageSizes: [16, 24, 32, 48, 64, 96, 128, 256],
     /** Permite variantes más chicas para miniaturas (galería casos) sin subir el mínimo global de `fill` demasiado. */
-    deviceSizes: [384, 640, 750, 828, 1080, 1200, 1920, 2048],
+    deviceSizes: [384, 640, 750, 828, 1080, 1200, 1920, 2048, 2560],
     /**
      * Next 16: si definís `localPatterns`, **todas** las rutas locales usadas en `<Image />` deben coincidir.
      * Un solo patrón cubre `public/` (hero, avatar, logo con `?v=`, capturas `/projects/...`).

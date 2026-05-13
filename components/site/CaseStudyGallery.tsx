@@ -13,15 +13,19 @@ type CaseStudyGalleryProps = {
 /** Capturas UI: capa de composición estable en Chromium/Safari al escalar. */
 const SHARP_IMG = "[backface-visibility:hidden] [transform:translateZ(0)]";
 
-/** Vista ampliada: % del viewport + tope en px (evita tamaños desmesurados en 4K/ultrawide). */
-const LIGHTBOX_MAX_BOX = "max-h-[min(94dvh,1680px)] max-w-[min(96vw,1920px)]";
+/** Vista ampliada: ancho casi pantalla; alto limitado para que no domine toda la pantalla. */
+const LIGHTBOX_MAX_BOX =
+  "max-h-[min(96dvh,1200px)] max-w-[min(calc(100vw_-_0.25rem),2560px)] w-full";
+const CASE_IMG_SIZES_LIGHTBOX = "min(calc(100vw - 0.25rem), 2560px)";
+/** Dimensiones declaradas en lightbox (16:9) para que `next/image` pida variantes más grandes al zoom. */
+const LIGHTBOX_IMG_WIDTH = 2560;
+const LIGHTBOX_IMG_HEIGHT = 1440;
 
 /** Ratio típico de capturas UI para `next/image` (solo guía de aspecto + variantes; el `object-contain` respeta la imagen real). */
 const CASE_IMG_WIDTH = 1920;
 const CASE_IMG_HEIGHT = 1080;
 /** Columna de detalle / móvil: ancho útil para `sizes` y menos bytes en viewport chico. */
 const CASE_IMG_SIZES_INLINE = "(max-width: 768px) 100vw, min(900px, 78vw)";
-const CASE_IMG_SIZES_LIGHTBOX = "min(96vw, 1920px)";
 
 const ZOOM_MIN = 1;
 const ZOOM_MAX = 4;
@@ -203,7 +207,7 @@ export function CaseStudyGallery({ images, altPrefix }: CaseStudyGalleryProps) {
             onClick={closeLightbox}
           />
 
-          <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center overflow-hidden p-1 sm:p-1.5">
+          <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center overflow-hidden p-0.5 sm:p-1">
             <div
               ref={lightboxSurfaceRef}
               className={`pointer-events-auto relative flex touch-none items-center justify-center overflow-hidden ${LIGHTBOX_MAX_BOX} ${zoom > 1 ? "cursor-grab active:cursor-grabbing" : "cursor-default"}`}
@@ -213,7 +217,7 @@ export function CaseStudyGallery({ images, altPrefix }: CaseStudyGalleryProps) {
               onPointerCancel={onPointerUp}
             >
               <div
-                className="flex items-center justify-center will-change-transform"
+                className="flex w-full max-w-full items-center justify-center will-change-transform"
                 style={{
                   transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
                   transformOrigin: "center center",
@@ -224,14 +228,14 @@ export function CaseStudyGallery({ images, altPrefix }: CaseStudyGalleryProps) {
                   key={src}
                   src={src}
                   alt={alt}
-                  width={CASE_IMG_WIDTH}
-                  height={CASE_IMG_HEIGHT}
+                  width={LIGHTBOX_IMG_WIDTH}
+                  height={LIGHTBOX_IMG_HEIGHT}
                   sizes={CASE_IMG_SIZES_LIGHTBOX}
-                  quality={78}
+                  quality={90}
                   draggable={false}
                   fetchPriority="high"
                   decoding="async"
-                  className={`block h-auto max-h-[min(94dvh,1680px)] max-w-[min(96vw,1920px)] w-auto object-contain object-center select-none ${SHARP_IMG}`}
+                  className={`block h-auto max-h-[min(96dvh,1200px)] max-w-[min(calc(100vw_-_0.25rem),2560px)] w-full object-contain object-center select-none ${SHARP_IMG}`}
                 />
               </div>
             </div>
@@ -245,7 +249,7 @@ export function CaseStudyGallery({ images, altPrefix }: CaseStudyGalleryProps) {
             </div>
           ) : null}
 
-          <div className="pointer-events-none absolute inset-x-0 bottom-3 z-30 flex flex-col items-center gap-1.5 sm:bottom-4">
+          <div className="pointer-events-none absolute inset-x-0 bottom-3 z-30 flex justify-center sm:bottom-4">
             <div className="pointer-events-auto flex items-center gap-0.5 rounded-full border border-white/25 bg-black/85 px-1 py-1 text-white shadow-lg backdrop-blur-md sm:gap-1 sm:px-1.5">
               <button
                 type="button"
@@ -284,10 +288,6 @@ export function CaseStudyGallery({ images, altPrefix }: CaseStudyGalleryProps) {
                 <RotateCcw className="h-5 w-5" aria-hidden />
               </button>
             </div>
-            <p className="max-w-[min(100vw-2rem,28rem)] px-2 text-center text-[10px] leading-snug text-white/65 sm:text-[11px]">
-              Rueda del mouse: zoom · con zoom: arrastrá · teclas + − y 0: zoom / restablecer · Esc o fondo negro:
-              cerrar
-            </p>
           </div>
 
           {total > 1 ? (

@@ -37,7 +37,7 @@ const posts: BlogPost[] = [
       { href: "/bots-whatsapp", label: "Bots de WhatsApp" },
       { href: "/sistema-turnos-online", label: "Sistema de turnos online" },
       { href: "/blog/como-crear-bot-whatsapp-empresas-argentina", label: "Cómo crear un bot paso a paso" },
-      { href: "/proyectos/bot-whatsapp-odontologia-soler", label: "Caso: bot en odontología" },
+      { href: "/proyectos/bot-whatsapp-odontologia-soler", label: "Caso: Odontología Soler" },
     ],
     closingCta: {
       headline: "Si tu negocio ya vive del WhatsApp y el equipo no da abasto",
@@ -210,7 +210,7 @@ const posts: BlogPost[] = [
       { href: "/bots-whatsapp", label: "Bots de WhatsApp (servicio)" },
       { href: "/sistema-turnos-online", label: "Sistema de turnos online" },
       { href: "/blog/bot-whatsapp-negocios-argentina", label: "Bot WhatsApp: cuándo sirve y cuándo no" },
-      { href: "/proyectos/bot-whatsapp-odontologia-soler", label: "Caso: bot en odontología" },
+      { href: "/proyectos/bot-whatsapp-odontologia-soler", label: "Caso: Odontología Soler" },
     ],
     closingCta: {
       headline: "¿Te llegan muchas consultas repetidas por WhatsApp?",

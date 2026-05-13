@@ -33,7 +33,7 @@ const siteUrl = getSiteUrl();
 const metadataBase = new URL(siteUrl ?? "http://localhost:3000");
 
 /** Título orientado a búsquedas no marcadas (servicio + ubicación); la plantilla `%s | Diego Abad` sigue valiendo en páginas hijas. */
-const seoTitle = "Diego Abad | Desarrollo de Software a Medida · Buenos Aires";
+const seoTitle = "Diego Abad | Desarrollo de Software a Medida · Argentina";
 
 const seoDescription =
   "Desarrollo de software a medida en Argentina, automatización de procesos (n8n, APIs, integraciones), bots de WhatsApp con IA, sistema de turnos online, apps móviles para clínicas, control de stock e inventario. React, Next.js, Node.js y TypeScript para empresas y pymes en LATAM.";

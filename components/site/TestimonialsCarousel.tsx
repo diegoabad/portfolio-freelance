@@ -14,15 +14,15 @@ const DESKTOP_CARD_HEIGHT_REFERENCE_NAME = "José Contreras Márquez";
 
 function Avatar({ imageSrc, name }: { imageSrc: string; name: string }) {
   return (
-    <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border-2 border-primary/40 bg-muted/40 ring-2 ring-primary/20 ring-offset-2 ring-offset-background transition duration-300 group-hover:border-primary/60 group-hover:ring-primary/35">
+    <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border-2 border-primary/40 bg-muted/40 ring-2 ring-primary/20 ring-offset-2 ring-offset-background transition duration-300 group-hover:border-primary/60 group-hover:ring-primary/35">
       <Image
         src={imageSrc}
         alt={`Foto de perfil de ${name}`}
-        width={48}
-        height={48}
+        width={64}
+        height={64}
         className="h-full w-full object-cover"
-        sizes="48px"
-        quality={70}
+        sizes="64px"
+        quality={72}
         loading="lazy"
         fetchPriority="low"
         decoding="async"
@@ -94,7 +94,7 @@ function TestimonialCard({
         {/* Móvil: chips → fila foto + nombre con cargo debajo → (cita abajo) */}
         <div className="flex flex-col gap-4 md:hidden">
           <ProjectChips t={t} className="justify-start" />
-          <div className="flex min-w-0 items-start gap-2.5">
+          <div className="flex min-w-0 items-center gap-2.5">
             <Avatar imageSrc={t.imageSrc} name={t.name} />
             <div className="min-w-0 flex-1 text-left">
               {t.linkedInUrl ? (
@@ -113,7 +113,7 @@ function TestimonialCard({
                   <span className="min-w-0 wrap-break-word">{t.name}</span>
                 </span>
               )}
-              <p className="mt-1.5 text-sm leading-snug text-muted-foreground">
+              <p className="text-sm leading-snug text-muted-foreground">
                 {t.role}
                 {"roleLine2" in t ? (
                   <>
@@ -128,7 +128,7 @@ function TestimonialCard({
 
         {/* Desktop: foto+nombre+cargo | chips */}
         <div className="hidden items-start justify-between gap-3 md:flex">
-          <div className="flex min-w-0 flex-1 items-start gap-2">
+          <div className="flex min-w-0 flex-1 items-center gap-2">
             <Avatar imageSrc={t.imageSrc} name={t.name} />
             <div className="min-w-0 flex-1 text-left">
               {t.linkedInUrl ? (
@@ -147,7 +147,7 @@ function TestimonialCard({
                   <span className="min-w-0 wrap-break-word">{t.name}</span>
                 </span>
               )}
-              <p className="mt-1 text-sm leading-snug text-muted-foreground">
+              <p className="text-sm leading-snug text-muted-foreground">
                 {t.role}
                 {"roleLine2" in t ? (
                   <>

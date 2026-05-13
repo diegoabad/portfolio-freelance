@@ -1,11 +1,10 @@
 import Link from "next/link";
 import { BrandLogoMark } from "@/components/site/BrandLogoMark";
-import { BRAND_TAGLINE, LINKEDIN_PROFILE_URL } from "@/lib/site";
+import { BRAND_TAGLINE, FACEBOOK_PAGE_URL, GOOGLE_SHARE_URL, LINKEDIN_PROFILE_URL } from "@/lib/site";
 import { REL_WHATSAPP_EXTERNAL, WHATSAPP_NUMBER } from "@/lib/contact";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 import { FooterCopyrightLine } from "@/components/site/FooterCopyrightLine";
-import { FooterEmailCopyClient } from "@/components/site/FooterEmailCopyClient";
-import { LinkedInGlyph } from "@/components/site/SimpleIcons";
+import { FacebookGlyph, GoogleGlyph, LinkedInGlyph } from "@/components/site/SimpleIcons";
 
 const quickLinks = [
   { href: "/#top", label: "Inicio" },
@@ -66,7 +65,6 @@ export function Footer() {
             <div>
               <p className="text-[11px] uppercase tracking-[0.18em] text-primary font-medium mb-2">Redes</p>
               <div className="flex flex-wrap items-center gap-3 justify-start max-md:gap-3.5 md:gap-2.5">
-                <FooterEmailCopyClient />
                 <a
                   href={`https://wa.me/${WHATSAPP_NUMBER}`}
                   target="_blank"
@@ -86,6 +84,26 @@ export function Footer() {
                   title="LinkedIn"
                 >
                   <LinkedInGlyph size={22} />
+                </a>
+                <a
+                  href={FACEBOOK_PAGE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="h-11 w-11 rounded-xl border-2 border-primary bg-surface/60 grid place-items-center text-primary hover:text-primary-foreground hover:bg-primary transition shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background md:h-9 md:w-9 md:rounded-[10px] [&_svg]:size-[22px] md:[&_svg]:size-[18px]"
+                  aria-label="Página de Facebook"
+                  title="Facebook"
+                >
+                  <FacebookGlyph size={22} />
+                </a>
+                <a
+                  href={GOOGLE_SHARE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="h-11 w-11 rounded-xl border-2 border-primary bg-surface/60 grid place-items-center text-primary hover:text-primary-foreground hover:bg-primary transition shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background md:h-9 md:w-9 md:rounded-[10px] [&_svg]:size-[22px] md:[&_svg]:size-[18px]"
+                  aria-label="Google"
+                  title="Google"
+                >
+                  <GoogleGlyph size={22} />
                 </a>
               </div>
             </div>
