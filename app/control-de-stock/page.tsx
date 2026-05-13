@@ -4,11 +4,11 @@ import { PageShell } from "@/components/site/PageShell";
 import { getPricingRegion } from "@/lib/pricing-region";
 import { buildServicePageMetadata, type ServiceLandingSlug } from "@/lib/service-landings";
 
-const slug = "control-stock-clinicas" satisfies ServiceLandingSlug;
+const slug = "control-de-stock" satisfies ServiceLandingSlug;
 
 export const metadata: Metadata = buildServicePageMetadata(slug);
 
-export default async function ControlStockClinicasPage() {
+export default async function ControlDeStockPage() {
   const pricingRegion = await getPricingRegion();
   return (
     <PageShell>

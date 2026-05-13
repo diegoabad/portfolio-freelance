@@ -24,13 +24,13 @@ export const HIGHLIGHT_CHIP_INVENTARIO =
 const NBOTS: ServiceInterlink = { href: "/bots-whatsapp", label: "Bots de WhatsApp" };
 const NTURNOS: ServiceInterlink = { href: "/sistema-turnos-online", label: "Turnos online" };
 const NAUTO: ServiceInterlink = {
-  href: "/automatizacion-procesos-clinicas",
+  href: "/automatizacion-procesos",
   label: "Automatización de procesos",
 };
 const NMEDIDA: ServiceInterlink = { href: "/desarrollo-software-medida", label: "Software a medida" };
-const NCLINICAS: ServiceInterlink = { href: "/software-para-clinicas", label: "Aplicaciones móviles" };
+const NAPPS: ServiceInterlink = { href: "/aplicaciones-moviles", label: "Aplicaciones móviles" };
 const NSTOCK: ServiceInterlink = {
-  href: "/control-stock-clinicas",
+  href: "/control-de-stock",
   label: "Control de stock",
 };
 
@@ -61,7 +61,7 @@ export const SERVICE_LANDING_PAGES = [
       "Mejora en la atención al cliente",
       "Más conversiones sin depender solo de contratar más",
     ],
-    moreInterlinks: [NTURNOS, NAUTO, NMEDIDA, NCLINICAS, NSTOCK],
+    moreInterlinks: [NTURNOS, NAUTO, NMEDIDA, NAPPS, NSTOCK],
   },
   {
     slug: "sistema-turnos-online",
@@ -90,10 +90,10 @@ export const SERVICE_LANDING_PAGES = [
       "Opción de IA donde simplifica la coordinación",
       "Más turnos efectivos",
     ],
-    moreInterlinks: [NBOTS, NAUTO, NMEDIDA, NCLINICAS, NSTOCK],
+    moreInterlinks: [NBOTS, NAUTO, NMEDIDA, NAPPS, NSTOCK],
   },
   {
-    slug: "automatizacion-procesos-clinicas",
+    slug: "automatizacion-procesos",
     categoryHeading: "Automatización de procesos",
     homePainTitle: "Tareas manuales que te hacen perder tiempo y recursos",
     homeCardSubtitle:
@@ -118,7 +118,7 @@ export const SERVICE_LANDING_PAGES = [
       "Agentes de automatización con reglas y auditoría",
       "Mayor productividad y menos errores",
     ],
-    moreInterlinks: [NBOTS, NTURNOS, NMEDIDA, NCLINICAS, NSTOCK],
+    moreInterlinks: [NBOTS, NTURNOS, NMEDIDA, NAPPS, NSTOCK],
   },
   {
     slug: "desarrollo-software-medida",
@@ -146,10 +146,10 @@ export const SERVICE_LANDING_PAGES = [
       "Escalar sin fricciones",
       "Sistemas alineados al negocio",
     ],
-    moreInterlinks: [NBOTS, NTURNOS, NAUTO, NCLINICAS, NSTOCK],
+    moreInterlinks: [NBOTS, NTURNOS, NAUTO, NAPPS, NSTOCK],
   },
   {
-    slug: "software-para-clinicas",
+    slug: "aplicaciones-moviles",
     categoryHeading: "Desarrollo de aplicaciones móviles",
     homePainTitle: "Tus clientes esperan resolver todo desde el celular",
     homeCardSubtitle:
@@ -179,7 +179,7 @@ export const SERVICE_LANDING_PAGES = [
     moreInterlinks: [NBOTS, NTURNOS, NAUTO, NMEDIDA, NSTOCK],
   },
   {
-    slug: "control-stock-clinicas",
+    slug: "control-de-stock",
     categoryHeading: "Control de stock",
     homePainTitle: "Tu stock es un caos entre Excel y anotaciones",
     homeCardSubtitle:
@@ -204,7 +204,7 @@ export const SERVICE_LANDING_PAGES = [
       "Decisiones más claras",
       "Procesos más confiables y auditables",
     ],
-    moreInterlinks: [NBOTS, NTURNOS, NAUTO, NMEDIDA, NCLINICAS],
+    moreInterlinks: [NBOTS, NTURNOS, NAUTO, NMEDIDA, NAPPS],
   },
 ] as const;
 

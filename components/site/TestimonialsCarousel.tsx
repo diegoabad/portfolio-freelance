@@ -31,30 +31,6 @@ function Avatar({ imageSrc, name }: { imageSrc: string; name: string }) {
   );
 }
 
-function ProjectChips({ t, className = "" }: { t: Testimonial; className?: string }) {
-  return (
-    <div
-      className={`flex shrink-0 flex-wrap gap-1.5 sm:gap-2 ${className}`.trim()}
-      aria-label="Proyectos relacionados con este testimonio"
-    >
-      {"projectName" in t ? (
-        <span className="inline-flex rounded-full border border-primary/35 bg-primary/15 px-2.5 py-0.5 text-xs font-semibold text-primary shadow-[inset_0_1px_0_0_rgb(255_255_255_/0.06)] sm:px-3 sm:py-1">
-          {t.projectName}
-        </span>
-      ) : (
-        t.projectNames.map((name) => (
-          <span
-            key={name}
-            className="inline-flex rounded-full border border-primary/35 bg-primary/15 px-2.5 py-0.5 text-xs font-semibold text-primary shadow-[inset_0_1px_0_0_rgb(255_255_255_/0.06)] sm:px-3 sm:py-1"
-          >
-            {name}
-          </span>
-        ))
-      )}
-    </div>
-  );
-}
-
 function TestimonialCard({
   t,
   registerArticle,
@@ -91,74 +67,35 @@ function TestimonialCard({
         aria-hidden
       />
       <div className="relative z-[1] w-full min-w-0 shrink-0">
-        {/* Móvil: chips → fila foto + nombre con cargo debajo → (cita abajo) */}
-        <div className="flex flex-col gap-4 md:hidden">
-          <ProjectChips t={t} className="justify-start" />
-          <div className="flex min-w-0 items-center gap-2.5">
-            <Avatar imageSrc={t.imageSrc} name={t.name} />
-            <div className="min-w-0 flex-1 text-left">
-              {t.linkedInUrl ? (
-                <a
-                  href={t.linkedInUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex max-w-full items-center gap-[7px] font-display text-base font-semibold leading-snug text-foreground underline-offset-4 hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
-                >
-                  <span className="min-w-0 wrap-break-word">{t.name}</span>
-                  <Linkedin className="h-4 w-4 shrink-0 text-primary/80 group-hover:text-primary" aria-hidden />
-                  <span className="sr-only">(abre perfil de LinkedIn en una pestaña nueva)</span>
-                </a>
-              ) : (
-                <span className="inline-flex max-w-full items-center gap-[7px] font-display text-base font-semibold leading-snug text-foreground">
-                  <span className="min-w-0 wrap-break-word">{t.name}</span>
-                </span>
-              )}
-              <p className="text-sm leading-snug text-muted-foreground">
-                {t.role}
-                {"roleLine2" in t ? (
-                  <>
-                    <br />
-                    {t.roleLine2}
-                  </>
-                ) : null}
-              </p>
-            </div>
+        <div className="flex w-full min-w-0 items-center gap-2.5">
+          <Avatar imageSrc={t.imageSrc} name={t.name} />
+          <div className="min-w-0 flex-1 text-left">
+            {t.linkedInUrl ? (
+              <a
+                href={t.linkedInUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex max-w-full items-center gap-[7px] font-display text-base font-semibold leading-snug text-foreground underline-offset-4 hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm sm:text-lg"
+              >
+                <span className="min-w-0 wrap-break-word">{t.name}</span>
+                <Linkedin className="h-4 w-4 shrink-0 text-primary/80 group-hover:text-primary" aria-hidden />
+                <span className="sr-only">(abre perfil de LinkedIn en una pestaña nueva)</span>
+              </a>
+            ) : (
+              <span className="inline-flex max-w-full items-center gap-[7px] font-display text-base font-semibold leading-snug text-foreground sm:text-lg">
+                <span className="min-w-0 wrap-break-word">{t.name}</span>
+              </span>
+            )}
+            <p className="text-sm leading-snug text-muted-foreground">
+              {t.role}
+              {"roleLine2" in t ? (
+                <>
+                  <br />
+                  {t.roleLine2}
+                </>
+              ) : null}
+            </p>
           </div>
-        </div>
-
-        {/* Desktop: foto+nombre+cargo | chips */}
-        <div className="hidden items-start justify-between gap-3 md:flex">
-          <div className="flex min-w-0 flex-1 items-center gap-2">
-            <Avatar imageSrc={t.imageSrc} name={t.name} />
-            <div className="min-w-0 flex-1 text-left">
-              {t.linkedInUrl ? (
-                <a
-                  href={t.linkedInUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex max-w-full items-center gap-[7px] font-display text-base font-semibold leading-snug text-foreground underline-offset-4 hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm sm:text-lg"
-                >
-                  <span className="min-w-0 wrap-break-word">{t.name}</span>
-                  <Linkedin className="h-4 w-4 shrink-0 text-primary/80 group-hover:text-primary" aria-hidden />
-                  <span className="sr-only">(abre perfil de LinkedIn en una pestaña nueva)</span>
-                </a>
-              ) : (
-                <span className="inline-flex max-w-full items-center gap-[7px] font-display text-base font-semibold leading-snug text-foreground sm:text-lg">
-                  <span className="min-w-0 wrap-break-word">{t.name}</span>
-                </span>
-              )}
-              <p className="text-sm leading-snug text-muted-foreground">
-                {t.role}
-                {"roleLine2" in t ? (
-                  <>
-                    <br />
-                    {t.roleLine2}
-                  </>
-                ) : null}
-              </p>
-            </div>
-          </div>
-          <ProjectChips t={t} className="justify-end" />
         </div>
       </div>
 

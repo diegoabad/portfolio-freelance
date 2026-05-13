@@ -29,7 +29,7 @@ export const turnosBlogArticles: BlogPost[] = [
     },
     resourceLinks: [
       { href: "/sistema-turnos-online", label: "Sistema de turnos online" },
-      { href: "/software-para-clinicas", label: "Software para clínicas" },
+      { href: "/aplicaciones-moviles", label: "Software para clínicas" },
       { href: "/blog/turnos-online-whatsapp-reservas-negocio", label: "Reservas por WhatsApp (negocios de servicios)" },
       { href: "/proyectos/cogniare-gestion-clinicas", label: "Caso: gestión en clínicas" },
     ],

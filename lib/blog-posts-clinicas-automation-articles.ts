@@ -30,8 +30,8 @@ export const clinicasAutomationBlogArticles: BlogPost[] = [
         "Mapa de datos y fases sin humo: por qué el tablero falla si la agenda no coincide con administración, señales de caos y cuándo sumar automatización.",
     },
     resourceLinks: [
-      { href: "/automatizacion-procesos-clinicas", label: "Automatización de procesos" },
-      { href: "/software-para-clinicas", label: "Software para clínicas" },
+      { href: "/automatizacion-procesos", label: "Automatización de procesos" },
+      { href: "/aplicaciones-moviles", label: "Software para clínicas" },
       { href: "/blog/transformacion-digital-clinicas-automatizacion-gestion-medica", label: "Transformación digital en clínicas" },
       { href: "/proyectos/cogniare-gestion-clinicas", label: "Caso: gestión en clínicas" },
     ],
@@ -189,7 +189,7 @@ export const clinicasAutomationBlogArticles: BlogPost[] = [
         "Guía operativa: facturación de profesionales, historias clínicas, reportes e integraciones para el día a día.",
     },
     resourceLinks: [
-      { href: "/software-para-clinicas", label: "Software para clínicas" },
+      { href: "/aplicaciones-moviles", label: "Software para clínicas" },
       { href: "/sistema-turnos-online", label: "Sistema de turnos online" },
       { href: "/blog/como-automatizar-tareas-administrativas-clinicas", label: "Automatizar tareas administrativas" },
       { href: "/proyectos/ineco-app-pacientes", label: "Caso: app de pacientes INECO" },
@@ -271,7 +271,7 @@ export const clinicasAutomationBlogArticles: BlogPost[] = [
         type: "paragraph",
         segments: [
           "El cuello de botella suele ser el catálogo de prestaciones y las reglas de quién cobra qué, no ‘falta de un botón más’. Automatizar facturación sin limpiar códigos y responsables solo acelera el lío. Cuando eso respira, conectar módulos o ",
-          { href: "/automatizacion-procesos-clinicas", label: "integraciones entre sistemas" },
+          { href: "/automatizacion-procesos", label: "integraciones entre sistemas" },
           " empieza a bajar trabajo real en recepción y administración.",
         ],
       },

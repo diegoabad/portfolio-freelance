@@ -12,10 +12,10 @@ export type PricingRegion = "ar" | "intl";
 export const SERVICE_USD_FLOOR: Record<ServiceLandingSlug, number> = {
   "bots-whatsapp": 600,
   "sistema-turnos-online": 1200,
-  "automatizacion-procesos-clinicas": 500,
+  "automatizacion-procesos": 500,
   "desarrollo-software-medida": 2500,
-  "software-para-clinicas": 3000,
-  "control-stock-clinicas": 1500,
+  "aplicaciones-moviles": 3000,
+  "control-de-stock": 1500,
 };
 
 function formatUsdLatinInteger(n: number): string {

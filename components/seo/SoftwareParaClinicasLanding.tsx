@@ -27,9 +27,9 @@ const HERO = {
 const RELATED_LINKS = [
   { href: "/bots-whatsapp", label: "Bots de WhatsApp" },
   { href: "/sistema-turnos-online", label: "Turnos online" },
-  { href: "/automatizacion-procesos-clinicas", label: "Automatización de procesos" },
+  { href: "/automatizacion-procesos", label: "Automatización de procesos" },
   { href: "/desarrollo-software-medida", label: "Software a medida" },
-  { href: "/control-stock-clinicas", label: "Control de stock" },
+  { href: "/control-de-stock", label: "Control de stock" },
 ] as const;
 
 const PROBLEMA_BULLETS = [
@@ -156,7 +156,7 @@ function buildFaqItems(region: PricingRegion): { q: string; blocks: FaqBlock[] }
         type: "p",
         text: "Depende del tipo de operación, cantidad de clientes y procesos que quieras digitalizar. Lo evaluamos en una charla inicial sin compromiso.",
       },
-      { type: "callout", text: serviceLandingPriceFaqCallout("software-para-clinicas", region) },
+      { type: "callout", text: serviceLandingPriceFaqCallout("aplicaciones-moviles", region) },
       { type: "p", text: EVALUATION_OFFER_FAQ },
     ],
   },
@@ -203,7 +203,7 @@ export function SoftwareParaClinicasLanding({ pricingRegion }: { pricingRegion: 
         <p className={`mt-4 text-base leading-relaxed text-muted-foreground md:text-lg ${motionFadeUpMs(50)}`}>
           {HERO.subtitle}
         </p>
-        <ServiceLandingHeroOffer slug="software-para-clinicas" pricingRegion={pricingRegion} />
+        <ServiceLandingHeroOffer slug="aplicaciones-moviles" pricingRegion={pricingRegion} />
         <p className={`mt-4 text-xs font-semibold uppercase tracking-wider text-primary ${motionFadeUpMs(68)}`}>
           {HERO.presupuesto}
         </p>

@@ -52,10 +52,8 @@ export function TestimonialQuoteExpandable({ quote, onExpandedChange }: Props) {
         />
         <div
           ref={wrapRef}
-          className={`relative flex min-w-0 flex-1 flex-col max-md:min-h-0 md:min-h-0 md:overflow-hidden ${
-            !expanded && needsClamp
-              ? "overflow-hidden md:max-h-[min(6.75rem,100%)]"
-              : ""
+          className={`relative flex min-w-0 min-h-0 flex-1 flex-col max-md:min-h-0 md:min-h-0 md:overflow-hidden ${
+            !expanded && needsClamp ? "overflow-hidden" : ""
           }`}
         >
           <p
@@ -67,13 +65,13 @@ export function TestimonialQuoteExpandable({ quote, onExpandedChange }: Props) {
           {!expanded && needsClamp ? (
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-16 bg-gradient-to-t from-background from-[12%] via-background/45 to-transparent"
+              className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-9 bg-gradient-to-t from-background via-background/20 to-transparent sm:h-10"
             />
           ) : null}
         </div>
       </div>
       {showControls ? (
-        <div className="flex shrink-0 gap-2.5 sm:gap-3">
+        <div className="mt-1.5 flex shrink-0 gap-2.5 sm:gap-3">
           <div className="hidden w-5 shrink-0 sm:w-6 md:block" aria-hidden />
           <button
             type="button"

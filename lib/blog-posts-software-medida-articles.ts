@@ -29,7 +29,7 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
     },
     resourceLinks: [
       { href: "/desarrollo-software-medida", label: "Desarrollo a medida" },
-      { href: "/software-para-clinicas", label: "Software para clínicas" },
+      { href: "/aplicaciones-moviles", label: "Software para clínicas" },
       { href: "/sistema-turnos-online", label: "Sistema de turnos online" },
       { href: "/blog/cuando-conviene-software-a-medida-vs-sistemas-genericos", label: "Software a medida vs. sistema genérico" },
     ],
@@ -201,7 +201,7 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
     },
     resourceLinks: [
       { href: "/desarrollo-software-medida", label: "Desarrollo a medida" },
-      { href: "/software-para-clinicas", label: "Software para clínicas" },
+      { href: "/aplicaciones-moviles", label: "Software para clínicas" },
       { href: "/blog/software-a-medida-clinicas-consultorios-sistema-personalizado", label: "Software a medida en clínicas" },
       { href: "/proyectos/cotilink-saas-cotizaciones", label: "Caso: plataforma SaaS Cotilink" },
     ],
@@ -302,7 +302,7 @@ export const softwareMedidaBlogArticles: BlogPost[] = [
         type: "paragraph",
         segments: [
           "Cuando esas frases se vuelven habituales, muchas veces conviene ",
-          { href: "/automatizacion-procesos-clinicas", label: "ordenar e integrar lo que ya hay" },
+          { href: "/automatizacion-procesos", label: "ordenar e integrar lo que ya hay" },
           " antes de escribir una línea de producto propio — y recién después construir la parte que el paquete no va a abrazar nunca.",
         ],
       },

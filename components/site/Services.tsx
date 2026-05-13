@@ -11,10 +11,10 @@ import { motionFadeUpMs } from "@/lib/site-motion";
 const CARD_ICON: Record<ServiceLandingSlug, LucideIcon> = {
   "bots-whatsapp": MessageCircle,
   "sistema-turnos-online": CalendarDays,
-  "automatizacion-procesos-clinicas": Zap,
+  "automatizacion-procesos": Zap,
   "desarrollo-software-medida": Code2,
-  "software-para-clinicas": Smartphone,
-  "control-stock-clinicas": Package,
+  "aplicaciones-moviles": Smartphone,
+  "control-de-stock": Package,
 };
 
 type ServiceCard = {

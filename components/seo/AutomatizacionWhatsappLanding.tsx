@@ -26,10 +26,10 @@ const CATEGORY = "Bots de WhatsApp";
 
 const RELATED_LINKS = [
   { href: "/sistema-turnos-online", label: "Turnos online" },
-  { href: "/automatizacion-procesos-clinicas", label: "Automatización de procesos" },
+  { href: "/automatizacion-procesos", label: "Automatización de procesos" },
   { href: "/desarrollo-software-medida", label: "Software a medida" },
-  { href: "/software-para-clinicas", label: "Aplicaciones móviles" },
-  { href: "/control-stock-clinicas", label: "Control de stock" },
+  { href: "/aplicaciones-moviles", label: "Aplicaciones móviles" },
+  { href: "/control-de-stock", label: "Control de stock" },
 ] as const;
 
 const HERO = {

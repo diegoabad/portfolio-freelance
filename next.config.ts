@@ -41,8 +41,23 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/software-para-clinicas",
+        destination: "/aplicaciones-moviles",
+        permanent: true,
+      },
+      {
+        source: "/automatizacion-procesos-clinicas",
+        destination: "/automatizacion-procesos",
+        permanent: true,
+      },
+      {
+        source: "/control-stock-clinicas",
+        destination: "/control-de-stock",
+        permanent: true,
+      },
+      {
         source: "/software-gestion-pacientes",
-        destination: "/software-para-clinicas",
+        destination: "/aplicaciones-moviles",
         permanent: true,
       },
       {
@@ -62,17 +77,17 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/desarrollo-apps-moviles",
-        destination: "/desarrollo-software-medida",
+        destination: "/aplicaciones-moviles",
         permanent: true,
       },
       {
         source: "/automatizacion-negocios",
-        destination: "/automatizacion-procesos-clinicas",
+        destination: "/automatizacion-procesos",
         permanent: true,
       },
       {
         source: "/sistema-gestion-inventario",
-        destination: "/control-stock-clinicas",
+        destination: "/control-de-stock",
         permanent: true,
       },
       {

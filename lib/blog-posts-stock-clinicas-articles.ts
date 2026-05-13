@@ -26,8 +26,8 @@ export const stockClinicasBlogArticles: BlogPost[] = [
       description: "Hábitos y proceso antes que pantalla: situaciones típicas en clínicas, caso real y automatización de inventario sin jerga técnica.",
     },
     resourceLinks: [
-      { href: "/control-stock-clinicas", label: "Control de stock para clínicas" },
-      { href: "/software-para-clinicas", label: "Software para clínicas" },
+      { href: "/control-de-stock", label: "Control de stock para clínicas" },
+      { href: "/aplicaciones-moviles", label: "Software para clínicas" },
       { href: "/blog/automatizar-control-stock-clinicas-consultorios-medicos", label: "Automatizar stock en clínicas" },
       { href: "/proyectos/cogniare-gestion-clinicas", label: "Caso: gestión en clínicas" },
     ],
@@ -53,7 +53,7 @@ export const stockClinicasBlogArticles: BlogPost[] = [
         type: "paragraph",
         segments: [
           "Ese es el patrón que veo antes de hablar de software: el stock no es un número, es un flujo de movimientos con responsable. Un ",
-          { href: "/control-stock-clinicas", label: "sistema de control de stock" },
+          { href: "/control-de-stock", label: "sistema de control de stock" },
           " serio empieza por acordar qué se cuenta como ítem, en qué lugar está, cómo se registran entradas, salidas, transferencias y ajustes, y quién confirma cada cosa — no por elegir el color de un tablero.",
         ],
       },
@@ -176,8 +176,8 @@ export const stockClinicasBlogArticles: BlogPost[] = [
       description: "Enfoque en organización, vencimientos, sectores y pérdidas.",
     },
     resourceLinks: [
-      { href: "/control-stock-clinicas", label: "Control de stock para clínicas" },
-      { href: "/automatizacion-procesos-clinicas", label: "Automatización de procesos" },
+      { href: "/control-de-stock", label: "Control de stock para clínicas" },
+      { href: "/automatizacion-procesos", label: "Automatización de procesos" },
       { href: "/blog/sistema-control-stock-clinicas-insumos-medicos-perdidas", label: "Pérdidas y desorden en stock" },
       { href: "/proyectos/cogniare-gestion-clinicas", label: "Caso: gestión en clínicas" },
     ],
@@ -265,7 +265,7 @@ export const stockClinicasBlogArticles: BlogPost[] = [
         type: "paragraph",
         segments: [
           "Después: acordar reglas simples —quién registra cada salida, quién confirma las compras cuando llegan, qué pasa si alguien saca algo ‘prestado’ entre sectores. Cuando cada movimiento queda registrado con responsable y motivo, ahí sí tiene sentido que el ",
-          { href: "/control-stock-clinicas", label: "control de stock para clínicas" },
+          { href: "/control-de-stock", label: "control de stock para clínicas" },
           " ayude con alertas, mínimos y menos trabajo manual. Sin eso, el panel más lindo del mundo es maquillaje.",
         ],
       },
@@ -311,7 +311,7 @@ export const stockClinicasBlogArticles: BlogPost[] = [
         type: "paragraph",
         segments: [
           "Cuando compras o facturación viven en otro sistema, ayuda tener ",
-          { href: "/automatizacion-procesos-clinicas", label: "reglas claras entre áreas" },
+          { href: "/automatizacion-procesos", label: "reglas claras entre áreas" },
           " —quién avisa qué, cuándo se da por recibida una compra, cómo se refleja en el inventario— aunque al principio sea un flujo escrito en un documento compartido. Sin eso, cada sector arma su propia versión y el inventario vuelve a desincronizarse.",
         ],
       },

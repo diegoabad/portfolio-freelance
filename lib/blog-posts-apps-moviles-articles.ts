@@ -28,7 +28,7 @@ export const appsMovilesBlogArticles: BlogPost[] = [
       description: "Costo, mantenimiento y cuándo alcanza con la web desde el celular antes de publicar en tiendas.",
     },
     resourceLinks: [
-      { href: "/software-para-clinicas", label: "Software para clínicas" },
+      { href: "/aplicaciones-moviles", label: "Software para clínicas" },
       { href: "/sistema-turnos-online", label: "Sistema de turnos online" },
       { href: "/desarrollo-software-medida", label: "Desarrollo a medida" },
       { href: "/blog/desarrollo-aplicaciones-moviles-clinicas-beneficios-ejemplos", label: "Desarrollo de apps: beneficios y ejemplos" },
@@ -171,7 +171,7 @@ export const appsMovilesBlogArticles: BlogPost[] = [
       description: "Enfoque en experiencia del paciente, funciones típicas y automatización.",
     },
     resourceLinks: [
-      { href: "/software-para-clinicas", label: "Software para clínicas" },
+      { href: "/aplicaciones-moviles", label: "Software para clínicas" },
       { href: "/desarrollo-software-medida", label: "Desarrollo a medida" },
       { href: "/blog/aplicaciones-moviles-clinicas-consultorios-experiencia-paciente-2026", label: "Experiencia del paciente en el celular" },
       { href: "/proyectos/ineco-app-pacientes", label: "Caso: app de pacientes INECO" },

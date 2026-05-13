@@ -28,8 +28,8 @@ const RELATED_LINKS = [
   { href: "/bots-whatsapp", label: "Bots de WhatsApp" },
   { href: "/sistema-turnos-online", label: "Turnos online" },
   { href: "/desarrollo-software-medida", label: "Software a medida" },
-  { href: "/software-para-clinicas", label: "Aplicaciones móviles" },
-  { href: "/control-stock-clinicas", label: "Control de stock" },
+  { href: "/aplicaciones-moviles", label: "Aplicaciones móviles" },
+  { href: "/control-de-stock", label: "Control de stock" },
 ] as const;
 
 const EJEMPLOS_TAREAS = [
@@ -77,7 +77,7 @@ function buildFaqItems(region: PricingRegion): { q: string; blocks: FaqBlock[] }
         type: "p",
         text: "El costo depende del tipo de automatización y la complejidad del proceso: no es lo mismo automatizar tareas simples que integrar varios sistemas o flujos más complejos.",
       },
-      { type: "callout", text: serviceLandingPriceFaqCallout("automatizacion-procesos-clinicas", region) },
+      { type: "callout", text: serviceLandingPriceFaqCallout("automatizacion-procesos", region) },
       {
         type: "ul",
         intro: "En general, el valor se define según:",
@@ -285,7 +285,7 @@ export function AutomatizacionNegociosLanding({ pricingRegion }: { pricingRegion
         <p className={`mt-4 text-base leading-relaxed text-muted-foreground md:text-lg ${motionFadeUpMs(44)}`}>
           {HERO.subtitle}
         </p>
-        <ServiceLandingHeroOffer slug="automatizacion-procesos-clinicas" pricingRegion={pricingRegion} />
+        <ServiceLandingHeroOffer slug="automatizacion-procesos" pricingRegion={pricingRegion} />
         <div className={`mt-6 flex flex-wrap gap-4 ${motionFadeUpMs(72)}`}>
           <LandingWaCta href={homeSection("#contacto")} main={LANDING_CONSULT_CTA} hideWhatsAppIconMobile />
         </div>
@@ -347,7 +347,7 @@ export function AutomatizacionNegociosLanding({ pricingRegion }: { pricingRegion
               </p>
               <p className="text-muted-foreground">
                 Podés combinar esta automatización de procesos con{" "}
-                <Link prefetch={false} href="/software-para-clinicas" className="font-medium text-primary underline-offset-4 hover:underline">
+                <Link prefetch={false} href="/aplicaciones-moviles" className="font-medium text-primary underline-offset-4 hover:underline">
                   aplicaciones móviles
                 </Link>{" "}
                 o con{" "}

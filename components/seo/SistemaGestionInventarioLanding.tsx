@@ -25,9 +25,9 @@ const HERO = {
 const RELATED_LINKS = [
   { href: "/bots-whatsapp", label: "Bots de WhatsApp" },
   { href: "/sistema-turnos-online", label: "Turnos online" },
-  { href: "/automatizacion-procesos-clinicas", label: "Automatización de procesos" },
+  { href: "/automatizacion-procesos", label: "Automatización de procesos" },
   { href: "/desarrollo-software-medida", label: "Software a medida" },
-  { href: "/software-para-clinicas", label: "Aplicaciones móviles" },
+  { href: "/aplicaciones-moviles", label: "Aplicaciones móviles" },
 ] as const;
 
 const CONTEXTO_ITEMS = [
@@ -100,7 +100,7 @@ function buildFaqItems(region: PricingRegion): { q: string; blocks: FaqBlock[] }
         type: "p",
         text: "Depende del nivel de personalización, integraciones (ventas, facturación, depósitos), volumen de productos y movimientos.",
       },
-      { type: "callout", text: serviceLandingPriceFaqCallout("control-stock-clinicas", region) },
+      { type: "callout", text: serviceLandingPriceFaqCallout("control-de-stock", region) },
       { type: "p", text: EVALUATION_OFFER_FAQ },
     ],
   },
@@ -151,7 +151,7 @@ export function SistemaGestionInventarioLanding({ pricingRegion }: { pricingRegi
         <p className={`mt-4 text-base leading-relaxed text-muted-foreground md:text-lg ${motionFadeUpMs(44)}`}>
           {HERO.subtitle}
         </p>
-        <ServiceLandingHeroOffer slug="control-stock-clinicas" pricingRegion={pricingRegion} />
+        <ServiceLandingHeroOffer slug="control-de-stock" pricingRegion={pricingRegion} />
         <div className={`mt-6 flex flex-wrap gap-4 ${motionFadeUpMs(72)}`}>
           <LandingWaCta
             href={waHref(MSG_HERO)}
@@ -343,7 +343,7 @@ export function SistemaGestionInventarioLanding({ pricingRegion }: { pricingRegi
               {faqItems.map(({ q, blocks }) => (
                 <details
                   key={q}
-                  name="faq-control-stock-clinicas"
+                  name="faq-control-de-stock"
                   className="group border-b border-border last:border-b-0 open:bg-muted/15 transition-colors"
                 >
                   <summary className="flex cursor-pointer list-none items-center gap-3 px-4 py-4 pr-3 text-left transition-colors hover:bg-muted/20 md:px-5 md:py-[1.05rem] [&::-webkit-details-marker]:hidden marker:content-none">

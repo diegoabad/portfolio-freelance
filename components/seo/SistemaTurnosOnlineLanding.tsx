@@ -25,10 +25,10 @@ const HERO = {
 
 const RELATED_LINKS = [
   { href: "/bots-whatsapp", label: "Bots de WhatsApp" },
-  { href: "/automatizacion-procesos-clinicas", label: "Automatización de procesos" },
+  { href: "/automatizacion-procesos", label: "Automatización de procesos" },
   { href: "/desarrollo-software-medida", label: "Software a medida" },
-  { href: "/software-para-clinicas", label: "Aplicaciones móviles" },
-  { href: "/control-stock-clinicas", label: "Control de stock" },
+  { href: "/aplicaciones-moviles", label: "Aplicaciones móviles" },
+  { href: "/control-de-stock", label: "Control de stock" },
 ] as const;
 
 const CONTEXTO_CANALES = ["WhatsApp", "Llamadas", "Planillas", "Agendas manuales"] as const;
@@ -266,7 +266,7 @@ export function SistemaTurnosOnlineLanding({ pricingRegion }: { pricingRegion: P
               </p>
               <p className="mt-4 text-muted-foreground">
                 Si tu operación es mayoritariamente clínica, conviene revisar también{" "}
-                <Link prefetch={false} href="/software-para-clinicas" className="font-medium text-primary underline-offset-4 hover:underline">
+                <Link prefetch={false} href="/aplicaciones-moviles" className="font-medium text-primary underline-offset-4 hover:underline">
                   aplicaciones móviles
                 </Link>
                 . Si el cuello de botella es el WhatsApp, los{" "}
