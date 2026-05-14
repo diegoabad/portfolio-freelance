@@ -32,6 +32,9 @@ export function getPublicPriceTeaser(slug: ServiceLandingSlug, region: PricingRe
   if (region === "ar") return page.homeCardPriceTeaser;
   const usd = SERVICE_USD_FLOOR[slug];
   const formatted = formatUsdLatinInteger(usd);
+  if (slug === "bots-whatsapp") {
+    return `Implementación desde USD ${formatted}; abono mensual aparte`;
+  }
   if (slug === "desarrollo-software-medida") return `Proyectos desde USD ${formatted}`;
   return `Desde USD ${formatted}`;
 }

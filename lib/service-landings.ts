@@ -42,8 +42,8 @@ export const SERVICE_LANDING_PAGES = [
     homeCardSubtitle:
       "Desarrollo e implementación de bot de WhatsApp con IA e integración con agendas y CRM: chatbot para atención al cliente, consultas por WhatsApp y menos carga para tu equipo (empresas, pymes y clínicas en Argentina).",
     homeCardBadge: HIGHLIGHT_CHIP_BOTS_WHATSAPP,
-    /** Precio orientativo en home (detalle en landing / FAQ). */
-    homeCardPriceTeaser: "Desde ARS 600.000",
+    /** Precio orientativo: pago por implementación + mensualidad (detalle en landing / FAQ). */
+    homeCardPriceTeaser: "Implementación desde ARS 600.000",
     homeCardPriceBenefit: "Respuestas 24/7 sin sumar personal dedicado solo al WhatsApp.",
     homeCardCta: PRIMARY_CTA_LABEL,
     title: "Bots de WhatsApp para negocios",

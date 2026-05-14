@@ -101,7 +101,11 @@ function buildFaqItems(region: PricingRegion): { q: string; blocks: FaqBlock[] }
     blocks: [
       {
         type: "p",
-        text: "Depende del nivel de automatización, volumen de mensajes, integraciones (CRM, agenda, etc.) y complejidad del flujo de atención.",
+        text: "En general se separa en dos partes: un pago por la creación e implementación del bot (flujos, integraciones, pruebas y puesta en marcha) y un costo mensual por mantenerlo en producción—hosting del servicio, consumo de APIs (WhatsApp, IA si aplica) y soporte o ajustes menores según lo que acordemos.",
+      },
+      {
+        type: "p",
+        text: "El monto total depende del nivel de automatización, volumen de mensajes, integraciones (CRM, agenda, etc.) y complejidad del flujo de atención.",
       },
       { type: "callout", text: serviceLandingPriceFaqCallout("bots-whatsapp", region) },
       { type: "p", text: EVALUATION_OFFER_FAQ },
